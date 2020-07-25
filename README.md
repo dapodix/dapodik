@@ -21,4 +21,4 @@ Perkiraan release versi 1 akhir bulan September 2020,
 
 ## Legal / Hukum
 
-Kode ini sama sekali tidak berafiliasi dengan, diizinkan, dipelihara, disponsori atau didukung oleh [Dapodik](https://dapo.kemdikbud.go.id/) atau afiliasi atau anak perusahaannya. Ini adalah perangkat lunak yang independen dan tidak resmi. _Gunakan dengan risiko Anda sendiri._
+Kode ini sama sekali tidak berafiliasi dengan, diizinkan, dipelihara, disponsori atau didukung oleh [Kemdikbud](https://kemdikbud.go.id/) atau afiliasi atau anak organisasinya. Ini adalah perangkat lunak yang independen dan tidak resmi. _Gunakan dengan risiko Anda sendiri._
