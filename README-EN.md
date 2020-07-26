@@ -10,4 +10,4 @@ Alat bantu aplikasi dapodik.
 
 ## Legal
 
-This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by [Dapodik](https://dapo.kemdikbud.go.id/) or any of its affiliates or subsidiaries. This is an independent and unofficial software. _Use at your own risk._
+This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by [Kemdikbud](https://kemdikbud.go.id/) or any of its affiliates or subsidiaries. This is an independent and unofficial software. _Use at your own risk._
