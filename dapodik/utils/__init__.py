@@ -1,1 +1,1 @@
-from .parser import parse_rows_cast
+from .parser import parse_rows_cast, parse_rows_update

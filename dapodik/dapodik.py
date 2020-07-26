@@ -1,8 +1,10 @@
 from requests import Session
 
+BASE_URL = "http://localhost:5774/"
+
 
 class Dapodik(Session):
-    def __init__(self, url="http://localhost:5774/", semester_id='20201'):
+    def __init__(self, url=BASE_URL, semester_id='20201'):
         self._semester_id = semester_id
         self._url = url
         self.headers.update({

@@ -1,4 +1,5 @@
-from dapodik.base import BaseDapodik
+from requests import Session
+from dapodik.base import BaseDapodik, Rest
 from dapodik.utils import parse_rows_cast
 from .akreditasi import Akreditasi
 from .blockgrant import BlockGrant
@@ -11,30 +12,59 @@ from .sekolah_paud import SekolahPaud
 from .yayasan import Yayasan
 
 
-class BaseSekolah(BaseDapodik):
-    def Akreditasi(self) -> [Akreditasi]:
-        return self.get_parse_cast_rows('rest/Akreditasi', Akreditasi)
+class BaseSekolah:
+    session: Session = None
 
-    def BlockGrant(self) -> [BlockGrant]:
-        return self.get_parse_cast_rows('rest/BlockGrant', BlockGrant)
+    @property
+    def Akreditasi(self):
+        return Rest(
+            self.session, Akreditasi, 'rest/Akreditasi'
+        )
 
-    def Kepanitiaan(self) -> [Kepanitiaan]:
-        return self.get_parse_cast_rows('rest/Kepanitiaan', Kepanitiaan)
+    @property
+    def BlockGrant(self):
+        return Rest(
+            self.session, BlockGrant, 'rest/BlockGrant'
+        )
 
-    def ProgramInklusi(self) -> [ProgramInklusi]:
-        return self.get_parse_cast_rows('rest/ProgramInklusi', ProgramInklusi)
+    @property
+    def Kepanitiaan(self):
+        return Rest(
+            self.session, Kepanitiaan, 'rest/Kepanitiaan'
+        )
 
-    def Sanitasi(self) -> [Sanitasi]:
-        return self.get_parse_cast_rows('rest/Sanitasi', Sanitasi)
+    @property
+    def ProgramInklusi(self):
+        return Rest(
+            self.session, ProgramInklusi, 'rest/ProgramInklusi'
+        )
 
-    def Sekolah(self) -> [Sekolah]:
-        return self.get_parse_cast_rows('rest/Sekolah', Sekolah)
+    @property
+    def Sanitasi(self):
+        return Rest(
+            self.session, Sanitasi, 'rest/Sanitasi'
+        )
 
-    def SekolahLongitudinal(self) -> [SekolahLongitudinal]:
-        return self.get_parse_cast_rows('rest/SekolahLongitudinal', SekolahLongitudinal)
+    @property
+    def Sekolah(self):
+        return Rest(
+            self.session, Sekolah, 'rest/Sekolah'
+        )
 
-    def SekolahPaud(self) -> [SekolahPaud]:
-        return self.get_parse_cast_rows('rest/SekolahPaud', SekolahPaud)
+    @property
+    def SekolahLongitudinal(self):
+        return Rest(
+            self.session, SekolahLongitudinal, 'rest/SekolahLongitudinal'
+        )
 
-    def Yayasan(self) -> [Yayasan]:
-        return self.get_parse_cast_rows('rest/Yayasan', Yayasan)
+    @property
+    def SekolahPaud(self):
+        return Rest(
+            self.session, SekolahPaud, 'rest/SekolahPaud'
+        )
+
+    @property
+    def Yayasan(self):
+        return Rest(
+            self.session, Yayasan, 'rest/Yayasan'
+        )

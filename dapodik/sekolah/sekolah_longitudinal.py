@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from dapodik.base import BaseData
 
 
 @dataclass
-class SekolahLongitudinal:
+class SekolahLongitudinal(BaseData):
     sekolah_id: str
     semester_id: str
     waktu_penyelenggaraan_id: str

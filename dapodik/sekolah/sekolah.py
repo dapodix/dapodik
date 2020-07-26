@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from dapodik.base import BaseData
 
 
 @dataclass
-class Sekolah:
+class Sekolah(BaseData):
     sekolah_id: str
     nama: str
     nama_nomenklatur: str

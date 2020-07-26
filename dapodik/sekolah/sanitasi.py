@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from dapodik.base import BaseData
 
 
 @dataclass
-class Sanitasi:
+class Sanitasi(BaseData):
     sekolah_id: str
     semester_id: str
     sumber_air_id: str

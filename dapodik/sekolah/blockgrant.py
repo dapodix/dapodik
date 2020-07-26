@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from typing import Union
+from dapodik.base import BaseData
 
 
 @dataclass
-class BlockGrant:
+class BlockGrant(BaseData):
     blockgrant_id: str
     sekolah_id: str
     nama: str

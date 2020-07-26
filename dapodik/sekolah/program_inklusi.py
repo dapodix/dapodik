@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from typing import Union
+from dapodik.base import BaseData
 
 
 @dataclass
-class ProgramInklusi:
+class ProgramInklusi(BaseData):
     id_pi: str
     sekolah_id: str
     kebutuhan_khusus_id: int
