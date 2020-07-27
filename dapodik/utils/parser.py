@@ -19,3 +19,19 @@ def parse_rows_update(datas: dict, instance):
         for ke in data:
             setattr(instance, ke, data[ke])
     return instance
+
+
+def cast(data: dict, Class_):
+    anot: dict = getattr(Class_, '__annotations__', {})
+    if len(anot) == 0:
+        raise TypeError('Class_ not have anotations')
+    ndata_ = {}
+    fields = Class_.__dataclass_fields__
+    for key in anot:
+        if key in data and data[key]:
+            ndata_[key] = data[key]
+        elif key in fields:
+            ndata_[key] = fields[key].default
+        else:
+            ndata_[key] = None
+    return Class_(**ndata_)
