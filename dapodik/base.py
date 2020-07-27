@@ -1,8 +1,10 @@
 import logging
-from dataclasses import asdict, dataclass
+import json
+from dataclasses import asdict, dataclass, _MISSING_TYPE
 from requests import Session
 from logging import Logger
 from typing import Union
+from dapodik.utils import cast
 from dapodik.config import BASE_URL
 from dapodik.rest import ChildDelete
 from dapodik.utils import parse_rows_cast, parse_rows_update
@@ -52,25 +54,28 @@ class Rest(Base):
                     setattr(obj, '_session', self._session)
             return outs
 
-    def new(self, data_: Union[dict, object], default={}):
+    def new(self, data_: Union[dict, object], default: dict = None, params: dict = None):
         if type(data_) == dict:
-            data_: dict = data_
+            data_: dict = asdict(cast(data_, self.__class))
         elif isinstance(data_, self.__class):
             data_: dict = asdict(data_)
         else:
             raise ValueError(
                 f'data seharusnya bertipe dict atau {self.__class}'
             )
+        default = default if default else {}
+        params = params if params else {}
         default.update(data_)
-        res = self._session.post(self._full_url, data=default)
+        res = self._session.post(self._full_url, json=default, params=params)
         if not res.ok:
             return
-        datas: dict = res.json()
+        datas = res.text.replace("\'", "\"")
+        datas: dict = json.loads(datas)
         if not datas.get('success'):
             return
         data: dict = datas.get('rows')
         data_.update(data)
-        return data_
+        return cast(data_, self.__class)
 
 
 class BaseData:
