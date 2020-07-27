@@ -70,9 +70,9 @@ class PesertaDidik(BaseData):
     nik_ibu: str = ""
     jenjang_pendidikan_ibu: int = 0
     jenjang_pendidikan_ibu_str: str = ""
-    pekerjaan_id_ibu: 1
+    pekerjaan_id_ibu: int = 1
     pekerjaan_id_ibu_str: str = ""
-    penghasilan_id_ibu: 99
+    penghasilan_id_ibu: int = 99
     penghasilan_id_ibu_str: str = ""
     kebutuhan_khusus_id_ibu: int = 0
     kebutuhan_khusus_id_ibu_str: str = ""
@@ -87,6 +87,6 @@ class PesertaDidik(BaseData):
     nomor_telepon_rumah: str = ""
     nomor_telepon_seluler: str = ""
     email: str = ""
-    kebutuhan_khusus_id_selector: Union[list, [int]] = []
-    kebutuhan_khusus_id_selector_ayah: Union[list, [int]] = []
-    kebutuhan_khusus_id_selector_ibu: Union[list, [int]] = []
+    kebutuhan_khusus_id_selector = []
+    kebutuhan_khusus_id_selector_ayah = []
+    kebutuhan_khusus_id_selector_ibu = []
