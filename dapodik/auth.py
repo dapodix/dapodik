@@ -1,24 +1,24 @@
 from requests import Session
+from dapodik.config import BASE_URL
+from dapodik.sekolah import BaseSekolah
 
-BASE_URL = "http://localhost:5774/"
 
-
-class Dapodik(Session):
-    def __init__(self, url=BASE_URL, semester_id='20201'):
-        self._semester_id = semester_id
-        self._url = url
-        self.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0'
-        })
+class Auth(Session):
+    _url: str = BASE_URL
+    _semester_id: str = '20201'
 
     def login(self, username: str, password: str, rememberme=True, semester_id='20201'):
         data = {
             'username': username,
             'password': password,
+            'semester_id': semester_id
         }
         if rememberme == True or rememberme == 'on':
             data['rememberme'] = 'on'
-        res1 = self.post(self._url+'login', data)
+        res0 = self.get(self._url)
+        if not res0.ok:
+            return False
+        res1 = self.post(self._url+'login', data=data)
         # handle redirect
         url = res1.url if res1.is_redirect else ''
         res2 = self.get(self._url+url)

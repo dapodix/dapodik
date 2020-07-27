@@ -4,8 +4,8 @@ def parse_rows_cast(datas: dict, Class_, id: bool = False):
     id_ = datas.get('id')
     if len(rows) == 0:
         return outs
-    for key in rows:
-        data: dict = rows.get(key)
+    for data in rows:
+        #data: dict = rows.get(key)
         data_ = Class_(**data)
         if id:
             data_._id = id_

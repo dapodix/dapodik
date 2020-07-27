@@ -2,7 +2,8 @@ import logging
 from dataclasses import asdict, dataclass
 from requests import Session
 from logging import Logger
-from dapodik.dapodik import BASE_URL
+from typing import Union
+from dapodik.config import BASE_URL
 from dapodik.rest import ChildDelete
 from dapodik.utils import parse_rows_cast, parse_rows_update
 
@@ -12,28 +13,14 @@ class Base:
     _logger: Logger = None
 
 
-class BaseDapodik(Session, Base):
-
-    def get_parse_cast_rows(self, url: str, Class_):
-        outs = []
-        try:
-            res = self.get(self._url+url)
-            if res.ok:
-                datas: dict = res.json()
-                outs = parse_rows_cast(datas, Class_)
-        except Exception as e:
-            self._logger.exception(e)
-        finally:
-            return outs
-
-
 class Rest(Base):
     _id: str = None
     __url: str = None
 
-    def __init__(self, session: Session, Class_, url: str, get=True, post=True, put=True, delete=True):
+    def __init__(self, session: Session, Class_, url: str, params: dict = None, get=True, post=True, put=True, delete=True):
         self._session: Session = session
         self.__url: str = url
+        self.params: dict = params
         self._get: bool = get
         self._post: bool = post
         self._put: bool = put
@@ -44,10 +31,15 @@ class Rest(Base):
     def __call__(self):
         return self.get()
 
+    @property
+    def _full_url(self):
+        return self._url+self.__url
+
     def get(self):
         outs = []
         try:
-            res = self._session.get(self._url+self.__url)
+            res = self._session.get(
+                self._full_url, params=self.params if self.params and len(self.params) > 0 else {})
             if res.ok:
                 datas: dict = res.json()
                 self._id = datas.get('id')
@@ -59,6 +51,26 @@ class Rest(Base):
                 for obj in outs:
                     setattr(obj, '_session', self._session)
             return outs
+
+    def new(self, data_: Union[dict, object], default={}):
+        if type(data_) == dict:
+            data_: dict = data_
+        elif isinstance(data_, self.__class):
+            data_: dict = asdict(data_)
+        else:
+            raise ValueError(
+                f'data seharusnya bertipe dict atau {self.__class}'
+            )
+        default.update(data_)
+        res = self._session.post(self._full_url, data=default)
+        if not res.ok:
+            return
+        datas: dict = res.json()
+        if not datas.get('success'):
+            return
+        data: dict = datas.get('rows')
+        data_.update(data)
+        return data_
 
 
 class BaseData:
