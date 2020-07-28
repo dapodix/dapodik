@@ -6,6 +6,7 @@ from .registrasi_peserta_didik import RegistrasiPesertaDidik
 
 
 class BasePesertaDidik(object):
+    _sekolah_id: str = None
     _PesertaDidik: PesertaDidik = None
     _PesertaDidikBaru: PesertaDidikBaru = None
     _PesertaDidikLongitudinal: PesertaDidikLongitudinal = None
@@ -15,9 +16,11 @@ class BasePesertaDidik(object):
     def PesertaDidik(self) -> [PesertaDidik]:
         if self._PesertaDidik:
             return self._PesertaDidik
+        params = {
+            'sekolah_id': self._sekolah_id,
+        }
         self._PesertaDidik = Rest(
-            self, PesertaDidik, 'rest/PesertaDidik'
-        )
+            self, PesertaDidik, 'rest/PesertaDidik', params=params)
         return self._PesertaDidik
 
     @property
