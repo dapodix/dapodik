@@ -19,7 +19,7 @@ class Rest(Base):
     _id: str = None
     __url: str = None
 
-    def __init__(self, session: Session, Class_, url: str, params: dict = None, get=True, post=True, put=True, delete=True):
+    def __init__(self, session: Session, Class_, url: str, params: dict = {}, get=True, post=True, put=True, delete=True, single=False):
         self._session: Session = session
         self.__url: str = url
         self.params: dict = params
@@ -27,22 +27,23 @@ class Rest(Base):
         self._post: bool = post
         self._put: bool = put
         self._delete: bool = delete
+        self._single: bool = single
         self.__class = Class_
         self._logger = logging.getLogger(self.__class.__name__)
 
-    def __call__(self):
-        return self.get()
+    def __call__(self, params={}):
+        return self.get(params=params)
 
     @property
     def _full_url(self):
         return self._url+self.__url
 
-    def get(self):
+    def get(self, params: dict = None):
         outs = []
         try:
             res = self._session.get(
-                self._full_url, params=self.params if self.params and len(self.params) > 0 else {})
-            if res.ok:
+                self._full_url, params=params if params else self.params)
+            if res.ok and 'id' in res.text:
                 datas: dict = res.json()
                 self._id = datas.get('id')
                 outs = parse_rows_cast(datas, self.__class, True)
@@ -52,6 +53,8 @@ class Rest(Base):
             if len(outs) > 0:
                 for obj in outs:
                     setattr(obj, '_session', self._session)
+                if self._single:
+                    outs = outs[0]
             return outs
 
     def new(self, data_: Union[dict, object], default: dict = None, params: dict = None):
