@@ -1,3 +1,5 @@
+from dataclasses import MISSING
+
 def parse_rows_cast(datas: dict, Class_, id: bool = False):
     outs = []
     rows: dict = datas.get('rows', {})
@@ -5,7 +7,6 @@ def parse_rows_cast(datas: dict, Class_, id: bool = False):
     if len(rows) == 0:
         return outs
     for data in rows:
-        #data: dict = rows.get(key)
         data_ = Class_(**data)
         if id:
             data_._id = id_
@@ -24,7 +25,7 @@ def parse_rows_update(datas: dict, instance):
 def cast(data: dict, Class_):
     anot: dict = getattr(Class_, '__annotations__', {})
     if len(anot) == 0:
-        raise TypeError('Class_ not have anotations')
+        raise TypeError(f'{Class_} didnt have anotations')
     ndata_ = {}
     fields = Class_.__dataclass_fields__
     for key in anot:
@@ -34,4 +35,6 @@ def cast(data: dict, Class_):
             ndata_[key] = fields[key].default
         else:
             ndata_[key] = None
+        if type(ndata_[key]) == MISSING:
+            raise ValueError(f"Missing type found {key} from {ndata_}")
     return Class_(**ndata_)

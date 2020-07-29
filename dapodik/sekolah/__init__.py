@@ -1,4 +1,5 @@
-from dapodik.base import Rest
+from requests import Session
+from dapodik.base import BaseDapodik, Rest
 from .akreditasi import Akreditasi
 from .blockgrant import BlockGrant
 from .kepanitiaan import Kepanitiaan
@@ -10,8 +11,7 @@ from .sekolah_paud import SekolahPaud
 from .yayasan import Yayasan
 
 
-class BaseSekolah(object):
-    sekolah_id: str = None
+class BaseSekolah(BaseDapodik):
     _Akreditasi: Akreditasi = None
     _BlockGrant: BlockGrant = None
     _Kepanitiaan: Kepanitiaan = None

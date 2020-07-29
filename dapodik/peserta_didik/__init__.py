@@ -1,12 +1,12 @@
-from dapodik.base import Rest
+from dapodik.base import BaseDapodik
+from dapodik.base import BaseDapodik, Rest
 from .peserta_didik import PesertaDidik
 from .peserta_didik_baru import PesertaDidikBaru
 from .peserta_didik_longitudinal import PesertaDidikLongitudinal
 from .registrasi_peserta_didik import RegistrasiPesertaDidik
 
 
-class BasePesertaDidik(object):
-    _sekolah_id: str = None
+class BasePesertaDidik(BaseDapodik):
     _PesertaDidik: PesertaDidik = None
     _PesertaDidikBaru: PesertaDidikBaru = None
     _PesertaDidikLongitudinal: PesertaDidikLongitudinal = None
@@ -17,7 +17,7 @@ class BasePesertaDidik(object):
         if self._PesertaDidik:
             return self._PesertaDidik
         params = {
-            'sekolah_id': self._sekolah_id,
+            'sekolah_id': self.sekolah_id,
         }
         self._PesertaDidik = Rest(
             self, PesertaDidik, 'rest/PesertaDidik', params=params)

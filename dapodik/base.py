@@ -1,58 +1,63 @@
-import logging
+from __future__ import annotations
 import json
-from dataclasses import asdict, dataclass, _MISSING_TYPE
+import logging
+from dataclasses import asdict, dataclass, is_dataclass
 from requests import Session
 from logging import Logger
-from typing import Union
+from typing import Union, TYPE_CHECKING
 from dapodik.utils import cast
 from dapodik.config import BASE_URL
 from dapodik.rest import ChildDelete
 from dapodik.utils import parse_rows_cast, parse_rows_update
+if TYPE_CHECKING:
+    from dapodik import Dapodik
 
 
-class Base:
-    _url: str = BASE_URL
-    _logger: Logger = None
+class BaseDapodik:
+    session: Session = None
+    domain: str = BASE_URL
+    sekolah_id: str = None
+    logger: Logger = None
 
 
-class Rest(Base):
-    _id: str = None
-    __url: str = None
-
-    def __init__(self, session: Session, Class_, url: str, params: dict = {}, get=True, post=True, put=True, delete=True, single=False):
-        self._session: Session = session
-        self.__url: str = url
-        self.params: dict = params
+class Rest(BaseDapodik):
+    def __init__(self, dapodik: Dapodik, Class_, url: str, default: dict = None, params: dict = None, get=True, post=True, put=True, delete=True, single=False):
+        self.session: Session = dapodik.session
+        self.domain: str = dapodik.domain
+        self.sekolah_id: str = dapodik.sekolah_id
+        self._default: dict = default if default else {}
+        self._params: dict = params if params else {}
         self._get: bool = get
         self._post: bool = post
         self._put: bool = put
         self._delete: bool = delete
         self._single: bool = single
+        self.__url: str = url
         self.__class = Class_
-        self._logger = logging.getLogger(self.__class.__name__)
+        self.logger = logging.getLogger(self.__class.__name__)
 
     def __call__(self, params={}):
         return self.get(params=params)
 
     @property
     def _full_url(self):
-        return self._url+self.__url
+        return self.domain+self.__url
 
     def get(self, params: dict = None):
         outs = []
         try:
-            res = self._session.get(
-                self._full_url, params=params if params else self.params)
+            res = self.session.get(
+                self._full_url, params=params if params else self._params)
             if res.ok and 'id' in res.text:
                 datas: dict = res.json()
                 self._id = datas.get('id')
                 outs = parse_rows_cast(datas, self.__class, True)
         except Exception as e:
-            self._logger.exception(e)
+            self.logger.exception(e)
         finally:
             if len(outs) > 0:
                 for obj in outs:
-                    setattr(obj, '_session', self._session)
+                    setattr(obj, '_session', self.session)
                 if self._single:
                     outs = outs[0]
             return outs
@@ -60,16 +65,16 @@ class Rest(Base):
     def new(self, data_: Union[dict, object], default: dict = None, params: dict = None):
         if type(data_) == dict:
             data_: dict = asdict(cast(data_, self.__class))
-        elif isinstance(data_, self.__class):
+        elif isinstance(data_, self.__class) and is_dataclass(data_):
             data_: dict = asdict(data_)
         else:
             raise ValueError(
                 f'data seharusnya bertipe dict atau {self.__class}'
             )
-        default = default if default else {}
-        params = params if params else {}
+        default = default if default else self._default
+        params = params if params else self._params
         default.update(data_)
-        res = self._session.post(self._full_url, json=default, params=params)
+        res = self.session.post(self._full_url, json=default, params=params)
         if not res.ok:
             return
         datas = res.text.replace("\'", "\"")
