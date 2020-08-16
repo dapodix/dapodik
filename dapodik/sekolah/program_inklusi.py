@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Optional
 from dapodik.base import BaseData
 
 
@@ -11,7 +11,7 @@ class ProgramInklusi(BaseData):
     sk_pi: str
     tgl_sk_pi: str
     tmt_pi: str
-    tst_pi: Union[str, None]
+    tst_pi: Optional[str]
     ket_pi: str
     asal_data: str
     create_date: str

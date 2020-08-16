@@ -3,7 +3,7 @@ from dapodik.base import BaseData
 
 
 @dataclass
-class Akreditasi(BaseData):
+class AkreditasiSp(BaseData):
     akred_sp_id: str
     sekolah_id: str
     akred_sp_sk: str

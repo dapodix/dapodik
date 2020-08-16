@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 from dapodik.base import BaseData
 
 
@@ -15,16 +16,16 @@ class Yayasan(BaseData):
     kode_pos: str
     lintang: str
     bujur: str
-    nomor_telepon: str
-    nomor_fax: str
-    email: str
-    website: str
-    npyp: str
+    nomor_telepon: Optional[str]
+    nomor_fax: Optional[str]
+    email: Optional[str]
+    website: Optional[str]
+    npyp: Optional[str]
     nama_pimpinan_yayasan: str
     no_pendirian_yayasan: str
     tanggal_pendirian_yayasan: str
-    nomor_pengesahan_pn_ln: str
-    nomor_sk_bn: str
+    nomor_pengesahan_pn_ln: Optional[str]
+    nomor_sk_bn: Optional[str]
     tanggal_sk_bn: str
     create_date: str
     last_update: str
@@ -32,4 +33,4 @@ class Yayasan(BaseData):
     last_sync: str
     updater_id: str
     kode_wilayah_str: str
-    vld_count: 0
+    vld_count: int

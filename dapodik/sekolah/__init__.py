@@ -1,6 +1,5 @@
-from requests import Session
 from dapodik.base import BaseDapodik, Rest
-from .akreditasi import Akreditasi
+from .akreditasi_sp import AkreditasiSp
 from .blockgrant import BlockGrant
 from .kepanitiaan import Kepanitiaan
 from .program_inklusi import ProgramInklusi
@@ -12,7 +11,7 @@ from .yayasan import Yayasan
 
 
 class BaseSekolah(BaseDapodik):
-    _Akreditasi: Akreditasi = None
+    _AkreditasiSp: AkreditasiSp = None
     _BlockGrant: BlockGrant = None
     _Kepanitiaan: Kepanitiaan = None
     _ProgramInklusi: ProgramInklusi = None
@@ -23,13 +22,13 @@ class BaseSekolah(BaseDapodik):
     _Yayasan: Yayasan = None
 
     @property
-    def Akreditasi(self) -> Akreditasi:
-        if self._Akreditasi:
-            return self._Akreditasi
-        self._Akreditasi = Rest(
-            self, Akreditasi, 'rest/Akreditasi'
+    def AkreditasiSp(self) -> AkreditasiSp:
+        if self._AkreditasiSp:
+            return self._AkreditasiSp
+        self._AkreditasiSp = Rest(
+            self, AkreditasiSp, 'rest/AkreditasiSp', edit=False
         )
-        return self._Akreditasi
+        return self._AkreditasiSp
 
     @property
     def BlockGrant(self) -> BlockGrant:

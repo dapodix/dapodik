@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Optional
 from dapodik.base import BaseData
 
 
@@ -9,11 +9,11 @@ class BlockGrant(BaseData):
     sekolah_id: str
     nama: str
     tahun: str
-    jenis_bantuan_id: 5
+    jenis_bantuan_id: int
     sumber_dana_id: str
     besar_bantuan: str
     dana_pendamping: str
-    peruntukan_dana: Union[str, None]
+    peruntukan_dana: Optional[str]
     asal_data: str
     create_date: str
     last_update: str

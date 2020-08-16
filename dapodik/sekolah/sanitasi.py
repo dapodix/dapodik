@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 from dapodik.base import BaseData
 
 
@@ -29,10 +30,10 @@ class Sanitasi(BaseData):
     jamban_difabel: str
     tipe_jamban: str
     a_sedia_pembalut: str
-    kegiatan_cuci_tangan: str
-    pembuangan_air_limbah: str
-    a_kuras_septitank: str
-    a_memiliki_solokan: str
+    kegiatan_cuci_tangan: Optional[str]
+    pembuangan_air_limbah: Optional[str]
+    a_kuras_septitank: Optional[str]
+    a_memiliki_solokan: Optional[str]
     a_tempat_sampah_kelas: str
     a_tempat_sampah_tutup_p: str
     a_cermin_jamban_p: str
@@ -40,40 +41,40 @@ class Sanitasi(BaseData):
     a_tps_angkut_rutin: str
     a_anggaran_sanitasi: str
     a_melibatkan_sanitasi_siswa: str
-    a_kemitraan_san_daerah: str
-    a_kemitraan_san_puskesmas: str
-    a_kemitraan_san_swasta: str
-    a_kemitraan_san_non_pem: str
-    kie_guru_cuci_tangan: str
-    kie_guru_haid: str
-    kie_guru_perawatan_toilet: str
-    kie_guru_keamanan_pangan: str
-    kie_guru_minum_air: str
-    kie_kelas_cuci_tangan: str
-    kie_kelas_haid: str
-    kie_kelas_perawatan_toilet: str
-    kie_kelas_keamanan_pangan: str
-    kie_kelas_minum_air: str
-    kie_toilet_cuci_tangan: str
-    kie_toilet_haid: str
-    kie_toilet_perawatan_toilet: str
-    kie_toilet_keamanan_pangan: str
-    kie_toilet_minum_air: str
-    kie_selasar_cuci_tangan: str
-    kie_selasar_haid: str
-    kie_selasar_perawatan_toilet: str
-    kie_selasar_keamanan_pangan: str
-    kie_selasar_minum_air: str
-    kie_uks_cuci_tangan: str
-    kie_uks_haid: str
-    kie_uks_perawatan_toilet: str
-    kie_uks_keamanan_pangan: str
-    kie_uks_minum_air: str
-    kie_kantin_cuci_tangan: str
-    kie_kantin_haid: str
-    kie_kantin_perawatan_toilet: str
-    kie_kantin_keamanan_pangan: str
-    kie_kantin_minum_air: str
+    a_kemitraan_san_daerah: Optional[str]
+    a_kemitraan_san_puskesmas: Optional[str]
+    a_kemitraan_san_swasta: Optional[str]
+    a_kemitraan_san_non_pem: Optional[str]
+    kie_guru_cuci_tangan: Optional[str]
+    kie_guru_haid: Optional[str]
+    kie_guru_perawatan_toilet: Optional[str]
+    kie_guru_keamanan_pangan: Optional[str]
+    kie_guru_minum_air: Optional[str]
+    kie_kelas_cuci_tangan: Optional[str]
+    kie_kelas_haid: Optional[str]
+    kie_kelas_perawatan_toilet: Optional[str]
+    kie_kelas_keamanan_pangan: Optional[str]
+    kie_kelas_minum_air: Optional[str]
+    kie_toilet_cuci_tangan: Optional[str]
+    kie_toilet_haid: Optional[str]
+    kie_toilet_perawatan_toilet: Optional[str]
+    kie_toilet_keamanan_pangan: Optional[str]
+    kie_toilet_minum_air: Optional[str]
+    kie_selasar_cuci_tangan: Optional[str]
+    kie_selasar_haid: Optional[str]
+    kie_selasar_perawatan_toilet: Optional[str]
+    kie_selasar_keamanan_pangan: Optional[str]
+    kie_selasar_minum_air: Optional[str]
+    kie_uks_cuci_tangan: Optional[str]
+    kie_uks_haid: Optional[str]
+    kie_uks_perawatan_toilet: Optional[str]
+    kie_uks_keamanan_pangan: Optional[str]
+    kie_uks_minum_air: Optional[str]
+    kie_kantin_cuci_tangan: Optional[str]
+    kie_kantin_haid: Optional[str]
+    kie_kantin_perawatan_toilet: Optional[str]
+    kie_kantin_keamanan_pangan: Optional[str]
+    kie_kantin_minum_air: Optional[str]
     create_date: str
     last_update: str
     soft_delete: str
