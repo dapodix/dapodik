@@ -1,0 +1,17 @@
+from dataclasses import dataclass
+from typing import Optional
+from dapodik.base import BaseData
+
+
+@dataclass
+class BangunanDariBlockgrant(BaseData):
+    blockgrant_id: str
+    id_bangunan: str
+    create_date: str
+    last_update: str
+    soft_delete: str
+    last_sync: str
+    updater_id: str
+    blockgrant_id_str: str
+    id_bangunan_str: str
+    bangunan_dari_blockgrant_id: str

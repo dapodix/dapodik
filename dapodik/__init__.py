@@ -5,10 +5,11 @@ from dapodik.config import BASE_URL, USER_AGENT
 from dapodik.peserta_didik import BasePesertaDidik
 from dapodik.rest import BaseRest
 from dapodik.rombongan_belajar import BaseRombonganBelajar
+from dapodik.sarpras import BaseSarpras
 from dapodik.sekolah import BaseSekolah
 
 
-class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar, BaseRest):
+class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar, BaseSarpras, BaseRest):
     session: Session = None
     domain: str = BASE_URL
 
