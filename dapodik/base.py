@@ -8,7 +8,6 @@ from typing import Union, TYPE_CHECKING, List, Optional
 from dacite import from_dict, Config
 from dapodik.utils import cast
 from dapodik.config import BASE_URL
-from dapodik.rest import ChildDelete
 from dapodik.utils import parse_rows_cast, parse_rows_update
 # untuk type hint IDE
 if TYPE_CHECKING:
@@ -60,16 +59,6 @@ class BaseData:
         }
         res = self._session.delete(self._full_url, data=data, params=params)
         return res.ok and "'success' : true" in res.text
-
-    def child_delete(self) -> [ChildDelete]:
-        url = self._url
-        url += 'rest/child_delete/'
-        url += self._id
-        params = {
-            'id': self._data_id
-        }
-        res = self._session.get(url, params=params)
-        return parse_rows_cast(res.json(), ChildDelete)
 
 
 @dataclass
