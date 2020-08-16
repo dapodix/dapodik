@@ -4,9 +4,9 @@ from dapodik.base import BaseData
 
 
 @dataclass
-class Agama(BaseData):
-    agama_id: int
-    nama: str
+class Bank(BaseData):
+    id_bank: str
+    nm_bank: str
     create_date: str
     last_update: str
     expired_date: Optional[str]

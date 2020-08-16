@@ -1,11 +1,11 @@
 from dataclasses import dataclass
-from typing import Optional
 from dapodik.base import BaseData
+from typing import Optional
 
 
 @dataclass
-class Agama(BaseData):
-    agama_id: int
+class SumberListrik(BaseData):
+    sumber_listrik_id: str
     nama: str
     create_date: str
     last_update: str

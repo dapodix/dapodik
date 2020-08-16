@@ -4,8 +4,8 @@ from dapodik.base import BaseData
 
 
 @dataclass
-class Agama(BaseData):
-    agama_id: int
+class Akreditasi(BaseData):
+    akreditasi_id: str
     nama: str
     create_date: str
     last_update: str

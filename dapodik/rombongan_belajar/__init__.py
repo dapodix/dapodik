@@ -11,3 +11,4 @@ class BaseRombonganBelajar(BaseDapodik):
         self._Pembelajaran = Rest(
             self, Pembelajaran, 'rest/Pembelajaran'
         )
+        return self._Pembelajaran
