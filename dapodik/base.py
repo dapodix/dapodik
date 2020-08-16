@@ -24,6 +24,7 @@ class BaseDapodik:
 class BaseData:
     """Basis dari sebuah data aplikasi dapodik
     """
+    _editable: bool = False
     _id: str = None
     _session: Session = None
     _url: str = BASE_URL
@@ -95,7 +96,7 @@ class Response:
 
 
 class Rest(BaseDapodik):
-    def __init__(self, dapodik: Dapodik, Class_: BaseData, url: str, default: dict = None, params: dict = None, edit=True, single=False):
+    def __init__(self, dapodik: Dapodik, Class_: BaseData, url: str = None, default: dict = None, params: dict = None, edit=True, single=False):
         self.session: Session = dapodik.session
         self.domain: str = dapodik.domain
         self.sekolah_id: str = dapodik.sekolah_id
@@ -103,7 +104,8 @@ class Rest(BaseDapodik):
         self._params: dict = params if params else {}
         self._edit: bool = edit
         self._single: bool = single
-        self.__url: str = url
+        self.__url: str = url or 'rest/{}'.format(
+            Class_.__module__.split('.')[-1].title().replace('_', ''))
         self.__class: BaseData = Class_
         self.logger = logging.getLogger(self.__class.__name__)
 
