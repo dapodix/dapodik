@@ -23,6 +23,19 @@ def parse_rows_update(datas: dict, instance):
 
 
 def cast(data: dict, Class_):
+    """Merubah dict menjadi Class_
+
+    Args:
+        data (dict): Data dari server 
+        Class_ (BaseData): Class untuk dimasukan datanya
+
+    Raises:
+        TypeError: Jika Class tidak dataclass / tidak memiliki __anotations__
+        ValueError: Jika data tidak memiliki argumen yang diperlukan Class_
+
+    Returns:
+        BaseData: Instance dari data
+    """    
     anot: dict = getattr(Class_, '__annotations__', {})
     if len(anot) == 0:
         raise TypeError(f'{Class_} didnt have anotations')
