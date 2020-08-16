@@ -26,5 +26,6 @@ class Auth(object):
         return 'Memuat Aplikasi' in res2.text
 
     def logout(self):
-        res = self.session.get(self._url+'destauth')
-        return res.status_code == 302
+        url = self._url+'destauth'
+        res = self.session.get(url)
+        return res.ok
