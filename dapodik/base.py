@@ -30,6 +30,9 @@ class BaseData:
     _url: str = BASE_URL
     __url: str = None
 
+    def __str__(self):
+        return getattr(self, 'nama') or getattr(self, self._id)
+
     @property
     def _data_id(self):
         return getattr(self, self._id)
