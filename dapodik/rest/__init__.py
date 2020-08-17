@@ -10,16 +10,25 @@ from .gmd import Gmd
 from .jadwal_paud import JadwalPaud
 from .jenis_gugus import JenisGugus
 from .jenis_hapus_buku import JenisHapusBuku
+from .jenis_keluar import JenisKeluar
 from .jenis_lk import JenisLk
 from .jenis_prasarana import JenisPrasarana
 from .jenis_sarana import JenisSarana
 from .kategori_tk import KategoriTk
 from .kebutuhan_khusus import KebutuhanKhusus
 from .klasifikasi_lembaga import KlasifikasiLembaga
+from .lembaga_pengangkat import LembagaPengangkat
 from .mst_wilayah import MstWilayah
+from .pangkat_golongan import PangkatGolongan
+from .pekerjaan import Pekerjaan
+from .pengguna import Pengguna
+from .role_pengguna import RolePengguna
+from .status_keaktifan_pegawai import StatusKeaktifanPegawai
+from .status_kepegawaian import StatusKepegawaian
 from .status_kepemilikan_sarpras import StatusKepemilikanSarpras
 from .sumber_air import SumberAir
 from .sumber_dana_sekolah import SumberDanaSekolah
+from .sumber_gaji import SumberGaji
 from .sumber_listrik import SumberListrik
 from .sync_log import SyncLog
 from .tingkat_pendidikan import TingkatPendidikan
@@ -38,16 +47,25 @@ class BaseRest(BaseDapodik):
     _JadwalPaud: JadwalPaud = None
     _JenisGugus: JenisGugus = None
     _JenisHapusBuku: JenisHapusBuku = None
+    _JenisKeluar: JenisKeluar = None
     _JenisLk: JenisLk = None
     _JenisPrasarana: JenisPrasarana = None
     _JenisSarana: JenisSarana = None
     _KategoriTk: KategoriTk = None
     _KebutuhanKhusus: KebutuhanKhusus = None
     _KlasifikasiLembaga: KlasifikasiLembaga = None
+    _LembagaPengangkat: LembagaPengangkat = None
     _MstWilayah: MstWilayah = None
+    _PangkatGolongan: PangkatGolongan = None
+    _Pekerjaan: Pekerjaan = None
+    _Pengguna: Pengguna = None
+    _RolePengguna: RolePengguna = None
+    _StatusKeaktifanPegawai: StatusKeaktifanPegawai = None
+    _StatusKepegawaian: StatusKepegawaian = None
     _StatusKepemilikanSarpras: StatusKepemilikanSarpras = None
     _SumberAir: SumberAir = None
     _SumberDanaSekolah: SumberDanaSekolah = None
+    _SumberGaji: SumberGaji = None
     _SumberListrik: SumberListrik = None
     _SyncLog: SyncLog = None
     _TingkatPendidikan: TingkatPendidikan = None
@@ -58,7 +76,7 @@ class BaseRest(BaseDapodik):
         if self._Agama:
             return self._Agama
         self._Agama = Rest(
-            sef, Agama, 'rest/Agama', edit=False
+            self, Agama, 'rest/Agama'
         )
         return self._Agama
 
@@ -67,7 +85,7 @@ class BaseRest(BaseDapodik):
         if self._Akreditasi:
             return self._Akreditasi
         self._Akreditasi = Rest(
-            sef, Akreditasi, 'rest/Akreditasi', edit=False
+            self, Akreditasi, 'rest/Akreditasi'
         )
         return self._Akreditasi
 
@@ -76,7 +94,7 @@ class BaseRest(BaseDapodik):
         if self._AksesInternet:
             return self._AksesInternet
         self._AksesInternet = Rest(
-            sef, AksesInternet, 'rest/AksesInternet', edit=False
+            self, AksesInternet, 'rest/AksesInternet'
         )
         return self._AksesInternet
 
@@ -85,7 +103,7 @@ class BaseRest(BaseDapodik):
         if self._Bank:
             return self._Bank
         self._Bank = Rest(
-            sef, Bank, 'rest/Bank', edit=False
+            self, Bank, 'rest/Bank'
         )
         return self._Bank
 
@@ -94,7 +112,7 @@ class BaseRest(BaseDapodik):
         if self._BentukLembaga:
             return self._BentukLembaga
         self._BentukLembaga = Rest(
-            sef, BentukLembaga, 'rest/BentukLembaga', edit=False
+            self, BentukLembaga, 'rest/BentukLembaga'
         )
         return self._BentukLembaga
 
@@ -103,7 +121,7 @@ class BaseRest(BaseDapodik):
         if self._ChildDelete:
             return self._ChildDelete
         self._ChildDelete = Rest(
-            sef, ChildDelete, 'rest/ChildDelete', edit=False
+            self, ChildDelete, 'rest/ChildDelete'
         )
         return self._ChildDelete
 
@@ -112,7 +130,7 @@ class BaseRest(BaseDapodik):
         if self._FasilitasLayanan:
             return self._FasilitasLayanan
         self._FasilitasLayanan = Rest(
-            sef, FasilitasLayanan, 'rest/FasilitasLayanan', edit=False
+            self, FasilitasLayanan, 'rest/FasilitasLayanan'
         )
         return self._FasilitasLayanan
 
@@ -121,7 +139,7 @@ class BaseRest(BaseDapodik):
         if self._Gmd:
             return self._Gmd
         self._Gmd = Rest(
-            sef, Gmd, 'rest/Gmd', edit=False
+            self, Gmd, 'rest/Gmd'
         )
         return self._Gmd
 
@@ -130,7 +148,7 @@ class BaseRest(BaseDapodik):
         if self._JadwalPaud:
             return self._JadwalPaud
         self._JadwalPaud = Rest(
-            sef, JadwalPaud, 'rest/JadwalPaud', edit=False
+            self, JadwalPaud, 'rest/JadwalPaud'
         )
         return self._JadwalPaud
 
@@ -139,7 +157,7 @@ class BaseRest(BaseDapodik):
         if self._JenisGugus:
             return self._JenisGugus
         self._JenisGugus = Rest(
-            sef, JenisGugus, 'rest/JenisGugus', edit=False
+            self, JenisGugus, 'rest/JenisGugus'
         )
         return self._JenisGugus
 
@@ -148,16 +166,25 @@ class BaseRest(BaseDapodik):
         if self._JenisHapusBuku:
             return self._JenisHapusBuku
         self._JenisHapusBuku = Rest(
-            sef, JenisHapusBuku, 'rest/JenisHapusBuku', edit=False
+            self, JenisHapusBuku, 'rest/JenisHapusBuku'
         )
         return self._JenisHapusBuku
+
+    @property
+    def JenisKeluar(self) -> Rest:
+        if self._JenisKeluar:
+            return self._JenisKeluar
+        self._JenisKeluar = Rest(
+            self, JenisKeluar, 'rest/JenisKeluar'
+        )
+        return self._JenisKeluar
 
     @property
     def JenisLk(self) -> Rest:
         if self._JenisLk:
             return self._JenisLk
         self._JenisLk = Rest(
-            sef, JenisLk, 'rest/JenisLk', edit=False
+            self, JenisLk, 'rest/JenisLk'
         )
         return self._JenisLk
 
@@ -166,7 +193,7 @@ class BaseRest(BaseDapodik):
         if self._JenisPrasarana:
             return self._JenisPrasarana
         self._JenisPrasarana = Rest(
-            sef, JenisPrasarana, 'rest/JenisPrasarana', edit=False
+            self, JenisPrasarana, 'rest/JenisPrasarana'
         )
         return self._JenisPrasarana
 
@@ -175,7 +202,7 @@ class BaseRest(BaseDapodik):
         if self._JenisSarana:
             return self._JenisSarana
         self._JenisSarana = Rest(
-            sef, JenisSarana, 'rest/JenisSarana', edit=False
+            self, JenisSarana, 'rest/JenisSarana'
         )
         return self._JenisSarana
 
@@ -184,7 +211,7 @@ class BaseRest(BaseDapodik):
         if self._KategoriTk:
             return self._KategoriTk
         self._KategoriTk = Rest(
-            sef, KategoriTk, 'rest/KategoriTk', edit=False
+            self, KategoriTk, 'rest/KategoriTk'
         )
         return self._KategoriTk
 
@@ -193,7 +220,7 @@ class BaseRest(BaseDapodik):
         if self._KebutuhanKhusus:
             return self._KebutuhanKhusus
         self._KebutuhanKhusus = Rest(
-            sef, KebutuhanKhusus, 'rest/KebutuhanKhusus', edit=False
+            self, KebutuhanKhusus, 'rest/KebutuhanKhusus'
         )
         return self._KebutuhanKhusus
 
@@ -202,25 +229,88 @@ class BaseRest(BaseDapodik):
         if self._KlasifikasiLembaga:
             return self._KlasifikasiLembaga
         self._KlasifikasiLembaga = Rest(
-            sef, KlasifikasiLembaga, 'rest/KlasifikasiLembaga', edit=False
+            self, KlasifikasiLembaga, 'rest/KlasifikasiLembaga'
         )
         return self._KlasifikasiLembaga
+
+    @property
+    def LembagaPengangkat(self) -> Rest:
+        if self._LembagaPengangkat:
+            return self._LembagaPengangkat
+        self._LembagaPengangkat = Rest(
+            self, LembagaPengangkat, 'rest/LembagaPengangkat'
+        )
+        return self._LembagaPengangkat
 
     @property
     def MstWilayah(self) -> Rest:
         if self._MstWilayah:
             return self._MstWilayah
         self._MstWilayah = Rest(
-            sef, MstWilayah, 'rest/MstWilayah', edit=False
+            self, MstWilayah, 'rest/MstWilayah'
         )
         return self._MstWilayah
+
+    @property
+    def PangkatGolongan(self) -> Rest:
+        if self._PangkatGolongan:
+            return self._PangkatGolongan
+        self._PangkatGolongan = Rest(
+            self, PangkatGolongan, 'rest/PangkatGolongan'
+        )
+        return self._PangkatGolongan
+
+    @property
+    def Pekerjaan(self) -> Rest:
+        if self._Pekerjaan:
+            return self._Pekerjaan
+        self._Pekerjaan = Rest(
+            self, Pekerjaan, 'rest/Pekerjaan'
+        )
+        return self._Pekerjaan
+
+    @property
+    def Pengguna(self) -> Rest:
+        if self._Pengguna:
+            return self._Pengguna
+        self._Pengguna = Rest(
+            self, Pengguna, 'rest/Pengguna'
+        )
+        return self._Pengguna
+
+    @property
+    def RolePengguna(self) -> Rest:
+        if self._RolePengguna:
+            return self._RolePengguna
+        self._RolePengguna = Rest(
+            self, RolePengguna, 'rest/RolePengguna'
+        )
+        return self._RolePengguna
+
+    @property
+    def StatusKeaktifanPegawai(self) -> Rest:
+        if self._StatusKeaktifanPegawai:
+            return self._StatusKeaktifanPegawai
+        self._StatusKeaktifanPegawai = Rest(
+            self, StatusKeaktifanPegawai, 'rest/StatusKeaktifanPegawai'
+        )
+        return self._StatusKeaktifanPegawai
+
+    @property
+    def StatusKepegawaian(self) -> Rest:
+        if self._StatusKepegawaian:
+            return self._StatusKepegawaian
+        self._StatusKepegawaian = Rest(
+            self, StatusKepegawaian, 'rest/StatusKepegawaian'
+        )
+        return self._StatusKepegawaian
 
     @property
     def StatusKepemilikanSarpras(self) -> Rest:
         if self._StatusKepemilikanSarpras:
             return self._StatusKepemilikanSarpras
         self._StatusKepemilikanSarpras = Rest(
-            sef, StatusKepemilikanSarpras, 'rest/StatusKepemilikanSarpras', edit=False
+            self, StatusKepemilikanSarpras, 'rest/StatusKepemilikanSarpras'
         )
         return self._StatusKepemilikanSarpras
 
@@ -229,7 +319,7 @@ class BaseRest(BaseDapodik):
         if self._SumberAir:
             return self._SumberAir
         self._SumberAir = Rest(
-            sef, SumberAir, 'rest/SumberAir', edit=False
+            self, SumberAir, 'rest/SumberAir'
         )
         return self._SumberAir
 
@@ -238,16 +328,25 @@ class BaseRest(BaseDapodik):
         if self._SumberDanaSekolah:
             return self._SumberDanaSekolah
         self._SumberDanaSekolah = Rest(
-            sef, SumberDanaSekolah, 'rest/SumberDanaSekolah', edit=False
+            self, SumberDanaSekolah, 'rest/SumberDanaSekolah'
         )
         return self._SumberDanaSekolah
+
+    @property
+    def SumberGaji(self) -> Rest:
+        if self._SumberGaji:
+            return self._SumberGaji
+        self._SumberGaji = Rest(
+            self, SumberGaji, 'rest/SumberGaji'
+        )
+        return self._SumberGaji
 
     @property
     def SumberListrik(self) -> Rest:
         if self._SumberListrik:
             return self._SumberListrik
         self._SumberListrik = Rest(
-            sef, SumberListrik, 'rest/SumberListrik', edit=False
+            self, SumberListrik, 'rest/SumberListrik'
         )
         return self._SumberListrik
 
@@ -256,7 +355,7 @@ class BaseRest(BaseDapodik):
         if self._SyncLog:
             return self._SyncLog
         self._SyncLog = Rest(
-            sef, SyncLog, 'rest/SyncLog', edit=False
+            self, SyncLog, 'rest/SyncLog'
         )
         return self._SyncLog
 
@@ -265,7 +364,7 @@ class BaseRest(BaseDapodik):
         if self._TingkatPendidikan:
             return self._TingkatPendidikan
         self._TingkatPendidikan = Rest(
-            sef, TingkatPendidikan, 'rest/TingkatPendidikan', edit=False
+            self, TingkatPendidikan, 'rest/TingkatPendidikan'
         )
         return self._TingkatPendidikan
 
@@ -274,6 +373,6 @@ class BaseRest(BaseDapodik):
         if self._WaktuPenyelenggaraan:
             return self._WaktuPenyelenggaraan
         self._WaktuPenyelenggaraan = Rest(
-            sef, WaktuPenyelenggaraan, 'rest/WaktuPenyelenggaraan', edit=False
+            self, WaktuPenyelenggaraan, 'rest/WaktuPenyelenggaraan'
         )
         return self._WaktuPenyelenggaraan
