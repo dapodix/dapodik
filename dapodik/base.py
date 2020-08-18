@@ -98,6 +98,9 @@ class Response:
     def __iter__(self):
         return iter(self.rows)
 
+    def __getitem__(self, index):
+        return self.rows[index]
+
 
 class Rest(BaseDapodik):
     def __init__(self, dapodik: Dapodik, Class_: BaseData, url: str = None, default: dict = None, params: dict = None, edit=True, single=False):
@@ -105,8 +108,9 @@ class Rest(BaseDapodik):
         self.domain: str = dapodik.domain
         self.sekolah_id: str = dapodik.sekolah_id
         self._default: dict = default if default else {}
-        self._params: dict = params if params else {}
         self._edit: bool = edit
+        self._params: dict = params if params else {}
+        self._results: Results = None
         self._single: bool = single
         self.__url: str = url or 'rest/{}'.format(
             Class_.__module__.split('.')[-1].title().replace('_', ''))
@@ -120,7 +124,9 @@ class Rest(BaseDapodik):
     def _full_url(self):
         return self.domain+self.__url
 
-    def get(self, params: dict = None) -> Union[Results, None]:
+    def get(self, params: dict = None, cache=True) -> Union[Results, None]:
+        if cache and self._results:
+            return self._results
         outs = None
         try:
             res = self.session.get(
@@ -154,6 +160,8 @@ class Rest(BaseDapodik):
             #         setattr(obj, '_session', self.session)
             #     if self._single:
             #         outs = outs[0]
+            if cache:
+                self._results = outs
             return outs
 
     def new(self, data_: Union[dict, object], default: dict = None, params: dict = None):
