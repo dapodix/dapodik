@@ -13,8 +13,8 @@ class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar, BaseSar
     session: Session = None
     domain: str = BASE_URL
 
-    def __init__(self, url: str = BASE_URL, verify: bool = False, user_agent: str = USER_AGENT):
-        self.domain = url
+    def __init__(self, url: str = None, verify: bool = False, user_agent: str = USER_AGENT):
+        self.domain = url or BASE_URL
         self.verify = verify
         self.session: Session = Session()
         self.session.headers.update({
