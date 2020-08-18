@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -29,10 +30,10 @@ class Tanah(BaseData):
     luas_lahan_tersedia: str
     no_sertifikat_tanah: str
     asal_data: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     jenis_prasarana_id_str: str
     sekolah_id_str: str

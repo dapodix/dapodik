@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -27,10 +28,10 @@ class Yayasan(BaseData):
     nomor_pengesahan_pn_ln: Optional[str]
     nomor_sk_bn: Optional[str]
     tanggal_sk_bn: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     kode_wilayah_str: str
     vld_count: int

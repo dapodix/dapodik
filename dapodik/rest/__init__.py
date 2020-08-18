@@ -2,6 +2,7 @@ from dapodik.base import BaseDapodik, Rest
 from .agama import Agama
 from .akreditasi import Akreditasi
 from .akses_internet import AksesInternet
+from .alat_transportasi import AlatTransportasi
 from .bank import Bank
 from .bentuk_lembaga import BentukLembaga
 from .child_delete import ChildDelete
@@ -12,8 +13,10 @@ from .jenis_gugus import JenisGugus
 from .jenis_hapus_buku import JenisHapusBuku
 from .jenis_keluar import JenisKeluar
 from .jenis_lk import JenisLk
+from .jenis_pendaftaran import JenisPendaftaran
 from .jenis_prasarana import JenisPrasarana
 from .jenis_sarana import JenisSarana
+from .jenis_tinggal import JenisTinggal
 from .kategori_tk import KategoriTk
 from .kebutuhan_khusus import KebutuhanKhusus
 from .klasifikasi_lembaga import KlasifikasiLembaga
@@ -22,6 +25,7 @@ from .mst_wilayah import MstWilayah
 from .pangkat_golongan import PangkatGolongan
 from .pekerjaan import Pekerjaan
 from .pengguna import Pengguna
+from .penghasilan import Penghasilan
 from .role_pengguna import RolePengguna
 from .status_keaktifan_pegawai import StatusKeaktifanPegawai
 from .status_kepegawaian import StatusKepegawaian
@@ -36,40 +40,44 @@ from .waktu_penyelenggaraan import WaktuPenyelenggaraan
 
 
 class BaseRest(BaseDapodik):
-    _Agama: Agama = None
-    _Akreditasi: Akreditasi = None
-    _AksesInternet: AksesInternet = None
-    _Bank: Bank = None
-    _BentukLembaga: BentukLembaga = None
-    _ChildDelete: ChildDelete = None
-    _FasilitasLayanan: FasilitasLayanan = None
-    _Gmd: Gmd = None
-    _JadwalPaud: JadwalPaud = None
-    _JenisGugus: JenisGugus = None
-    _JenisHapusBuku: JenisHapusBuku = None
-    _JenisKeluar: JenisKeluar = None
-    _JenisLk: JenisLk = None
-    _JenisPrasarana: JenisPrasarana = None
-    _JenisSarana: JenisSarana = None
-    _KategoriTk: KategoriTk = None
-    _KebutuhanKhusus: KebutuhanKhusus = None
-    _KlasifikasiLembaga: KlasifikasiLembaga = None
-    _LembagaPengangkat: LembagaPengangkat = None
-    _MstWilayah: MstWilayah = None
-    _PangkatGolongan: PangkatGolongan = None
-    _Pekerjaan: Pekerjaan = None
-    _Pengguna: Pengguna = None
-    _RolePengguna: RolePengguna = None
-    _StatusKeaktifanPegawai: StatusKeaktifanPegawai = None
-    _StatusKepegawaian: StatusKepegawaian = None
-    _StatusKepemilikanSarpras: StatusKepemilikanSarpras = None
-    _SumberAir: SumberAir = None
-    _SumberDanaSekolah: SumberDanaSekolah = None
-    _SumberGaji: SumberGaji = None
-    _SumberListrik: SumberListrik = None
-    _SyncLog: SyncLog = None
-    _TingkatPendidikan: TingkatPendidikan = None
-    _WaktuPenyelenggaraan: WaktuPenyelenggaraan = None
+    _Agama: Rest = None
+    _Akreditasi: Rest = None
+    _AksesInternet: Rest = None
+    _AlatTransportasi: Rest = None
+    _Bank: Rest = None
+    _BentukLembaga: Rest = None
+    _ChildDelete: Rest = None
+    _FasilitasLayanan: Rest = None
+    _Gmd: Rest = None
+    _JadwalPaud: Rest = None
+    _JenisGugus: Rest = None
+    _JenisHapusBuku: Rest = None
+    _JenisKeluar: Rest = None
+    _JenisLk: Rest = None
+    _JenisPendaftaran: Rest = None
+    _JenisPrasarana: Rest = None
+    _JenisSarana: Rest = None
+    _JenisTinggal: Rest = None
+    _KategoriTk: Rest = None
+    _KebutuhanKhusus: Rest = None
+    _KlasifikasiLembaga: Rest = None
+    _LembagaPengangkat: Rest = None
+    _MstWilayah: Rest = None
+    _PangkatGolongan: Rest = None
+    _Pekerjaan: Rest = None
+    _Pengguna: Rest = None
+    _Penghasilan: Rest = None
+    _RolePengguna: Rest = None
+    _StatusKeaktifanPegawai: Rest = None
+    _StatusKepegawaian: Rest = None
+    _StatusKepemilikanSarpras: Rest = None
+    _SumberAir: Rest = None
+    _SumberDanaSekolah: Rest = None
+    _SumberGaji: Rest = None
+    _SumberListrik: Rest = None
+    _SyncLog: Rest = None
+    _TingkatPendidikan: Rest = None
+    _WaktuPenyelenggaraan: Rest = None
 
     @property
     def Agama(self) -> Rest:
@@ -97,6 +105,15 @@ class BaseRest(BaseDapodik):
             self, AksesInternet, 'rest/AksesInternet'
         )
         return self._AksesInternet
+
+    @property
+    def AlatTransportasi(self) -> Rest:
+        if self._AlatTransportasi:
+            return self._AlatTransportasi
+        self._AlatTransportasi = Rest(
+            self, AlatTransportasi, 'rest/AlatTransportasi'
+        )
+        return self._AlatTransportasi
 
     @property
     def Bank(self) -> Rest:
@@ -189,6 +206,15 @@ class BaseRest(BaseDapodik):
         return self._JenisLk
 
     @property
+    def JenisPendaftaran(self) -> Rest:
+        if self._JenisPendaftaran:
+            return self._JenisPendaftaran
+        self._JenisPendaftaran = Rest(
+            self, JenisPendaftaran, 'rest/JenisPendaftaran'
+        )
+        return self._JenisPendaftaran
+
+    @property
     def JenisPrasarana(self) -> Rest:
         if self._JenisPrasarana:
             return self._JenisPrasarana
@@ -205,6 +231,15 @@ class BaseRest(BaseDapodik):
             self, JenisSarana, 'rest/JenisSarana'
         )
         return self._JenisSarana
+
+    @property
+    def JenisTinggal(self) -> Rest:
+        if self._JenisTinggal:
+            return self._JenisTinggal
+        self._JenisTinggal = Rest(
+            self, JenisTinggal, 'rest/JenisTinggal'
+        )
+        return self._JenisTinggal
 
     @property
     def KategoriTk(self) -> Rest:
@@ -277,6 +312,15 @@ class BaseRest(BaseDapodik):
             self, Pengguna, 'rest/Pengguna'
         )
         return self._Pengguna
+
+    @property
+    def Penghasilan(self) -> Rest:
+        if self._Penghasilan:
+            return self._Penghasilan
+        self._Penghasilan = Rest(
+            self, Penghasilan, 'rest/Penghasilan'
+        )
+        return self._Penghasilan
 
     @property
     def RolePengguna(self) -> Rest:

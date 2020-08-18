@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -35,10 +36,10 @@ class Pengguna(BaseData):
     token_reg: Optional[str]
     jabatan: Optional[str]
     ptk_id: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     ptk_id_str: str
     sekolah_id_str: str

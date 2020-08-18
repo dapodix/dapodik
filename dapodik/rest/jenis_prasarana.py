@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -11,7 +12,7 @@ class JenisPrasarana(BaseData):
     a_tanah: str
     a_bangunan: str
     a_ruang: str
-    create_date: str
-    last_update: str
-    expired_date: Optional[str]
-    last_sync: str
+    create_date: datetime
+    last_update: datetime
+    expired_date: Optional[datetime]
+    last_sync: datetime

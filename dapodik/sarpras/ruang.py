@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -33,10 +34,10 @@ class Ruang(BaseData):
     luas_finish_plafon_m2: Optional[str]
     luas_finish_dinding_m2: Optional[str]
     luas_finish_kpj_m2: Optional[str]
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     jenis_prasarana_id_str: str
     id_bangunan_str: str

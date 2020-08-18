@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from dapodik.base import BaseData
 
 
@@ -19,10 +20,10 @@ class Kepanitiaan(BaseData):
     a_berlaku_pos: str
     a_sosialisasi_pos: str
     a_ks_edukatif: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     sekolah_id_str: str
     id_jns_panitia_str: str

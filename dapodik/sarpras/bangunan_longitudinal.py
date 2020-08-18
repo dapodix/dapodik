@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -22,10 +23,10 @@ class BangunanLongitudinal(BaseData):
     rusak_tutup_atap: str
     ket_tutup_atap: str
     nilai_saat_ini: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     id_bangunan_str: str
     semester_id_str: str

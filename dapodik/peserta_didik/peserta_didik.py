@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Optional
 from dapodik.base import BaseData
 
 
@@ -49,7 +49,7 @@ class PesertaDidik(BaseData):
     no_kip: str = ""
     nm_kip: str = ""
     layak_pip: int = 0
-    id_layak_pip: Union[int, None] = None
+    id_layak_pip: Optional[int] = None
     id_layak_pip_str: str = ""
     id_bank: str = ""
     id_bank_str: str = ""

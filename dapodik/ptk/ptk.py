@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -27,10 +28,10 @@ class Ptk(BaseData):
     aktif_bulan_intint: str
     aktif_bulan_12: str
     tgl_ptk_keluar: Optional[str]
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     jenis_keluar_id_str: str
     nama: str

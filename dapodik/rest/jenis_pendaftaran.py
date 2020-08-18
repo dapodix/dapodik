@@ -5,13 +5,11 @@ from dapodik.base import BaseData
 
 
 @dataclass
-class JadwalPaud(BaseData):
-    jadwal_id: str
+class JenisPendaftaran(BaseData):
+    jenis_pendaftaran_id: str
     nama: str
-    kesehatan: str
-    pamts: str
-    ddtk: str
-    freq_parenting: str
+    daftar_sekolah: str
+    daftar_rombel: str
     create_date: datetime
     last_update: datetime
     expired_date: Optional[datetime]

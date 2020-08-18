@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -41,10 +42,10 @@ class RuangLongitudinal(BaseData):
     rusak_finish_kpj: str
     ket_finish_kpj: str
     berfungsi: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     id_ruang_str: str
     semester_id_str: str

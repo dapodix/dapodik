@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from dapodik.base import BaseData
 from typing import Optional
 
@@ -7,7 +8,7 @@ from typing import Optional
 class SumberListrik(BaseData):
     sumber_listrik_id: str
     nama: str
-    create_date: str
-    last_update: str
-    expired_date: Optional[str]
-    last_sync: str
+    create_date: datetime
+    last_update: datetime
+    expired_date: Optional[datetime]
+    last_sync: datetime

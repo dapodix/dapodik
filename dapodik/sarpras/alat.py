@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -24,10 +25,10 @@ class Alat(BaseData):
     spesifikasi: Optional[str]
     tgl_hapus_buku: Optional[str]
     asal_data: str
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     id_ruang_str: str
     jenis_sarana_id_str: str

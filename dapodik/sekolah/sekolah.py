@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Optional
 from dapodik.base import BaseData
 
@@ -44,10 +45,10 @@ class Sekolah(BaseData):
     nm_wp: Optional[str]
     keaktifan: str
     flag: Optional[str]
-    create_date: str
-    last_update: str
+    create_date: datetime
+    last_update: datetime
     soft_delete: str
-    last_sync: str
+    last_sync: datetime
     updater_id: str
     bentuk_pendidikan_id_str: str
     kode_wilayah_str: str

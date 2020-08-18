@@ -2,6 +2,7 @@ from __future__ import annotations
 import json
 import logging
 from dataclasses import asdict, dataclass, is_dataclass
+from datetime import datetime
 from requests import Session
 from logging import Logger
 from typing import Union, TYPE_CHECKING, List, Optional
@@ -133,7 +134,15 @@ class Rest(BaseDapodik):
                     config=Config(
                         type_hooks={
                             BaseData: lambda class_data: from_dict(
-                                self.__class, class_data)
+                                self.__class, class_data,
+                                config=Config(
+                                    type_hooks={
+                                        datetime: lambda x: datetime.strptime(
+                                            x, "%Y-%m-%d %H:%M:%S"
+                                        )
+                                    }
+                                )
+                            )
                         }
                     )
                 )
