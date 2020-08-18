@@ -1,8 +1,18 @@
 [tool.poetry]
 name = "dapodik"
 version = "0.1.0"
-description = ""
-authors = ["hexatester <revolusi147id@gmail.com>"]
+description = "Client & alat bantu aplikasi Dapodik"
+authors = ["hexatester <habibrohman@protonmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/hexatester/dapodik"
+repository = "https://github.com/hexatester/dapodik"
+include = [
+    "LICENSE",
+    "LISENSI",
+    "README.md",
+    "README-EN.md",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -16,6 +26,9 @@ cachetools = "^4.1.1"
 pytest = "^5.2"
 pylint = "^2.5.3"
 autopep8 = "^1.5.3"
+
+[tool.poetry.scripts]
+dapodik = "dapodik.__main__:main"
 
 [build-system]
 requires = ["poetry>=0.12"]
