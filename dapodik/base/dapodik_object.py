@@ -19,6 +19,10 @@ class DapodikObject:
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
 
+    @property
+    def id(self):
+        return self.__dict__.get(self._id)
+
     @classmethod
     def from_data(cls: DO,
                   data: dict,
@@ -28,6 +32,7 @@ class DapodikObject:
                   **kwargs) -> DapodikObject:
         fields = [field.name for field in get_dataclass_fields(cls)]
         unsafe_data = dict()
+        id = id or cls._id
 
         for key, value in data.items():
             if key not in fields:
@@ -36,10 +41,11 @@ class DapodikObject:
         res: cls = from_dict(
             data_class=cls,
             data=data,
-            config=Config(type_hooks={
-                DapodikObject: lambda id: dapodik[cls][id],
-                datetime: str_to_datetime
-            }))
+            config=Config(
+                type_hooks={
+                    DapodikObject: lambda id: dapodik[cls][id],
+                    datetime: str_to_datetime
+                }))
 
         if id:
             cls._id = id

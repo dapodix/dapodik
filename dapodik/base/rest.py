@@ -11,7 +11,6 @@ class Rest:
     def __init__(self, dapodik: Dapodik, klass: DapodikObject, url: str):
         self.session: Session = dapodik.session
         self.dapodik: Dapodik = dapodik
-        assert isinstance(klass, DapodikObject)
         self.klass = klass
         self.url = dapodik.domain + url
 

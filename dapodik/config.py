@@ -1,4 +1,5 @@
 BASE_URL = 'http://localhost:5774/'
+DOMAIN = 'http://localhost:5774'
 
 SEMESTER_ID = '20201'
 
