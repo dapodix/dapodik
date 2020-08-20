@@ -24,8 +24,8 @@ cachetools = "^4.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-autopep8 = "^1.5.3"
 flake8 = "^3.8.3"
+yapf = "^0.30.0"
 
 [tool.poetry.scripts]
 dapodik = "dapodik.__main__:main"
