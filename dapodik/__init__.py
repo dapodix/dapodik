@@ -16,7 +16,7 @@ class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar,
     session: Session = None
     domain: str = BASE_URL
     cache: Dict[DapodikObject, Results] = {}
-    rests: Dict[DapodikObject, ]
+    rests: Dict[DapodikObject, Rest] = {}
 
     def __init__(self,
                  url: str = None,
@@ -28,9 +28,15 @@ class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar,
         self.session.headers.update({'User-Agent': user_agent})
 
     def __getitem__(self, key: DapodikObject) -> Optional[Results]:
-        if DapodikObject in self.cache:
-            return self.cache.get(DapodikObject)
-        if DapodikObject in self.rests:
-            rest: Rest = self.rests.get(DapodikObject)
-            if rest:
-                return rest.get()
+        if key in self.cache:
+            return self.cache.get(key)
+        if key not in self.rests:
+            return
+        rest: Rest = self.rests.get(key)
+        if not rest:
+            return
+        res = rest.get()
+        if not res:
+            return
+        self.cache[key] = res
+        return res
