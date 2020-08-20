@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class ProgramInklusi(BaseData):
+class ProgramInklusi(DapodikObject):
     id_pi: str
     sekolah_id: str
     kebutuhan_khusus_id: int

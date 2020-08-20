@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class UpdatePanelDashboard(BaseData):
+class UpdatePanelDashboard(DapodikObject):
     paneljumlahgtk: str
     paneljumlahguru: str
     paneljumlahtendik: str

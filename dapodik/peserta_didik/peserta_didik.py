@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class PesertaDidik(BaseData):
+class PesertaDidik(DapodikObject):
     nama: str
     jenis_kelamin: str
     tempat_lahir: str

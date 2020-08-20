@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class Alat(BaseData):
+class Alat(DapodikObject):
     id_alat: str
     jenis_sarana_id: int
     sekolah_id: str

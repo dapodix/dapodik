@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class PesertaDidikLongitudinal(BaseData):
+class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_id: int
     tinggi_badan: int
     berat_badan: int

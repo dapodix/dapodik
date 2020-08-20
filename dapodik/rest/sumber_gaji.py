@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class SumberGaji(BaseData):
+class SumberGaji(DapodikObject):
     sumber_gaji_id: str
     nama: str
     create_date: datetime

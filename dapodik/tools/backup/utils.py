@@ -1,6 +1,6 @@
 from dataclasses import asdict
 from openpyxl.worksheet.worksheet import Worksheet
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 def cast_name(

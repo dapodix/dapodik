@@ -1,6 +1,8 @@
 __version__ = '0.1.0'
 from requests import Session
+from typing import Dict, Optional
 from dapodik.auth import Auth
+from dapodik.base import DapodikObject, Results, Rest
 from dapodik.config import BASE_URL, USER_AGENT
 from dapodik.peserta_didik import BasePesertaDidik
 from dapodik.rest import BaseRest
@@ -9,14 +11,26 @@ from dapodik.sarpras import BaseSarpras
 from dapodik.sekolah import BaseSekolah
 
 
-class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar, BaseSarpras, BaseRest):
+class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar,
+              BaseSarpras, BaseRest):
     session: Session = None
     domain: str = BASE_URL
+    cache: Dict[DapodikObject, Results] = {}
+    rests: Dict[DapodikObject, ]
 
-    def __init__(self, url: str = None, verify: bool = False, user_agent: str = USER_AGENT):
+    def __init__(self,
+                 url: str = None,
+                 verify: bool = False,
+                 user_agent: str = USER_AGENT):
         self.domain = url or BASE_URL
         self.verify = verify
         self.session: Session = Session()
-        self.session.headers.update({
-            'User-Agent': user_agent
-        })
+        self.session.headers.update({'User-Agent': user_agent})
+
+    def __getitem__(self, key: DapodikObject) -> Optional[Results]:
+        if DapodikObject in self.cache:
+            return self.cache.get(DapodikObject)
+        if DapodikObject in self.rests:
+            rest: Rest = self.rests.get(DapodikObject)
+            if rest:
+                return rest.get()

@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class AkreditasiSp(BaseData):
+class AkreditasiSp(DapodikObject):
     akred_sp_id: str
     sekolah_id: str
     akred_sp_sk: str

@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class SekolahLongitudinal(BaseData):
+class SekolahLongitudinal(DapodikObject):
     sekolah_id: str
     semester_id: str
     waktu_penyelenggaraan_id: str

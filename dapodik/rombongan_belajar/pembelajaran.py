@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass

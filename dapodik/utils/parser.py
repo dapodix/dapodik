@@ -1,4 +1,7 @@
 from dataclasses import MISSING
+from datetime import datetime
+from typing import Optional, Union
+
 
 def parse_rows_cast(datas: dict, Class_, id: bool = False):
     outs = []
@@ -26,8 +29,8 @@ def cast(data: dict, Class_):
     """Merubah dict menjadi Class_
 
     Args:
-        data (dict): Data dari server 
-        Class_ (BaseData): Class untuk dimasukan datanya
+        data (dict): Data dari server
+        Class_ (DapodikObject): Class untuk dimasukan datanya
 
     Raises:
         TypeError: Jika Class tidak dataclass / tidak memiliki __anotations__
@@ -35,7 +38,7 @@ def cast(data: dict, Class_):
 
     Returns:
         BaseData: Instance dari data
-    """    
+    """
     anot: dict = getattr(Class_, '__annotations__', {})
     if len(anot) == 0:
         raise TypeError(f'{Class_} didnt have anotations')
@@ -51,3 +54,13 @@ def cast(data: dict, Class_):
         if type(ndata_[key]) == MISSING:
             raise ValueError(f"Missing type found {key} from {ndata_}")
     return Class_(**ndata_)
+
+
+def str_to_datetime(data: Union[str, datetime],
+                    format: str = "%Y-%m-%d %H:%M:%S") -> Optional[datetime]:
+    if isinstance(data, datetime):
+        return data
+    elif type(data) == str:
+        return datetime.strptime(data, format=format)
+    else:
+        return datetime.now()

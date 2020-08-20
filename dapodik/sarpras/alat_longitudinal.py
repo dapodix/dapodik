@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class AlatLongitudinal(BaseData):
+class AlatLongitudinal(DapodikObject):
     id_alat: str
     semester_id: str
     jumlah: int

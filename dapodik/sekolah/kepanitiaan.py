@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class Kepanitiaan(BaseData):
+class Kepanitiaan(DapodikObject):
     id_panitia: str
     sekolah_id: str
     id_jns_panitia: int

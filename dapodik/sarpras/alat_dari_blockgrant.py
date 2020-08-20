@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class AlatDariBlockgrant(BaseData):
+class AlatDariBlockgrant(DapodikObject):
     blockgrant_id: str
     id_alat: str
     create_date: datetime

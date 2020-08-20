@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class SyncLog(BaseData):
+class SyncLog(DapodikObject):
     id_instalasi: str
     begin_sync: str
     end_sync: str

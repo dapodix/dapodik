@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class JenisGugus(BaseData):
+class JenisGugus(DapodikObject):
     jenis_gugus_id: str
     jenis_gugus: str
     create_date: datetime

@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class JenisLk(BaseData):
+class JenisLk(DapodikObject):
     id_jenis_lk: str
     nm_jenis_lk: str
     ket_jenis_lk: Optional[str]

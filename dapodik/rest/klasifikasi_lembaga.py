@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import BaseData
+from dapodik.base import DapodikObject
 
 
 @dataclass
-class KlasifikasiLembaga(BaseData):
+class KlasifikasiLembaga(DapodikObject):
     klasifikasi_lembaga_id: str
     nama: str
     create_date: datetime
