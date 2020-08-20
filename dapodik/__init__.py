@@ -28,8 +28,10 @@ class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar,
         self.session.headers.update({'User-Agent': user_agent})
 
     def __getitem__(self, key: DapodikObject) -> Optional[Results]:
-        if key in self.cache:
-            return self.cache.get(key)
+        res = self.cache.get(key)
+        if self.cache and res:
+            if res:
+                return res
         if key not in self.rests:
             return
         rest: Rest = self.rests.get(key)

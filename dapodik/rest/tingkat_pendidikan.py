@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class TingkatPendidikan(DapodikObject):
     tingkat_pendidikan_id: str
     kode: str

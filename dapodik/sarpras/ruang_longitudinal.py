@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class RuangLongitudinal(DapodikObject):
     id_ruang: str
     semester_id: str

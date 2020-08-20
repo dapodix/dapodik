@@ -61,6 +61,6 @@ def str_to_datetime(data: Union[str, datetime],
     if isinstance(data, datetime):
         return data
     elif type(data) == str:
-        return datetime.strptime(data, format=format)
+        return datetime.strptime(data, format)
     else:
         return datetime.now()

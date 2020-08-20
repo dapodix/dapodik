@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class JenisLk(DapodikObject):
     id_jenis_lk: str
     nm_jenis_lk: str

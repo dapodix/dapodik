@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Union
 
 
-@dataclass
+@dataclass(eq=False)
 class RegistrasiPesertaDidik:
     peserta_didik_id: str
     sekolah_id: str

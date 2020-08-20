@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class BentukLembaga(DapodikObject):
     bentuk_lembaga_id: str
     nama: str

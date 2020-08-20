@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class AlatTransportasi(DapodikObject):
     alat_transportasi_id: str
     nama: str

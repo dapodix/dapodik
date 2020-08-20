@@ -4,7 +4,7 @@ from dapodik.base import DapodikObject
 from typing import Optional
 
 
-@dataclass
+@dataclass(eq=False)
 class SumberListrik(DapodikObject):
     sumber_listrik_id: str
     nama: str

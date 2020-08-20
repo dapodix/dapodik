@@ -3,7 +3,7 @@ from datetime import datetime
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class AkreditasiSp(DapodikObject):
     akred_sp_id: str
     sekolah_id: str
@@ -19,3 +19,4 @@ class AkreditasiSp(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     la_id_str: str
+    _id: str = 'akred_sp_id'

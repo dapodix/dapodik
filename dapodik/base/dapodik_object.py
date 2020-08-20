@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dacite import from_dict, Config
+from dataclasses import MISSING
 from datetime import datetime
 from dapodik.config import BASE_URL
 from dapodik.utils import get_dataclass_fields, str_to_datetime
@@ -30,22 +30,29 @@ class DapodikObject:
                   url: Optional[str] = None,
                   dapodik: Optional[Dapodik] = None,
                   **kwargs) -> DapodikObject:
-        fields = [field.name for field in get_dataclass_fields(cls)]
-        unsafe_data = dict()
+        fields = [field for field in get_dataclass_fields(cls)]
+        safe_data = dict()
         id = id or cls._id
 
-        for key, value in data.items():
-            if key not in fields:
-                unsafe_data[key] == value
+        for field in fields:
+            key = field.name
+            value = data.pop(key)
 
-        res: cls = from_dict(
-            data_class=cls,
-            data=data,
-            config=Config(
-                type_hooks={
-                    DapodikObject: lambda id: dapodik[cls][id],
-                    datetime: str_to_datetime
-                }))
+            if value:
+                if hasattr(field.type, 'from_data'):
+                    safe_data[key] = dapodik[field.type][value]
+                elif field.type == datetime:
+                    safe_data[key] = str_to_datetime(value)
+                else:
+                    safe_data[key] = value
+            elif field.default != MISSING:
+                safe_data[key] = field.default
+            elif field.default_factory != MISSING:
+                safe_data[key] = field.default_factory()
+            else:
+                safe_data[key] = None
+
+        res = cls(**safe_data)
 
         if id:
             cls._id = id
@@ -54,10 +61,10 @@ class DapodikObject:
         if dapodik:
             cls.dapodik = dapodik
         if kwargs:
-            unsafe_data.update(kwargs)
-        for key, value in unsafe_data.items():
-            setattr(res, key, value)
-
+            data.update(kwargs)
+        if data:
+            for key, value in data.items():
+                setattr(res, key, value)
         return res
 
     def to_dict(self) -> dict:

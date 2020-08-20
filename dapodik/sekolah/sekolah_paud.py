@@ -3,7 +3,7 @@ from datetime import datetime
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class SekolahPaud(DapodikObject):
     sekolah_id: str
     kategori_tk_id: str

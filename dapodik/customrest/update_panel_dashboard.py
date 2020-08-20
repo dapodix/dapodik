@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class UpdatePanelDashboard(DapodikObject):
     paneljumlahgtk: str
     paneljumlahguru: str

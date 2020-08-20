@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class Ruang(DapodikObject):
     id_ruang: str
     jenis_prasarana_id: int

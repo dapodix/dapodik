@@ -3,7 +3,7 @@ from datetime import datetime
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class SyncLog(DapodikObject):
     id_instalasi: str
     begin_sync: str

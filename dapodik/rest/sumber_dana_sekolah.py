@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class SumberDanaSekolah(DapodikObject):
     sumber_dana_sekolah_id: str
     nama: str

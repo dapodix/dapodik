@@ -11,8 +11,11 @@ class Rest:
     def __init__(self, dapodik: Dapodik, klass: DapodikObject, url: str):
         self.session: Session = dapodik.session
         self.dapodik: Dapodik = dapodik
+        klass._url = url
+        klass.dapodik = dapodik
         self.klass = klass
         self.url = dapodik.domain + url
+        self.dapodik.rests[klass] = self
 
     def get(self, params: dict = None) -> Optional[Results]:
         res = self.session.get(self.url, params=params)

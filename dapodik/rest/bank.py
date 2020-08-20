@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class Bank(DapodikObject):
     id_bank: str
     nm_bank: str

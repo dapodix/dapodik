@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class RolePengguna(DapodikObject):
     id_role_pengguna: str
     sekolah_id: str

@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class JenisGugus(DapodikObject):
     jenis_gugus_id: str
     jenis_gugus: str

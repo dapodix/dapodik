@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class Pembelajaran:
     rombongan_belajar_id: str
     status_di_kurikulum_str: str

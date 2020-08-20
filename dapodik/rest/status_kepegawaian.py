@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class StatusKepegawaian(DapodikObject):
     status_kepegawaian_id: int
     nama: str

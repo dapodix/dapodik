@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import DapodikObject
 
 
-@dataclass
+@dataclass(eq=False)
 class PtkTerdaftar(DapodikObject):
     ptk_terdaftar_id: str
     ptk_id: str

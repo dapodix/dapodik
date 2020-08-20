@@ -1,5 +1,4 @@
 from __future__ import annotations
-from dacite import from_dict, Config
 from dataclasses import dataclass, field
 from typing import Any, List, Iterator, Optional, Tuple, TYPE_CHECKING
 from .dapodik_object import DapodikObject
@@ -13,7 +12,7 @@ forward_references = {
 }
 
 
-@dataclass
+@dataclass(eq=False)
 class Results:
     id: str
     start: int
@@ -24,15 +23,13 @@ class Results:
     @classmethod
     def from_data(cls, klass: DapodikObject, data: dict, dapodik: Dapodik,
                   **kwargs) -> Optional[DapodikObject]:
-        id = data.get('id') or cls.id
-        return from_dict(
-            data_class=klass,
-            data=data,
-            config=Config(type_hooks={
-                DapodikObject:
-                lambda x: klass.from_data(x, id=id, dapodik=dapodik)
-            },
-                          forward_references=forward_references))
+        id = data.get('id')
+        rows: List[DapodikObject] = [
+            klass.from_data(da, id=id, dapodik=dapodik)
+            for da in data.pop('rows')
+        ]
+        data['rows'] = rows
+        return cls(**data)
 
     def __iter__(self) -> Iterator[DapodikObject]:
         return iter(self.rows)
