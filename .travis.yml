@@ -9,6 +9,11 @@ before_install:
     - pip install poetry
 
 install:
+    - pip install pytest-cov
     - poetry install
 
-script: poetry run pytest
+script:
+    - poetry run pytest --cov=./
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
