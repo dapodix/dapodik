@@ -1,4 +1,5 @@
 __version__ = '0.1.0'
+import logging
 from requests import Session
 from typing import Dict, Optional
 from dapodik.auth import Auth
@@ -19,13 +20,20 @@ class Dapodik(Auth, BaseSekolah, BasePesertaDidik, BaseRombonganBelajar,
     rests: Dict[DapodikObject, Rest] = {}
 
     def __init__(self,
+                 username: str,
+                 password: str,
                  url: str = None,
                  verify: bool = False,
                  user_agent: str = USER_AGENT):
+        assert bool(username)
+        assert bool(password)
         self.domain = url or BASE_URL
         self.verify = verify
+        self.logger = logging.getLogger(self.__class__.__name__)
         self.session: Session = Session()
         self.session.headers.update({'User-Agent': user_agent})
+        if self.login(username, password):
+            self.register_sekolah()
 
     def __getitem__(self, key: DapodikObject) -> Optional[Results]:
         res = self.cache.get(key)
