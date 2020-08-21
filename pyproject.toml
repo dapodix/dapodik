@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dapodik"
-version = "0.1.0"
-description = "Client & alat bantu aplikasi Dapodik"
+version = "0.2.0"
+description = "Client / API aplikasi Dapodik"
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
