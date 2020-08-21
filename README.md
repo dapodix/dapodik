@@ -7,18 +7,11 @@
 [![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/hexatester/dapodik/wiki)
 [![LISENSI](https://img.shields.io/github/license/hexatester/dapodik)](https://github.com/hexatester/dapodik/blob/master/LISENSI)
 
-Alat bantu aplikasi dapodik.
+Python client / API aplikasi dapodik.
 
 ## Release
 
 Perkiraan release versi 1 akhir bulan September 2020,
-
-## Fitur yang akan datang
-
-- Download data ke Excel
-- Petunjuk validasi
-- Bulk update dari Excel
-- Python Client
 
 ## Legal / Hukum
 
