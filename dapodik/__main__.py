@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import sys
 from . import __version__, __dapodik_version__
 
