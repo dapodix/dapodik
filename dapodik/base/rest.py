@@ -18,6 +18,7 @@ class Rest:
         self.dapodik.rests[klass] = self
 
     def get(self, params: dict = None) -> Optional[Results]:
+        params = params or self.klass.get_params()
         res = self.session.get(self.url, params=params)
         if not res.ok:
             return

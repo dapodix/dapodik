@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, InitVar
 from typing import Any, List, Iterator, Optional, Tuple, TYPE_CHECKING
 from .dapodik_object import DapodikObject
 if TYPE_CHECKING:
@@ -19,6 +19,16 @@ class Results:
     limit: int
     results: int = 0
     rows: List[DapodikObject] = field(default_factory=list)
+    _dapodik: InitVar[Dapodik] = None
+    _klass: InitVar[DapodikObject] = None
+
+    def __post_init__(self, _dapodik: Dapodik, _klass: DapodikObject) -> None:
+        assert isinstance(_dapodik, Dapodik)
+        assert isinstance(_klass, DapodikObject)
+        self._klass = _klass
+        _dapodik.logger.debug(
+            'Berhasil mendapatkan {} sebanyak {} dengan id {}'.format(
+                _klass, self.results, self.id))
 
     @classmethod
     def from_data(cls, klass: DapodikObject, data: dict, dapodik: Dapodik,
@@ -29,7 +39,7 @@ class Results:
             for da in data.pop('rows')
         ]
         data['rows'] = rows
-        return cls(**data)
+        return cls(_dapodik=dapodik, _klass=klass, **data)
 
     def __iter__(self) -> Iterator[DapodikObject]:
         return iter(self.rows)
@@ -46,3 +56,12 @@ class Results:
 
     def __bool__(self) -> bool:
         return bool(self.rows)
+
+    def __hash__(self) -> int:
+        if self.results > 0:
+            return self.get_hash(self.id)
+        return super().__hash__()
+
+    @classmethod
+    def get_hash(cls, id: str) -> int:
+        return hash((cls.__class__, cls.id))

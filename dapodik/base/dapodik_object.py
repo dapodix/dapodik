@@ -18,6 +18,7 @@ class DapodikObject:
     _url: str = ''
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
+    _params: dict = {}
 
     def __post_init__(self):
         self.dapodik.logger.debug('Berhasil membuat {}'.format(repr(self)))
@@ -97,3 +98,14 @@ class DapodikObject:
         if self._id_attrs:
             return hash((self.__class__, self._id_attrs))
         return super().__hash__()
+
+    @property
+    def params(self) -> dict:
+        return None
+
+    @classmethod
+    def get_params(cls) -> dict:
+        params = cls._params or {}
+        if type(cls.params) == dict:
+            params.update(cls.params)
+        return params
