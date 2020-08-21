@@ -1,4 +1,6 @@
 __version__ = '0.1.0'
+from .version import __version__, __dapodik_version__  # NOQA
+
 import logging
 from requests import Session
 from typing import Dict, Optional
