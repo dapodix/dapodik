@@ -12,3 +12,4 @@ class SumberGaji(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'sumber_gaji_id'

@@ -36,3 +36,4 @@ class PtkTerdaftar(DapodikObject):
     ptk_id_str: str
     sekolah_id_str: str
     tahun_ajaran_id_str: str
+    _id: str = 'ptk_terdaftar_id'

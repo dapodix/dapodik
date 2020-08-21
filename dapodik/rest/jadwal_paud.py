@@ -16,3 +16,4 @@ class JadwalPaud(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'jadwal_id'

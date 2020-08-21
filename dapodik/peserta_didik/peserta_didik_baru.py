@@ -22,3 +22,4 @@ class PesertaDidikBaru(DapodikObject):
     tahun_ajaran_id_str: str = ""
     jenis_pendaftaran_id_str: str = ""
     peserta_didik_id_str: str = ""
+    _id: str = 'pdb_id'

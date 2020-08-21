@@ -90,3 +90,10 @@ class PesertaDidik(DapodikObject):
     kebutuhan_khusus_id_selector = []
     kebutuhan_khusus_id_selector_ayah = []
     kebutuhan_khusus_id_selector_ibu = []
+    _id: str = 'peserta_didik_id'
+
+    @property
+    def params(self):
+        return {
+            'sekolah_id': self.dapodik.sekolah_id,
+        }

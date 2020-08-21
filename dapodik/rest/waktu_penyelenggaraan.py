@@ -12,3 +12,4 @@ class WaktuPenyelenggaraan(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'waktu_penyelenggaraan_id'

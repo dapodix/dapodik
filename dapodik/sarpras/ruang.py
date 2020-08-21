@@ -42,3 +42,4 @@ class Ruang(DapodikObject):
     jenis_prasarana_id_str: str
     id_bangunan_str: str
     sekolah_id_str: str
+    _id: str = 'id_ruang'

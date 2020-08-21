@@ -35,3 +35,4 @@ class Yayasan(DapodikObject):
     updater_id: str
     kode_wilayah_str: str
     vld_count: int
+    _id: str = 'yayasan_id'

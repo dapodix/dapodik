@@ -12,3 +12,4 @@ class LembagaPengangkat(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'lembaga_pengangkat_id'

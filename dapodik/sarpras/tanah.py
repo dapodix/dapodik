@@ -38,3 +38,4 @@ class Tanah(DapodikObject):
     jenis_prasarana_id_str: str
     sekolah_id_str: str
     vld_count: int
+    _id: str = 'id_tanah'

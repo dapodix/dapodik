@@ -98,3 +98,4 @@ class Ptk(DapodikObject):
     verifikasi_email: bool
     jenis_ptk_id_str: str
     vld_count: int
+    _id: str = 'ptk_id'

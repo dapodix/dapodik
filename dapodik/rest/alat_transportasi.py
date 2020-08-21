@@ -12,3 +12,4 @@ class AlatTransportasi(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'alat_transportasi_id'

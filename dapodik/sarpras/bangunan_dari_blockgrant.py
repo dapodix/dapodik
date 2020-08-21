@@ -16,3 +16,4 @@ class BangunanDariBlockgrant(DapodikObject):
     blockgrant_id_str: str
     id_bangunan_str: str
     bangunan_dari_blockgrant_id: str
+    _id: str = 'bangunan_dari_blockgrant_id'

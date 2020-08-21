@@ -29,3 +29,4 @@ class RegistrasiPesertaDidik:
     jenis_keluar_id_str: str = ""
     a_pernah_paud: int = 0
     a_pernah_tk: int = 0
+    _id: str = 'registrasi_id'

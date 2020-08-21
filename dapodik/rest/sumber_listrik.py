@@ -12,3 +12,4 @@ class SumberListrik(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'sumber_listrik_id'

@@ -31,3 +31,4 @@ class BangunanLongitudinal(DapodikObject):
     id_bangunan_str: str
     semester_id_str: str
     bangunan_longitudinal_id: str
+    _id: str = 'bangunan_longitudinal_id'

@@ -36,3 +36,4 @@ class Alat(DapodikObject):
     vld_count: int
     key_match: str
     header: str
+    _id: str = 'id_alat'

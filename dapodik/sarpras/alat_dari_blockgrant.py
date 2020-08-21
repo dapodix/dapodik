@@ -15,4 +15,5 @@ class AlatDariBlockgrant(DapodikObject):
     updater_id: str
     blockgrant_id_str: str
     id_alat_str: str = ''
-    alat_dari_blockgrant_id: str = 'Admin.model.AlatDariBlockgrant-1'
+    alat_dari_blockgrant_id: Optional[str] = 'Admin.model.AlatDariBlockgrant-1'
+    _id: str = 'alat_dari_blockgrant_id'

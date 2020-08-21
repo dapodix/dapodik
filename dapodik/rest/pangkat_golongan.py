@@ -13,3 +13,4 @@ class PangkatGolongan(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'pangkat_golongan_id'

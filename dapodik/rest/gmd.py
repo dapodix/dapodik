@@ -12,3 +12,4 @@ class Gmd(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'id_gmd'

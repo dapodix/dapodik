@@ -13,3 +13,4 @@ class JenisLk(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'id_jenis_lk'

@@ -38,3 +38,4 @@ class RombonganBelajar(DapodikObject):
     jenis_rombel_str: str
     jurusan_id: str
     jurusan_id_str: str
+    _id: str = 'rombongan_belajar_id'

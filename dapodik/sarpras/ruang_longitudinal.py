@@ -50,3 +50,4 @@ class RuangLongitudinal(DapodikObject):
     id_ruang_str: str
     semester_id_str: str
     ruang_longitudinal_id: str
+    _id: str = 'ruang_longitudinal_id'

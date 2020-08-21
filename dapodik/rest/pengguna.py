@@ -43,3 +43,4 @@ class Pengguna(DapodikObject):
     updater_id: str
     ptk_id_str: str
     sekolah_id_str: str
+    _id: str = 'pengguna_id'

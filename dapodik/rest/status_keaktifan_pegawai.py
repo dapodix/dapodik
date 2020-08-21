@@ -12,3 +12,4 @@ class StatusKeaktifanPegawai(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'status_keaktifan_id'

@@ -18,3 +18,4 @@ class AlatLongitudinal(DapodikObject):
     id_alat_str: str
     semester_id_str: str
     alat_longitudinal_id: str
+    _id: str = 'alat_longitudinal_id'

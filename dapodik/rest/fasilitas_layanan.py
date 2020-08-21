@@ -12,3 +12,4 @@ class FasilitasLayanan(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'fasilitas_layanan_id'

@@ -53,3 +53,4 @@ class Bangunan(DapodikObject):
     id_tanah_str: str
     sekolah_id_str: str
     vld_count: int
+    _id: str = 'id_bangunan'

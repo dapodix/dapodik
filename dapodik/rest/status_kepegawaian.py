@@ -12,3 +12,4 @@ class StatusKepegawaian(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'status_kepegawaian_id'

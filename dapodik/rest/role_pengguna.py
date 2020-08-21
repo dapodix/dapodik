@@ -26,3 +26,4 @@ class RolePengguna(DapodikObject):
     expired_date: Optional[datetime]
     last_sync: datetime
     pengguna_id_str: str
+    _id: str = 'id_role_pengguna'

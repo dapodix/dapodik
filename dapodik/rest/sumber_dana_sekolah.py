@@ -12,3 +12,4 @@ class SumberDanaSekolah(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'sumber_dana_sekolah_id'

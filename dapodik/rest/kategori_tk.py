@@ -12,3 +12,4 @@ class KategoriTk(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+    _id: str = 'kategori_tk_id'
