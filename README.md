@@ -1,10 +1,11 @@
 # dapodik
 
 [![dapodik - PyPi](https://img.shields.io/pypi/v/dapodik)](https://pypi.org/project/dapodik/)
-[![Group Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/dapodik_2021)
-[![Donate DANA](https://img.shields.io/badge/Donasi-DANA-blue)](https://link.dana.id/qr/1lw2r12r)
 [![Download](https://img.shields.io/badge/Download-Unduh-brightgreen)](https://github.com/hexatester/dapodik/archive/master.zip)
+[![Donate DANA](https://img.shields.io/badge/Donasi-DANA-blue)](https://link.dana.id/qr/1lw2r12r)
 [![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/hexatester/dapodik/wiki)
+[![Group Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/dapodik_2021)
+[![codecov](https://codecov.io/gh/hexatester/dapodik/branch/master/graph/badge.svg)](https://codecov.io/gh/hexatester/dapodik)
 [![LISENSI](https://img.shields.io/github/license/hexatester/dapodik)](https://github.com/hexatester/dapodik/blob/master/LISENSI)
 
 Python client / API aplikasi dapodik.
