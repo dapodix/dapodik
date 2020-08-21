@@ -23,8 +23,6 @@ class Results:
     _klass: InitVar[DapodikObject] = None
 
     def __post_init__(self, _dapodik: Dapodik, _klass: DapodikObject) -> None:
-        assert isinstance(_dapodik, Dapodik)
-        assert isinstance(_klass, DapodikObject)
         self._klass = _klass
         _dapodik.logger.debug(
             'Berhasil mendapatkan {} sebanyak {} dengan id {}'.format(
