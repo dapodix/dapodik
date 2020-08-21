@@ -17,6 +17,7 @@ from .jenis_pendaftaran import JenisPendaftaran
 from .jenis_prasarana import JenisPrasarana
 from .jenis_sarana import JenisSarana
 from .jenis_tinggal import JenisTinggal
+from .jenjang_pendidikan import JenjangPendidikan
 from .kategori_tk import KategoriTk
 from .kebutuhan_khusus import KebutuhanKhusus
 from .klasifikasi_lembaga import KlasifikasiLembaga
@@ -95,6 +96,9 @@ class BaseRest(BaseDapodik):
             )
             self.JenisTinggal = Rest(
                 self, JenisTinggal, 'rest/JenisTinggal'
+            )
+            self.JenjangPendidikan = Rest(
+                self, JenjangPendidikan, 'rest/JenjangPendidikan'
             )
             self.KategoriTk = Rest(
                 self, KategoriTk, 'rest/KategoriTk'
