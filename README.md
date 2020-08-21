@@ -6,6 +6,7 @@
 [![Download](https://img.shields.io/badge/Download-Unduh-brightgreen)](https://github.com/hexatester/dapodik/archive/master.zip)
 [![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/hexatester/dapodik/wiki)
 [![LISENSI](https://img.shields.io/github/license/hexatester/dapodik)](https://github.com/hexatester/dapodik/blob/master/LISENSI)
+[![BUILD](https://img.shields.io/travis/com/hexatester/dapodik)](https://travis-ci.com/github/hexatester/dapodik)
 
 Python client / API aplikasi dapodik.
 
