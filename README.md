@@ -10,6 +10,15 @@
 
 Python client / API aplikasi dapodik.
 
+## Install
+
+Pastikan [python 3.7](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) terinstall,
+kemudian jalankan perintah di bawah dalam Command Prompt atau Powershell (di Windows + X):
+
+```bash
+pip install --upgrade dapodik
+```
+
 ## Release
 
 Perkiraan release versi 1 akhir bulan September 2020,
