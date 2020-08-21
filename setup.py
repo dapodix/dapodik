@@ -14,11 +14,11 @@ setup(
     ],
     packages=["dapodik"],
     install_requires=[
+        'python'
         'requests'
         'openpyxl'
-        'click'
-        'dacite'
-        'cachetools'
+        'beautifulsoup4'
+        'lxml'
     ],
     entry_points={
         'console_scripts': [
