@@ -38,7 +38,11 @@ class Results:
         return self.results
 
     def __getitem__(self, index) -> Optional[DapodikObject]:
-        return self.rows[index]
+        if type(index) == int:
+            return self.rows[index]
+        for do in self.rows:
+            if do.id == index:
+                return do
 
     def __bool__(self) -> bool:
         return bool(self.rows)

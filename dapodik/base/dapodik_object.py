@@ -19,6 +19,9 @@ class DapodikObject:
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
 
+    def __post_init__(self):
+        self.dapodik.logger.debug('Berhasil membuat {}'.format(repr(self)))
+
     @property
     def id(self):
         return self.__dict__.get(self._id)
@@ -36,6 +39,8 @@ class DapodikObject:
 
         for field in fields:
             key = field.name
+            if key.startswith('_'):
+                continue
             value = data.pop(key)
 
             if value:
