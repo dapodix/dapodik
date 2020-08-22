@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('id_gmd')
-@dataclass
+@dataclass(eq=False)
 class Gmd(DapodikObject):
     id_gmd: str
     nm_gmd: str
