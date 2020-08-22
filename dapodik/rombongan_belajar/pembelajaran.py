@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('pembelajaran_id')
 @dataclass(eq=False)
 class Pembelajaran(DapodikObject):
     rombongan_belajar_id: str
@@ -16,4 +18,3 @@ class Pembelajaran(DapodikObject):
     status_di_kurikulum: int = 9
     semester_id: str = "20201"
     pembelajaran_id: str = "Admin.model.PembelajaranNew-1"
-    _id: str = 'pembelajaran_id'
