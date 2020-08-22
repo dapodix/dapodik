@@ -1,10 +1,11 @@
 from __future__ import annotations
 from dataclasses import MISSING
 from datetime import datetime
+from functools import wraps
 from dapodik.config import BASE_URL
 from dapodik.utils import get_dataclass_fields, str_to_datetime
 
-from typing import Any, Dict, Optional, TypeVar, Tuple, TYPE_CHECKING
+from typing import Any, Callable, Dict, Optional, TypeVar, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
@@ -45,9 +46,9 @@ class DapodikObject:
             value = data.pop(key)
 
             if value:
-                if hasattr(field.type, 'from_data'):
-                    safe_data[key] = dapodik[field.type][value]
-                elif field.type == datetime:
+                # if hasattr(field.type, 'from_data'):
+                #     # safe_data[key] = dapodik[field.type][value]
+                if field.type == datetime:
                     safe_data[key] = str_to_datetime(value)
                 else:
                     safe_data[key] = value
@@ -109,3 +110,26 @@ class DapodikObject:
         if type(cls.params) == dict:
             params.update(cls.params)
         return params
+
+    @classmethod
+    def getter(cls, get_id: Callable) -> Callable:
+        @wraps(get_id)
+        def decorator(self: DapodikObject):
+            id = get_id(self)
+            return self.dapodik[cls][id]
+
+        return decorator
+
+    @classmethod
+    def setter(cls, set_id: Callable) -> Callable:
+        @wraps(set_id)
+        def decorator(self: DapodikObject, value: Any):
+            if isinstance(value, cls):
+                return set_id(self, value.id)
+            exist = self.dapodik[cls][value]
+            if exist is None:
+                raise ValueError('Tidak ada {} dengan id {}'.format(
+                    set_id.__name__, id))
+            set_id(self, value)
+
+        return decorator

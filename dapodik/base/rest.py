@@ -1,4 +1,5 @@
 from __future__ import annotations
+from logging import getLogger
 from requests import Session
 from .dapodik_object import DapodikObject
 from .results import Results
@@ -9,6 +10,7 @@ if TYPE_CHECKING:
 
 class Rest:
     def __init__(self, dapodik: Dapodik, klass: DapodikObject, url: str):
+        self.logger = getLogger(self.__class__.__name__)
         self.session: Session = dapodik.session
         self.dapodik: Dapodik = dapodik
         klass._url = url
@@ -16,6 +18,9 @@ class Rest:
         self.klass = klass
         self.url = dapodik.domain + url
         self.dapodik.rests[klass] = self
+        self.dapodik.id_map[self.klass._id] = self.klass
+        self.logger.debug('Berhasil membuat Rest untuk {}'.format(
+            klass.__class__.__name__))
 
     def get(self, params: dict = None) -> Optional[Results]:
         params = params or self.klass.get_params()
@@ -27,5 +32,5 @@ class Rest:
         self.dapodik.rests[self.klass] = result
         return result
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> Optional[Results]:
         return self.get(*args, **kwargs)
