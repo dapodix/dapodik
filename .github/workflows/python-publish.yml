@@ -27,5 +27,5 @@ jobs:
         POETRY_HTTP_BASIC_TESTPYPI_USERNAME: __token__
         POETRY_REPOSITORIES_TESTPYPI_URL: https://test.pypi.org/legacy/
       run: |
-        poetry run build --verbose
-        poetry run publish --verbose
+        python -m poetry build --verbose
+        python -m poetry publish --verbose
