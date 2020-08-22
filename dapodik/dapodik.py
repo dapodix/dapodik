@@ -28,6 +28,7 @@ class Dapodik(Auth,
     domain: str = BASE_URL
     cache: Dict[DapodikObject, Results] = {}
     rests: Dict[DapodikObject, Rest] = {}
+    id_map: Dict[str, DapodikObject] = {}
 
     def __init__(self,
                  username: str,
