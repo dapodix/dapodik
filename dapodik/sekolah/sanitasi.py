@@ -2,8 +2,12 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.rest import SumberAir
+from dapodik.utils.decorator import set_meta
+from .sekolah import Sekolah
 
 
+@set_meta('sanitasi_id')
 @dataclass(eq=False)
 class Sanitasi(DapodikObject):
     sekolah_id: str
@@ -84,3 +88,13 @@ class Sanitasi(DapodikObject):
     sekolah_id_str: str
     semester_id_str: str
     sanitasi_id: str
+
+    @property
+    @Sekolah.getter
+    def sekolah(self):
+        return self.sekolah_id
+
+    @property
+    @SumberAir.getter
+    def sumber_air(self):
+        return self.sumber_air_minum_id

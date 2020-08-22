@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('akred_sp_id')
 @dataclass(eq=False)
 class AkreditasiSp(DapodikObject):
     akred_sp_id: str
@@ -19,4 +21,3 @@ class AkreditasiSp(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     la_id_str: str
-    _id: str = 'akred_sp_id'

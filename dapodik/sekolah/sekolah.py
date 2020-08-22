@@ -56,4 +56,12 @@ class Sekolah(DapodikObject):
     kebutuhan_khusus_id_str: str
     yayasan_id_str: str
     vld_count: int
-    _id: str = 'sekolah_id'
+
+    @property
+    @Yayasan.getter
+    def yayasan(self):
+        return self.yayasan_id
+
+    @yayasan.setter
+    def yayasan(self, value):
+        self.yayasan_id = value

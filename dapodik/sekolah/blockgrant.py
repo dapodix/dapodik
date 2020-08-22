@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('blockgrant_id')
 @dataclass(eq=False)
 class BlockGrant(DapodikObject):
     blockgrant_id: str
@@ -25,4 +27,3 @@ class BlockGrant(DapodikObject):
     jenis_bantuan_id_str: str
     sumber_dana_id_str: str
     blockgrant_id: str
-    _id: str = 'blockgrant_id'

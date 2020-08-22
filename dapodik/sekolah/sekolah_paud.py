@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('kategori_tk_id')
 @dataclass(eq=False)
 class SekolahPaud(DapodikObject):
     sekolah_id: str
