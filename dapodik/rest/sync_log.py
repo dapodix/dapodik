@@ -16,4 +16,3 @@ class SyncLog(DapodikObject):
     alamat_ip: str
     pengguna_id: str
     sync_log_id: str
-    _id: str = 'sync_log_id'

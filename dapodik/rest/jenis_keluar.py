@@ -16,4 +16,3 @@ class JenisKeluar(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-    _id: str = 'jenis_keluar_id'
