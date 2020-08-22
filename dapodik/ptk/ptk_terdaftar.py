@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.rest import JenisKeluar
 from dapodik.utils.decorator import set_meta
 
 
@@ -38,3 +39,8 @@ class PtkTerdaftar(DapodikObject):
     ptk_id_str: str
     sekolah_id_str: str
     tahun_ajaran_id_str: str
+
+    @property
+    @JenisKeluar.getter
+    def jenis_keluar(self) -> Optional[JenisKeluar]:
+        return self.jenis_keluar_id

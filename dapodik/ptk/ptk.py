@@ -2,7 +2,18 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.rest import (
+    Agama,
+    Bank,
+    JenisKeluar,
+    Pengguna,
+    StatusKeaktifanPegawai,
+    StatusKepegawaian,
+    PangkatGolongan,
+    SumberGaji,
+)
 from dapodik.utils.decorator import set_meta
+from .ptk_terdaftar import PtkTerdaftar
 
 
 @set_meta('ptk_id')
@@ -100,3 +111,77 @@ class Ptk(DapodikObject):
     verifikasi_email: bool
     jenis_ptk_id_str: str
     vld_count: int
+
+    @property
+    @PtkTerdaftar.getter
+    def ptk_terdaftar(self) -> Optional[PtkTerdaftar]:
+        return self.ptk_terdaftar_id
+
+    @property
+    @JenisKeluar.getter
+    def jenis_keluar(self) -> Optional[JenisKeluar]:
+        return self.jenis_keluar_id
+
+    @property
+    def tahun_ajaran(self):
+        pass
+
+    @property
+    def updater(self):
+        pass
+
+    @property
+    @StatusKepegawaian.getter
+    def status_kepegawaian(self) -> Optional[StatusKepegawaian]:
+        return self.status_kepegawaian_id
+
+    @property
+    def jenis_ptk(self):
+        pass
+
+    @property
+    def pengawas_bidang_studi(self):
+        pass
+
+    @property
+    @Agama.getter
+    def agama(self) -> Optional[Agama]:
+        return self.agama_id
+
+    @property
+    @StatusKeaktifanPegawai.getter
+    def status_keaktifan(self) -> Optional[StatusKeaktifanPegawai]:
+        return self.status_kepegawaian_id
+
+    @property
+    @PangkatGolongan.getter
+    def lembaga_pengangkat(self) -> Optional[PangkatGolongan]:
+        return self.lembaga_pengangkat_id
+
+    @property
+    @PangkatGolongan.getter
+    def pangkat_golongan(self) -> Optional[PangkatGolongan]:
+        return self.pangkat_golongan_id
+
+    @property
+    def keahlian_laboratorium(self):
+        pass
+
+    @property
+    @SumberGaji.getter
+    def sumber_gaji(self) -> Optional[SumberGaji]:
+        return self.sumber_gaji_id
+
+    @property
+    def blob(self):
+        pass
+
+    @property
+    @Pengguna.getter
+    def pengguna(self) -> Optional[Pengguna]:
+        return self.pengguna_id
+
+    @property
+    @Bank.getter
+    def bank(self) -> Optional[Bank]:
+        return self.id_bank
