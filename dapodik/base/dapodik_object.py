@@ -4,7 +4,7 @@ from datetime import datetime
 from dapodik.config import BASE_URL
 from dapodik.utils import get_dataclass_fields, str_to_datetime
 
-from typing import Any, Optional, TypeVar, Tuple, TYPE_CHECKING
+from typing import Any, Dict, Optional, TypeVar, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
@@ -18,7 +18,7 @@ class DapodikObject:
     _url: str = ''
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
-    _params: dict = {}
+    _params: Dict[str, str] = {}
 
     def __post_init__(self):
         self.dapodik.logger.debug('Berhasil membuat {}'.format(repr(self)))
@@ -34,7 +34,7 @@ class DapodikObject:
                   url: Optional[str] = None,
                   dapodik: Optional[Dapodik] = None,
                   **kwargs) -> DapodikObject:
-        fields = [field for field in get_dataclass_fields(cls)]
+        fields = get_dataclass_fields(cls)
         safe_data = dict()
         id = id or cls._id
 
