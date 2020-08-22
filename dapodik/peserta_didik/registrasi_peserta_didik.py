@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from typing import Union
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('registrasi_id')
 @dataclass(eq=False)
 class RegistrasiPesertaDidik:
     peserta_didik_id: str
@@ -29,4 +31,3 @@ class RegistrasiPesertaDidik:
     jenis_keluar_id_str: str = ""
     a_pernah_paud: int = 0
     a_pernah_tk: int = 0
-    _id: str = 'registrasi_id'

@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('peserta_didik_longitudinal_id')
 @dataclass(eq=False)
 class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_id: int
@@ -19,4 +21,3 @@ class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_longitudinal_id_str: int = ""
     peserta_didik_id_str: int = ""
     semester_id_str: int = ""
-    _id: str = 'peserta_didik_id'

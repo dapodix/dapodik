@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('pdb_id')
 @dataclass(eq=False)
 class PesertaDidikBaru(DapodikObject):
     sekolah_id: str
@@ -22,4 +24,3 @@ class PesertaDidikBaru(DapodikObject):
     tahun_ajaran_id_str: str = ""
     jenis_pendaftaran_id_str: str = ""
     peserta_didik_id_str: str = ""
-    _id: str = 'pdb_id'
