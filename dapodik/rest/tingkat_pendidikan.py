@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('tingkat_pendidikan_id')
 @dataclass(eq=False)
 class TingkatPendidikan(DapodikObject):
     tingkat_pendidikan_id: str

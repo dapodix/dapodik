@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('kebutuhan_khusus_id')
 @dataclass(eq=False)
 class KebutuhanKhusus(DapodikObject):
     kebutuhan_khusus_id: int
@@ -31,4 +33,3 @@ class KebutuhanKhusus(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-    _id: str = 'kebutuhan_khusus_id'

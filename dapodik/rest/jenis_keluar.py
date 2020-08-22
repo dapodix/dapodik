@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('jenis_keluar_id')
 @dataclass(eq=False)
 class JenisKeluar(DapodikObject):
     jenis_keluar_id: str

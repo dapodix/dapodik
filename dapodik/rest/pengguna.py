@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('pengguna_id')
 @dataclass(eq=False)
 class Pengguna(DapodikObject):
     pengguna_id: str
@@ -43,4 +45,3 @@ class Pengguna(DapodikObject):
     updater_id: str
     ptk_id_str: str
     sekolah_id_str: str
-    _id: str = 'pengguna_id'

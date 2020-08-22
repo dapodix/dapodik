@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('kode_wilayah')
 @dataclass(eq=False)
 class MstWilayah(DapodikObject):
     kode_wilayah: str
@@ -27,4 +29,3 @@ class MstWilayah(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-    _id: str = 'kode_wilayah'

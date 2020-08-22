@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('status_keaktifan_id')
 @dataclass(eq=False)
 class StatusKeaktifanPegawai(DapodikObject):
     status_keaktifan_id: str
@@ -12,4 +14,3 @@ class StatusKeaktifanPegawai(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-    _id: str = 'status_keaktifan_id'
