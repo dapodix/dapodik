@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('id_alat')
 @dataclass(eq=False)
 class Alat(DapodikObject):
     id_alat: str
@@ -36,4 +38,3 @@ class Alat(DapodikObject):
     vld_count: int
     key_match: str
     header: str
-    _id: str = 'id_alat'

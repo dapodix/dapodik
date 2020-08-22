@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
 from dapodik.base import DapodikObject
+from dapodik.utils.decorator import set_meta
 
 
+@set_meta('alat_longitudinal_id')
 @dataclass(eq=False)
 class AlatLongitudinal(DapodikObject):
     id_alat: str
@@ -18,4 +19,3 @@ class AlatLongitudinal(DapodikObject):
     id_alat_str: str
     semester_id_str: str
     alat_longitudinal_id: str
-    _id: str = 'alat_longitudinal_id'
