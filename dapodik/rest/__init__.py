@@ -15,6 +15,7 @@ from .jenis_keluar import JenisKeluar
 from .jenis_lk import JenisLk
 from .jenis_pendaftaran import JenisPendaftaran
 from .jenis_prasarana import JenisPrasarana
+from .jenis_rombel import JenisRombel
 from .jenis_sarana import JenisSarana
 from .jenis_tinggal import JenisTinggal
 from .jenjang_pendidikan import JenjangPendidikan
@@ -90,6 +91,9 @@ class BaseRest(BaseDapodik):
             )
             self.JenisPrasarana = Rest(
                 self, JenisPrasarana, 'rest/JenisPrasarana'
+            )
+            self.JenisRombel = Rest(
+                self, JenisRombel, 'rest/JenisRombel'
             )
             self.JenisSarana = Rest(
                 self, JenisSarana, 'rest/JenisSarana'
