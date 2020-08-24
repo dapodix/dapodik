@@ -28,7 +28,7 @@ class BlockGrant(DapodikObject):
     sumber_dana_id_str: str
 
     @Sekolah.property
-    def sekolah(self):
+    def sekolah(self) -> Sekolah:
         return self.sekolah_id
 
     @SumberDanaSekolah.property

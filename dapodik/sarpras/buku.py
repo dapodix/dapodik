@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
@@ -25,3 +25,7 @@ class Buku(DapodikObject):
     updater_id: str
     mata_pelajaran_id_str: str
     sekolah_id_str: str
+
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id

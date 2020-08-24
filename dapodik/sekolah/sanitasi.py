@@ -92,5 +92,5 @@ class Sanitasi(DapodikObject):
         return self.sumber_air_minum_id
 
     @Sekolah.property
-    def sekolah(self):
+    def sekolah(self) -> Sekolah:
         return self.sekolah_id

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
@@ -38,3 +38,7 @@ class Angkutan(DapodikObject):
     jenis_sarana_id_str: str
     sekolah_id_str: str
     vld_count: int
+
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
