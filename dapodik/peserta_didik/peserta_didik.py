@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik.base import DapodikObject
+from dapodik import DapodikObject, SekolahMixin, PesertaDidikBaru
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta('peserta_didik_id')
 @dataclass(eq=False)
-class PesertaDidik(DapodikObject):
+class PesertaDidik(DapodikObject, SekolahMixin):
     nama: str
     jenis_kelamin: str
     tempat_lahir: str
@@ -98,3 +98,8 @@ class PesertaDidik(DapodikObject):
         return {
             'sekolah_id': self.dapodik.sekolah_id,
         }
+
+    @property
+    @PesertaDidikBaru.getter
+    def pdb(self) -> Optional[PesertaDidikBaru]:
+        return self.pdb_id

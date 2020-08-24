@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from dapodik.base import DapodikObject
+from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
@@ -10,7 +10,7 @@ class PesertaDidikLongitudinal(DapodikObject):
     tinggi_badan: int
     berat_badan: int
     lingkar_kepala: int = 0
-    peserta_didik_longitudinal_id: int = "Admin.model.PesertaDidikLongitudinal-1"
+    peserta_didik_longitudinal_id: int = "Admin.model.PesertaDidikLongitudinal-1"  # NOQA
     semester_id: int = "20201"
     jarak_rumah_ke_sekolah_km: int = 1
     jarak_rumah_ke_sekolah: int = 1

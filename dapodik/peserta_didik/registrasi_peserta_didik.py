@@ -1,20 +1,21 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Optional
+from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta('registrasi_id')
 @dataclass(eq=False)
-class RegistrasiPesertaDidik:
+class RegistrasiPesertaDidik(DapodikObject):
     peserta_didik_id: str
     sekolah_id: str
     tanggal_masuk_sekolah: str
     nipd: str = ""
-    registrasi_id: str = "Admin.model.RegistrasiPesertaDidik-1"
+    registrasi_id: Optional[str] = "Admin.model.RegistrasiPesertaDidik-1"
     jurusan_sp_id: str = ""
     jenis_pendaftaran_id: int = 1
     jenis_keluar_id: str = ""
-    tanggal_keluar: Union[str, None] = None
+    tanggal_keluar: Optional[str] = None
     keterangan: str = ""
     no_skhun: str = ""
     id_hobby: int = -1

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from dapodik.base import DapodikObject
+from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
