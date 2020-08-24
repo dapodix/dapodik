@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject, SumberAir
+from dapodik import DapodikObject, SumberAir, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
@@ -87,7 +87,10 @@ class Sanitasi(DapodikObject):
     semester_id_str: str
     sanitasi_id: str
 
-    @property
-    @SumberAir.getter
+    @SumberAir.property
     def sumber_air(self):
         return self.sumber_air_minum_id
+
+    @Sekolah.property
+    def sekolah(self):
+        return self.sekolah_id

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import (DapodikObject, WaktuPenyelenggaraan,
-                     AksesInternet)
+from dapodik import (DapodikObject, WaktuPenyelenggaraan, AksesInternet,
+                     Sekolah)
 from dapodik.utils.decorator import set_meta
 
 
@@ -36,17 +36,18 @@ class SekolahLongitudinal(DapodikObject):
     sekolah_id_str: str
     sekolah_longitudinal_id: str
 
-    @property
-    @WaktuPenyelenggaraan.getter
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
+
+    @WaktuPenyelenggaraan.property
     def waktu_penyelenggaraan(self) -> WaktuPenyelenggaraan:
         return self.waktu_penyelenggaraan_id
 
-    @property
-    @AksesInternet.getter
+    @AksesInternet.property
     def akses_internet(self) -> AksesInternet:
         return self.akses_internet_id
 
-    @property
-    @AksesInternet.getter
+    @AksesInternet.property
     def akses_internet_2(self) -> AksesInternet:
         return self.akses_internet_2_id

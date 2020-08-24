@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from dapodik import (
     DapodikObject,
-    SekolahMixin,
     KategoriTk,
     KlasifikasiLembaga,
     SumberDanaSekolah,
@@ -14,7 +13,7 @@ from dapodik.utils.decorator import set_meta
 
 @set_meta('sekolah_id')
 @dataclass(eq=False)
-class BaseSekolahPaud(DapodikObject):
+class SekolahPaud(DapodikObject):
     sekolah_id: str
     kategori_tk_id: str
     klasifikasi_lembaga_id: str
@@ -46,9 +45,6 @@ class BaseSekolahPaud(DapodikObject):
     last_sync: datetime
     updater_id: str
 
-
-@dataclass
-class SekolahPaud(BaseSekolahPaud, SekolahMixin):
     @property
     @KategoriTk.getter
     def kategori_tk(self) -> KategoriTk:

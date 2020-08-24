@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
@@ -29,3 +29,7 @@ class Kepanitiaan(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     id_jns_panitia_str: str
+
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Sekolah, SumberDanaSekolah
 from dapodik.utils.decorator import set_meta
 
 
@@ -26,3 +26,11 @@ class BlockGrant(DapodikObject):
     sekolah_id_str: str
     jenis_bantuan_id_str: str
     sumber_dana_id_str: str
+
+    @Sekolah.property
+    def sekolah(self):
+        return self.sekolah_id
+
+    @SumberDanaSekolah.property
+    def sumber_dana(self):
+        return self.sumber_dana_id
