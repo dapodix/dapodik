@@ -1,16 +1,13 @@
 from __future__ import annotations
 from dataclasses import MISSING
 from datetime import datetime, date
-from functools import wraps
 from dapodik.config import BASE_URL
 from dapodik.utils.helpers import get_dataclass_fields
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
-from typing import Any, Callable, Dict, Optional, TypeVar, Tuple, TYPE_CHECKING
+from typing import Any, Dict, Optional, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
     from dapodik import Dapodik
-
-DO = TypeVar('DO', bound='DapodikObject')
 
 
 class DapodikObject:
@@ -21,16 +18,18 @@ class DapodikObject:
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
     _params: Dict[str, str] = {}
+    _name: str = ''
 
     def __post_init__(self):
-        self.dapodik.logger.debug('Berhasil membuat {}'.format(repr(self)))
+        self.dapodik.logger.debug('Berhasil membuat {}'.format(
+            self.__class__.__qualname__))
 
     @property
     def id(self):
         return self.__dict__.get(self._id)
 
     @classmethod
-    def from_data(cls: DO,
+    def from_data(cls,
                   data: dict,
                   id: Optional[str] = None,
                   url: Optional[str] = None,
@@ -115,63 +114,63 @@ class DapodikObject:
         return params
 
     @classmethod
-    def getter(cls, get_id: Callable) -> Callable:
-        @wraps(get_id)
-        def decorator(self: DapodikObject):
-            id = get_id(self)
-            return self.dapodik[cls][id]
+    class property:
+        "Emulate PyProperty_Type() in Objects/descrobject.c"
 
-        return decorator
+        def __init__(self, cls, get_id, update=False, delete=False):
+            self.cls: DapodikObject = cls
+            self.func = get_id
+            self.update = update
+            self.delete = False
+            self.__doc__ = get_id.__doc__
 
-    @classmethod
-    def setter(cls, set_id: Callable) -> Callable:
-        @wraps(set_id)
-        def decorator(self: DapodikObject, value: Any):
-            if isinstance(value, cls):
-                return set_id(self, value.id)
-            exist = self.dapodik[cls][value]
-            if exist is None:
-                raise ValueError('Tidak ada {} dengan id {}'.format(
-                    set_id.__name__, id))
-            set_id(self, value)
+        def __get__(self, obj, objtype=None):
+            if obj is None:
+                return self
+            if self.fget is None:
+                raise AttributeError("unreadable attribute")
+            return self.fget(obj)
 
-        return decorator
+        def __set__(self, obj, value):
+            if self.fset is None:
+                raise AttributeError("can't set attribute")
+            self.fset(obj, value)
 
-    @classmethod
-    def prop(cls,
-             name: str = '',
-             update: bool = True,
-             delete: bool = False,
-             default: bool = None) -> Any:
-        def real_decorator(func):
-            @wraps(func)
-            def method(self: DapodikObject):
-                def getter(self: DapodikObject) -> Optional[cls]:
-                    key = func(self)
-                    return getattr(self, key)
+        def __delete__(self, obj):
+            if self.fdel is None:
+                raise AttributeError("can't delete attribute")
+            self.fdel(obj)
 
-                def setter(self: DapodikObject, value: Any) -> None:
-                    key = func(self)
-                    if update:
-                        c = self.dapodik[cls]
-                        if c and c[value]:
-                            setattr(self, key, value)
-                        else:
-                            raise ValueError('{} tidak ada di {}'.format(
-                                value, cls))
-                    else:
-                        raise Exception('{} di {} tidak dapat dirubah'.format(
-                            key, self))
+        def fget(self, obj: DapodikObject):
+            key = self.func(obj)
+            do = obj.dapodik[self.cls]
+            if not do:
+                raise Exception('tidak ditemukan {}'.format(
+                    type(self.cls).__qualname__))
+            val = do[key]
+            if val:
+                return val
+            raise Exception('id {} tidak ditemukan di {}'.format(
+                key,
+                type(self.cls).__qualname__))
 
-                def deleter(self: DapodikObject) -> None:
-                    key = func(self)
-                    if delete:
-                        delattr(self, key)
-                    else:
-                        raise Exception("{} tidak dapat dihapus".format(key))
+        def fset(self, obj: DapodikObject, value: Any) -> None:
+            key = self.func(obj)
+            if self.update:
+                c = obj.dapodik[self.cls]
+                if c and c[value]:
+                    setattr(obj, key, value)
+                else:
+                    raise ValueError('{} tidak ada di {}'.format(
+                        value, self.cls))
+            else:
+                raise Exception('{} tidak dapat dirubah'.format(
+                    self.func.__name__))
 
-                return property(getattr, setter, deleter)
-
-            return method
-
-        return real_decorator
+        def fdel(self, obj: DapodikObject) -> None:
+            key = self.func(obj)
+            if self.delete:
+                delattr(obj, key)
+            else:
+                raise Exception("{} tidak dapat dihapus".format(
+                    self.func.__name__))

@@ -20,7 +20,7 @@ class Rest:
         self.dapodik.rests[klass] = self
         self.dapodik.id_map[self.klass._id] = self.klass
         self.logger.debug('Berhasil membuat Rest untuk {}'.format(
-            klass.__class__.__name__))
+            klass.__class__.__module__))
 
     def get(self, params: dict = None) -> Optional[Results]:
         params = params or self.klass.get_params()
