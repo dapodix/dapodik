@@ -56,10 +56,28 @@ class Sekolah(DapodikObject):
     yayasan_id_str: str
     vld_count: int
 
-    @Yayasan.property
-    def yayasan(self) -> Yayasan:
-        return self.yayasan_id
+    @property
+    def sekolah(self):
+        return self.sekolah_id
+
+    @property
+    def bentuk_pendidikan(self):
+        # TODO API
+        return self.bentuk_pendidikan_id
 
     @KebutuhanKhusus.property
     def kebutuhan_khusus(self) -> KebutuhanKhusus:
         return self.kebutuhan_khusus_id
+
+    @property
+    def status_kepemilikan(self):
+        # TODO API
+        return self.status_kepemilikan_id
+
+    @Yayasan.property
+    def yayasan(self) -> Yayasan:
+        return self.yayasan_id
+
+    @property
+    def updater(self):
+        return self.updater_id

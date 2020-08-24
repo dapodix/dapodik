@@ -28,3 +28,7 @@ class ProgramInklusi(DapodikObject):
     @Sekolah.property
     def sekolah(self) -> Sekolah:
         return self.sekolah_id
+
+    @property
+    def updater(self):
+        return self.updater_id

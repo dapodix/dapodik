@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from dapodik import (
+    Sekolah,
     DapodikObject,
     KategoriTk,
     KlasifikasiLembaga,
@@ -45,27 +46,35 @@ class SekolahPaud(DapodikObject):
     last_sync: datetime
     updater_id: str
 
-    @property
-    @KategoriTk.getter
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
+
+    @KategoriTk.property
     def kategori_tk(self) -> KategoriTk:
         return self.kategori_tk_id
 
-    @property
-    @KlasifikasiLembaga.getter
+    @KlasifikasiLembaga.property
     def klasifikasi_lembaga(self) -> KlasifikasiLembaga:
         return self.klasifikasi_lembaga_id
 
-    @property
-    @SumberDanaSekolah.getter
+    @SumberDanaSekolah.property
     def sumber_dana_sekolah(self) -> SumberDanaSekolah:
         return self.sumber_dana_sekolah_id
 
-    @property
-    @FasilitasLayanan.getter
+    @FasilitasLayanan.property
     def fasilitas_layanan(self) -> FasilitasLayanan:
         return self.fasilitas_layanan_id
 
-    @property
-    @LembagaPengangkat.getter
+    @LembagaPengangkat.property
     def lembaga_pengangkat(self) -> LembagaPengangkat:
         return self.lembaga_pengangkat_id
+
+    @property
+    def bentuk_lembaga(self):
+        # TODO API
+        return self.bentuk_lembaga_id
+
+    @property
+    def updater(self):
+        return self.updater_id

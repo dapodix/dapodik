@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from dapodik import DapodikObject
+from dapodik import (DapodikObject, Pembelajaran, Semester, PtkTerdaftar,
+                     MataPelajaranKurikulum, RombonganBelajar)
 from dapodik.utils.decorator import set_meta
 
 
@@ -18,3 +19,28 @@ class Pembelajaran(DapodikObject):
     status_di_kurikulum: int = 9
     semester_id: str = "20201"
     pembelajaran_id: str = "Admin.model.PembelajaranNew-1"
+
+    @RombonganBelajar.property
+    def rombongan_belajar(self) -> RombonganBelajar:
+        return self.rombongan_belajar_id
+
+    @MataPelajaranKurikulum.property
+    def mata_pelajaran(self) -> MataPelajaranKurikulum:
+        return self.mata_pelajaran_id
+
+    @PtkTerdaftar.property
+    def ptk_terdaftar(self) -> PtkTerdaftar:
+        return self.ptk_terdaftar_id
+
+    @property
+    def induk_pembelajaran(self):
+        # TODO API
+        return self.induk_pembelajaran_id
+
+    @Semester.property
+    def semester(self) -> Semester:
+        return self.semester_id
+
+    @Pembelajaran.property
+    def pembelajaran(self) -> Pembelajaran:
+        return self.pembelajaran_id

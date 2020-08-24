@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Semester
 from dapodik.utils.decorator import set_meta
 
 
@@ -19,3 +19,15 @@ class AlatLongitudinal(DapodikObject):
     id_alat_str: str
     semester_id_str: str
     alat_longitudinal_id: str
+
+    @Semester.property
+    def semester(self) -> Semester:
+        return self.semester_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def alat_longitudinal(self):
+        return self

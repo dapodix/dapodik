@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Semester, Ruang
 from dapodik.utils.decorator import set_meta
 
 
@@ -52,3 +52,23 @@ class RuangLongitudinal(DapodikObject):
     id_ruang_str: str
     semester_id_str: str
     ruang_longitudinal_id: str
+
+    @Semester.property
+    def semester(self) -> Semester:
+        return self.semester_id
+
+    @property
+    def blob(self):
+        return self.blob_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def ruang_longitudinal(self):
+        return self
+
+    @Ruang.property
+    def ruang(self) -> Ruang:
+        return self.id_ruang

@@ -33,3 +33,12 @@ class Kepanitiaan(DapodikObject):
     @Sekolah.property
     def sekolah(self) -> Sekolah:
         return self.sekolah_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def jns_panitia(self):
+        # TODO API
+        return self.id_jns_panitia

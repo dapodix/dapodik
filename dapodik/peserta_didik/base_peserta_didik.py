@@ -1,8 +1,11 @@
-from dapodik import BaseDapodik, Rest
-from dapodik import PesertaDidik
-from dapodik import PesertaDidikBaru
-from dapodik import PesertaDidikLongitudinal
-from dapodik import RegistrasiPesertaDidik
+from dapodik import (
+    BaseDapodik,
+    Rest,
+    PesertaDidik,
+    PesertaDidikBaru,
+    PesertaDidikLongitudinal,
+    RegistrasiPesertaDidik,
+)
 
 
 class BasePesertaDidik(BaseDapodik):

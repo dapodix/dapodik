@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik import DapodikObject
+from dapodik import DapodikObject, BlockGrant
 from dapodik.utils.decorator import set_meta
 
 
@@ -17,3 +17,15 @@ class BangunanDariBlockgrant(DapodikObject):
     blockgrant_id_str: str
     id_bangunan_str: str
     bangunan_dari_blockgrant_id: str
+
+    @BlockGrant.property
+    def blockgrant(self) -> BlockGrant:
+        return self.blockgrant_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def bangunan_dari_blockgrant(self):
+        return self.bangunan_dari_blockgrant_id

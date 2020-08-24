@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject, Sekolah
+from dapodik import DapodikObject, Sekolah, JenisPrasarana, Ptk
 from dapodik.utils.decorator import set_meta
 
 
@@ -56,15 +56,23 @@ class Bangunan(DapodikObject):
     sekolah_id_str: str
     vld_count: int
 
+    @JenisPrasarana.property
+    def jenis_prasarana(self):
+        return self.jenis_prasarana_id
+
     @Sekolah.property
-    def sekolah(self) -> Sekolah:
+    def sekolah(self):
         return self.sekolah_id
 
-
-class BangunanMixin(DapodikObject):
-    id_bangunan: str = None
+    @Ptk.property
+    def ptk(self):
+        return self.ptk_id
 
     @property
-    @Bangunan.setter
-    def bangunan(self) -> Optional[Bangunan]:
-        return self.id_bangunan
+    def kepemilikan_sarpras(self):
+        # TODO API
+        return self.kepemilikan_sarpras_id
+
+    @property
+    def updater(self):
+        return self.updater_id

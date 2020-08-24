@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, TingkatPendidikan
 from dapodik.utils.decorator import set_meta
 
 
-@dataclass(eq=False)
 @set_meta('mata_pelajaran_id')
+@dataclass(eq=False)
 class MataPelajaranKurikulum(DapodikObject):
     mata_pelajaran_kurikulum_id: str
     kurikulum_id: int
@@ -17,3 +17,21 @@ class MataPelajaranKurikulum(DapodikObject):
     a_peminatan: str
     nama: str
     jam_mengajar_per_minggu: Optional[int]
+
+    @property
+    def mata_pelajaran_kurikulum(self):
+        return self.mata_pelajaran_kurikulum_id
+
+    @property
+    def kurikulum(self):
+        # TODO API
+        return self.kurikulum_id
+
+    @property
+    def mata_pelajaran(self):
+        # TODO API
+        return self.mata_pelajaran_id
+
+    @TingkatPendidikan.property
+    def tingkat_pendidikan(self) -> TingkatPendidikan:
+        return self.tingkat_pendidikan_id

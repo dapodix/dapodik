@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, BlockGrant
 from dapodik.utils.decorator import set_meta
 
 
@@ -18,3 +18,15 @@ class AlatDariBlockgrant(DapodikObject):
     blockgrant_id_str: str
     id_alat_str: str = ''
     alat_dari_blockgrant_id: Optional[str] = 'Admin.model.AlatDariBlockgrant-1'
+
+    @BlockGrant.property
+    def blockgrant(self) -> BlockGrant:
+        return self.blockgrant_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def alat_dari_blockgrant(self):
+        return self

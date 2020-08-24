@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik import DapodikObject, Sekolah
+from dapodik import DapodikObject, Sekolah, Akreditasi, LembagaPengangkat
 from dapodik.utils.decorator import set_meta
 
 
@@ -22,6 +22,22 @@ class AkreditasiSp(DapodikObject):
     sekolah_id_str: str
     la_id_str: str
 
+    @Akreditasi.property
+    def akred_sp(self) -> Akreditasi:
+        return self.akred_sp_id
+
     @Sekolah.property
     def sekolah(self) -> Sekolah:
         return self.sekolah_id
+
+    @LembagaPengangkat.property
+    def la(self) -> LembagaPengangkat:
+        return self.la_id
+
+    @property
+    def akreditasi(self):
+        return self.akreditasi_id
+
+    @property
+    def updater(self):
+        return self.updater_id

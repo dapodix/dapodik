@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from dapodik import DapodikObject
+from dapodik import DapodikObject, PesertaDidik, Semester
 from dapodik.utils.decorator import set_meta
 
 
@@ -21,3 +21,15 @@ class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_longitudinal_id_str: int = ""
     peserta_didik_id_str: int = ""
     semester_id_str: int = ""
+
+    @PesertaDidik.property
+    def peserta_didik(self) -> PesertaDidik:
+        return self.peserta_didik_id
+
+    @property
+    def peserta_didik_longitudinal(self):
+        return self
+
+    @Semester.property
+    def semester(self) -> Semester:
+        return self.semester_id

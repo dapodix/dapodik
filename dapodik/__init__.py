@@ -63,7 +63,6 @@ from .sekolah.sekolah_paud import SekolahPaud
 
 from .ptk.ptk import Ptk
 from .ptk.ptk_terdaftar import PtkTerdaftar
-from .ptk.ptk_terdaftar import PtkTerdaftarMixin
 
 from .peserta_didik.peserta_didik_baru import PesertaDidikBaru
 from .peserta_didik.peserta_didik import PesertaDidik
@@ -72,11 +71,9 @@ from .peserta_didik.registrasi_peserta_didik import RegistrasiPesertaDidik
 
 from .sarpras.tanah import Tanah
 from .sarpras.bangunan import Bangunan
-from .sarpras.bangunan import BangunanMixin
 from .sarpras.bangunan_longitudinal import BangunanLongitudinal
 from .sarpras.bangunan_dari_blockgrant import BangunanDariBlockgrant
 from .sarpras.ruang import Ruang
-from .sarpras.ruang import RuangMixin
 from .sarpras.ruang_longitudinal import RuangLongitudinal
 from .sarpras.alat import Alat
 from .sarpras.alat_dari_blockgrant import AlatDariBlockgrant
@@ -109,24 +106,22 @@ __all__ = [
     'Agama', 'Akreditasi', 'AkreditasiSp', 'AksesInternet', 'Alat',
     'AlatDariBlockgrant', 'AlatLongitudinal', 'AlatTransportasi', 'Angkutan',
     'AngkutanDariBlockgrant', 'Auth', 'Bangunan', 'BangunanDariBlockgrant',
-    'BangunanLongitudinal', 'BangunanMixin', 'Bank', 'BaseCustomrest',
-    'BaseDapodik', 'BasePesertaDidik', 'BasePtk', 'BaseRest',
-    'BaseRombonganBelajar', 'BaseSarpras', 'BaseSekolah', 'BentukLembaga',
-    'Biblio', 'BlockGrant', 'Buku', 'BukuLongitudinal', 'ChildDelete',
-    'Dapodik', 'DapodikObject', 'FasilitasLayanan', 'Gmd', 'JadwalPaud',
-    'JenisGugus', 'JenisHapusBuku', 'JenisKeluar', 'JenisLk',
-    'JenisPendaftaran', 'JenisPrasarana', 'JenisRombel', 'JenisSarana',
-    'JenisTinggal', 'JenjangPendidikan', 'KategoriTk', 'KebutuhanKhusus',
-    'Kepanitiaan', 'KlasifikasiLembaga', 'LembagaPengangkat',
-    'MataPelajaranKurikulum', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
-    'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
-    'PesertaDidikBaru', 'PesertaDidikLongitudinal', 'ProgramInklusi', 'Ptk',
-    'PtkTerdaftar', 'PtkTerdaftarMixin', 'RegistrasiPesertaDidik', 'Rest',
+    'BangunanLongitudinal', 'Bank', 'BaseCustomrest', 'BaseDapodik',
+    'BasePesertaDidik', 'BasePtk', 'BaseRest', 'BaseRombonganBelajar',
+    'BaseSarpras', 'BaseSekolah', 'BentukLembaga', 'Biblio', 'BlockGrant',
+    'Buku', 'BukuLongitudinal', 'ChildDelete', 'Dapodik', 'DapodikObject',
+    'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus', 'JenisHapusBuku',
+    'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
+    'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
+    'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga',
+    'LembagaPengangkat', 'MataPelajaranKurikulum', 'MstWilayah',
+    'PangkatGolongan', 'Pekerjaan', 'Pembelajaran', 'Pengguna', 'Penghasilan',
+    'PesertaDidik', 'PesertaDidikBaru', 'PesertaDidikLongitudinal',
+    'ProgramInklusi', 'Ptk', 'PtkTerdaftar', 'RegistrasiPesertaDidik', 'Rest',
     'Results', 'RolePengguna', 'RombonganBelajar', 'Ruang',
-    'RuangLongitudinal', 'RuangMixin', 'Sanitasi', 'Sekolah',
-    'SekolahLongitudinal', 'SekolahPaud', 'Semester', 'StatusKeaktifanPegawai',
-    'StatusKepegawaian', 'StatusKepemilikanSarpras', 'SumberAir',
-    'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog', 'Tanah',
-    'TingkatPendidikan', 'UpdatePanelDashboard', 'WaktuPenyelenggaraan',
-    'Yayasan'
+    'RuangLongitudinal', 'Sanitasi', 'Sekolah', 'SekolahLongitudinal',
+    'SekolahPaud', 'Semester', 'StatusKeaktifanPegawai', 'StatusKepegawaian',
+    'StatusKepemilikanSarpras', 'SumberAir', 'SumberDanaSekolah', 'SumberGaji',
+    'SumberListrik', 'SyncLog', 'Tanah', 'TingkatPendidikan',
+    'UpdatePanelDashboard', 'WaktuPenyelenggaraan', 'Yayasan'
 ]

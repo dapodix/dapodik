@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 from dapodik import (DapodikObject, WaktuPenyelenggaraan, AksesInternet,
-                     Sekolah)
+                     Sekolah, Semester, SumberListrik)
 from dapodik.utils.decorator import set_meta
 
 
@@ -37,17 +37,41 @@ class SekolahLongitudinal(DapodikObject):
     sekolah_longitudinal_id: str
 
     @Sekolah.property
-    def sekolah(self) -> Sekolah:
+    def sekolah(self):
         return self.sekolah_id
 
+    @Semester.property
+    def semester(self):
+        return self.semester_id
+
     @WaktuPenyelenggaraan.property
-    def waktu_penyelenggaraan(self) -> WaktuPenyelenggaraan:
+    def waktu_penyelenggaraan(self):
         return self.waktu_penyelenggaraan_id
 
+    @property
+    def sertifikasi_iso(self):
+        # TODO API
+        return self.sertifikasi_iso_id
+
+    @SumberListrik.property
+    def sumber_listrik(self):
+        return self.sumber_listrik_id
+
     @AksesInternet.property
-    def akses_internet(self) -> AksesInternet:
+    def akses_internet(self):
         return self.akses_internet_id
 
     @AksesInternet.property
-    def akses_internet_2(self) -> AksesInternet:
+    def akses_internet_2(self):
         return self.akses_internet_2_id
+
+    @property
+    def blob(self):
+        return self.blob_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    def sekolah_longitudinal(self):
+        return self

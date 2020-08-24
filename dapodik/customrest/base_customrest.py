@@ -1,6 +1,9 @@
-from dapodik import BaseDapodik, Rest
-from dapodik import MataPelajaranKurikulum
-from dapodik import UpdatePanelDashboard
+from dapodik import (
+    BaseDapodik,
+    Rest,
+    MataPelajaranKurikulum,
+    UpdatePanelDashboard,
+)
 
 
 class BaseCustomrest(BaseDapodik):
@@ -10,8 +13,7 @@ class BaseCustomrest(BaseDapodik):
                 self, MataPelajaranKurikulum,
                 'customrest/MataPelajaranKurikulum')
             self.UpdatePanelDashboard = Rest(
-                self, UpdatePanelDashboard,
-                'customrest/UpdatePanelDashboard')
+                self, UpdatePanelDashboard, 'customrest/UpdatePanelDashboard')
             self.logger.debug('Berhasil memulai custom rest')
             return True
         except Exception as E:

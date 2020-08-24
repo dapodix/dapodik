@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik import DapodikObject, PesertaDidikBaru
+from dapodik import (DapodikObject, PesertaDidikBaru, Sekolah, Agama,
+                     KebutuhanKhusus, JenisTinggal, AlatTransportasi)
 from dapodik.utils.decorator import set_meta
 
 
@@ -99,7 +100,30 @@ class PesertaDidik(DapodikObject):
             'sekolah_id': self.dapodik.sekolah_id,
         }
 
-    @property
-    @PesertaDidikBaru.getter
-    def pdb(self) -> Optional[PesertaDidikBaru]:
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
+
+    @PesertaDidikBaru.property
+    def pdb(self) -> PesertaDidikBaru:
         return self.pdb_id
+
+    @Agama.property
+    def agama(self) -> Agama:
+        return self.agama_id
+
+    @property
+    def peserta_didik(self):
+        return self
+
+    @KebutuhanKhusus.property
+    def kebutuhan_khusus(self) -> KebutuhanKhusus:
+        return self.kebutuhan_khusus_id
+
+    @JenisTinggal.property
+    def jenis_tinggal(self) -> JenisTinggal:
+        return self.jenis_tinggal_id
+
+    @AlatTransportasi.property
+    def alat_transportasi(self) -> AlatTransportasi:
+        return self.alat_transportasi_id

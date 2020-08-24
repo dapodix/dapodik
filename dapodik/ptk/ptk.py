@@ -10,6 +10,7 @@ from dapodik import (
     StatusKeaktifanPegawai,
     StatusKepegawaian,
     PangkatGolongan,
+    Sekolah,
     SumberGaji,
 )
 from dapodik.utils.decorator import set_meta
@@ -111,71 +112,76 @@ class Ptk(DapodikObject):
     jenis_ptk_id_str: str
     vld_count: int
 
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
+
     @property
-    @JenisKeluar.getter
-    def jenis_keluar(self) -> Optional[JenisKeluar]:
+    def ptk_terdaftar(self):
+        return self.ptk_terdaftar_id
+
+    @JenisKeluar.property
+    def jenis_keluar(self) -> JenisKeluar:
         return self.jenis_keluar_id
 
     @property
     def tahun_ajaran(self):
-        pass
+        # TODO API
+        return self.tahun_ajaran_id
 
     @property
     def updater(self):
-        pass
+        return self.updater_id
 
-    @property
-    @StatusKepegawaian.getter
-    def status_kepegawaian(self) -> Optional[StatusKepegawaian]:
+    @StatusKepegawaian.property
+    def status_kepegawaian(self) -> StatusKepegawaian:
         return self.status_kepegawaian_id
 
     @property
     def jenis_ptk(self):
-        pass
+        # TODO API
+        return self.jenis_ptk_id
 
     @property
     def pengawas_bidang_studi(self):
-        pass
+        # TODO API
+        return self.pengawas_bidang_studi_id
 
-    @property
-    @Agama.getter
-    def agama(self) -> Optional[Agama]:
+    @Agama.property
+    def agama(self) -> Agama:
         return self.agama_id
 
-    @property
-    @StatusKeaktifanPegawai.getter
-    def status_keaktifan(self) -> Optional[StatusKeaktifanPegawai]:
-        return self.status_kepegawaian_id
+    @StatusKeaktifanPegawai.property
+    def status_keaktifan(self) -> StatusKeaktifanPegawai:
+        return self.status_keaktifan_id
 
     @property
-    @PangkatGolongan.getter
-    def lembaga_pengangkat(self) -> Optional[PangkatGolongan]:
+    def lembaga_pengangkat(self):
+        # TODO API
         return self.lembaga_pengangkat_id
 
-    @property
-    @PangkatGolongan.getter
-    def pangkat_golongan(self) -> Optional[PangkatGolongan]:
+    @PangkatGolongan.property
+    def pangkat_golongan(self) -> PangkatGolongan:
         return self.pangkat_golongan_id
 
     @property
     def keahlian_laboratorium(self):
-        pass
+        # TODO API
+        return self.keahlian_laboratorium_id
 
-    @property
-    @SumberGaji.getter
-    def sumber_gaji(self) -> Optional[SumberGaji]:
+    @SumberGaji.property
+    def sumber_gaji(self) -> SumberGaji:
         return self.sumber_gaji_id
 
     @property
     def blob(self):
-        pass
+        # TODO API
+        return self.blob_id
 
-    @property
-    @Pengguna.getter
-    def pengguna(self) -> Optional[Pengguna]:
+    @Pengguna.property
+    def pengguna(self) -> Pengguna:
         return self.pengguna_id
 
-    @property
-    @Bank.getter
-    def bank(self) -> Optional[Bank]:
-        return self.id_bank
+    @Bank.property
+    def bank(self) -> Bank:
+        return self.bank

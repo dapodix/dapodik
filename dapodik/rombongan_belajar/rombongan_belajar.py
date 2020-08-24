@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import (DapodikObject, TingkatPendidikan, KebutuhanKhusus)
+from dapodik import (DapodikObject, Sekolah, TingkatPendidikan,
+                     KebutuhanKhusus, Semester, Ptk)
 from dapodik.utils.decorator import set_meta
 
 
@@ -42,11 +43,44 @@ class RombonganBelajar(DapodikObject):
     jurusan_id_str: str
 
     @property
-    @TingkatPendidikan.getter
+    def rombongan_belajar(self):
+        return self
+
+    @Semester.property
+    def semester(self) -> Semester:
+        return self.semester_id
+
+    @Sekolah.property
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id
+
+    @TingkatPendidikan.property
     def tingkat_pendidikan(self) -> TingkatPendidikan:
         return self.tingkat_pendidikan_id
 
     @property
-    @KebutuhanKhusus.getter
-    def kebutuhan_khusus(self) -> Optional[KebutuhanKhusus]:
+    def jurusan_sp(self):
+        # TODO API
+        return self.jurusan_sp_id
+
+    @property
+    def kurikulum(self):
+        # TODO API
+        return self.kurikulum_id
+
+    @Ptk.property
+    def ptk(self) -> Ptk:
+        return self.ptk_id
+
+    @KebutuhanKhusus.property
+    def kebutuhan_khusus(self) -> KebutuhanKhusus:
         return self.kebutuhan_khusus_id
+
+    @property
+    def updater(self):
+        return self.updater_id
+
+    @property
+    def jurusan(self):
+        # TODO API
+        return self.jurusan_id

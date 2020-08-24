@@ -1,6 +1,9 @@
-from dapodik import BaseDapodik, Rest
-from dapodik import PtkTerdaftar
-from dapodik import Ptk
+from dapodik import (
+    BaseDapodik,
+    Rest,
+    PtkTerdaftar,
+    Ptk,
+)
 
 
 class BasePtk(BaseDapodik):
