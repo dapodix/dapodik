@@ -4,16 +4,18 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('bangunan_dari_blockgrant_id')
+@set_meta('buku_longitudinal_id')
 @dataclass(eq=False)
-class BangunanDariBlockgrant(DapodikObject):
-    blockgrant_id: str
-    id_bangunan: str
+class BukuLongitudinal(DapodikObject):
+    id_buku: str
+    semester_id: str
+    jumlah: int
+    status_kelaikan: str
     create_date: datetime
     last_update: datetime
     soft_delete: str
     last_sync: datetime
     updater_id: str
-    blockgrant_id_str: str
-    id_bangunan_str: str
-    bangunan_dari_blockgrant_id: str
+    id_buku_str: str
+    semester_id_str: str
+    buku_longitudinal_id: str

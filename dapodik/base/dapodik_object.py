@@ -1,9 +1,10 @@
 from __future__ import annotations
 from dataclasses import MISSING
-from datetime import datetime
+from datetime import datetime, date
 from functools import wraps
 from dapodik.config import BASE_URL
-from dapodik.utils import get_dataclass_fields, str_to_datetime
+from dapodik.utils.helpers import get_dataclass_fields
+from dapodik.utils.parser import str_to_datetime, str_to_date
 
 from typing import Any, Callable, Dict, Optional, TypeVar, Tuple, TYPE_CHECKING
 if TYPE_CHECKING:
@@ -50,6 +51,8 @@ class DapodikObject:
                 #     # safe_data[key] = dapodik[field.type][value]
                 if field.type == datetime:
                     safe_data[key] = str_to_datetime(value)
+                elif field.type == date:
+                    safe_data[key] = str_to_date(value)
                 else:
                     safe_data[key] = value
             elif field.default != MISSING:
@@ -97,7 +100,7 @@ class DapodikObject:
 
     def __hash__(self) -> int:
         if self._id_attrs:
-            return hash((self.__class__, self._id_attrs))
+            return hash((self.id, self._id_attrs))
         return super().__hash__()
 
     @property
@@ -133,3 +136,42 @@ class DapodikObject:
             set_id(self, value)
 
         return decorator
+
+    @classmethod
+    def prop(cls,
+             name: str = '',
+             update: bool = True,
+             delete: bool = False,
+             default: bool = None) -> Any:
+        def real_decorator(func):
+            @wraps(func)
+            def method(self: DapodikObject):
+                def getter(self: DapodikObject) -> Optional[cls]:
+                    key = func(self)
+                    return getattr(self, key)
+
+                def setter(self: DapodikObject, value: Any) -> None:
+                    key = func(self)
+                    if update:
+                        c = self.dapodik[cls]
+                        if c and c[value]:
+                            setattr(self, key, value)
+                        else:
+                            raise ValueError('{} tidak ada di {}'.format(
+                                value, cls))
+                    else:
+                        raise Exception('{} di {} tidak dapat dirubah'.format(
+                            key, self))
+
+                def deleter(self: DapodikObject) -> None:
+                    key = func(self)
+                    if delete:
+                        delattr(self, key)
+                    else:
+                        raise Exception("{} tidak dapat dihapus".format(key))
+
+                return property(getattr, setter, deleter)
+
+            return method
+
+        return real_decorator

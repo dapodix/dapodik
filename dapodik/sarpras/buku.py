@@ -5,24 +5,23 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('blockgrant_id')
+@set_meta('id_buku')
 @dataclass(eq=False)
-class BlockGrant(DapodikObject):
-    blockgrant_id: str
+class Buku(DapodikObject):
+    id_buku: str
+    mata_pelajaran_id: int
+    id_ruang: Optional[str]
     sekolah_id: str
-    nama: str
-    tahun: str
-    jenis_bantuan_id: int
-    sumber_dana_id: str
-    besar_bantuan: str
-    dana_pendamping: str
-    peruntukan_dana: Optional[str]
+    id_biblio: Optional[str]
+    tingkat_pendidikan_id: str
+    nm_buku: str
+    id_hapus_buku: Optional[str]
+    tgl_hapus_buku: Optional[str]
     asal_data: str
     create_date: datetime
     last_update: datetime
     soft_delete: str
     last_sync: datetime
     updater_id: str
+    mata_pelajaran_id_str: str
     sekolah_id_str: str
-    jenis_bantuan_id_str: str
-    sumber_dana_id_str: str

@@ -1,19 +1,20 @@
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional
 from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('bangunan_dari_blockgrant_id')
+@set_meta('angkutan_dari_blockgrant_id')
 @dataclass(eq=False)
-class BangunanDariBlockgrant(DapodikObject):
+class AngkutanDariBlockgrant(DapodikObject):
     blockgrant_id: str
-    id_bangunan: str
+    id_angkutan: str
     create_date: datetime
     last_update: datetime
     soft_delete: str
     last_sync: datetime
     updater_id: str
     blockgrant_id_str: str
-    id_bangunan_str: str
-    bangunan_dari_blockgrant_id: str
+    id_angkutan_str: str
+    angkutan_dari_blockgrant_id: Optional[str]

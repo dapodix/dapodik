@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime
-from dapodik.base import DapodikObject
+from typing import Optional
+from dapodik import (DapodikObject, WaktuPenyelenggaraan,
+                     AksesInternet)
 from dapodik.utils.decorator import set_meta
 
 
@@ -24,7 +26,7 @@ class SekolahLongitudinal(DapodikObject):
     daya_listrik: str
     akses_internet_id: int
     akses_internet_2_id: int
-    blob_id: str
+    blob_id: Optional[str]
     create_date: datetime
     last_update: datetime
     soft_delete: str
@@ -33,3 +35,18 @@ class SekolahLongitudinal(DapodikObject):
     waktu_penyelenggaraan_id_str: str
     sekolah_id_str: str
     sekolah_longitudinal_id: str
+
+    @property
+    @WaktuPenyelenggaraan.getter
+    def waktu_penyelenggaraan(self) -> WaktuPenyelenggaraan:
+        return self.waktu_penyelenggaraan_id
+
+    @property
+    @AksesInternet.getter
+    def akses_internet(self) -> AksesInternet:
+        return self.akses_internet_id
+
+    @property
+    @AksesInternet.getter
+    def akses_internet_2(self) -> AksesInternet:
+        return self.akses_internet_2_id

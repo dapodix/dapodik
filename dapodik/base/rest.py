@@ -32,5 +32,14 @@ class Rest:
         self.dapodik.rests[self.klass] = result
         return result
 
+    def create(self, do: DapodikObject):
+        pass
+
+    def update(self, do: DapodikObject):
+        pass
+
+    def delete(self, do: DapodikObject):
+        pass
+
     def __call__(self, *args, **kwargs) -> Optional[Results]:
         return self.get(*args, **kwargs)

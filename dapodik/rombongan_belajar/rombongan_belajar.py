@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import DapodikObject
+from dapodik import (DapodikObject, TingkatPendidikan, KebutuhanKhusus)
 from dapodik.utils.decorator import set_meta
 
 
@@ -40,3 +40,13 @@ class RombonganBelajar(DapodikObject):
     jenis_rombel_str: str
     jurusan_id: str
     jurusan_id_str: str
+
+    @property
+    @TingkatPendidikan.getter
+    def tingkat_pendidikan(self) -> TingkatPendidikan:
+        return self.tingkat_pendidikan_id
+
+    @property
+    @KebutuhanKhusus.getter
+    def kebutuhan_khusus(self) -> Optional[KebutuhanKhusus]:
+        return self.kebutuhan_khusus_id

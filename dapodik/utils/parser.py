@@ -1,5 +1,5 @@
 from dataclasses import MISSING
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional, Union
 
 
@@ -57,10 +57,20 @@ def cast(data: dict, Class_):
 
 
 def str_to_datetime(data: Union[str, datetime],
-                    format: str = "%Y-%m-%d %H:%M:%S") -> Optional[datetime]:
+                    format: str = '%Y-%m-%d %H:%M:%S') -> Optional[datetime]:
     if isinstance(data, datetime):
         return data
     elif type(data) == str:
         return datetime.strptime(data, format)
     else:
         return datetime.now()
+
+
+def str_to_date(data: Union[str, date],
+                format: str = '%Y-%m-%d') -> Optional[date]:
+    if isinstance(data, date):
+        return data
+    elif type(data) == str:
+        return datetime.strptime(data, format)
+    else:
+        return datetime.now().date()

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import DapodikObject
-from dapodik.rest import (
+from dapodik import (
+    DapodikObject,
     Agama,
     Bank,
     JenisKeluar,
@@ -13,7 +13,6 @@ from dapodik.rest import (
     SumberGaji,
 )
 from dapodik.utils.decorator import set_meta
-from .ptk_terdaftar import PtkTerdaftar
 
 
 @set_meta('ptk_id')
@@ -111,11 +110,6 @@ class Ptk(DapodikObject):
     verifikasi_email: bool
     jenis_ptk_id_str: str
     vld_count: int
-
-    @property
-    @PtkTerdaftar.getter
-    def ptk_terdaftar(self) -> Optional[PtkTerdaftar]:
-        return self.ptk_terdaftar_id
 
     @property
     @JenisKeluar.getter

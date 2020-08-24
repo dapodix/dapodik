@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import DapodikObject
-from .yayasan import Yayasan
+from dapodik import DapodikObject
 
 
 @dataclass(eq=False)
@@ -31,7 +30,7 @@ class Sekolah(DapodikObject):
     sk_pendirian_sekolah: str
     tanggal_sk_pendirian: str
     status_kepemilikan_id: str
-    yayasan_id: Yayasan
+    yayasan_id: str
     sk_izin_operasional: str
     tanggal_sk_izin_operasional: str
     no_rekening: Optional[str]
@@ -57,11 +56,10 @@ class Sekolah(DapodikObject):
     yayasan_id_str: str
     vld_count: int
 
-    @property
-    @Yayasan.getter
-    def yayasan(self):
-        return self.yayasan_id
 
-    @yayasan.setter
-    def yayasan(self, value):
-        self.yayasan_id = value
+class SekolahMixin:
+    sekolah_id: str = None
+
+    @Sekolah.prop()
+    def sekolah(self) -> Sekolah:
+        return self.sekolah_id

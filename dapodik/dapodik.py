@@ -4,23 +4,23 @@ import logging
 from requests import Session
 from typing import Dict, Optional
 
-from .auth import Auth
-from .base import DapodikObject, Results, Rest
-from .config import BASE_URL, USER_AGENT
-from .peserta_didik import BasePesertaDidik
-from .ptk import BasePtk
-from .rest import BaseRest
-from .rombongan_belajar import BaseRombonganBelajar
-from .sarpras import BaseSarpras
-from .sekolah import BaseSekolah
-
-from .version import __version__, __dapodik_version__  # NOQA
+from dapodik import Auth
+from dapodik import DapodikObject, Results, Rest
+from dapodik import BASE_URL, USER_AGENT
+from dapodik import BaseCustomrest
+from dapodik import BasePesertaDidik
+from dapodik import BasePtk
+from dapodik import BaseRest
+from dapodik import BaseRombonganBelajar
+from dapodik import BaseSarpras
+from dapodik import BaseSekolah
 
 
 class Dapodik(Auth,
+              BaseCustomrest,
+              BaseRest,
               BasePesertaDidik,
               BasePtk,
-              BaseRest,
               BaseRombonganBelajar,
               BaseSarpras,
               BaseSekolah):

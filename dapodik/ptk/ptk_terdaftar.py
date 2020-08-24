@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik.base import DapodikObject
-from dapodik.rest import JenisKeluar
+from dapodik import DapodikObject, JenisKeluar, Ptk
 from dapodik.utils.decorator import set_meta
 
 
@@ -12,7 +11,6 @@ class PtkTerdaftar(DapodikObject):
     ptk_terdaftar_id: str
     ptk_id: str
     sekolah_id: str
-    jenis_keluar_id: Optional[str]
     tahun_ajaran_id: str
     nomor_surat_tugas: str
     tanggal_surat_tugas: str
@@ -30,7 +28,6 @@ class PtkTerdaftar(DapodikObject):
     aktif_bulan_10: str
     aktif_bulan_11: str
     aktif_bulan_12: str
-    tgl_ptk_keluar: Optional[str]
     create_date: datetime
     last_update: datetime
     soft_delete: str
@@ -39,8 +36,24 @@ class PtkTerdaftar(DapodikObject):
     ptk_id_str: str
     sekolah_id_str: str
     tahun_ajaran_id_str: str
+    jenis_keluar_id: Optional[str]
+    tgl_ptk_keluar: Optional[str]
+
+    @property
+    @Ptk.getter
+    def ptk(self) -> Ptk:
+        return self.ptk_id
 
     @property
     @JenisKeluar.getter
     def jenis_keluar(self) -> Optional[JenisKeluar]:
         return self.jenis_keluar_id
+
+
+class PtkTerdaftarMixin(DapodikObject):
+    ptk_terdaftar_id: str = None
+
+    @property
+    @PtkTerdaftar.getter
+    def ptk_terdaftar(self) -> PtkTerdaftar:
+        return self.ptk_terdaftar_id

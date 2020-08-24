@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik import DapodikObject, SekolahMixin, PesertaDidikBaru
+from dapodik import DapodikObject, PesertaDidikBaru
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta('peserta_didik_id')
 @dataclass(eq=False)
-class PesertaDidik(DapodikObject, SekolahMixin):
+class PesertaDidik(DapodikObject):
     nama: str
     jenis_kelamin: str
     tempat_lahir: str

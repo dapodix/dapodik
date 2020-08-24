@@ -11,6 +11,7 @@ from .rest.akses_internet import AksesInternet
 from .rest.alat_transportasi import AlatTransportasi
 from .rest.bank import Bank
 from .rest.bentuk_lembaga import BentukLembaga
+from .rest.biblio import Biblio
 from .rest.child_delete import ChildDelete
 from .rest.fasilitas_layanan import FasilitasLayanan
 from .rest.gmd import Gmd
@@ -21,6 +22,7 @@ from .rest.jenis_keluar import JenisKeluar
 from .rest.jenis_lk import JenisLk
 from .rest.jenis_pendaftaran import JenisPendaftaran
 from .rest.jenis_prasarana import JenisPrasarana
+from .rest.jenis_rombel import JenisRombel
 from .rest.jenis_sarana import JenisSarana
 from .rest.jenis_tinggal import JenisTinggal
 from .rest.jenjang_pendidikan import JenjangPendidikan
@@ -45,66 +47,89 @@ from .rest.sync_log import SyncLog
 from .rest.tingkat_pendidikan import TingkatPendidikan
 from .rest.waktu_penyelenggaraan import WaktuPenyelenggaraan
 
-from .peserta_didik.peserta_didik import PesertaDidik
-from .peserta_didik.peserta_didik_baru import PesertaDidikBaru
-from .peserta_didik.registrasi_peserta_didik import RegistrasiPesertaDidik
+from .customrest.mata_pelajaran_kurikulum import MataPelajaranKurikulum
+from .customrest.update_panel_dashboard import UpdatePanelDashboard
 
-from .ptk.ptk import Ptk
-from .ptk.ptk_terdaftar import PtkTerdaftar
-
-from .rombongan_belajar.pembelajaran import Pembelajaran
-from .rombongan_belajar.rombongan_belajar import RombonganBelajar
-
-from .sarpras.alat import Alat
-from .sarpras.alat_dari_blockgrant import AlatDariBlockgrant
-from .sarpras.alat_longitudinal import AlatLongitudinal
-from .sarpras.bangunan import Bangunan
-from .sarpras.bangunan_dari_blockgrant import BangunanDariBlockgrant
-from .sarpras.bangunan_longitudinal import BangunanLongitudinal
-from .sarpras.ruang import Ruang
-from .sarpras.ruang_longitudinal import RuangLongitudinal
-from .sarpras.tanah import Tanah
-
+from .sekolah.yayasan import Yayasan
+from .sekolah.semester import Semester
+from .sekolah.sekolah import Sekolah
+from .sekolah.sekolah import SekolahMixin
 from .sekolah.akreditasi_sp import AkreditasiSp
 from .sekolah.blockgrant import BlockGrant
 from .sekolah.kepanitiaan import Kepanitiaan
 from .sekolah.program_inklusi import ProgramInklusi
 from .sekolah.sanitasi import Sanitasi
-from .sekolah.sekolah import Sekolah
 from .sekolah.sekolah_longitudinal import SekolahLongitudinal
 from .sekolah.sekolah_paud import SekolahPaud
-from .sekolah.yayasan import Yayasan
 
-from .peserta_didik import BasePesertaDidik
-from .ptk import BasePtk
-from .rest import BaseRest
-from .rombongan_belajar import BaseRombonganBelajar
-from .sarpras import BaseSarpras
-from .sekolah import BaseSekolah
-from .dapodik import Dapodik
+from .ptk.ptk import Ptk
+from .ptk.ptk_terdaftar import PtkTerdaftar
+from .ptk.ptk_terdaftar import PtkTerdaftarMixin
+
+from .peserta_didik.peserta_didik_baru import PesertaDidikBaru
+from .peserta_didik.peserta_didik import PesertaDidik
+from .peserta_didik.peserta_didik_longitudinal import PesertaDidikLongitudinal
+from .peserta_didik.registrasi_peserta_didik import RegistrasiPesertaDidik
+
+from .sarpras.tanah import Tanah
+from .sarpras.bangunan import Bangunan
+from .sarpras.bangunan import BangunanMixin
+from .sarpras.bangunan_longitudinal import BangunanLongitudinal
+from .sarpras.bangunan_dari_blockgrant import BangunanDariBlockgrant
+from .sarpras.ruang import Ruang
+from .sarpras.ruang import RuangMixin
+from .sarpras.ruang_longitudinal import RuangLongitudinal
+from .sarpras.alat import Alat
+from .sarpras.alat_dari_blockgrant import AlatDariBlockgrant
+from .sarpras.alat_longitudinal import AlatLongitudinal
+from .sarpras.angkutan import Angkutan
+from .sarpras.angkutan_dari_blockgrant import AngkutanDariBlockgrant
+from .sarpras.buku import Buku
+from .sarpras.buku_longitudinal import BukuLongitudinal
+
+from .rombongan_belajar.rombongan_belajar import RombonganBelajar
+from .rombongan_belajar.pembelajaran import Pembelajaran
+
+from .auth import Auth
+from .config import BASE_URL, USER_AGENT
+from .customrest.base_customrest import BaseCustomrest
+from .peserta_didik.base_peserta_didik import BasePesertaDidik
+from .ptk.base_ptk import BasePtk
+from .rest.base_rest import BaseRest
+from .rombongan_belajar.base_rombongan_belajar import BaseRombonganBelajar
+from .sarpras.base_sarpras import BaseSarpras
+from .sekolah.base_sekolah import BaseSekolah
 
 from .config import BASE_URL, DOMAIN, SEMESTER_ID, USER_AGENT  # NOQA
 from .version import __version__, __dapodik_version__  # NOQA
 
+from .dapodik import Dapodik
+
 __author__ = 'hexatester (Habib Rohman)'
 
 __all__ = [
-    'Agama', 'Akreditasi', 'AkreditasiSp', 'AksesInternet', 'Alat',
-    'AlatDariBlockgrant', 'AlatLongitudinal', 'AlatTransportasi', 'Bangunan',
-    'BangunanDariBlockgrant', 'BangunanLongitudinal', 'Bank', 'BaseDapodik',
-    'BasePesertaDidik', 'BasePtk', 'BaseRest', 'BaseRombonganBelajar',
-    'BaseSarpras', 'BaseSekolah', 'BentukLembaga', 'BlockGrant', 'ChildDelete',
-    'Dapodik', 'DapodikObject', 'FasilitasLayanan', 'Gmd', 'JadwalPaud',
-    'JenisGugus', 'JenisHapusBuku', 'JenisKeluar', 'JenisLk',
-    'JenisPendaftaran', 'JenisPrasarana', 'JenisSarana', 'JenisTinggal',
-    'JenjangPendidikan', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
-    'KlasifikasiLembaga', 'LembagaPengangkat', 'MstWilayah', 'PangkatGolongan',
-    'Pekerjaan', 'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
+    'Auth', 'BaseCustomrest', 'UpdatePanelDashboard', 'Angkutan', 'Biblio',
+    'JenisRombel', 'PesertaDidikLongitudinal', 'AngkutanDariBlockgrant',
+    'Buku', 'BukuLongitudinal', 'Biblio'
+    'PesertaDidikLongitudinal', 'Agama', 'Akreditasi', 'AkreditasiSp',
+    'AksesInternet', 'Alat', 'AlatDariBlockgrant', 'AlatLongitudinal',
+    'AlatTransportasi', 'Bangunan', 'BangunanMixin', 'BangunanDariBlockgrant',
+    'BangunanLongitudinal', 'Bank', 'BaseDapodik', 'BasePesertaDidik',
+    'BasePtk', 'BaseRest', 'BaseRombonganBelajar', 'BaseSarpras',
+    'BaseSekolah', 'BentukLembaga', 'BlockGrant', 'ChildDelete', 'Dapodik',
+    'DapodikObject', 'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus',
+    'JenisHapusBuku', 'JenisKeluar', 'JenisLk', 'JenisPendaftaran',
+    'JenisPrasarana', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
+    'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga',
+    'LembagaPengangkat', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
+    'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
     'PesertaDidikBaru', 'ProgramInklusi', 'Ptk', 'PtkTerdaftar',
-    'RegistrasiPesertaDidik', 'Rest', 'Results', 'RolePengguna',
-    'RombonganBelajar', 'Ruang', 'RuangLongitudinal', 'Sanitasi', 'Sekolah',
+    'PtkTerdaftarMixin', 'RegistrasiPesertaDidik', 'Rest', 'Results',
+    'RolePengguna', 'RombonganBelajar', 'Ruang', 'RuangMixin',
+    'RuangLongitudinal', 'Sanitasi', 'Sekolah', 'SekolahMixin',
     'SekolahLongitudinal', 'SekolahPaud', 'StatusKeaktifanPegawai',
     'StatusKepegawaian', 'StatusKepemilikanSarpras', 'SumberAir',
     'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog', 'Tanah',
-    'TingkatPendidikan', 'WaktuPenyelenggaraan', 'Yayasan'
+    'TingkatPendidikan', 'WaktuPenyelenggaraan', 'MataPelajaranKurikulum',
+    'Yayasan', 'Semester'
 ]
