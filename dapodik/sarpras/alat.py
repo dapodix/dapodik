@@ -53,7 +53,7 @@ class Alat(DapodikObject):
 
     @property
     def kepemilikan_sarpras(self):
-        # TODO API
+        # TODO API NF
         return self.kepemilikan_sarpras_id
 
     @property

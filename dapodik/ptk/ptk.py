@@ -14,6 +14,8 @@ from dapodik import (
     SumberGaji,
     TahunAjaran,
     JenisPtk,
+    LembagaPengangkat,
+    KeahlianLaboratorium,
 )
 from dapodik.utils.decorator import set_meta
 
@@ -155,19 +157,17 @@ class Ptk(DapodikObject):
     def status_keaktifan(self) -> StatusKeaktifanPegawai:
         return self.status_keaktifan_id  # type: ignore
 
-    @property
-    def lembaga_pengangkat(self):
-        # TODO API
-        return self.lembaga_pengangkat_id
+    @LembagaPengangkat.prop
+    def lembaga_pengangkat(self) -> LembagaPengangkat:
+        return self.lembaga_pengangkat_id  # type: ignore
 
     @PangkatGolongan.prop
     def pangkat_golongan(self) -> PangkatGolongan:
         return self.pangkat_golongan_id  # type: ignore
 
-    @property
-    def keahlian_laboratorium(self):
-        # TODO API
-        return self.keahlian_laboratorium_id
+    @KeahlianLaboratorium.prop
+    def keahlian_laboratorium(self) -> KeahlianLaboratorium:
+        return self.keahlian_laboratorium_id  # type: ignore
 
     @SumberGaji.prop
     def sumber_gaji(self) -> SumberGaji:

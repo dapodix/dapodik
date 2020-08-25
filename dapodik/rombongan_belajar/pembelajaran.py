@@ -34,7 +34,7 @@ class Pembelajaran(DapodikObject):
 
     @property
     def induk_pembelajaran(self):
-        # TODO API
+        # TODO API NF
         return self.induk_pembelajaran_id
 
     @Semester.prop
