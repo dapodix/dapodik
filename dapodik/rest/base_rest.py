@@ -22,6 +22,7 @@ from dapodik import (
     JenisSarana,
     JenisTinggal,
     JenjangPendidikan,
+    Jurusan,
     KategoriTk,
     KebutuhanKhusus,
     KlasifikasiLembaga,
@@ -79,6 +80,7 @@ class BaseRest(BaseDapodik):
             self.JenisTinggal = Rest(self, JenisTinggal, 'rest/JenisTinggal')
             self.JenjangPendidikan = Rest(self, JenjangPendidikan,
                                           'rest/JenjangPendidikan')
+            self.Jurusan = Rest(self, Jurusan, 'rest/Jurusan')
             self.KategoriTk = Rest(self, KategoriTk, 'rest/KategoriTk')
             self.KebutuhanKhusus = Rest(self, KebutuhanKhusus,
                                         'rest/KebutuhanKhusus')

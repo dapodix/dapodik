@@ -26,6 +26,7 @@ from .rest.jenis_rombel import JenisRombel
 from .rest.jenis_sarana import JenisSarana
 from .rest.jenis_tinggal import JenisTinggal
 from .rest.jenjang_pendidikan import JenjangPendidikan
+from .rest.jurusan import Jurusan
 from .rest.kategori_tk import KategoriTk
 from .rest.kebutuhan_khusus import KebutuhanKhusus
 from .rest.klasifikasi_lembaga import KlasifikasiLembaga
@@ -117,8 +118,8 @@ __all__ = [
     'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus', 'JenisHapusBuku',
     'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
-    'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga',
-    'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',
+    'Jurusan', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
+    'KlasifikasiLembaga', 'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',
     'MataPelajaranKurikulum', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
     'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
     'PesertaDidikBaru', 'PesertaDidikLongitudinal', 'ProgramInklusi', 'Ptk',
