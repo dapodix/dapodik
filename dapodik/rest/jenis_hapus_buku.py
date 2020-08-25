@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('id_hapus_buku')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class JenisHapusBuku(DapodikObject):
     id_hapus_buku: str
     ket_hapus_buku: str

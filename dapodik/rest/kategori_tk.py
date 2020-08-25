@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('kategori_tk_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class KategoriTk(DapodikObject):
     kategori_tk_id: str
     nama: str

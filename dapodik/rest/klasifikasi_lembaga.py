@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('klasifikasi_lembaga_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class KlasifikasiLembaga(DapodikObject):
     klasifikasi_lembaga_id: str
     nama: str

@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('jenis_prasarana_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class JenisPrasarana(DapodikObject):
     jenis_prasarana_id: int
     nama: str

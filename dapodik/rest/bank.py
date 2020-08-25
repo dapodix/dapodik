@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('id_bank')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class Bank(DapodikObject):
     id_bank: str
     nm_bank: str

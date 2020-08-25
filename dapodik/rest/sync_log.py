@@ -5,7 +5,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('sync_log_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class SyncLog(DapodikObject):
     id_instalasi: str
     begin_sync: datetime

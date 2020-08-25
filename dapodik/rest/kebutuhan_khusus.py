@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('kebutuhan_khusus_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class KebutuhanKhusus(DapodikObject):
     kebutuhan_khusus_id: int
     kebutuhan_khusus: str

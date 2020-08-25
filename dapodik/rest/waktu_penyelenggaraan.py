@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('waktu_penyelenggaraan_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class WaktuPenyelenggaraan(DapodikObject):
     waktu_penyelenggaraan_id: str
     nama: str

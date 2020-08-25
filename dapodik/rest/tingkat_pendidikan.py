@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta('tingkat_pendidikan_id')
-@dataclass(eq=False)
+@dataclass(eq=False, frozen=True)
 class TingkatPendidikan(DapodikObject):
     tingkat_pendidikan_id: str
     kode: str
