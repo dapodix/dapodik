@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, List, Optional
 from dapodik import (DapodikObject, PesertaDidikBaru, Sekolah, Agama,
                      KebutuhanKhusus, JenisTinggal, AlatTransportasi)
@@ -90,9 +90,9 @@ class PesertaDidik(DapodikObject):
     nomor_telepon_rumah: str = ""
     nomor_telepon_seluler: str = ""
     email: str = ""
-    kebutuhan_khusus_id_selector: List[Any] = []
-    kebutuhan_khusus_id_selector_ayah: List[Any] = []
-    kebutuhan_khusus_id_selector_ibu: List[Any] = []
+    kebutuhan_khusus_id_selector: List[Any] = field(default_factory=list)
+    kebutuhan_khusus_id_selector_ayah: List[Any] = field(default_factory=list)
+    kebutuhan_khusus_id_selector_ibu: List[Any] = field(default_factory=list)
 
     @property
     def params(self):
