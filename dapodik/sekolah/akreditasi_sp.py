@@ -22,21 +22,21 @@ class AkreditasiSp(DapodikObject):
     sekolah_id_str: str
     la_id_str: str
 
-    @Akreditasi.property
+    @Akreditasi.prop
     def akred_sp(self) -> Akreditasi:
-        return self.akred_sp_id
+        return self.akred_sp_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @LembagaPengangkat.property
+    @LembagaPengangkat.prop
     def la(self) -> LembagaPengangkat:
-        return self.la_id
+        return self.la_id  # type: ignore
 
     @property
     def akreditasi(self):
-        return self.akreditasi_id
+        return self
 
     @property
     def updater(self):

@@ -56,17 +56,17 @@ class Bangunan(DapodikObject):
     sekolah_id_str: str
     vld_count: int
 
-    @JenisPrasarana.property
+    @JenisPrasarana.prop
     def jenis_prasarana(self):
-        return self.jenis_prasarana_id
+        return self.jenis_prasarana_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self):
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @Ptk.property
+    @Ptk.prop
     def ptk(self):
-        return self.ptk_id
+        return self.ptk_id  # type: ignore
 
     @property
     def kepemilikan_sarpras(self):

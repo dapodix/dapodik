@@ -25,18 +25,18 @@ class PesertaDidikBaru(DapodikObject):
     jenis_pendaftaran_id_str: str = ""
     peserta_didik_id_str: str = ""
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def tahun_ajaran(self):
         # TODO API
         return self.tahun_ajaran_id
 
-    @JenisPendaftaran.property
+    @JenisPendaftaran.prop
     def jenis_pendaftaran(self) -> JenisPendaftaran:
-        return self.jenis_pendaftaran_id
+        return self.jenis_pendaftaran_id  # type: ignore
 
     @property
     def peserta_didik(self):

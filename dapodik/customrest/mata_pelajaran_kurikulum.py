@@ -32,6 +32,6 @@ class MataPelajaranKurikulum(DapodikObject):
         # TODO API
         return self.mata_pelajaran_id
 
-    @TingkatPendidikan.property
+    @TingkatPendidikan.prop
     def tingkat_pendidikan(self) -> TingkatPendidikan:
-        return self.tingkat_pendidikan_id
+        return self.tingkat_pendidikan_id  # type: ignore

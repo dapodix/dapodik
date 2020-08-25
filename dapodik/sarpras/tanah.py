@@ -41,13 +41,13 @@ class Tanah(DapodikObject):
     sekolah_id_str: str
     vld_count: int
 
-    @JenisPrasarana.property
+    @JenisPrasarana.prop
     def jenis_prasarana(self) -> JenisPrasarana:
-        return self.jenis_prasarana_id
+        return self.jenis_prasarana_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def kepemilikan_sarpras(self):

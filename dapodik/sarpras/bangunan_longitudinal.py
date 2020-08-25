@@ -33,9 +33,9 @@ class BangunanLongitudinal(DapodikObject):
     semester_id_str: str
     bangunan_longitudinal_id: str
 
-    @Semester.property
+    @Semester.prop
     def semester(self) -> Semester:
-        return self.semester_id
+        return self.semester_id  # type: ignore
 
     @property
     def updater(self):

@@ -29,6 +29,7 @@ from .rest.jenjang_pendidikan import JenjangPendidikan
 from .rest.kategori_tk import KategoriTk
 from .rest.kebutuhan_khusus import KebutuhanKhusus
 from .rest.klasifikasi_lembaga import KlasifikasiLembaga
+from .rest.kurikulum import Kurikulum
 from .rest.lembaga_pengangkat import LembagaPengangkat
 from .rest.mst_wilayah import MstWilayah
 from .rest.pangkat_golongan import PangkatGolongan
@@ -115,7 +116,7 @@ __all__ = [
     'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
     'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga',
-    'LembagaPengangkat', 'MataPelajaranKurikulum', 'MstWilayah',
+    'Kurikulum', 'LembagaPengangkat', 'MataPelajaranKurikulum', 'MstWilayah',
     'PangkatGolongan', 'Pekerjaan', 'Pembelajaran', 'Pengguna', 'Penghasilan',
     'PesertaDidik', 'PesertaDidikBaru', 'PesertaDidikLongitudinal',
     'ProgramInklusi', 'Ptk', 'PtkTerdaftar', 'RegistrasiPesertaDidik', 'Rest',

@@ -39,11 +39,11 @@ class PtkTerdaftar(DapodikObject):
     jenis_keluar_id: Optional[str]
     tgl_ptk_keluar: Optional[str]
 
-    @Ptk.property
+    @Ptk.prop
     def ptk(self):
         return self.ptk_id
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self):
         return self.sekolah_id
 
@@ -55,6 +55,6 @@ class PtkTerdaftar(DapodikObject):
     def updater(self):
         return self.updater_id
 
-    @JenisKeluar.property
+    @JenisKeluar.prop
     def jenis_keluar(self):
         return self.jenis_keluar_id

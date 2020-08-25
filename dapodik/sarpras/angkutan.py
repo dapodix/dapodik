@@ -11,9 +11,9 @@ class Angkutan(DapodikObject):
     id_angkutan: str
     sekolah_id: str
     ptk_id: Optional[str]
-    jenis_sarana_id: 10006
+    jenis_sarana_id: int
     id_hapus_buku: Optional[str]
-    kepemilikan_sarpras_id: "1"
+    kepemilikan_sarpras_id: str
     kd_kl: Optional[str]
     kd_satker: Optional[str]
     kd_brg: Optional[str]
@@ -32,20 +32,20 @@ class Angkutan(DapodikObject):
     asal_data: Optional[str]
     create_date: datetime
     last_update: datetime
-    soft_delete: "0"
+    soft_delete: str
     last_sync: datetime
     updater_id: Optional[str]
     jenis_sarana_id_str: str
     sekolah_id_str: str
     vld_count: int
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @Ptk.property
+    @Ptk.prop
     def ptk(self) -> Optional[str]:
-        return self.ptk_id
+        return self.ptk_id  # type: ignore
 
     @property
     def jenis_sarana(self):

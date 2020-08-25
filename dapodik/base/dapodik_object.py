@@ -5,13 +5,13 @@ from dapodik.config import BASE_URL
 from dapodik.utils.helpers import get_dataclass_fields
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
-from typing import Any, Dict, Optional, Tuple, TYPE_CHECKING
+from typing import Any, Dict, Optional, Tuple, Type, TYPE_CHECKING
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
 
 class DapodikObject:
-    dapodik: Dapodik = None
+    dapodik: Dapodik = None  # type: ignore
     _editable: bool = False
     _id: str = ''
     _url: str = ''
@@ -28,8 +28,12 @@ class DapodikObject:
     def id(self):
         return self.__dict__.get(self._id)
 
+    @id.setter
+    def id(self, value: str) -> None:
+        self._id = value
+
     @classmethod
-    def from_data(cls,
+    def from_data(cls: Type[DapodikObject],
                   data: dict,
                   id: Optional[str] = None,
                   url: Optional[str] = None,
@@ -46,22 +50,20 @@ class DapodikObject:
             value = data.pop(key)
 
             if value:
-                # if hasattr(field.type, 'from_data'):
-                #     # safe_data[key] = dapodik[field.type][value]
                 if field.type == datetime:
                     safe_data[key] = str_to_datetime(value)
                 elif field.type == date:
-                    safe_data[key] = str_to_date(value)
+                    safe_data[key] = str_to_date(value)  # type: ignore
                 else:
                     safe_data[key] = value
             elif field.default != MISSING:
                 safe_data[key] = field.default
-            elif field.default_factory != MISSING:
-                safe_data[key] = field.default_factory()
+            elif field.default_factory != MISSING:  # type: ignore
+                safe_data[key] = field.default_factory()  # type: ignore
             else:
-                safe_data[key] = None
+                safe_data[key] = None  # type: ignore
 
-        res = cls(**safe_data)
+        res = cls(**safe_data)  # type: ignore
 
         if id:
             cls._id = id
@@ -103,21 +105,21 @@ class DapodikObject:
         return super().__hash__()
 
     @property
-    def params(self) -> dict:
+    def params(self) -> Optional[Dict[str, Any]]:
         return None
 
     @classmethod
-    def get_params(cls) -> dict:
-        params = cls._params or {}
+    def get_params(cls) -> Dict[str, Any]:
+        params: Dict[str, Any] = cls._params or {}
         if type(cls.params) == dict:
-            params.update(cls.params)
+            params.update(cls.params)  # type: ignore
         return params
 
     @classmethod
-    class property:
+    class prop:
         "Emulate PyProperty_Type() in Objects/descrobject.c"
 
-        def __init__(self, cls, get_id, update=False, delete=False):
+        def __init__(self, cls, get_id=None, update=False, delete=False):
             self.cls: DapodikObject = cls
             self.func = get_id
             self.update = update
@@ -141,7 +143,7 @@ class DapodikObject:
                 raise AttributeError("can't delete attribute")
             self.fdel(obj)
 
-        def fget(self, obj: DapodikObject):
+        def fget(self, obj: Any):
             key = self.func(obj)
             do = obj.dapodik[self.cls]
             if not do:
@@ -154,7 +156,7 @@ class DapodikObject:
                 key,
                 type(self.cls).__qualname__))
 
-        def fset(self, obj: DapodikObject, value: Any) -> None:
+        def fset(self, obj: Any, value: Any) -> None:
             key = self.func(obj)
             if self.update:
                 c = obj.dapodik[self.cls]
@@ -167,7 +169,7 @@ class DapodikObject:
                 raise Exception('{} tidak dapat dirubah'.format(
                     self.func.__name__))
 
-        def fdel(self, obj: DapodikObject) -> None:
+        def fdel(self, obj: Any) -> None:
             key = self.func(obj)
             if self.delete:
                 delattr(obj, key)

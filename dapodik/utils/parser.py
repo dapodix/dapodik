@@ -1,20 +1,6 @@
 from dataclasses import MISSING
 from datetime import datetime, date
-from typing import Optional, Union
-
-
-def parse_rows_cast(datas: dict, Class_, id: bool = False):
-    outs = []
-    rows: dict = datas.get('rows', {})
-    id_ = datas.get('id')
-    if len(rows) == 0:
-        return outs
-    for data in rows:
-        data_ = Class_(**data)
-        if id:
-            data_._id = id_
-        outs.append(data_)
-    return outs
+from typing import Union
 
 
 def parse_rows_update(datas: dict, instance):
@@ -57,7 +43,7 @@ def cast(data: dict, Class_):
 
 
 def str_to_datetime(data: Union[str, datetime],
-                    format: str = '%Y-%m-%d %H:%M:%S') -> Optional[datetime]:
+                    format: str = '%Y-%m-%d %H:%M:%S') -> datetime:
     if isinstance(data, datetime):
         return data
     elif type(data) == str:
@@ -66,11 +52,10 @@ def str_to_datetime(data: Union[str, datetime],
         return datetime.now()
 
 
-def str_to_date(data: Union[str, date],
-                format: str = '%Y-%m-%d') -> Optional[date]:
+def str_to_date(data: Union[str, date], format: str = '%Y-%m-%d') -> date:
     if isinstance(data, date):
         return data
     elif type(data) == str:
-        return datetime.strptime(data, format)
+        return datetime.strptime(data, format).date()
     else:
         return datetime.now().date()

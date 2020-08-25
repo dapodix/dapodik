@@ -45,18 +45,18 @@ class Ruang(DapodikObject):
     id_bangunan_str: str
     sekolah_id_str: str
 
-    @JenisPrasarana.property
+    @JenisPrasarana.prop
     def jenis_prasarana(self) -> JenisPrasarana:
-        return self.jenis_prasarana_id
+        return self.jenis_prasarana_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def updater(self):
         return self.updater_id
 
-    @Bangunan.property
+    @Bangunan.prop
     def bangunan(self) -> Bangunan:
-        return self.id_bangunan
+        return self.id_bangunan  # type: ignore

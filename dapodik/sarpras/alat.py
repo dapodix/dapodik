@@ -39,17 +39,17 @@ class Alat(DapodikObject):
     key_match: str
     header: str
 
-    @JenisSarana.property
+    @JenisSarana.prop
     def jenis_sarana(self) -> JenisSarana:
-        return self.jenis_sarana_id
+        return self.jenis_sarana_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @Ptk.property
+    @Ptk.prop
     def ptk(self) -> Optional[Ptk]:
-        return self.ptk_id
+        return self.ptk_id  # type: ignore
 
     @property
     def kepemilikan_sarpras(self):

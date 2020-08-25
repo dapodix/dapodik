@@ -80,7 +80,6 @@ class Ptk(DapodikObject):
     tmt_pengangkatan: str
     lembaga_pengangkat_id: str
     pangkat_golongan_id: str
-    keahlian_laboratorium_id: 99
     sumber_gaji_id: str
     nama_ibu_kandung: str
     status_perkawinan: str
@@ -111,18 +110,19 @@ class Ptk(DapodikObject):
     verifikasi_email: bool
     jenis_ptk_id_str: str
     vld_count: int
+    keahlian_laboratorium_id: Optional[int] = 99
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def ptk_terdaftar(self):
         return self.ptk_terdaftar_id
 
-    @JenisKeluar.property
+    @JenisKeluar.prop
     def jenis_keluar(self) -> JenisKeluar:
-        return self.jenis_keluar_id
+        return self.jenis_keluar_id  # type: ignore
 
     @property
     def tahun_ajaran(self):
@@ -133,9 +133,9 @@ class Ptk(DapodikObject):
     def updater(self):
         return self.updater_id
 
-    @StatusKepegawaian.property
+    @StatusKepegawaian.prop
     def status_kepegawaian(self) -> StatusKepegawaian:
-        return self.status_kepegawaian_id
+        return self.status_kepegawaian_id  # type: ignore
 
     @property
     def jenis_ptk(self):
@@ -147,41 +147,40 @@ class Ptk(DapodikObject):
         # TODO API
         return self.pengawas_bidang_studi_id
 
-    @Agama.property
+    @Agama.prop
     def agama(self) -> Agama:
-        return self.agama_id
+        return self.agama_id  # type: ignore
 
-    @StatusKeaktifanPegawai.property
+    @StatusKeaktifanPegawai.prop
     def status_keaktifan(self) -> StatusKeaktifanPegawai:
-        return self.status_keaktifan_id
+        return self.status_keaktifan_id  # type: ignore
 
     @property
     def lembaga_pengangkat(self):
         # TODO API
         return self.lembaga_pengangkat_id
 
-    @PangkatGolongan.property
+    @PangkatGolongan.prop
     def pangkat_golongan(self) -> PangkatGolongan:
-        return self.pangkat_golongan_id
+        return self.pangkat_golongan_id  # type: ignore
 
     @property
     def keahlian_laboratorium(self):
         # TODO API
         return self.keahlian_laboratorium_id
 
-    @SumberGaji.property
+    @SumberGaji.prop
     def sumber_gaji(self) -> SumberGaji:
-        return self.sumber_gaji_id
+        return self.sumber_gaji_id  # type: ignore
 
     @property
     def blob(self):
-        # TODO API
         return self.blob_id
 
-    @Pengguna.property
+    @Pengguna.prop
     def pengguna(self) -> Pengguna:
-        return self.pengguna_id
+        return self.pengguna_id  # type: ignore
 
-    @Bank.property
+    @Bank.prop
     def bank(self) -> Bank:
         return self.bank

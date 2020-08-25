@@ -53,9 +53,9 @@ class RuangLongitudinal(DapodikObject):
     semester_id_str: str
     ruang_longitudinal_id: str
 
-    @Semester.property
+    @Semester.prop
     def semester(self) -> Semester:
-        return self.semester_id
+        return self.semester_id  # type: ignore
 
     @property
     def blob(self):
@@ -69,6 +69,6 @@ class RuangLongitudinal(DapodikObject):
     def ruang_longitudinal(self):
         return self
 
-    @Ruang.property
+    @Ruang.prop
     def ruang(self) -> Ruang:
-        return self.id_ruang
+        return self.id_ruang  # type: ignore

@@ -27,17 +27,17 @@ class Buku(DapodikObject):
     mata_pelajaran_id_str: str
     sekolah_id_str: str
 
-    @MataPelajaranKurikulum.property
+    @MataPelajaranKurikulum.prop
     def mata_pelajaran(self) -> MataPelajaranKurikulum:
-        return self.mata_pelajaran_id
+        return self.mata_pelajaran_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @TingkatPendidikan.property
+    @TingkatPendidikan.prop
     def tingkat_pendidikan(self) -> TingkatPendidikan:
-        return self.tingkat_pendidikan_id
+        return self.tingkat_pendidikan_id  # type: ignore
 
     @property
     def updater(self):
@@ -47,13 +47,13 @@ class Buku(DapodikObject):
     def buku(self):
         return self
 
-    @Ruang.property
+    @Ruang.prop
     def ruang(self) -> Optional[Ruang]:
-        return self.id_ruang
+        return self.id_ruang  # type: ignore
 
-    @Biblio.property
+    @Biblio.prop
     def biblio(self) -> Optional[Biblio]:
-        return self.id_biblio
+        return self.id_biblio  # type: ignore
 
     @property
     def hapus_buku(self):

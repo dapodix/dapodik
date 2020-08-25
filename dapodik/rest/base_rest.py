@@ -25,6 +25,7 @@ from dapodik import (
     KategoriTk,
     KebutuhanKhusus,
     KlasifikasiLembaga,
+    Kurikulum,
     LembagaPengangkat,
     MstWilayah,
     PangkatGolongan,
@@ -81,6 +82,7 @@ class BaseRest(BaseDapodik):
                                         'rest/KebutuhanKhusus')
             self.KlasifikasiLembaga = Rest(self, KlasifikasiLembaga,
                                            'rest/KlasifikasiLembaga')
+            self.Kurikulum = Rest(self, Kurikulum, 'rest/Kurikulum')
             self.LembagaPengangkat = Rest(self, LembagaPengangkat,
                                           'rest/LembagaPengangkat')
             self.MstWilayah = Rest(self, MstWilayah, 'rest/MstWilayah')

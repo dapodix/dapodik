@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, List, Optional
 from dapodik import (DapodikObject, PesertaDidikBaru, Sekolah, Agama,
                      KebutuhanKhusus, JenisTinggal, AlatTransportasi)
 from dapodik.utils.decorator import set_meta
@@ -90,9 +90,9 @@ class PesertaDidik(DapodikObject):
     nomor_telepon_rumah: str = ""
     nomor_telepon_seluler: str = ""
     email: str = ""
-    kebutuhan_khusus_id_selector = []
-    kebutuhan_khusus_id_selector_ayah = []
-    kebutuhan_khusus_id_selector_ibu = []
+    kebutuhan_khusus_id_selector: List[Any] = []
+    kebutuhan_khusus_id_selector_ayah: List[Any] = []
+    kebutuhan_khusus_id_selector_ibu: List[Any] = []
 
     @property
     def params(self):
@@ -100,30 +100,30 @@ class PesertaDidik(DapodikObject):
             'sekolah_id': self.dapodik.sekolah_id,
         }
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @PesertaDidikBaru.property
+    @PesertaDidikBaru.prop
     def pdb(self) -> PesertaDidikBaru:
-        return self.pdb_id
+        return self.pdb_id  # type: ignore
 
-    @Agama.property
+    @Agama.prop
     def agama(self) -> Agama:
-        return self.agama_id
+        return self.agama_id  # type: ignore
 
     @property
     def peserta_didik(self):
         return self
 
-    @KebutuhanKhusus.property
+    @KebutuhanKhusus.prop
     def kebutuhan_khusus(self) -> KebutuhanKhusus:
-        return self.kebutuhan_khusus_id
+        return self.kebutuhan_khusus_id  # type: ignore
 
-    @JenisTinggal.property
+    @JenisTinggal.prop
     def jenis_tinggal(self) -> JenisTinggal:
-        return self.jenis_tinggal_id
+        return self.jenis_tinggal_id  # type: ignore
 
-    @AlatTransportasi.property
+    @AlatTransportasi.prop
     def alat_transportasi(self) -> AlatTransportasi:
-        return self.alat_transportasi_id
+        return self.alat_transportasi_id  # type: ignore

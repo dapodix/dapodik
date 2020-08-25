@@ -31,18 +31,18 @@ class BlockGrant(DapodikObject):
     def blockgrant(self):
         return self
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def jenis_bantuan(self):
         # TODO API
         return self.jenis_bantuan_id
 
-    @SumberDanaSekolah.property
+    @SumberDanaSekolah.prop
     def sumber_dana(self) -> SumberDanaSekolah:
-        return self.sumber_dana_id
+        return self.sumber_dana_id  # type: ignore
 
     @property
     def updater(self):

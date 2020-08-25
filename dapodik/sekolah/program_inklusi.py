@@ -25,9 +25,9 @@ class ProgramInklusi(DapodikObject):
     sekolah_id_str: str
     kebutuhan_khusus_id_str: str
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def updater(self):

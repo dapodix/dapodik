@@ -65,18 +65,18 @@ class Sekolah(DapodikObject):
         # TODO API
         return self.bentuk_pendidikan_id
 
-    @KebutuhanKhusus.property
+    @KebutuhanKhusus.prop
     def kebutuhan_khusus(self) -> KebutuhanKhusus:
-        return self.kebutuhan_khusus_id
+        return self.kebutuhan_khusus_id  # type: ignore
 
     @property
     def status_kepemilikan(self):
         # TODO API
         return self.status_kepemilikan_id
 
-    @Yayasan.property
+    @Yayasan.prop
     def yayasan(self) -> Yayasan:
-        return self.yayasan_id
+        return self.yayasan_id  # type: ignore
 
     @property
     def updater(self):

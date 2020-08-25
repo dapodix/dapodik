@@ -1,4 +1,4 @@
-from dataclasses import Field, _FIELD, _FIELDS, _FIELD_INITVAR
+from dataclasses import Field, _FIELD, _FIELDS, _FIELD_INITVAR  # type: ignore
 from typing import TypeVar, Type, Any, List
 
 AnyT = TypeVar("AnyT", bound=Any)

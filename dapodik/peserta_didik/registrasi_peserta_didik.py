@@ -34,13 +34,13 @@ class RegistrasiPesertaDidik(DapodikObject):
     a_pernah_paud: int = 0
     a_pernah_tk: int = 0
 
-    @PesertaDidik.property
+    @PesertaDidik.prop
     def peserta_didik(self) -> PesertaDidik:
-        return self.peserta_didik_id
+        return self.peserta_didik_id  # type: ignore
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
     @property
     def registrasi(self):
@@ -51,10 +51,10 @@ class RegistrasiPesertaDidik(DapodikObject):
         # TODO API
         return self.jurusan_sp_id
 
-    @JenisPendaftaran.property
+    @JenisPendaftaran.prop
     def jenis_pendaftaran(self) -> JenisPendaftaran:
-        return self.jenis_pendaftaran_id
+        return self.jenis_pendaftaran_id  # type: ignore
 
-    @JenisKeluar.property
+    @JenisKeluar.prop
     def jenis_keluar(self) -> JenisKeluar:
-        return self.jenis_keluar_id
+        return self.jenis_keluar_id  # type: ignore

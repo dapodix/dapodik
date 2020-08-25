@@ -36,15 +36,15 @@ class SekolahLongitudinal(DapodikObject):
     sekolah_id_str: str
     sekolah_longitudinal_id: str
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self):
         return self.sekolah_id
 
-    @Semester.property
+    @Semester.prop
     def semester(self):
         return self.semester_id
 
-    @WaktuPenyelenggaraan.property
+    @WaktuPenyelenggaraan.prop
     def waktu_penyelenggaraan(self):
         return self.waktu_penyelenggaraan_id
 
@@ -53,15 +53,15 @@ class SekolahLongitudinal(DapodikObject):
         # TODO API
         return self.sertifikasi_iso_id
 
-    @SumberListrik.property
+    @SumberListrik.prop
     def sumber_listrik(self):
         return self.sumber_listrik_id
 
-    @AksesInternet.property
+    @AksesInternet.prop
     def akses_internet(self):
         return self.akses_internet_id
 
-    @AksesInternet.property
+    @AksesInternet.prop
     def akses_internet_2(self):
         return self.akses_internet_2_id
 

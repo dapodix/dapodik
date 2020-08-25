@@ -19,9 +19,9 @@ class AngkutanDariBlockgrant(DapodikObject):
     id_angkutan_str: str
     angkutan_dari_blockgrant_id: Optional[str]
 
-    @BlockGrant.property
+    @BlockGrant.prop
     def blockgrant(self) -> BlockGrant:
-        return self.blockgrant_id
+        return self.blockgrant_id  # type: ignore
 
     @property
     def updater(self):

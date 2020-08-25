@@ -46,29 +46,29 @@ class SekolahPaud(DapodikObject):
     last_sync: datetime
     updater_id: str
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @KategoriTk.property
+    @KategoriTk.prop
     def kategori_tk(self) -> KategoriTk:
-        return self.kategori_tk_id
+        return self.kategori_tk_id  # type: ignore
 
-    @KlasifikasiLembaga.property
+    @KlasifikasiLembaga.prop
     def klasifikasi_lembaga(self) -> KlasifikasiLembaga:
-        return self.klasifikasi_lembaga_id
+        return self.klasifikasi_lembaga_id  # type: ignore
 
-    @SumberDanaSekolah.property
+    @SumberDanaSekolah.prop
     def sumber_dana_sekolah(self) -> SumberDanaSekolah:
-        return self.sumber_dana_sekolah_id
+        return self.sumber_dana_sekolah_id  # type: ignore
 
-    @FasilitasLayanan.property
+    @FasilitasLayanan.prop
     def fasilitas_layanan(self) -> FasilitasLayanan:
-        return self.fasilitas_layanan_id
+        return self.fasilitas_layanan_id  # type: ignore
 
-    @LembagaPengangkat.property
+    @LembagaPengangkat.prop
     def lembaga_pengangkat(self) -> LembagaPengangkat:
-        return self.lembaga_pengangkat_id
+        return self.lembaga_pengangkat_id  # type: ignore
 
     @property
     def bentuk_lembaga(self):

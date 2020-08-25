@@ -1,4 +1,5 @@
 from __future__ import annotations
+from logging import Logger
 from bs4 import BeautifulSoup, Tag
 from requests import Session
 from typing import List
@@ -10,7 +11,8 @@ from .role_peran import Roleperan
 class BaseAuth(object):
     _url: str = BASE_URL
     _semester_id: str = SEMESTER_ID
-    session: Session = None
+    session: Session = Session()
+    logger: Logger = Logger(__name__)
 
     def register_auth(self) -> bool:
         try:

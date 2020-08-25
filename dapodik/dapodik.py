@@ -2,7 +2,7 @@
 
 import logging
 from requests import Session
-from typing import Dict, Optional
+from typing import Dict, Optional, Type
 
 from dapodik import (
     DapodikObject,
@@ -23,11 +23,11 @@ from dapodik import (
 
 class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
               BaseRombonganBelajar, BaseSarpras, BaseSekolah):
-    session: Session = None
+    session: Session = Session()
     domain: str = BASE_URL
-    cache: Dict[DapodikObject, Results] = {}
-    rests: Dict[DapodikObject, Rest] = {}
-    id_map: Dict[str, DapodikObject] = {}
+    cache: Dict[Type[DapodikObject], Results] = {}
+    rests: Dict[Type[DapodikObject], Rest] = {}
+    id_map: Dict[str, Type[DapodikObject]] = {}
 
     def __init__(self,
                  username: str,
@@ -53,18 +53,16 @@ class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
             self.register_peserta_didik()
             self.register_rombongan_belajar()
 
-    def __getitem__(self, key: DapodikObject) -> Optional[Results]:
+    def __getitem__(  # type: ignore
+            self, key: Type[DapodikObject]) -> Optional[Results]:
         res = self.cache.get(key)
         if self.cache and res:
             if res:
                 return res
-        if key not in self.rests:
-            return
-        rest: Rest = self.rests.get(key)
-        if not rest:
-            return
-        res = rest.get()
-        if not res:
-            return
-        self.cache[key] = res
-        return res
+        if key in self.rests:
+            rest: Optional[Rest] = self.rests.get(key)
+            if rest:
+                res = rest.get()
+                if res:
+                    self.cache[key] = res
+                    return res

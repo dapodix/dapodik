@@ -18,9 +18,9 @@ class BangunanDariBlockgrant(DapodikObject):
     id_bangunan_str: str
     bangunan_dari_blockgrant_id: str
 
-    @BlockGrant.property
+    @BlockGrant.prop
     def blockgrant(self) -> BlockGrant:
-        return self.blockgrant_id
+        return self.blockgrant_id  # type: ignore
 
     @property
     def updater(self):

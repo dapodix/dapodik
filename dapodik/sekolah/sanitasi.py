@@ -87,20 +87,21 @@ class Sanitasi(DapodikObject):
     semester_id_str: str
     sanitasi_id: str
 
-    @Sekolah.property
+    @Sekolah.prop
     def sekolah(self) -> Sekolah:
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @Semester.property
+    @Semester.prop
     def semester(self) -> Semester:
-        return self.semester_id
+        return self.semester_id  # type: ignore
 
-    @SumberAir.property
+    @SumberAir.prop
     def sumber_air(self) -> SumberAir:
-        return self.sumber_air_id
+        return self.sumber_air_id  # type: ignore
 
     @property
     def sumber_air_minum(self):
+        # TODO API
         return self.sumber_air_minum_id
 
     @property

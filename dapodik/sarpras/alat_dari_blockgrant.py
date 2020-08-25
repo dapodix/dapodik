@@ -19,9 +19,9 @@ class AlatDariBlockgrant(DapodikObject):
     id_alat_str: str = ''
     alat_dari_blockgrant_id: Optional[str] = 'Admin.model.AlatDariBlockgrant-1'
 
-    @BlockGrant.property
+    @BlockGrant.prop
     def blockgrant(self) -> BlockGrant:
-        return self.blockgrant_id
+        return self.blockgrant_id  # type: ignore
 
     @property
     def updater(self):
