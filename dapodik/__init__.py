@@ -29,6 +29,7 @@ from .rest.jenis_tinggal import JenisTinggal
 from .rest.jenjang_pendidikan import JenjangPendidikan
 from .rest.jurusan import Jurusan
 from .rest.kategori_tk import KategoriTk
+from .rest.keahlian_laboratorium import KeahlianLaboratorium
 from .rest.kebutuhan_khusus import KebutuhanKhusus
 from .rest.klasifikasi_lembaga import KlasifikasiLembaga
 from .rest.kurikulum import Kurikulum
@@ -120,16 +121,17 @@ __all__ = [
     'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus', 'JenisHapusBuku',
     'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana', 'JenisPtk',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
-    'Jurusan', 'JurusanSp', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
-    'KlasifikasiLembaga', 'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',
-    'MataPelajaranKurikulum', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
-    'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
-    'PesertaDidikBaru', 'PesertaDidikLongitudinal', 'ProgramInklusi', 'Ptk',
-    'PtkTerdaftar', 'RegistrasiPesertaDidik', 'Rest', 'Results',
-    'RolePengguna', 'RombonganBelajar', 'Ruang', 'RuangLongitudinal',
-    'Sanitasi', 'Sekolah', 'SekolahLongitudinal', 'SekolahPaud', 'Semester',
-    'StatusKeaktifanPegawai', 'StatusKepegawaian', 'StatusKepemilikanSarpras',
-    'SumberAir', 'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog',
+    'Jurusan', 'JurusanSp', 'KategoriTk', 'KeahlianLaboratorium',
+    'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga', 'Kurikulum',
+    'LembagaPengangkat', 'MataPelajaran', 'MataPelajaranKurikulum',
+    'MstWilayah', 'PangkatGolongan', 'Pekerjaan', 'Pembelajaran', 'Pengguna',
+    'Penghasilan', 'PesertaDidik', 'PesertaDidikBaru',
+    'PesertaDidikLongitudinal', 'ProgramInklusi', 'Ptk', 'PtkTerdaftar',
+    'RegistrasiPesertaDidik', 'Rest', 'Results', 'RolePengguna',
+    'RombonganBelajar', 'Ruang', 'RuangLongitudinal', 'Sanitasi', 'Sekolah',
+    'SekolahLongitudinal', 'SekolahPaud', 'Semester', 'StatusKeaktifanPegawai',
+    'StatusKepegawaian', 'StatusKepemilikanSarpras', 'SumberAir',
+    'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog',
     'TahunAjaran', 'Tanah', 'TingkatPendidikan', 'UpdatePanelDashboard',
     'WaktuPenyelenggaraan', 'Yayasan'
 ]
