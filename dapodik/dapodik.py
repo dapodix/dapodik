@@ -4,26 +4,25 @@ import logging
 from requests import Session
 from typing import Dict, Optional
 
-from dapodik import Auth
-from dapodik import DapodikObject, Results, Rest
-from dapodik import BASE_URL, USER_AGENT
-from dapodik import BaseCustomrest
-from dapodik import BasePesertaDidik
-from dapodik import BasePtk
-from dapodik import BaseRest
-from dapodik import BaseRombonganBelajar
-from dapodik import BaseSarpras
-from dapodik import BaseSekolah
+from dapodik import (
+    DapodikObject,
+    Results,
+    Rest,
+    BASE_URL,
+    USER_AGENT,
+    Auth,
+    BaseCustomrest,
+    BasePesertaDidik,
+    BasePtk,
+    BaseRest,
+    BaseRombonganBelajar,
+    BaseSarpras,
+    BaseSekolah,
+)
 
 
-class Dapodik(Auth,
-              BaseCustomrest,
-              BaseRest,
-              BasePesertaDidik,
-              BasePtk,
-              BaseRombonganBelajar,
-              BaseSarpras,
-              BaseSekolah):
+class Dapodik(Auth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
+              BaseRombonganBelajar, BaseSarpras, BaseSekolah):
     session: Session = None
     domain: str = BASE_URL
     cache: Dict[DapodikObject, Results] = {}
