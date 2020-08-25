@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject, Sekolah, JenisKeluar, Ptk
+from dapodik import DapodikObject, Sekolah, JenisKeluar, Ptk, TahunAjaran
 from dapodik.utils.decorator import set_meta
 
 
@@ -41,15 +41,15 @@ class PtkTerdaftar(DapodikObject):
 
     @Ptk.prop
     def ptk(self):
-        return self.ptk_id
+        return self.ptk_id  # type: ignore
 
     @Sekolah.prop
     def sekolah(self):
-        return self.sekolah_id
+        return self.sekolah_id  # type: ignore
 
-    @property
+    @TahunAjaran.prop
     def tahun_ajaran(self):
-        return self.tahun_ajaran_id
+        return self.tahun_ajaran_id  # type: ignore
 
     @property
     def updater(self):
@@ -57,4 +57,4 @@ class PtkTerdaftar(DapodikObject):
 
     @JenisKeluar.prop
     def jenis_keluar(self):
-        return self.jenis_keluar_id
+        return self.jenis_keluar_id  # type: ignore

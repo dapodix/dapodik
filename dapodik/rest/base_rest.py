@@ -41,6 +41,7 @@ from dapodik import (
     SumberGaji,
     SumberListrik,
     SyncLog,
+    TahunAjaran,
     TingkatPendidikan,
     WaktuPenyelenggaraan,
 )
@@ -108,6 +109,7 @@ class BaseRest(BaseDapodik):
             self.SumberListrik = Rest(self, SumberListrik,
                                       'rest/SumberListrik')
             self.SyncLog = Rest(self, SyncLog, 'rest/SyncLog')
+            self.TahunAjaran = Rest(self, TahunAjaran, 'rest/TahunAjaran')
             self.TingkatPendidikan = Rest(self, TingkatPendidikan,
                                           'rest/TingkatPendidikan')
             self.WaktuPenyelenggaraan = Rest(self, WaktuPenyelenggaraan,

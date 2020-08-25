@@ -1,17 +1,15 @@
 from dataclasses import dataclass
 from datetime import datetime, date
 from typing import Optional
-from dapodik import DapodikObject, TahunAjaran
+from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('semester_id')
-@dataclass(eq=False)
-class Semester(DapodikObject):
-    semester_id: str
+@set_meta('tahun_ajaran_id')
+@dataclass(eq=False, frozen=True)
+class TahunAjaran(DapodikObject):
     tahun_ajaran_id: str
     nama: str
-    semester: str
     periode_aktif: str
     tanggal_mulai: date
     tanggal_selesai: date
@@ -19,7 +17,3 @@ class Semester(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-
-    @TahunAjaran.prop
-    def tahun_ajaran(self) -> TahunAjaran:
-        return self.tahun_ajaran_id  # type: ignore

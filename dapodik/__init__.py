@@ -45,6 +45,7 @@ from .rest.sumber_dana_sekolah import SumberDanaSekolah
 from .rest.sumber_gaji import SumberGaji
 from .rest.sumber_listrik import SumberListrik
 from .rest.sync_log import SyncLog
+from .rest.tahun_ajaran import TahunAjaran
 from .rest.tingkat_pendidikan import TingkatPendidikan
 from .rest.waktu_penyelenggaraan import WaktuPenyelenggaraan
 
@@ -126,6 +127,6 @@ __all__ = [
     'Sanitasi', 'Sekolah', 'SekolahLongitudinal', 'SekolahPaud', 'Semester',
     'StatusKeaktifanPegawai', 'StatusKepegawaian', 'StatusKepemilikanSarpras',
     'SumberAir', 'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog',
-    'Tanah', 'TingkatPendidikan', 'UpdatePanelDashboard',
+    'TahunAjaran', 'Tanah', 'TingkatPendidikan', 'UpdatePanelDashboard',
     'WaktuPenyelenggaraan', 'Yayasan'
 ]
