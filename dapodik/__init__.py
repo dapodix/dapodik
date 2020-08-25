@@ -58,6 +58,7 @@ from .customrest.update_panel_dashboard import UpdatePanelDashboard
 from .sekolah.yayasan import Yayasan
 from .sekolah.semester import Semester
 from .sekolah.sekolah import Sekolah
+from .sekolah.jurusan_sp import JurusanSp
 from .sekolah.akreditasi_sp import AkreditasiSp
 from .sekolah.blockgrant import BlockGrant
 from .sekolah.kepanitiaan import Kepanitiaan
@@ -118,7 +119,7 @@ __all__ = [
     'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus', 'JenisHapusBuku',
     'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
-    'Jurusan', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
+    'Jurusan', 'JurusanSp', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
     'KlasifikasiLembaga', 'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',
     'MataPelajaranKurikulum', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
     'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',

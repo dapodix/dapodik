@@ -3,6 +3,7 @@ from dapodik import (
     Rest,
     Semester,
     Sekolah,
+    JurusanSp,
     Yayasan,
     AkreditasiSp,
     BlockGrant,
@@ -20,6 +21,7 @@ class BaseSekolah(BaseDapodik):
             self.AkreditasiSp = Rest(self, AkreditasiSp, 'rest/AkreditasiSp')
             self.BlockGrant = Rest(self, BlockGrant, 'rest/BlockGrant')
             self.Kepanitiaan = Rest(self, Kepanitiaan, 'rest/Kepanitiaan')
+            self.JurusanSp = Rest(self, JurusanSp, 'rest/JurusanSp')
             self.ProgramInklusi = Rest(self, ProgramInklusi,
                                        'rest/ProgramInklusi')
             self.Sanitasi = Rest(self, Sanitasi, 'rest/Sanitasi')
