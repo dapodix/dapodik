@@ -22,6 +22,7 @@ from .rest.jenis_keluar import JenisKeluar
 from .rest.jenis_lk import JenisLk
 from .rest.jenis_pendaftaran import JenisPendaftaran
 from .rest.jenis_prasarana import JenisPrasarana
+from .rest.jenis_ptk import JenisPtk
 from .rest.jenis_rombel import JenisRombel
 from .rest.jenis_sarana import JenisSarana
 from .rest.jenis_tinggal import JenisTinggal
@@ -117,7 +118,7 @@ __all__ = [
     'BaseSarpras', 'BaseSekolah', 'BentukLembaga', 'Biblio', 'BlockGrant',
     'Buku', 'BukuLongitudinal', 'ChildDelete', 'Dapodik', 'DapodikObject',
     'FasilitasLayanan', 'Gmd', 'JadwalPaud', 'JenisGugus', 'JenisHapusBuku',
-    'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
+    'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana', 'JenisPtk',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
     'Jurusan', 'JurusanSp', 'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan',
     'KlasifikasiLembaga', 'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',

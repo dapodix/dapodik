@@ -18,6 +18,7 @@ from dapodik import (
     JenisLk,
     JenisPendaftaran,
     JenisPrasarana,
+    JenisPtk,
     JenisRombel,
     JenisSarana,
     JenisTinggal,
@@ -75,6 +76,7 @@ class BaseRest(BaseDapodik):
                                          'rest/JenisPendaftaran')
             self.JenisPrasarana = Rest(self, JenisPrasarana,
                                        'rest/JenisPrasarana')
+            self.JenisPtk = Rest(self, JenisPtk, 'rest/JenisPtk')
             self.JenisRombel = Rest(self, JenisRombel, 'rest/JenisRombel')
             self.JenisSarana = Rest(self, JenisSarana, 'rest/JenisSarana')
             self.JenisTinggal = Rest(self, JenisTinggal, 'rest/JenisTinggal')
