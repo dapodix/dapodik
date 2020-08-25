@@ -29,7 +29,6 @@ from dapodik import (
     MstWilayah,
     PangkatGolongan,
     Pekerjaan,
-    Pengguna,
     Penghasilan,
     RolePengguna,
     StatusKeaktifanPegawai,
@@ -88,7 +87,6 @@ class BaseRest(BaseDapodik):
             self.PangkatGolongan = Rest(self, PangkatGolongan,
                                         'rest/PangkatGolongan')
             self.Pekerjaan = Rest(self, Pekerjaan, 'rest/Pekerjaan')
-            self.Pengguna = Rest(self, Pengguna, 'rest/Pengguna')
             self.Penghasilan = Rest(self, Penghasilan, 'rest/Penghasilan')
             self.RolePengguna = Rest(self, RolePengguna, 'rest/RolePengguna')
             self.StatusKeaktifanPegawai = Rest(self, StatusKeaktifanPegawai,

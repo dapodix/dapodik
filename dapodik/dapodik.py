@@ -10,7 +10,7 @@ from dapodik import (
     Rest,
     BASE_URL,
     USER_AGENT,
-    Auth,
+    BaseAuth,
     BaseCustomrest,
     BasePesertaDidik,
     BasePtk,
@@ -21,7 +21,7 @@ from dapodik import (
 )
 
 
-class Dapodik(Auth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
+class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
               BaseRombonganBelajar, BaseSarpras, BaseSekolah):
     session: Session = None
     domain: str = BASE_URL
@@ -43,6 +43,8 @@ class Dapodik(Auth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
         self.session: Session = Session()
         self.session.headers.update({'User-Agent': user_agent})
         if self.login(username, password):
+            self.logger.info('Berhasil login dengan email {}'.format(username))
+            self.register_auth()
             self.register_rest()
             self.register_sekolah()
             self.register_sarpras()

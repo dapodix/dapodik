@@ -1,39 +1,25 @@
 from __future__ import annotations
 from bs4 import BeautifulSoup, Tag
-from dataclasses import dataclass
 from requests import Session
-from typing import Optional, List
-from dapodik.config import BASE_URL, SEMESTER_ID, DOMAIN
+from typing import List
+from dapodik import Rest, Pengguna
+from dapodik.config import BASE_URL, SEMESTER_ID
+from .role_peran import Roleperan
 
 
-@dataclass
-class Roleperan:
-    nama: Optional[str]
-    peran: Optional[str]
-    lembaga: Optional[str]
-    url: str
-
-    @classmethod
-    def from_tag(cls, tag: Tag) -> Roleperan:
-        a: Tag = tag.find('a')
-        spans: List[Tag] = a.find_all('span')
-        url = DOMAIN + str(a['href'])
-        return cls(
-            nama=str(spans[1].text).split(':')[-1],
-            peran=str(spans[2].text).split(':')[-1],
-            lembaga=str(spans[0].text).split(':')[-1],
-            url=url
-        )
-
-    def __str__(self):
-        strs = [self.nama, self.peran, self.lembaga]
-        return ' - '.join(strs)
-
-
-class Auth(object):
+class BaseAuth(object):
     _url: str = BASE_URL
     _semester_id: str = SEMESTER_ID
     session: Session = None
+
+    def register_auth(self) -> bool:
+        try:
+            self.Pengguna = Rest(self, Pengguna, 'rest/Pengguna')
+            self.logger.debug('Berhasil memulai auth')
+            return True
+        except Exception as E:
+            self.logger.exception(E)
+            return False
 
     def login(self,
               username: str,

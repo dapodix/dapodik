@@ -33,7 +33,6 @@ from .rest.lembaga_pengangkat import LembagaPengangkat
 from .rest.mst_wilayah import MstWilayah
 from .rest.pangkat_golongan import PangkatGolongan
 from .rest.pekerjaan import Pekerjaan
-from .rest.pengguna import Pengguna
 from .rest.penghasilan import Penghasilan
 from .rest.role_pengguna import RolePengguna
 from .rest.status_keaktifan_pegawai import StatusKeaktifanPegawai
@@ -46,6 +45,8 @@ from .rest.sumber_listrik import SumberListrik
 from .rest.sync_log import SyncLog
 from .rest.tingkat_pendidikan import TingkatPendidikan
 from .rest.waktu_penyelenggaraan import WaktuPenyelenggaraan
+
+from .auth.pengguna import Pengguna
 
 from .customrest.mata_pelajaran_kurikulum import MataPelajaranKurikulum
 from .customrest.update_panel_dashboard import UpdatePanelDashboard
@@ -86,7 +87,7 @@ from .sarpras.buku_longitudinal import BukuLongitudinal
 from .rombongan_belajar.rombongan_belajar import RombonganBelajar
 from .rombongan_belajar.pembelajaran import Pembelajaran
 
-from .auth import Auth
+from .auth.base_auth import BaseAuth
 from .customrest.base_customrest import BaseCustomrest
 from .peserta_didik.base_peserta_didik import BasePesertaDidik
 from .ptk.base_ptk import BasePtk
@@ -105,7 +106,7 @@ __author__ = 'hexatester (Habib Rohman)'
 __all__ = [
     'Agama', 'Akreditasi', 'AkreditasiSp', 'AksesInternet', 'Alat',
     'AlatDariBlockgrant', 'AlatLongitudinal', 'AlatTransportasi', 'Angkutan',
-    'AngkutanDariBlockgrant', 'Auth', 'Bangunan', 'BangunanDariBlockgrant',
+    'AngkutanDariBlockgrant', 'BaseAuth', 'Bangunan', 'BangunanDariBlockgrant',
     'BangunanLongitudinal', 'Bank', 'BaseCustomrest', 'BaseDapodik',
     'BasePesertaDidik', 'BasePtk', 'BaseRest', 'BaseRombonganBelajar',
     'BaseSarpras', 'BaseSekolah', 'BentukLembaga', 'Biblio', 'BlockGrant',
