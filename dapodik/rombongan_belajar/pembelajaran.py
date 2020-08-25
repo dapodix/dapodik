@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from dapodik import (DapodikObject, Pembelajaran, Semester, PtkTerdaftar,
+from dapodik import (DapodikObject, Semester, PtkTerdaftar,
                      MataPelajaranKurikulum, RombonganBelajar)
 from dapodik.utils.decorator import set_meta
 
@@ -41,6 +41,5 @@ class Pembelajaran(DapodikObject):
     def semester(self) -> Semester:
         return self.semester_id
 
-    @Pembelajaran.property
-    def pembelajaran(self) -> Pembelajaran:
-        return self.pembelajaran_id
+    def pembelajaran(self):
+        return self
