@@ -13,6 +13,7 @@ from dapodik import (
     Sekolah,
     SumberGaji,
     TahunAjaran,
+    JenisPtk,
 )
 from dapodik.utils.decorator import set_meta
 
@@ -137,10 +138,9 @@ class Ptk(DapodikObject):
     def status_kepegawaian(self) -> StatusKepegawaian:
         return self.status_kepegawaian_id  # type: ignore
 
-    @property
-    def jenis_ptk(self):
-        # TODO API
-        return self.jenis_ptk_id
+    @JenisPtk.prop
+    def jenis_ptk(self) -> JenisPtk:
+        return self.jenis_ptk_id  # type: ignore
 
     @property
     def pengawas_bidang_studi(self):
