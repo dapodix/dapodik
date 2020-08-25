@@ -7,7 +7,7 @@ from dapodik import (
 
 
 class BaseCustomrest(BaseDapodik):
-    def register_custom_rest(self) -> bool:
+    def register_customrest(self) -> bool:
         try:
             self.MataPelajaranKurikulum = Rest(
                 self, MataPelajaranKurikulum,
