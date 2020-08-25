@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 from dapodik import (DapodikObject, PesertaDidik, Sekolah, JenisPendaftaran,
-                     JenisKeluar)
+                     JenisKeluar, JurusanSp)
 from dapodik.utils.decorator import set_meta
 
 
@@ -46,10 +46,9 @@ class RegistrasiPesertaDidik(DapodikObject):
     def registrasi(self):
         return self
 
-    @property
-    def jurusan_sp(self):
-        # TODO API
-        return self.jurusan_sp_id
+    @JurusanSp.prop
+    def jurusan_sp(self) -> JurusanSp:
+        return self.jurusan_sp_id  # type: ignore
 
     @JenisPendaftaran.prop
     def jenis_pendaftaran(self) -> JenisPendaftaran:

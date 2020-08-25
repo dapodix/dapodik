@@ -12,6 +12,7 @@ from dapodik import (
     PangkatGolongan,
     Sekolah,
     SumberGaji,
+    TahunAjaran,
 )
 from dapodik.utils.decorator import set_meta
 
@@ -124,10 +125,9 @@ class Ptk(DapodikObject):
     def jenis_keluar(self) -> JenisKeluar:
         return self.jenis_keluar_id  # type: ignore
 
-    @property
-    def tahun_ajaran(self):
-        # TODO API
-        return self.tahun_ajaran_id
+    @TahunAjaran.prop
+    def tahun_ajaran(self) -> TahunAjaran:
+        return self.tahun_ajaran_id  # type: ignore
 
     @property
     def updater(self):
