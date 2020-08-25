@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from dapodik import (DapodikObject, Semester, PtkTerdaftar,
-                     MataPelajaranKurikulum, RombonganBelajar)
+from dapodik import (DapodikObject, Semester, PtkTerdaftar, MataPelajaran,
+                     RombonganBelajar)
 from dapodik.utils.decorator import set_meta
 
 
@@ -24,8 +24,8 @@ class Pembelajaran(DapodikObject):
     def rombongan_belajar(self) -> RombonganBelajar:
         return self.rombongan_belajar_id  # type: ignore
 
-    @MataPelajaranKurikulum.prop
-    def mata_pelajaran(self) -> MataPelajaranKurikulum:
+    @MataPelajaran.prop
+    def mata_pelajaran(self) -> MataPelajaran:
         return self.mata_pelajaran_id  # type: ignore
 
     @PtkTerdaftar.prop

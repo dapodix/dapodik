@@ -31,6 +31,7 @@ from .rest.kebutuhan_khusus import KebutuhanKhusus
 from .rest.klasifikasi_lembaga import KlasifikasiLembaga
 from .rest.kurikulum import Kurikulum
 from .rest.lembaga_pengangkat import LembagaPengangkat
+from .rest.mata_pelajaran import MataPelajaran
 from .rest.mst_wilayah import MstWilayah
 from .rest.pangkat_golongan import PangkatGolongan
 from .rest.pekerjaan import Pekerjaan
@@ -116,14 +117,15 @@ __all__ = [
     'JenisKeluar', 'JenisLk', 'JenisPendaftaran', 'JenisPrasarana',
     'JenisRombel', 'JenisSarana', 'JenisTinggal', 'JenjangPendidikan',
     'KategoriTk', 'KebutuhanKhusus', 'Kepanitiaan', 'KlasifikasiLembaga',
-    'Kurikulum', 'LembagaPengangkat', 'MataPelajaranKurikulum', 'MstWilayah',
-    'PangkatGolongan', 'Pekerjaan', 'Pembelajaran', 'Pengguna', 'Penghasilan',
-    'PesertaDidik', 'PesertaDidikBaru', 'PesertaDidikLongitudinal',
-    'ProgramInklusi', 'Ptk', 'PtkTerdaftar', 'RegistrasiPesertaDidik', 'Rest',
-    'Results', 'RolePengguna', 'RombonganBelajar', 'Ruang',
-    'RuangLongitudinal', 'Sanitasi', 'Sekolah', 'SekolahLongitudinal',
-    'SekolahPaud', 'Semester', 'StatusKeaktifanPegawai', 'StatusKepegawaian',
-    'StatusKepemilikanSarpras', 'SumberAir', 'SumberDanaSekolah', 'SumberGaji',
-    'SumberListrik', 'SyncLog', 'Tanah', 'TingkatPendidikan',
-    'UpdatePanelDashboard', 'WaktuPenyelenggaraan', 'Yayasan'
+    'Kurikulum', 'LembagaPengangkat', 'MataPelajaran',
+    'MataPelajaranKurikulum', 'MstWilayah', 'PangkatGolongan', 'Pekerjaan',
+    'Pembelajaran', 'Pengguna', 'Penghasilan', 'PesertaDidik',
+    'PesertaDidikBaru', 'PesertaDidikLongitudinal', 'ProgramInklusi', 'Ptk',
+    'PtkTerdaftar', 'RegistrasiPesertaDidik', 'Rest', 'Results',
+    'RolePengguna', 'RombonganBelajar', 'Ruang', 'RuangLongitudinal',
+    'Sanitasi', 'Sekolah', 'SekolahLongitudinal', 'SekolahPaud', 'Semester',
+    'StatusKeaktifanPegawai', 'StatusKepegawaian', 'StatusKepemilikanSarpras',
+    'SumberAir', 'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog',
+    'Tanah', 'TingkatPendidikan', 'UpdatePanelDashboard',
+    'WaktuPenyelenggaraan', 'Yayasan'
 ]
