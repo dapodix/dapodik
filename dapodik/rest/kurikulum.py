@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, date
 from typing import Optional
-from dapodik import DapodikObject
+from dapodik import DapodikObject, Jurusan
 from dapodik.utils.decorator import set_meta
 
 
@@ -20,3 +20,7 @@ class Kurikulum(DapodikObject):
     expired_date: Optional[datetime]
     last_sync: datetime
     sek: str
+
+    @Jurusan.prop
+    def jurusan(self) -> Optional[Jurusan]:
+        return self.jurusan_id  # type: ignore
