@@ -25,6 +25,8 @@ lxml = "^4.5.2"
 pytest = "^5.2"
 flake8 = "^3.8.3"
 yapf = "^0.30.0"
+mypy = "^0.782"
+pre-commit = "^2.7.1"
 
 [tool.poetry.scripts]
 dapodik = "dapodik.__main__:main"
