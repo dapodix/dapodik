@@ -45,6 +45,7 @@ class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
         if self.login(username, password):
             self.logger.info('Berhasil login dengan email {}'.format(username))
             self.register_auth()
+            self.register_customrest()
             self.register_rest()
             self.register_sekolah()
             self.register_sarpras()
