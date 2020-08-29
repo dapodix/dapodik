@@ -7,6 +7,8 @@ from dapodik import (
     Alat,
     Angkutan,
     Buku,
+    TanahLongitudinal,
+    TanahDariBlockgrant,
     BangunanLongitudinal,
     BangunanDariBlockgrant,
     RuangLongitudinal,
@@ -34,6 +36,10 @@ class BaseSarpras(BaseDapodik):
             self.RuangLongitudinal = Rest(self, RuangLongitudinal,
                                           'rest/RuangLongitudinal')
             self.Tanah = Rest(self, Tanah, 'rest/Tanah')
+            self.TanahLongitudinal = Rest(self, TanahLongitudinal,
+                                          'rest/TanahLongitudinal')
+            self.TanahDariBlockgrant = Rest(self, TanahDariBlockgrant,
+                                            'rest/TanahDariBlockgrant')
             self.Angkutan = Rest(self, Angkutan, 'rest/Angkutan')
             self.Buku = Rest(self, Buku, 'rest/Buku')
             self.AngkutanDariBlockgrant = Rest(self, AngkutanDariBlockgrant,

@@ -78,6 +78,8 @@ from .peserta_didik.peserta_didik_longitudinal import PesertaDidikLongitudinal
 from .peserta_didik.registrasi_peserta_didik import RegistrasiPesertaDidik
 
 from .sarpras.tanah import Tanah
+from .sarpras.tanah_longitudinal import TanahLongitudinal
+from .sarpras.tanah_dari_blockgrant import TanahDariBlockgrant
 from .sarpras.bangunan import Bangunan
 from .sarpras.bangunan_longitudinal import BangunanLongitudinal
 from .sarpras.bangunan_dari_blockgrant import BangunanDariBlockgrant
@@ -132,6 +134,7 @@ __all__ = [
     'SekolahLongitudinal', 'SekolahPaud', 'Semester', 'StatusKeaktifanPegawai',
     'StatusKepegawaian', 'StatusKepemilikanSarpras', 'SumberAir',
     'SumberDanaSekolah', 'SumberGaji', 'SumberListrik', 'SyncLog',
-    'TahunAjaran', 'Tanah', 'TingkatPendidikan', 'UpdatePanelDashboard',
-    'WaktuPenyelenggaraan', 'Yayasan'
+    'TahunAjaran', 'Tanah', 'TanahLongitudinal', 'TanahDariBlockgrant',
+    'TingkatPendidikan', 'UpdatePanelDashboard', 'WaktuPenyelenggaraan',
+    'Yayasan'
 ]
