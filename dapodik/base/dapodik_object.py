@@ -91,10 +91,22 @@ class DapodikObject:
                     data[key] = value
         return data
 
-    def update(self, data: dict) -> None:
+    def update(self, data: dict = None, **kwargs) -> None:
+        data = data or kwargs
         for key, value in data.items():
             if hasattr(self, key):
                 setattr(self, key, value)
+
+    @property
+    def delete_params(self) -> dict:
+        return {self._id: self.id} if self.id else {}
+
+    def delete(self) -> bool:
+        if not self._editable:
+            raise Exception('Data {} tidak dapat dihapus'.format(repr(self)))
+        filename = self.dapodik.domain + self._url + '/' + self.id
+        res = self.dapodik.session.delete(filename, params=self.delete_params)
+        return res.ok
 
     def __str__(self) -> str:
         return getattr(self, 'name', self._id)
