@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Sekolah, SumberDanaSekolah
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('blockgrant_id')
+@set_meta('blockgrant_id', sekolah=Sekolah, sumber_dana=SumberDanaSekolah)
 @dataclass(eq=False)
 class BlockGrant(DapodikObject):
     blockgrant_id: str
@@ -31,18 +31,10 @@ class BlockGrant(DapodikObject):
     def blockgrant(self):
         return self
 
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
     @property
     def jenis_bantuan(self):
         # TODO API
         return self.jenis_bantuan_id
-
-    @SumberDanaSekolah.prop
-    def sumber_dana(self) -> SumberDanaSekolah:
-        return self.sumber_dana_id  # type: ignore
 
     @property
     def updater(self):

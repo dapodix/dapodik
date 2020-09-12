@@ -5,7 +5,7 @@ from dapodik import DapodikObject, TahunAjaran
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('semester_id')
+@set_meta('semester_id', tahun_ajaran=TahunAjaran)
 @dataclass(eq=False)
 class Semester(DapodikObject):
     semester_id: str
@@ -19,7 +19,3 @@ class Semester(DapodikObject):
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
-
-    @TahunAjaran.prop
-    def tahun_ajaran(self) -> TahunAjaran:
-        return self.tahun_ajaran_id  # type: ignore

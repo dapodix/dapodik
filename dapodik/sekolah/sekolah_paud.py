@@ -12,7 +12,13 @@ from dapodik import (
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('sekolah_id')
+@set_meta('sekolah_id',
+          sekolah=Sekolah,
+          kategori_tk=KategoriTk,
+          klasifikasi_lembaga=KlasifikasiLembaga,
+          sumber_dana_sekolah=SumberDanaSekolah,
+          fasilitas_layanan=FasilitasLayanan,
+          lembaga_pengangkat=LembagaPengangkat)
 @dataclass(eq=False)
 class SekolahPaud(DapodikObject):
     sekolah_id: str
@@ -45,30 +51,6 @@ class SekolahPaud(DapodikObject):
     soft_delete: str
     last_sync: datetime
     updater_id: str
-
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
-    @KategoriTk.prop
-    def kategori_tk(self) -> KategoriTk:
-        return self.kategori_tk_id  # type: ignore
-
-    @KlasifikasiLembaga.prop
-    def klasifikasi_lembaga(self) -> KlasifikasiLembaga:
-        return self.klasifikasi_lembaga_id  # type: ignore
-
-    @SumberDanaSekolah.prop
-    def sumber_dana_sekolah(self) -> SumberDanaSekolah:
-        return self.sumber_dana_sekolah_id  # type: ignore
-
-    @FasilitasLayanan.prop
-    def fasilitas_layanan(self) -> FasilitasLayanan:
-        return self.fasilitas_layanan_id  # type: ignore
-
-    @LembagaPengangkat.prop
-    def lembaga_pengangkat(self) -> LembagaPengangkat:
-        return self.lembaga_pengangkat_id  # type: ignore
 
     @property
     def bentuk_lembaga(self):

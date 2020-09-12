@@ -4,7 +4,7 @@ from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_panitia')
+@set_meta('id_panitia', sekolah=Sekolah)
 @dataclass(eq=False)
 class Kepanitiaan(DapodikObject):
     id_panitia: str
@@ -29,10 +29,6 @@ class Kepanitiaan(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     id_jns_panitia_str: str
-
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
 
     @property
     def updater(self):

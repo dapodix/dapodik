@@ -6,7 +6,13 @@ from dapodik import (DapodikObject, WaktuPenyelenggaraan, AksesInternet,
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('sekolah_longitudinal_id')
+@set_meta('sekolah_longitudinal_id',
+          sekolah=Sekolah,
+          semester=Semester,
+          waktu_penyelenggaraan=WaktuPenyelenggaraan,
+          sumber_listrik=SumberListrik,
+          akses_internet=AksesInternet,
+          akses_internet_2=AksesInternet.with_id('akses_internet_2_id'))
 @dataclass(eq=False)
 class SekolahLongitudinal(DapodikObject):
     sekolah_id: str
@@ -36,34 +42,10 @@ class SekolahLongitudinal(DapodikObject):
     sekolah_id_str: str
     sekolah_longitudinal_id: str
 
-    @Sekolah.prop
-    def sekolah(self):
-        return self.sekolah_id
-
-    @Semester.prop
-    def semester(self):
-        return self.semester_id
-
-    @WaktuPenyelenggaraan.prop
-    def waktu_penyelenggaraan(self):
-        return self.waktu_penyelenggaraan_id
-
     @property
     def sertifikasi_iso(self):
         # TODO API
         return self.sertifikasi_iso_id
-
-    @SumberListrik.prop
-    def sumber_listrik(self):
-        return self.sumber_listrik_id
-
-    @AksesInternet.prop
-    def akses_internet(self):
-        return self.akses_internet_id
-
-    @AksesInternet.prop
-    def akses_internet_2(self):
-        return self.akses_internet_2_id
 
     @property
     def blob(self):
