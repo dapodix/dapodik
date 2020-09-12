@@ -12,6 +12,7 @@ from dapodik import (
     USER_AGENT,
     BaseAuth,
     BaseCustomrest,
+    BaseJadwal,
     BasePesertaDidik,
     BasePtk,
     BaseRest,
@@ -22,7 +23,7 @@ from dapodik import (
 
 
 class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
-              BaseRombonganBelajar, BaseSarpras, BaseSekolah):
+              BaseRombonganBelajar, BaseSarpras, BaseJadwal, BaseSekolah):
     session: Session = Session()
     domain: str = BASE_URL
     cache: Dict[Type[DapodikObject], Results] = {}
@@ -52,6 +53,7 @@ class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
             self.register_ptk()
             self.register_peserta_didik()
             self.register_rombongan_belajar()
+            self.register_jadwal()
 
     def __getitem__(  # type: ignore
             self, key: Type[DapodikObject]) -> Optional[Results]:
