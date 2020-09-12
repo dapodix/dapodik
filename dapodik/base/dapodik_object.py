@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from dapodik import Dapodik
 
 
-class DapodikObject:
+class DapodikObject(object):
     dapodik: Dapodik = None  # type: ignore
     _editable: bool = False
     _id: str = ''
@@ -21,8 +21,7 @@ class DapodikObject:
     _name: str = ''
 
     def __post_init__(self):
-        self.dapodik.logger.debug('Berhasil membuat {}'.format(
-            self.__class__.__qualname__))
+        super(DapodikObject, self).__init__()
 
     @property
     def id(self):
@@ -91,6 +90,13 @@ class DapodikObject:
                     data[key] = value
         return data
 
+    @property
+    def create_data(self) -> dict:
+        pass
+
+    def create(self, obj: Any[DapodikObject]):
+        pass
+
     def update(self, data: dict = None, **kwargs) -> None:
         data = data or kwargs
         for key, value in data.items():
@@ -121,6 +127,11 @@ class DapodikObject:
         return None
 
     @classmethod
+    def with_id(cls: Type[DapodikObject], name) -> Type[DapodikObject]:
+        cls._id = name
+        return cls
+
+    @classmethod
     def get_params(cls) -> Dict[str, Any]:
         params: Dict[str, Any] = cls._params or {}
         if type(cls.params) == dict:
@@ -132,30 +143,15 @@ class DapodikObject:
         "Emulate PyProperty_Type() in Objects/descrobject.c"
 
         def __init__(self, cls, get_id=None, update=False, delete=False):
-            self.cls: DapodikObject = cls
+            self.cls: Type[DapodikObject] = cls
             self.func = get_id
             self.update = update
             self.delete = False
             self.__doc__ = get_id.__doc__
 
-        def __get__(self, obj, objtype=None):
+        def __get__(self, obj: Any, objtype=None) -> Any:
             if obj is None:
                 return self
-            if self.fget is None:
-                raise AttributeError("unreadable attribute")
-            return self.fget(obj)
-
-        def __set__(self, obj, value):
-            if self.fset is None:
-                raise AttributeError("can't set attribute")
-            self.fset(obj, value)
-
-        def __delete__(self, obj):
-            if self.fdel is None:
-                raise AttributeError("can't delete attribute")
-            self.fdel(obj)
-
-        def fget(self, obj: Any):
             key = self.func(obj)
             do = obj.dapodik[self.cls]
             if not do:
@@ -168,7 +164,9 @@ class DapodikObject:
                 key,
                 type(self.cls).__qualname__))
 
-        def fset(self, obj: Any, value: Any) -> None:
+        def __set__(self, obj: Any, value: Any) -> None:
+            if self.update is False:
+                raise AttributeError("can't set attribute")
             key = self.func(obj)
             if self.update:
                 c = obj.dapodik[self.cls]
@@ -181,10 +179,34 @@ class DapodikObject:
                 raise Exception('{} tidak dapat dirubah'.format(
                     self.func.__name__))
 
-        def fdel(self, obj: Any) -> None:
+        def __delete__(self, obj: Any):
+            if self.delete is True:
+                raise AttributeError("can't delete attribute")
             key = self.func(obj)
             if self.delete:
                 delattr(obj, key)
             else:
                 raise Exception("{} tidak dapat dihapus".format(
                     self.func.__name__))
+
+    @classmethod
+    def getter(cls: Type[DapodikObject],
+               obj: Type[DapodikObject],
+               key: str = '') -> Any:
+        id_ = getattr(obj, key or cls._id)
+        res = obj.dapodik[cls]
+        return res[id_] if res else None
+
+    @classmethod
+    def setter(cls: Type[DapodikObject],
+               obj: Type[DapodikObject],
+               value: Any,
+               key: str = '') -> Any:
+        key = key or cls._id
+        if isinstance(value, cls):
+            setattr(obj, key, value)
+        elif isinstance(getattr(obj, key), cls):
+            res = obj.dapodik[cls]
+            data = res[value] if res else None
+            if res and data:
+                setattr(obj, key, data)
