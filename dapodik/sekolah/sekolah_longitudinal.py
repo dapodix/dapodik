@@ -46,14 +46,3 @@ class SekolahLongitudinal(DapodikObject):
     def sertifikasi_iso(self):
         # TODO API
         return self.sertifikasi_iso_id
-
-    @property
-    def blob(self):
-        return self.blob_id
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    def sekolah_longitudinal(self):
-        return self

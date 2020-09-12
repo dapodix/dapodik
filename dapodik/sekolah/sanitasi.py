@@ -94,10 +94,3 @@ class Sanitasi(DapodikObject):
     def sumber_air_minum(self):
         # TODO API
         return self.sumber_air_minum_id
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    def sanitasi(self):
-        return self

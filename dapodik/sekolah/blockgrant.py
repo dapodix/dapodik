@@ -28,14 +28,6 @@ class BlockGrant(DapodikObject):
     sumber_dana_id_str: str
 
     @property
-    def blockgrant(self):
-        return self
-
-    @property
     def jenis_bantuan(self):
         # TODO API
         return self.jenis_bantuan_id
-
-    @property
-    def updater(self):
-        return self.updater_id

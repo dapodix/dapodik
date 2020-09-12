@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Jurusan
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('kurikulum_id')
+@set_meta('kurikulum_id', jurusan=Jurusan)
 @dataclass(eq=False, frozen=True)
 class Kurikulum(DapodikObject):
     kurikulum_id: int
@@ -20,7 +20,3 @@ class Kurikulum(DapodikObject):
     expired_date: Optional[datetime]
     last_sync: datetime
     sek: str
-
-    @Jurusan.prop
-    def jurusan(self) -> Optional[Jurusan]:
-        return self.jurusan_id  # type: ignore

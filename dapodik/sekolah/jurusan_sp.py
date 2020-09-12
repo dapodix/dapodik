@@ -26,7 +26,3 @@ class JurusanSp(DapodikObject):
     kebutuhan_khusus_id_str: str
     jurusan_id_str: str
     vld_count: int
-
-    @property
-    def updater(self):
-        return self.updater_id

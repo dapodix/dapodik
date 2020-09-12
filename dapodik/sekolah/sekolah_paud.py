@@ -56,7 +56,3 @@ class SekolahPaud(DapodikObject):
     def bentuk_lembaga(self):
         # TODO API
         return self.bentuk_lembaga_id
-
-    @property
-    def updater(self):
-        return self.updater_id

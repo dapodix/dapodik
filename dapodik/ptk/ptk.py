@@ -20,7 +20,20 @@ from dapodik import (
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('ptk_id')
+@set_meta('ptk_id',
+          sekolah=Sekolah,
+          jenis_keluar=JenisKeluar,
+          tahun_ajaran=TahunAjaran,
+          status_kepegawaian=StatusKepegawaian,
+          jenis_ptk=JenisPtk,
+          agama=Agama,
+          status_keaktifan_pegawai=StatusKeaktifanPegawai,
+          lembaga_pengangkat=LembagaPengangkat,
+          pangkat_golongan=PangkatGolongan,
+          keahlian_laboratorium=KeahlianLaboratorium,
+          sumber_gaji=SumberGaji,
+          pengguna=Pengguna,
+          bank=Bank)
 @dataclass(eq=False)
 class Ptk(DapodikObject):
     ptk_terdaftar_id: str
@@ -116,71 +129,11 @@ class Ptk(DapodikObject):
     vld_count: int
     keahlian_laboratorium_id: Optional[int] = 99
 
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
     @property
     def ptk_terdaftar(self):
         return self.ptk_terdaftar_id
-
-    @JenisKeluar.prop
-    def jenis_keluar(self) -> JenisKeluar:
-        return self.jenis_keluar_id  # type: ignore
-
-    @TahunAjaran.prop
-    def tahun_ajaran(self) -> TahunAjaran:
-        return self.tahun_ajaran_id  # type: ignore
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    @StatusKepegawaian.prop
-    def status_kepegawaian(self) -> StatusKepegawaian:
-        return self.status_kepegawaian_id  # type: ignore
-
-    @JenisPtk.prop
-    def jenis_ptk(self) -> JenisPtk:
-        return self.jenis_ptk_id  # type: ignore
 
     @property
     def pengawas_bidang_studi(self):
         # TODO API
         return self.pengawas_bidang_studi_id
-
-    @Agama.prop
-    def agama(self) -> Agama:
-        return self.agama_id  # type: ignore
-
-    @StatusKeaktifanPegawai.prop
-    def status_keaktifan(self) -> StatusKeaktifanPegawai:
-        return self.status_keaktifan_id  # type: ignore
-
-    @LembagaPengangkat.prop
-    def lembaga_pengangkat(self) -> LembagaPengangkat:
-        return self.lembaga_pengangkat_id  # type: ignore
-
-    @PangkatGolongan.prop
-    def pangkat_golongan(self) -> PangkatGolongan:
-        return self.pangkat_golongan_id  # type: ignore
-
-    @KeahlianLaboratorium.prop
-    def keahlian_laboratorium(self) -> KeahlianLaboratorium:
-        return self.keahlian_laboratorium_id  # type: ignore
-
-    @SumberGaji.prop
-    def sumber_gaji(self) -> SumberGaji:
-        return self.sumber_gaji_id  # type: ignore
-
-    @property
-    def blob(self):
-        return self.blob_id
-
-    @Pengguna.prop
-    def pengguna(self) -> Pengguna:
-        return self.pengguna_id  # type: ignore
-
-    @Bank.prop
-    def bank(self) -> Bank:
-        return self.bank

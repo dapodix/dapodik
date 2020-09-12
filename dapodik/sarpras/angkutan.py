@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import DapodikObject, Sekolah, Ptk
+from dapodik import DapodikObject, Sekolah, Ptk, JenisSarana
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_angkutan')
+@set_meta('id_angkutan', sekolah=Sekolah, ptk=Ptk, jenis_sarana=JenisSarana)
 @dataclass(eq=False)
 class Angkutan(DapodikObject):
     id_angkutan: str
@@ -39,25 +39,7 @@ class Angkutan(DapodikObject):
     sekolah_id_str: str
     vld_count: int
 
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
-    @Ptk.prop
-    def ptk(self) -> Optional[str]:
-        return self.ptk_id  # type: ignore
-
-    @property
-    def jenis_sarana(self):
-        # TODO API
-        return self.jenis_sarana_id
-
     @property
     def kepemilikan_sarpras(self):
         # TODO API
         return self.kepemilikan_sarpras_id
-
-    @property
-    def updater(self):
-        # TODO API
-        return self.updater_id

@@ -139,57 +139,6 @@ class DapodikObject(object):
         return params
 
     @classmethod
-    class prop:
-        "Emulate PyProperty_Type() in Objects/descrobject.c"
-
-        def __init__(self, cls, get_id=None, update=False, delete=False):
-            self.cls: Type[DapodikObject] = cls
-            self.func = get_id
-            self.update = update
-            self.delete = False
-            self.__doc__ = get_id.__doc__
-
-        def __get__(self, obj: Any, objtype=None) -> Any:
-            if obj is None:
-                return self
-            key = self.func(obj)
-            do = obj.dapodik[self.cls]
-            if not do:
-                raise Exception('tidak ditemukan {}'.format(
-                    type(self.cls).__qualname__))
-            val = do[key]
-            if val:
-                return val
-            raise Exception('id {} tidak ditemukan di {}'.format(
-                key,
-                type(self.cls).__qualname__))
-
-        def __set__(self, obj: Any, value: Any) -> None:
-            if self.update is False:
-                raise AttributeError("can't set attribute")
-            key = self.func(obj)
-            if self.update:
-                c = obj.dapodik[self.cls]
-                if c and c[value]:
-                    setattr(obj, key, value)
-                else:
-                    raise ValueError('{} tidak ada di {}'.format(
-                        value, self.cls))
-            else:
-                raise Exception('{} tidak dapat dirubah'.format(
-                    self.func.__name__))
-
-        def __delete__(self, obj: Any):
-            if self.delete is True:
-                raise AttributeError("can't delete attribute")
-            key = self.func(obj)
-            if self.delete:
-                delattr(obj, key)
-            else:
-                raise Exception("{} tidak dapat dihapus".format(
-                    self.func.__name__))
-
-    @classmethod
     def getter(cls: Type[DapodikObject],
                obj: Type[DapodikObject],
                key: str = '') -> Any:

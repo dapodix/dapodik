@@ -24,11 +24,3 @@ class AkreditasiSp(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     la_id_str: str
-
-    @property
-    def akreditasi(self):
-        return self
-
-    @property
-    def updater(self):
-        return self.updater_id

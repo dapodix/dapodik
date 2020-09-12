@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Semester, Ruang
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('ruang_longitudinal_id')
+@set_meta('ruang_longitudinal_id', semester=Semester, ruang=Ruang)
 @dataclass(eq=False)
 class RuangLongitudinal(DapodikObject):
     id_ruang: str
@@ -52,23 +52,3 @@ class RuangLongitudinal(DapodikObject):
     id_ruang_str: str
     semester_id_str: str
     ruang_longitudinal_id: str
-
-    @Semester.prop
-    def semester(self) -> Semester:
-        return self.semester_id  # type: ignore
-
-    @property
-    def blob(self):
-        return self.blob_id
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    @property
-    def ruang_longitudinal(self):
-        return self
-
-    @Ruang.prop
-    def ruang(self) -> Ruang:
-        return self.id_ruang  # type: ignore

@@ -5,7 +5,7 @@ from dapodik import DapodikObject, BlockGrant, Tanah
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('tanah_dari_blockgrant_id')
+@set_meta('tanah_dari_blockgrant_id', blockgrant=BlockGrant, tanah=Tanah)
 @dataclass(eq=False)
 class TanahDariBlockgrant(DapodikObject):
     blockgrant_id: str
@@ -18,19 +18,3 @@ class TanahDariBlockgrant(DapodikObject):
     last_sync: Optional[datetime] = None
     updater_id: Optional[str] = None
     tanah_dari_blockgrant_id: str = 'Admin.model.TanahDariBlockgrant-1'
-
-    @BlockGrant.prop
-    def blockgrant(self) -> BlockGrant:
-        return self.blockgrant_id  # type: ignore
-
-    @Tanah.prop
-    def tanah(self) -> Tanah:
-        return self.id_tanah  # type: ignore
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    @property
-    def tanah_dari_blockgrant(self):
-        return self

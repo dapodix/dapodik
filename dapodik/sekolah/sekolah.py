@@ -59,10 +59,6 @@ class Sekolah(DapodikObject):
     vld_count: int
 
     @property
-    def sekolah(self):
-        return self.sekolah_id
-
-    @property
     def bentuk_pendidikan(self):
         # TODO API
         return self.bentuk_pendidikan_id
@@ -71,7 +67,3 @@ class Sekolah(DapodikObject):
     def status_kepemilikan(self):
         # TODO API
         return self.status_kepemilikan_id
-
-    @property
-    def updater(self):
-        return self.updater_id

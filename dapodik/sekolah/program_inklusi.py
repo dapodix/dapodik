@@ -24,7 +24,3 @@ class ProgramInklusi(DapodikObject):
     updater_id: str
     sekolah_id_str: str
     kebutuhan_khusus_id_str: str
-
-    @property
-    def updater(self):
-        return self.updater_id

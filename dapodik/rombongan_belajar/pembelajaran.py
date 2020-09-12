@@ -4,7 +4,11 @@ from dapodik import (DapodikObject, Semester, PtkTerdaftar, MataPelajaran,
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('pembelajaran_id')
+@set_meta('pembelajaran_id',
+          rombongan_belajar=RombonganBelajar,
+          mata_pelajaran=MataPelajaran,
+          ptk_terdaftar=PtkTerdaftar,
+          semester=Semester)
 @dataclass(eq=False)
 class Pembelajaran(DapodikObject):
     rombongan_belajar_id: str
@@ -20,26 +24,7 @@ class Pembelajaran(DapodikObject):
     semester_id: str = "20201"
     pembelajaran_id: str = "Admin.model.PembelajaranNew-1"
 
-    @RombonganBelajar.prop
-    def rombongan_belajar(self) -> RombonganBelajar:
-        return self.rombongan_belajar_id  # type: ignore
-
-    @MataPelajaran.prop
-    def mata_pelajaran(self) -> MataPelajaran:
-        return self.mata_pelajaran_id  # type: ignore
-
-    @PtkTerdaftar.prop
-    def ptk_terdaftar(self) -> PtkTerdaftar:
-        return self.ptk_terdaftar_id  # type: ignore
-
     @property
     def induk_pembelajaran(self):
         # TODO API NF
         return self.induk_pembelajaran_id
-
-    @Semester.prop
-    def semester(self) -> Semester:
-        return self.semester_id  # type: ignore
-
-    def pembelajaran(self):
-        return self

@@ -5,7 +5,13 @@ from dapodik import (DapodikObject, PesertaDidikBaru, Sekolah, Agama,
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('peserta_didik_id')
+@set_meta('peserta_didik_id',
+          sekolah=Sekolah,
+          pdb=PesertaDidikBaru,
+          agama=Agama,
+          kebutuhan_khusus=KebutuhanKhusus,
+          jenis_tinggal=JenisTinggal,
+          alat_transportasi=AlatTransportasi)
 @dataclass(eq=False)
 class PesertaDidik(DapodikObject):
     nama: str
@@ -99,31 +105,3 @@ class PesertaDidik(DapodikObject):
         return {
             'sekolah_id': self.dapodik.sekolah_id,
         }
-
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
-    @PesertaDidikBaru.prop
-    def pdb(self) -> PesertaDidikBaru:
-        return self.pdb_id  # type: ignore
-
-    @Agama.prop
-    def agama(self) -> Agama:
-        return self.agama_id  # type: ignore
-
-    @property
-    def peserta_didik(self):
-        return self
-
-    @KebutuhanKhusus.prop
-    def kebutuhan_khusus(self) -> KebutuhanKhusus:
-        return self.kebutuhan_khusus_id  # type: ignore
-
-    @JenisTinggal.prop
-    def jenis_tinggal(self) -> JenisTinggal:
-        return self.jenis_tinggal_id  # type: ignore
-
-    @AlatTransportasi.prop
-    def alat_transportasi(self) -> AlatTransportasi:
-        return self.alat_transportasi_id  # type: ignore

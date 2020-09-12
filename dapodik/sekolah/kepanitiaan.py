@@ -31,10 +31,6 @@ class Kepanitiaan(DapodikObject):
     id_jns_panitia_str: str
 
     @property
-    def updater(self):
-        return self.updater_id
-
-    @property
     def jns_panitia(self):
         # TODO API
         return self.id_jns_panitia

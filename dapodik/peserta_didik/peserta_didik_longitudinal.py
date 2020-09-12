@@ -5,7 +5,9 @@ from dapodik.utils.decorator import set_meta
 DEF = "Admin.model.PesertaDidikLongitudinal-1"
 
 
-@set_meta('peserta_didik_longitudinal_id')
+@set_meta('peserta_didik_longitudinal_id',
+          peserta_didik=PesertaDidik,
+          semester=Semester)
 @dataclass(eq=False)
 class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_id: int
@@ -23,15 +25,3 @@ class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_longitudinal_id_str: str = ""
     peserta_didik_id_str: str = ""
     semester_id_str: str = ""
-
-    @PesertaDidik.prop
-    def peserta_didik(self) -> PesertaDidik:
-        return self.peserta_didik_id  # type: ignore
-
-    @property
-    def peserta_didik_longitudinal(self):
-        return self
-
-    @Semester.prop
-    def semester(self) -> Semester:
-        return self.semester_id  # type: ignore

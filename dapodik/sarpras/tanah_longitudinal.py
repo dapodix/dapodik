@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Tanah, TahunAjaran
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('tanah_longitudinal_id')
+@set_meta('tanah_longitudinal_id', tanah=Tanah, tahun_ajaran=TahunAjaran)
 @dataclass(eq=False)
 class TanahLongitudinal(DapodikObject):
     id_tanah: str
@@ -20,19 +20,3 @@ class TanahLongitudinal(DapodikObject):
     soft_delete: Optional[str] = None
     last_sync: Optional[datetime] = None
     updater_id: Optional[str] = None
-
-    @Tanah.prop
-    def tanah(self) -> Tanah:
-        return self.id_tanah  # type: ignore
-
-    @TahunAjaran.prop
-    def tahun_ajaran(self) -> TahunAjaran:
-        return self.tahun_ajaran_id  # type: ignore
-
-    @property
-    def tanah_longitudinal(self):
-        return self  # type: ignore
-
-    @property
-    def updater(self):
-        return self.updater_id

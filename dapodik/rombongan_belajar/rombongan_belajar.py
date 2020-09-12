@@ -7,7 +7,15 @@ from dapodik import (DapodikObject, Sekolah, TingkatPendidikan,
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('rombongan_belajar_id')
+@set_meta('rombongan_belajar_id',
+          semester=Semester,
+          sekolah=Sekolah,
+          tingkat_pendidikan=TingkatPendidikan,
+          jurusan_sp=JurusanSp,
+          kurikulum=Kurikulum,
+          ptk=Ptk,
+          kebutuhan_khusus=KebutuhanKhusus,
+          jurusan=Jurusan)
 @dataclass(eq=False)
 class RombonganBelajar(DapodikObject):
     rombongan_belajar_id: str
@@ -42,43 +50,3 @@ class RombonganBelajar(DapodikObject):
     jenis_rombel_str: str
     jurusan_id: str
     jurusan_id_str: str
-
-    @property
-    def rombongan_belajar(self):
-        return self
-
-    @Semester.prop
-    def semester(self) -> Semester:
-        return self.semester_id  # type: ignore
-
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
-    @TingkatPendidikan.prop
-    def tingkat_pendidikan(self) -> TingkatPendidikan:
-        return self.tingkat_pendidikan_id  # type: ignore
-
-    @JurusanSp.prop
-    def jurusan_sp(self):
-        return self.jurusan_sp_id  # type: ignore
-
-    @Kurikulum.prop
-    def kurikulum(self) -> Kurikulum:
-        return self.kurikulum_id  # type: ignore
-
-    @Ptk.prop
-    def ptk(self) -> Ptk:
-        return self.ptk_id  # type: ignore
-
-    @KebutuhanKhusus.prop
-    def kebutuhan_khusus(self) -> KebutuhanKhusus:
-        return self.kebutuhan_khusus_id  # type: ignore
-
-    @property
-    def updater(self):
-        return self.updater_id
-
-    @Jurusan.prop
-    def jurusan(self) -> Optional[Jurusan]:
-        return self.jurusan_id  # type: ignore

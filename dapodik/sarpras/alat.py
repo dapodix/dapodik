@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Sekolah, JenisSarana, Ptk
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_alat')
+@set_meta('id_alat', jenis_sarana=JenisSarana, sekolah=Sekolah, ptk=Ptk)
 @dataclass(eq=False)
 class Alat(DapodikObject):
     id_alat: str
@@ -39,23 +39,7 @@ class Alat(DapodikObject):
     key_match: str
     header: str
 
-    @JenisSarana.prop
-    def jenis_sarana(self) -> JenisSarana:
-        return self.jenis_sarana_id  # type: ignore
-
-    @Sekolah.prop
-    def sekolah(self) -> Sekolah:
-        return self.sekolah_id  # type: ignore
-
-    @Ptk.prop
-    def ptk(self) -> Optional[Ptk]:
-        return self.ptk_id  # type: ignore
-
     @property
     def kepemilikan_sarpras(self):
         # TODO API NF
         return self.kepemilikan_sarpras_id
-
-    @property
-    def updater(self):
-        return self.updater_id
