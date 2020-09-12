@@ -10,7 +10,11 @@ setup(
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
         "Programming Language :: Python :: 3.7",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "Topic :: Education",
     ],
     packages=["dapodik"],
     install_requires=[
