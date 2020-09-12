@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='dapodik',
-    version='0.4.1',
+    version='0.5.0',
     description='Client & alat bantu aplikasi Dapodik',
     author='Habib Rohman',
     author_email="habibrohman@protonmail.com",
