@@ -2,7 +2,7 @@
 
 import logging
 from requests import Session
-from typing import Dict, Optional, Type
+from typing import Dict, Optional, Type, TypeVar
 
 from dapodik import (
     DapodikObject,
@@ -20,6 +20,8 @@ from dapodik import (
     BaseSarpras,
     BaseSekolah,
 )
+
+DO = TypeVar('DO', bound=DapodikObject)
 
 
 class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
@@ -55,16 +57,19 @@ class Dapodik(BaseAuth, BaseCustomrest, BaseRest, BasePesertaDidik, BasePtk,
             self.register_rombongan_belajar()
             self.register_jadwal()
 
-    def __getitem__(  # type: ignore
-            self, key: Type[DapodikObject]) -> Optional[Results]:
-        res = self.cache.get(key)
+    def __getitem__(self, obj: Type[DO]) -> Optional[Results[DO]]:
+        return self.get(obj)
+
+    def get(self, obj: Type[DO]) -> Optional[Results[DO]]:
+        res = self.cache.get(obj)
         if self.cache and res:
             if res:
                 return res
-        if key in self.rests:
-            rest: Optional[Rest] = self.rests.get(key)
+        if obj in self.rests:
+            rest: Optional[Rest] = self.rests.get(obj)
             if rest:
                 res = rest.get()
                 if res:
-                    self.cache[key] = res
+                    self.cache[obj] = res
                     return res
+        return None

@@ -24,7 +24,8 @@ class BaseSekolah(BaseDapodik):
             self.JurusanSp = Rest(self, JurusanSp, 'rest/JurusanSp')
             self.ProgramInklusi = Rest(self, ProgramInklusi,
                                        'rest/ProgramInklusi')
-            self.Sanitasi = Rest(self, Sanitasi, 'rest/Sanitasi')
+            self.Sanitasi: Rest[Sanitasi] = Rest(self, Sanitasi,
+                                                 'rest/Sanitasi')
             self.Sekolah = Rest(self, Sekolah, 'rest/Sekolah')
             self.SekolahLongitudinal = Rest(self, SekolahLongitudinal,
                                             'rest/SekolahLongitudinal')

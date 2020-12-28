@@ -5,12 +5,15 @@ from dapodik.config import BASE_URL
 from dapodik.utils.helpers import get_dataclass_fields
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
-from typing import Any, Dict, Optional, Tuple, Type, TYPE_CHECKING
+from typing import (Any, Dict, Generic, Optional, Tuple, Type, TypeVar,
+                    TYPE_CHECKING)
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
+DO = TypeVar('DO', bound='DapodikObject')
 
-class DapodikObject(object):
+
+class DapodikObject(Generic[DO]):
     dapodik: Dapodik = None  # type: ignore
     _editable: bool = False
     _id: str = ''
@@ -32,12 +35,12 @@ class DapodikObject(object):
         self._id = value
 
     @classmethod
-    def from_data(cls: Type[DapodikObject],
+    def from_data(cls: Type[DO],
                   data: dict,
                   id: Optional[str] = None,
                   url: Optional[str] = None,
                   dapodik: Optional[Dapodik] = None,
-                  **kwargs) -> DapodikObject:
+                  **kwargs) -> DO:
         fields = get_dataclass_fields(cls)
         safe_data = dict()
         id = id or cls._id
@@ -139,18 +142,13 @@ class DapodikObject(object):
         return params
 
     @classmethod
-    def getter(cls: Type[DapodikObject],
-               obj: Type[DapodikObject],
-               key: str = '') -> Any:
+    def getter(cls: Type[DO], obj: Type[DO], key: str = '') -> Any:
         id_ = getattr(obj, key or cls._id)
         res = obj.dapodik[cls]
         return res[id_] if res else None
 
     @classmethod
-    def setter(cls: Type[DapodikObject],
-               obj: Type[DapodikObject],
-               value: Any,
-               key: str = '') -> Any:
+    def setter(cls: Type[DO], obj: Type[DO], value: Any, key: str = '') -> Any:
         key = key or cls._id
         if isinstance(value, cls):
             setattr(obj, key, value)

@@ -3,13 +3,15 @@ from logging import getLogger
 from requests import Session
 from .dapodik_object import DapodikObject
 from .results import Results
-from typing import Any, Optional, Type, TYPE_CHECKING
+from typing import Any, Generic, Optional, Type, TypeVar, TYPE_CHECKING
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
+DO = TypeVar('DO', bound=DapodikObject)
 
-class Rest:
-    def __init__(self, dapodik: Any, klass: Type[DapodikObject], url: str):
+
+class Rest(Generic[DO]):
+    def __init__(self, dapodik: Any, klass: Type[DO], url: str):
         self.logger = getLogger(self.__class__.__name__)
         self.session: Session = dapodik.session
         self.dapodik: Dapodik = dapodik
@@ -22,7 +24,7 @@ class Rest:
         self.logger.debug('Berhasil membuat Rest untuk {}'.format(
             klass.__class__.__module__))
 
-    def get(self, params: dict = None) -> Optional[Results]:  # type: ignore
+    def get(self, params: dict = None) -> Optional[Results[DO]]:
         params = params or self.klass.get_params()
         res = self.session.get(self.url, params=params)
         if res.ok:
@@ -30,15 +32,16 @@ class Rest:
             result: Results = Results.from_data(self.klass, data, self.dapodik)
             self.dapodik.cache[self.klass] = result
             return result
+        return None
 
-    def create(self, do: DapodikObject):
+    def create(self, do: DO):
         pass
 
-    def update(self, do: DapodikObject):
+    def update(self, do: DO):
         pass
 
-    def delete(self, do: DapodikObject):
+    def delete(self, do: DO):
         pass
 
-    def __call__(self, *args, **kwargs) -> Optional[Results]:
+    def __call__(self, *args, **kwargs) -> Optional[Results[DO]]:
         return self.get(*args, **kwargs)
