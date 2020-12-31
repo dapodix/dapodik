@@ -1,13 +1,11 @@
 # dapodik
 
 [![dapodik - PyPi](https://img.shields.io/pypi/v/dapodik)](https://pypi.org/project/dapodik/)
-[![Download](https://img.shields.io/badge/Download-Unduh-brightgreen)](https://github.com/dapodix/dapodik/archive/master.zip)
-[![Donate DANA](https://img.shields.io/badge/Donasi-DANA-blue)](https://link.dana.id/qr/1lw2r12r)
-[![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/dapodix/dapodik/wiki)
-[![Group Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/dapodik_2021)
-[![codecov](https://codecov.io/gh/dapodix/dapodik/branch/master/graph/badge.svg)](https://codecov.io/gh/dapodix/dapodik)
 [![LISENSI](https://img.shields.io/github/license/dapodix/dapodik)](https://github.com/dapodix/dapodik/blob/master/LISENSI)
+[![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/dapodix/dapodik/wiki)
 [![Tests](https://github.com/dapodix/dapodik/workflows/Tests/badge.svg)](https://github.com/dapodix/dapodik/actions?query=workflow%3ATests)
+[![codecov](https://codecov.io/gh/dapodix/dapodik/branch/master/graph/badge.svg)](https://codecov.io/gh/dapodix/dapodik)
+[![Code Style - Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Python client / API aplikasi dapodik.
 
@@ -18,6 +16,22 @@ kemudian jalankan perintah di bawah dalam Command Prompt atau Powershell (di Win
 
 ```bash
 pip install --upgrade dapodik
+```
+
+## Penggunaan
+
+Contoh pennggunaan
+
+```python
+from dapodik import Dapodik
+
+email = 'email@saya.com'
+password = 'password dapodik'
+
+d = Dapodik(email, password)
+
+sekolah = d.Sekolah()
+print(sekolah)
 ```
 
 ## Release
