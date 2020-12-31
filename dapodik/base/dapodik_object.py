@@ -116,28 +116,40 @@ class DapodikObject:
         return cls
 
     @classmethod
-    def get_params(cls) -> Dict[str, Any]:
-        params: Dict[str, Any] = cls._params or {}
+    def get_params(cls, **kwargs) -> Dict[str, Any]:
+        params: Dict[str, Any] = cls._params or kwargs
         if type(cls.params) == dict:
             params.update(cls.params)  # type: ignore
         return params
 
     @classmethod
     def getter(cls: Type[DO], obj: Type[DO], key: str = "") -> Any:
-        id_ = getattr(obj, key or cls._id)
+        key = key or cls._id
+        id_ = getattr(obj, key)
         res = obj.dapodik[cls]
-        return res[id_] if res else None
+        if isinstance(res, list):
+            for d in res:
+                if id_ == getattr(d, key):
+                    return d
+        elif id_ == getattr(res, key):
+            return res
+        return None
 
     @classmethod
     def setter(cls: Type[DO], obj: Type[DO], value: Any, key: str = "") -> Any:
         key = key or cls._id
         if isinstance(value, cls):
             setattr(obj, key, value)
-        elif isinstance(getattr(obj, key), cls):
+            return
+        id_ = getattr(obj, key)
+        if isinstance(id_, cls):
             res = obj.dapodik[cls]
-            data = res[value] if res else None
-            if res and data:
-                setattr(obj, key, data)
+            if isinstance(res, list):
+                for d in res:
+                    if id_ == getattr(d, key):
+                        setattr(obj, key, d)
+            elif id_ == getattr(res, key):
+                setattr(obj, key, res)
 
     @classmethod
     def maker(
@@ -158,10 +170,10 @@ class DapodikObject:
             if cls._id not in dapodik.id_map:
                 dapodik.id_map[cls._id] = cls
 
-        def generator() -> Optional[Union[DO, List[DO]]]:
+        def generator(*args, **kwargs) -> Optional[Union[DO, List[DO]]]:
             if cls in dapodik.cache:
                 return dapodik.cache[cls]
-            params = cls.get_params()
+            params = cls.get_params(**kwargs)
             res = dapodik.session.get(url, params=params)
             if res.ok:
                 data: Dict[str, Any] = res.json()
