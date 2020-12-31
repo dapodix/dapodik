@@ -5,7 +5,18 @@ from dapodik.config import BASE_URL
 from dapodik.utils.helpers import get_dataclass_fields
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
-from typing import Any, Dict, Generic, Optional, Tuple, Type, TypeVar, TYPE_CHECKING
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    List,
+    Optional,
+    Tuple,
+    Type,
+    TypeVar,
+    Union,
+    TYPE_CHECKING,
+)
 
 if TYPE_CHECKING:
     from dapodik import Dapodik
@@ -13,7 +24,7 @@ if TYPE_CHECKING:
 DO = TypeVar("DO", bound="DapodikObject")
 
 
-class DapodikObject(Generic[DO]):
+class DapodikObject:
     dapodik: Dapodik = None  # type: ignore
     _editable: bool = False
     _id: str = ""
@@ -22,6 +33,7 @@ class DapodikObject(Generic[DO]):
     _base_url: str = BASE_URL
     _params: Dict[str, str] = {}
     _name: str = ""
+    _single: bool = False
 
     def __post_init__(self):
         super(DapodikObject, self).__init__()
@@ -159,3 +171,44 @@ class DapodikObject(Generic[DO]):
             data = res[value] if res else None
             if res and data:
                 setattr(obj, key, data)
+
+    @classmethod
+    def maker(
+        cls: Type[DO], dapodik: Any, url: str = None, skip: bool = False
+    ) -> Callable[[], Optional[Union[DO, List[DO]]]]:
+        if not skip:
+            if url:
+                if url.startswith(dapodik.domain):
+                    pass
+                else:
+                    url = dapodik.domain + url
+            else:
+                url = dapodik.domain + cls._url
+
+            # Cache
+            if cls not in dapodik.rests:
+                dapodik.rests[cls] = cls.maker(dapodik, url, True)
+            if cls._id not in dapodik.id_map:
+                dapodik.id_map[cls._id] = cls
+
+        def generator() -> Optional[Union[DO, List[DO]]]:
+            if cls in dapodik.cache:
+                return dapodik.cache[cls]
+            params = cls.get_params()
+            res = dapodik.session.get(url, params=params)
+            if res.ok:
+                data: Dict[str, Any] = res.json()
+                rows: Optional[Union[list, dict]] = data.get("rows")
+                result: Optional[Union[DO, List[DO]]] = None
+                if not rows:
+                    pass
+                elif cls._single:
+                    if isinstance(rows, list):
+                        result = cls.from_data(rows[0])
+                    result = cls.from_data(rows)  # type: ignore
+                elif isinstance(rows, list):
+                    result = [cls.from_data(row) for row in rows]
+            dapodik.cache[cls] = result
+            return result
+
+        return generator

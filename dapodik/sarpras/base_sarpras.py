@@ -1,6 +1,7 @@
+from typing import List
+
 from dapodik import (
     BaseDapodik,
-    Rest,
     Tanah,
     Bangunan,
     Ruang,
@@ -22,41 +23,101 @@ from dapodik import (
 class BaseSarpras(BaseDapodik):
     def register_sarpras(self):
         try:
-            self.Alat = Rest(self, Alat, "rest/Alat")
-            self.AlatDariBlockgrant = Rest(
-                self, AlatDariBlockgrant, "rest/AlatDariBlockgrant"
+            self.Alat = Alat.maker(self, "rest/Alat")
+            self.AlatDariBlockgrant = AlatDariBlockgrant.maker(
+                self, "rest/AlatDariBlockgrant"
             )
-            self.AlatLongitudinal = Rest(
-                self, AlatLongitudinal, "rest/AlatLongitudinal"
+            self.AlatLongitudinal = AlatLongitudinal.maker(
+                self, "rest/AlatLongitudinal"
             )
-            self.Bangunan = Rest(self, Bangunan, "rest/Bangunan")
-            self.BangunanDariBlockgrant = Rest(
-                self, BangunanDariBlockgrant, "rest/BangunanDariBlockgrant"
+            self.Bangunan = Bangunan.maker(self, "rest/Bangunan")
+            self.BangunanDariBlockgrant = BangunanDariBlockgrant.maker(
+                self, "rest/BangunanDariBlockgrant"
             )
-            self.BangunanLongitudinal = Rest(
-                self, BangunanLongitudinal, "rest/BangunanLongitudinal"
+            self.BangunanLongitudinal = BangunanLongitudinal.maker(
+                self, "rest/BangunanLongitudinal"
             )
-            self.Ruang = Rest(self, Ruang, "rest/Ruang")
-            self.RuangLongitudinal = Rest(
-                self, RuangLongitudinal, "rest/RuangLongitudinal"
+            self.Ruang = Ruang.maker(self, "rest/Ruang")
+            self.RuangLongitudinal = RuangLongitudinal.maker(
+                self, "rest/RuangLongitudinal"
             )
-            self.Tanah = Rest(self, Tanah, "rest/Tanah")
-            self.TanahLongitudinal = Rest(
-                self, TanahLongitudinal, "rest/TanahLongitudinal"
+            self.Tanah = Tanah.maker(self, "rest/Tanah")
+            self.TanahLongitudinal = TanahLongitudinal.maker(
+                self, "rest/TanahLongitudinal"
             )
-            self.TanahDariBlockgrant = Rest(
-                self, TanahDariBlockgrant, "rest/TanahDariBlockgrant"
+            self.TanahDariBlockgrant = TanahDariBlockgrant.maker(
+                self, "rest/TanahDariBlockgrant"
             )
-            self.Angkutan = Rest(self, Angkutan, "rest/Angkutan")
-            self.Buku = Rest(self, Buku, "rest/Buku")
-            self.AngkutanDariBlockgrant = Rest(
-                self, AngkutanDariBlockgrant, "rest/AngkutanDariBlockgrant"
+            self.Angkutan = Angkutan.maker(self, "rest/Angkutan")
+            self.Buku = Buku.maker(self, "rest/Buku")
+            self.AngkutanDariBlockgrant = AngkutanDariBlockgrant.maker(
+                self, "rest/AngkutanDariBlockgrant"
             )
-            self.BukuLongitudinal = Rest(
-                self, BukuLongitudinal, "rest/BukuLongitudinal"
+            self.BukuLongitudinal = BukuLongitudinal.maker(
+                self, "rest/BukuLongitudinal"
             )
             self.logger.debug("Berhasil memulai sarpras")
             return True
         except Exception as E:
             self.logger.exception(E)
             return False
+
+    @property
+    def alat(self) -> List[Alat]:
+        return self.Alat()  # type: ignore
+
+    @property
+    def alat_dari_blockgrant(self) -> List[AlatDariBlockgrant]:
+        return self.AlatDariBlockgrant()  # type: ignore
+
+    @property
+    def alat_longitudinal(self) -> List[AlatLongitudinal]:
+        return self.AlatLongitudinal()  # type: ignore
+
+    @property
+    def bangunan(self) -> List[Bangunan]:
+        return self.Bangunan()  # type: ignore
+
+    @property
+    def bangunan_dari_blockgrant(self) -> List[BangunanDariBlockgrant]:
+        return self.BangunanDariBlockgrant()  # type: ignore
+
+    @property
+    def bangunan_longitudinal(self) -> List[BangunanLongitudinal]:
+        return self.BangunanLongitudinal()  # type: ignore
+
+    @property
+    def ruang(self) -> List[Ruang]:
+        return self.Ruang()  # type: ignore
+
+    @property
+    def ruang_longitudinal(self) -> List[RuangLongitudinal]:
+        return self.RuangLongitudinal()  # type: ignore
+
+    @property
+    def tanah(self) -> List[Tanah]:
+        return self.Tanah()  # type: ignore
+
+    @property
+    def tanah_longitudinal(self) -> List[TanahLongitudinal]:
+        return self.TanahLongitudinal()  # type: ignore
+
+    @property
+    def tanah_dari_blockgrant(self) -> List[TanahDariBlockgrant]:
+        return self.TanahDariBlockgrant()  # type: ignore
+
+    @property
+    def angkutan(self) -> List[Angkutan]:
+        return self.Angkutan()  # type: ignore
+
+    @property
+    def buku(self) -> List[Buku]:
+        return self.Buku()  # type: ignore
+
+    @property
+    def angkutan_dari_blockgrant(self) -> List[AngkutanDariBlockgrant]:
+        return self.AngkutanDariBlockgrant()  # type: ignore
+
+    @property
+    def buku_longitudinal(self) -> List[BukuLongitudinal]:
+        return self.BukuLongitudinal()  # type: ignore

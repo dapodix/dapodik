@@ -1,6 +1,7 @@
+from typing import List
+
 from dapodik import (
     BaseDapodik,
-    Rest,
     PtkTerdaftar,
     Ptk,
 )
@@ -9,10 +10,18 @@ from dapodik import (
 class BasePtk(BaseDapodik):
     def register_ptk(self) -> bool:
         try:
-            self._Ptk = Rest(self, Ptk, "rest/Ptk")
-            self._PtkTerdaftar = Rest(self, PtkTerdaftar, "rest/PtkTerdaftar")
+            self.Ptk = Ptk.maker(self, "rest/Ptk")
+            self.PtkTerdaftar = PtkTerdaftar.maker(self, "rest/PtkTerdaftar")
             self.logger.debug("Berhasil memulai ptk")
             return True
         except Exception as E:
             self.logger.exception(E)
             return False
+
+    @property
+    def ptk(self) -> List[Ptk]:
+        return self.Ptk()  # type: ignore
+
+    @property
+    def ptk_terdaftar(self) -> List[PtkTerdaftar]:
+        return self.PtkTerdaftar()  # type: ignore

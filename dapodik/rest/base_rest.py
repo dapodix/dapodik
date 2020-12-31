@@ -1,6 +1,7 @@
+from typing import List
+
 from dapodik import (
     BaseDapodik,
-    Rest,
     Agama,
     Akreditasi,
     AksesInternet,
@@ -53,80 +54,264 @@ from dapodik import (
 class BaseRest(BaseDapodik):
     def register_rest(self) -> bool:
         try:
-            self.Agama = Rest(self, Agama, "rest/Agama")
-            self.Akreditasi = Rest(self, Akreditasi, "rest/Akreditasi")
-            self.AksesInternet = Rest(self, AksesInternet, "rest/AksesInternet")
-            self.AlatTransportasi = Rest(
-                self, AlatTransportasi, "rest/AlatTransportasi"
+            self.Agama = Agama.maker(self, "rest/Agama")
+            self.Akreditasi = Akreditasi.maker(self, "rest/Akreditasi")
+            self.AksesInternet = AksesInternet.maker(self, "rest/AksesInternet")
+            self.AlatTransportasi = AlatTransportasi.maker(
+                self, "rest/AlatTransportasi"
             )
-            self.Bank = Rest(self, Bank, "rest/Bank")
-            self.BentukLembaga = Rest(self, BentukLembaga, "rest/BentukLembaga")
-            self.Biblio = Rest(self, Biblio, "rest/Biblio")
-            self.ChildDelete = Rest(self, ChildDelete, "rest/ChildDelete")
-            self.FasilitasLayanan = Rest(
-                self, FasilitasLayanan, "rest/FasilitasLayanan"
+            self.Bank = Bank.maker(self, "rest/Bank")
+            self.BentukLembaga = BentukLembaga.maker(self, "rest/BentukLembaga")
+            self.Biblio = Biblio.maker(self, "rest/Biblio")
+            self.ChildDelete = ChildDelete.maker(self, "rest/ChildDelete")
+            self.FasilitasLayanan = FasilitasLayanan.maker(
+                self, "rest/FasilitasLayanan"
             )
-            self.Gmd = Rest(self, Gmd, "rest/Gmd")
-            self.JadwalPaud = Rest(self, JadwalPaud, "rest/JadwalPaud")
-            self.JenisGugus = Rest(self, JenisGugus, "rest/JenisGugus")
-            self.JenisHapusBuku = Rest(self, JenisHapusBuku, "rest/JenisHapusBuku")
-            self.JenisKeluar = Rest(self, JenisKeluar, "rest/JenisKeluar")
-            self.JenisLk = Rest(self, JenisLk, "rest/JenisLk")
-            self.JenisPendaftaran = Rest(
-                self, JenisPendaftaran, "rest/JenisPendaftaran"
+            self.Gmd = Gmd.maker(self, "rest/Gmd")
+            self.JadwalPaud = JadwalPaud.maker(self, "rest/JadwalPaud")
+            self.JenisGugus = JenisGugus.maker(self, "rest/JenisGugus")
+            self.JenisHapusBuku = JenisHapusBuku.maker(self, "rest/JenisHapusBuku")
+            self.JenisKeluar = JenisKeluar.maker(self, "rest/JenisKeluar")
+            self.JenisLk = JenisLk.maker(self, "rest/JenisLk")
+            self.JenisPendaftaran = JenisPendaftaran.maker(
+                self, "rest/JenisPendaftaran"
             )
-            self.JenisPrasarana = Rest(self, JenisPrasarana, "rest/JenisPrasarana")
-            self.JenisPtk = Rest(self, JenisPtk, "rest/JenisPtk")
-            self.JenisRombel = Rest(self, JenisRombel, "rest/JenisRombel")
-            self.JenisSarana = Rest(self, JenisSarana, "rest/JenisSarana")
-            self.JenisTinggal = Rest(self, JenisTinggal, "rest/JenisTinggal")
-            self.JenjangPendidikan = Rest(
-                self, JenjangPendidikan, "rest/JenjangPendidikan"
+            self.JenisPrasarana = JenisPrasarana.maker(self, "rest/JenisPrasarana")
+            self.JenisPtk = JenisPtk.maker(self, "rest/JenisPtk")
+            self.JenisRombel = JenisRombel.maker(self, "rest/JenisRombel")
+            self.JenisSarana = JenisSarana.maker(self, "rest/JenisSarana")
+            self.JenisTinggal = JenisTinggal.maker(self, "rest/JenisTinggal")
+            self.JenjangPendidikan = JenjangPendidikan.maker(
+                self, "rest/JenjangPendidikan"
             )
-            self.Jurusan = Rest(self, Jurusan, "rest/Jurusan")
-            self.KategoriTk = Rest(self, KategoriTk, "rest/KategoriTk")
-            self.KeahlianLaboratorium = Rest(
-                self, KeahlianLaboratorium, "rest/KeahlianLaboratorium"
+            self.Jurusan = Jurusan.maker(self, "rest/Jurusan")
+            self.KategoriTk = KategoriTk.maker(self, "rest/KategoriTk")
+            self.KeahlianLaboratorium = KeahlianLaboratorium.maker(
+                self, "rest/KeahlianLaboratorium"
             )
-            self.KebutuhanKhusus = Rest(self, KebutuhanKhusus, "rest/KebutuhanKhusus")
-            self.KlasifikasiLembaga = Rest(
-                self, KlasifikasiLembaga, "rest/KlasifikasiLembaga"
+            self.KebutuhanKhusus = KebutuhanKhusus.maker(self, "rest/KebutuhanKhusus")
+            self.KlasifikasiLembaga = KlasifikasiLembaga.maker(
+                self, "rest/KlasifikasiLembaga"
             )
-            self.Kurikulum = Rest(self, Kurikulum, "rest/Kurikulum")
-            self.LembagaPengangkat = Rest(
-                self, LembagaPengangkat, "rest/LembagaPengangkat"
+            self.Kurikulum = Kurikulum.maker(self, "rest/Kurikulum")
+            self.LembagaPengangkat = LembagaPengangkat.maker(
+                self, "rest/LembagaPengangkat"
             )
-            self.MataPelajaran = Rest(self, MataPelajaran, "rest/MataPelajaran")
-            self.MstWilayah = Rest(self, MstWilayah, "rest/MstWilayah")
-            self.PangkatGolongan = Rest(self, PangkatGolongan, "rest/PangkatGolongan")
-            self.Pekerjaan = Rest(self, Pekerjaan, "rest/Pekerjaan")
-            self.Penghasilan = Rest(self, Penghasilan, "rest/Penghasilan")
-            self.RolePengguna = Rest(self, RolePengguna, "rest/RolePengguna")
-            self.StatusKeaktifanPegawai = Rest(
-                self, StatusKeaktifanPegawai, "rest/StatusKeaktifanPegawai"
+            self.MataPelajaran = MataPelajaran.maker(self, "rest/MataPelajaran")
+            self.MstWilayah = MstWilayah.maker(self, "rest/MstWilayah")
+            self.PangkatGolongan = PangkatGolongan.maker(self, "rest/PangkatGolongan")
+            self.Pekerjaan = Pekerjaan.maker(self, "rest/Pekerjaan")
+            self.Penghasilan = Penghasilan.maker(self, "rest/Penghasilan")
+            self.RolePengguna = RolePengguna.maker(self, "rest/RolePengguna")
+            self.StatusKeaktifanPegawai = StatusKeaktifanPegawai.maker(
+                self, "rest/StatusKeaktifanPegawai"
             )
-            self.StatusKepegawaian = Rest(
-                self, StatusKepegawaian, "rest/StatusKepegawaian"
+            self.StatusKepegawaian = StatusKepegawaian.maker(
+                self, "rest/StatusKepegawaian"
             )
-            self.StatusKepemilikanSarpras = Rest(
-                self, StatusKepemilikanSarpras, "rest/StatusKepemilikanSarpras"
+            self.StatusKepemilikanSarpras = StatusKepemilikanSarpras.maker(
+                self, "rest/StatusKepemilikanSarpras"
             )
-            self.SumberAir = Rest(self, SumberAir, "rest/SumberAir")
-            self.SumberDanaSekolah = Rest(
-                self, SumberDanaSekolah, "rest/SumberDanaSekolah"
+            self.SumberAir = SumberAir.maker(self, "rest/SumberAir")
+            self.SumberDanaSekolah = SumberDanaSekolah.maker(
+                self, "rest/SumberDanaSekolah"
             )
-            self.SumberGaji = Rest(self, SumberGaji, "rest/SumberGaji")
-            self.SumberListrik = Rest(self, SumberListrik, "rest/SumberListrik")
-            self.SyncLog = Rest(self, SyncLog, "rest/SyncLog")
-            self.TahunAjaran = Rest(self, TahunAjaran, "rest/TahunAjaran")
-            self.TingkatPendidikan = Rest(
-                self, TingkatPendidikan, "rest/TingkatPendidikan"
+            self.SumberGaji = SumberGaji.maker(self, "rest/SumberGaji")
+            self.SumberListrik = SumberListrik.maker(self, "rest/SumberListrik")
+            self.SyncLog = SyncLog.maker(self, "rest/SyncLog")
+            self.TahunAjaran = TahunAjaran.maker(self, "rest/TahunAjaran")
+            self.TingkatPendidikan = TingkatPendidikan.maker(
+                self, "rest/TingkatPendidikan"
             )
-            self.WaktuPenyelenggaraan = Rest(
-                self, WaktuPenyelenggaraan, "rest/WaktuPenyelenggaraan"
+            self.WaktuPenyelenggaraan = WaktuPenyelenggaraan.maker(
+                self, "rest/WaktuPenyelenggaraan"
             )
             self.logger.debug("Berhasil memulai rest")
             return True
         except Exception as E:
             self.logger.exception(E)
             return False
+
+    @property
+    def agama(self) -> List[Agama]:
+        return self.Agama()  # type: ignore
+
+    @property
+    def akreditasi(self) -> List[Akreditasi]:
+        return self.Akreditasi()  # type: ignore
+
+    @property
+    def aksesinternet(self) -> List[AksesInternet]:
+        return self.AksesInternet()  # type: ignore
+
+    @property
+    def alattransportasi(self) -> List[AlatTransportasi]:
+        return self.AlatTransportasi()  # type: ignore
+
+    @property
+    def bank(self) -> List[Bank]:
+        return self.Bank()  # type: ignore
+
+    @property
+    def bentuklembaga(self) -> List[BentukLembaga]:
+        return self.BentukLembaga()  # type: ignore
+
+    @property
+    def biblio(self) -> List[Biblio]:
+        return self.Biblio()  # type: ignore
+
+    @property
+    def childdelete(self) -> List[ChildDelete]:
+        return self.ChildDelete()  # type: ignore
+
+    @property
+    def fasilitaslayanan(self) -> List[FasilitasLayanan]:
+        return self.FasilitasLayanan()  # type: ignore
+
+    @property
+    def gmd(self) -> List[Gmd]:
+        return self.Gmd()  # type: ignore
+
+    @property
+    def jadwalpaud(self) -> List[JadwalPaud]:
+        return self.JadwalPaud()  # type: ignore
+
+    @property
+    def jenisgugus(self) -> List[JenisGugus]:
+        return self.JenisGugus()  # type: ignore
+
+    @property
+    def jenishapusbuku(self) -> List[JenisHapusBuku]:
+        return self.JenisHapusBuku()  # type: ignore
+
+    @property
+    def jeniskeluar(self) -> List[JenisKeluar]:
+        return self.JenisKeluar()  # type: ignore
+
+    @property
+    def jenislk(self) -> List[JenisLk]:
+        return self.JenisLk()  # type: ignore
+
+    @property
+    def jenispendaftaran(self) -> List[JenisPendaftaran]:
+        return self.JenisPendaftaran()  # type: ignore
+
+    @property
+    def jenisprasarana(self) -> List[JenisPrasarana]:
+        return self.JenisPrasarana()  # type: ignore
+
+    @property
+    def jenisptk(self) -> List[JenisPtk]:
+        return self.JenisPtk()  # type: ignore
+
+    @property
+    def jenisrombel(self) -> List[JenisRombel]:
+        return self.JenisRombel()  # type: ignore
+
+    @property
+    def jenissarana(self) -> List[JenisSarana]:
+        return self.JenisSarana()  # type: ignore
+
+    @property
+    def jenistinggal(self) -> List[JenisTinggal]:
+        return self.JenisTinggal()  # type: ignore
+
+    @property
+    def jenjangpendidikan(self) -> List[JenjangPendidikan]:
+        return self.JenjangPendidikan()  # type: ignore
+
+    @property
+    def jurusan(self) -> List[Jurusan]:
+        return self.Jurusan()  # type: ignore
+
+    @property
+    def kategoritk(self) -> List[KategoriTk]:
+        return self.KategoriTk()  # type: ignore
+
+    @property
+    def keahlianlaboratorium(self) -> List[KeahlianLaboratorium]:
+        return self.KeahlianLaboratorium()  # type: ignore
+
+    @property
+    def kebutuhankhusus(self) -> List[KebutuhanKhusus]:
+        return self.KebutuhanKhusus()  # type: ignore
+
+    @property
+    def klasifikasilembaga(self) -> List[KlasifikasiLembaga]:
+        return self.KlasifikasiLembaga()  # type: ignore
+
+    @property
+    def kurikulum(self) -> List[Kurikulum]:
+        return self.Kurikulum()  # type: ignore
+
+    @property
+    def lembagapengangkat(self) -> List[LembagaPengangkat]:
+        return self.LembagaPengangkat()  # type: ignore
+
+    @property
+    def matapelajaran(self) -> List[MataPelajaran]:
+        return self.MataPelajaran()  # type: ignore
+
+    @property
+    def mstwilayah(self) -> List[MstWilayah]:
+        return self.MstWilayah()  # type: ignore
+
+    @property
+    def pangkatgolongan(self) -> List[PangkatGolongan]:
+        return self.PangkatGolongan()  # type: ignore
+
+    @property
+    def pekerjaan(self) -> List[Pekerjaan]:
+        return self.Pekerjaan()  # type: ignore
+
+    @property
+    def penghasilan(self) -> List[Penghasilan]:
+        return self.Penghasilan()  # type: ignore
+
+    @property
+    def rolepengguna(self) -> List[RolePengguna]:
+        return self.RolePengguna()  # type: ignore
+
+    @property
+    def statuskeaktifanpegawai(self) -> List[StatusKeaktifanPegawai]:
+        return self.StatusKeaktifanPegawai()  # type: ignore
+
+    @property
+    def statuskepegawaian(self) -> List[StatusKepegawaian]:
+        return self.StatusKepegawaian()  # type: ignore
+
+    @property
+    def statuskepemilikansarpras(self) -> List[StatusKepemilikanSarpras]:
+        return self.StatusKepemilikanSarpras()  # type: ignore
+
+    @property
+    def sumberair(self) -> List[SumberAir]:
+        return self.SumberAir()  # type: ignore
+
+    @property
+    def sumberdanasekolah(self) -> List[SumberDanaSekolah]:
+        return self.SumberDanaSekolah()  # type: ignore
+
+    @property
+    def sumbergaji(self) -> List[SumberGaji]:
+        return self.SumberGaji()  # type: ignore
+
+    @property
+    def sumberlistrik(self) -> List[SumberListrik]:
+        return self.SumberListrik()  # type: ignore
+
+    @property
+    def synclog(self) -> List[SyncLog]:
+        return self.SyncLog()  # type: ignore
+
+    @property
+    def tahunajaran(self) -> List[TahunAjaran]:
+        return self.TahunAjaran()  # type: ignore
+
+    @property
+    def tingkatpendidikan(self) -> List[TingkatPendidikan]:
+        return self.TingkatPendidikan()  # type: ignore
+
+    @property
+    def waktupenyelenggaraan(self) -> List[WaktuPenyelenggaraan]:
+        return self.WaktuPenyelenggaraan()  # type: ignore
