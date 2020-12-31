@@ -21,7 +21,7 @@ from dapodik.utils.decorator import set_meta
     jenis_tinggal=JenisTinggal,
     alat_transportasi=AlatTransportasi,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class PesertaDidik(DapodikObject):
     nama: str
     jenis_kelamin: str

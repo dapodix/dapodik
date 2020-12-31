@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("id_role_pengguna")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class RolePengguna(DapodikObject):
     id_role_pengguna: str
     sekolah_id: str

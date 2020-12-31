@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("akses_internet_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class AksesInternet(DapodikObject):
     akses_internet_id: int
     nama: str

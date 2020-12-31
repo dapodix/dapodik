@@ -21,7 +21,7 @@ from dapodik.utils.decorator import set_meta
     akses_internet=AksesInternet,
     akses_internet_2=AksesInternet.with_id("akses_internet_2_id"),
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class SekolahLongitudinal(DapodikObject):
     sekolah_id: str
     semester_id: str

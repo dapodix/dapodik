@@ -9,7 +9,7 @@ from dapodik.utils.decorator import set_meta
     tahun_ajaran=TahunAjaran,
     jenis_pendaftaran=JenisPendaftaran,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class PesertaDidikBaru(DapodikObject):
     sekolah_id: str
     nama_pd: str

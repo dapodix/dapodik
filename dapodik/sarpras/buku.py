@@ -20,7 +20,7 @@ from dapodik.utils.decorator import set_meta
     ruang=Ruang,
     biblio=Biblio,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Buku(DapodikObject):
     id_buku: str
     mata_pelajaran_id: int

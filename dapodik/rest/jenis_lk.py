@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("id_jenis_lk")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class JenisLk(DapodikObject):
     id_jenis_lk: str
     nm_jenis_lk: str

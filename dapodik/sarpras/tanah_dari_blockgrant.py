@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("tanah_dari_blockgrant_id", blockgrant=BlockGrant, tanah=Tanah)
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class TanahDariBlockgrant(DapodikObject):
     blockgrant_id: str
     blockgrant_id_str: str

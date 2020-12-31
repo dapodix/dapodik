@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("sumber_listrik_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class SumberListrik(DapodikObject):
     sumber_listrik_id: str
     nama: str

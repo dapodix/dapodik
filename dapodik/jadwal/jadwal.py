@@ -18,7 +18,7 @@ from dapodik.utils.decorator import set_meta
     tingkat_pendidikan=TingkatPendidikan,
     ruang=Ruang,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Jadwal(DapodikObject):
     jadwal_id: str
     sekolah_id: str

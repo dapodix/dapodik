@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("jenis_tinggal_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class JenisTinggal(DapodikObject):
     jenis_tinggal_id: str
     nama: str

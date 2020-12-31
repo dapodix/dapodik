@@ -26,7 +26,7 @@ from dapodik.utils.decorator import set_meta
     kebutuhan_khusus=KebutuhanKhusus,
     jurusan=Jurusan,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class RombonganBelajar(DapodikObject):
     rombongan_belajar_id: str
     semester_id: str

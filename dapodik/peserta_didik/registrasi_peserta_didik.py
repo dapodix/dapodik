@@ -19,7 +19,7 @@ from dapodik.utils.decorator import set_meta
     jenis_pendaftaran=JenisPendaftaran,
     jenis_keluar=JenisKeluar,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class RegistrasiPesertaDidik(DapodikObject):
     peserta_didik_id: str
     sekolah_id: str

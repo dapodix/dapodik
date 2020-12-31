@@ -5,7 +5,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("alat_longitudinal_id", semester=Semester)
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class AlatLongitudinal(DapodikObject):
     id_alat: str
     semester_id: str

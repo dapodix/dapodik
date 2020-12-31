@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("bentuk_lembaga_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class BentukLembaga(DapodikObject):
     bentuk_lembaga_id: str
     nama: str

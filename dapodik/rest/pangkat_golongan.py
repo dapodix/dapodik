@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("pangkat_golongan_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class PangkatGolongan(DapodikObject):
     pangkat_golongan_id: str
     kode: str

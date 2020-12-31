@@ -36,7 +36,7 @@ from dapodik.utils.decorator import set_meta
     pengguna=Pengguna,
     bank=Bank,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Ptk(DapodikObject):
     ptk_terdaftar_id: str
     ptk_id: str

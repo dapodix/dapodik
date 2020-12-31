@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("yayasan_id")
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Yayasan(DapodikObject):
     yayasan_id: str
     nama: str

@@ -16,7 +16,7 @@ from dapodik.utils.decorator import set_meta
     ptk_terdaftar=PtkTerdaftar,
     semester=Semester,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Pembelajaran(DapodikObject):
     rombongan_belajar_id: str
     status_di_kurikulum_str: str

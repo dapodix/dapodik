@@ -10,7 +10,7 @@ from dapodik.utils.decorator import set_meta
     mata_pelajaran=MataPelajaran,
     tingkat_pendidikan=TingkatPendidikan,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class MataPelajaranKurikulum(DapodikObject):
     mata_pelajaran_kurikulum_id: str
     kurikulum_id: int

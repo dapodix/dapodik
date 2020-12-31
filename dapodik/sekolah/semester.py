@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("semester_id", tahun_ajaran=TahunAjaran)
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Semester(DapodikObject):
     semester_id: str
     tahun_ajaran_id: str

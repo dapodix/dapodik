@@ -5,7 +5,7 @@ from typing import Optional, List
 from dapodik.config import DOMAIN
 
 
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class Roleperan:
     nama: Optional[str]
     peran: Optional[str]
@@ -17,12 +17,13 @@ class Roleperan:
         a: Tag = tag.find("a")
         spans: List[Tag] = a.find_all("span")
         url = DOMAIN + str(a["href"])
-        return cls(
-            nama=str(spans[1].text).split(":")[-1],
-            peran=str(spans[2].text).split(":")[-1],
-            lembaga=str(spans[0].text).split(":")[-1],
-            url=url,
-        )
+        data = {
+            "nama": str(spans[1].text).split(":")[-1],
+            "peran": str(spans[2].text).split(":")[-1],
+            "lembaga": str(spans[0].text).split(":")[-1],
+            "url": url,
+        }
+        return cls(**data)
 
     def __str__(self):
         strs = [self.nama, self.peran, self.lembaga]

@@ -12,7 +12,7 @@ from dapodik.utils.decorator import set_meta
     tahun_ajaran=TahunAjaran,
     jenis_keluar=JenisKeluar,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class PtkTerdaftar(DapodikObject):
     ptk_terdaftar_id: str
     ptk_id: str

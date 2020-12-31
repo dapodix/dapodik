@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("tanah_longitudinal_id", tanah=Tanah, tahun_ajaran=TahunAjaran)
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class TanahLongitudinal(DapodikObject):
     id_tanah: str
     njop: int

@@ -21,7 +21,7 @@ from dapodik.utils.decorator import set_meta
     fasilitas_layanan=FasilitasLayanan,
     lembaga_pengangkat=LembagaPengangkat,
 )
-@attr.s(auto_attribs=True, eq=False)
+@attr.dataclass
 class SekolahPaud(DapodikObject):
     sekolah_id: str
     kategori_tk_id: str

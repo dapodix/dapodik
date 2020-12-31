@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("kepemilikan_sarpras_id")
-@attr.s(auto_attribs=True, eq=False, frozen=True)
+@attr.dataclass(frozen=True)
 class StatusKepemilikanSarpras(DapodikObject):
     kepemilikan_sarpras_id: str
     nama: str
