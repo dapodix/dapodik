@@ -1,8 +1,8 @@
-from dataclasses import dataclass
+import attr
 from dapodik import DapodikObject
 
 
-@dataclass(eq=False)
+@attr.s(auto_attribs=True)
 class UpdatePanelDashboard(DapodikObject):
     paneljumlahgtk: str
     paneljumlahguru: str

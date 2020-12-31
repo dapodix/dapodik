@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import DapodikObject
@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("id_gmd")
-@dataclass(eq=False, frozen=True)
+@attr.s(auto_attribs=True, eq=False, frozen=True)
 class Gmd(DapodikObject):
     id_gmd: str
     nm_gmd: str

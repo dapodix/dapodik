@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from typing import Optional
 from dapodik import (
     DapodikObject,
@@ -19,7 +19,7 @@ from dapodik.utils.decorator import set_meta
     jenis_pendaftaran=JenisPendaftaran,
     jenis_keluar=JenisKeluar,
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class RegistrasiPesertaDidik(DapodikObject):
     peserta_didik_id: str
     sekolah_id: str

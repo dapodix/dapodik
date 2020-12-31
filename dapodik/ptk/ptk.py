@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import (
@@ -36,7 +36,7 @@ from dapodik.utils.decorator import set_meta
     pengguna=Pengguna,
     bank=Bank,
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class Ptk(DapodikObject):
     ptk_terdaftar_id: str
     ptk_id: str

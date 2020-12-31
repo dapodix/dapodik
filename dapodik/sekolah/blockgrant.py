@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import DapodikObject, Sekolah, SumberDanaSekolah
@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("blockgrant_id", sekolah=Sekolah, sumber_dana=SumberDanaSekolah)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class BlockGrant(DapodikObject):
     blockgrant_id: str
     sekolah_id: str

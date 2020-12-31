@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from dapodik import DapodikObject, PesertaDidik, Semester
 from dapodik.utils.decorator import set_meta
 
@@ -8,7 +8,7 @@ DEF = "Admin.model.PesertaDidikLongitudinal-1"
 @set_meta(
     "peserta_didik_longitudinal_id", peserta_didik=PesertaDidik, semester=Semester
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class PesertaDidikLongitudinal(DapodikObject):
     peserta_didik_id: int
     tinggi_badan: int

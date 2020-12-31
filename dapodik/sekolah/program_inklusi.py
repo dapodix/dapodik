@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import DapodikObject, Sekolah
@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("id_pi", sekolah=Sekolah)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class ProgramInklusi(DapodikObject):
     id_pi: str
     sekolah_id: str

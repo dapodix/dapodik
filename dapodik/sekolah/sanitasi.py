@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import DapodikObject, SumberAir, Sekolah, Semester
@@ -7,7 +7,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("sanitasi_id", sekolah=Sekolah, semester=Semester, sumber_air=SumberAir)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class Sanitasi(DapodikObject):
     sekolah_id: str
     semester_id: str

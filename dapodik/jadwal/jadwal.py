@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from dapodik import (
     DapodikObject,
     Semester,
@@ -18,7 +18,7 @@ from dapodik.utils.decorator import set_meta
     tingkat_pendidikan=TingkatPendidikan,
     ruang=Ruang,
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class Jadwal(DapodikObject):
     jadwal_id: str
     sekolah_id: str

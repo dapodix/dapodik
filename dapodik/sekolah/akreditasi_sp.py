@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from dapodik import DapodikObject, Sekolah, Akreditasi, LembagaPengangkat
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta("akred_sp_id", akred_sp=Akreditasi, sekolah=Sekolah, la=LembagaPengangkat)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class AkreditasiSp(DapodikObject):
     akred_sp_id: str
     sekolah_id: str

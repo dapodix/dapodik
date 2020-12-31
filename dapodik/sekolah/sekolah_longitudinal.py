@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import (
@@ -21,7 +21,7 @@ from dapodik.utils.decorator import set_meta
     akses_internet=AksesInternet,
     akses_internet_2=AksesInternet.with_id("akses_internet_2_id"),
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class SekolahLongitudinal(DapodikObject):
     sekolah_id: str
     semester_id: str

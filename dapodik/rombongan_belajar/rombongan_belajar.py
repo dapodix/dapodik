@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from typing import Optional
 from dapodik import (
@@ -26,7 +26,7 @@ from dapodik.utils.decorator import set_meta
     kebutuhan_khusus=KebutuhanKhusus,
     jurusan=Jurusan,
 )
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class RombonganBelajar(DapodikObject):
     rombongan_belajar_id: str
     semester_id: str

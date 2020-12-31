@@ -1,11 +1,11 @@
 from __future__ import annotations
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 from typing import Optional, List
 from dapodik.config import DOMAIN
 
 
-@dataclass
+@attr.s(auto_attribs=True, eq=False)
 class Roleperan:
     nama: Optional[str]
     peran: Optional[str]

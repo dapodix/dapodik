@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta("sync_log_id")
-@dataclass(eq=False, frozen=True)
+@attr.s(auto_attribs=True, eq=False, frozen=True)
 class SyncLog(DapodikObject):
     id_instalasi: str
     begin_sync: datetime

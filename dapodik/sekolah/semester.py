@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime, date
 from typing import Optional
 from dapodik import DapodikObject, TahunAjaran
@@ -6,7 +6,7 @@ from dapodik.utils.decorator import set_meta
 
 
 @set_meta("semester_id", tahun_ajaran=TahunAjaran)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class Semester(DapodikObject):
     semester_id: str
     tahun_ajaran_id: str

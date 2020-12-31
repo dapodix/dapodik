@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+import attr
 from datetime import datetime
 from dapodik import DapodikObject, Semester
 from dapodik.utils.decorator import set_meta
 
 
 @set_meta("alat_longitudinal_id", semester=Semester)
-@dataclass(eq=False)
+@attr.s(auto_attribs=True, eq=False)
 class AlatLongitudinal(DapodikObject):
     id_alat: str
     semester_id: str

@@ -1,9 +1,5 @@
 from __future__ import annotations
-from dataclasses import MISSING
-from datetime import datetime, date
 from dapodik.config import BASE_URL
-from dapodik.utils.helpers import get_dataclass_fields
-from dapodik.utils.parser import str_to_datetime, str_to_date
 
 from typing import (
     Any,
@@ -55,32 +51,6 @@ class DapodikObject:
         dapodik: Optional[Dapodik] = None,
         **kwargs
     ) -> DO:
-        fields = get_dataclass_fields(cls)
-        safe_data = dict()
-        id = id or cls._id
-
-        for field in fields:
-            key = field.name
-            if key.startswith("_"):
-                continue
-            value = data.pop(key)
-
-            if value:
-                if field.type == datetime:
-                    safe_data[key] = str_to_datetime(value)
-                elif field.type == date:
-                    safe_data[key] = str_to_date(value)  # type: ignore
-                else:
-                    safe_data[key] = value
-            elif field.default != MISSING:
-                safe_data[key] = field.default
-            elif field.default_factory != MISSING:  # type: ignore
-                safe_data[key] = field.default_factory()  # type: ignore
-            else:
-                safe_data[key] = None  # type: ignore
-
-        res = cls(**safe_data)  # type: ignore
-
         if id:
             cls._id = id
         if url:
@@ -89,10 +59,7 @@ class DapodikObject:
             cls.dapodik = dapodik
         if kwargs:
             data.update(kwargs)
-        if data:
-            for key, value in data.items():
-                setattr(res, key, value)
-        return res
+        return cls(**data)  # type: ignore
 
     def to_dict(self) -> dict:
         data = dict()
