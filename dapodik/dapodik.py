@@ -2,12 +2,10 @@
 
 import logging
 from requests import Session
-from typing import Dict, Optional, Type, TypeVar
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 from dapodik import (
     DapodikObject,
-    Results,
-    Rest,
     BASE_URL,
     USER_AGENT,
     BaseAuth,
@@ -37,8 +35,8 @@ class Dapodik(
 ):
     session: Session = Session()
     domain: str = BASE_URL
-    cache: Dict[Type[DapodikObject], Results] = {}
-    rests: Dict[Type[DapodikObject], Rest] = {}
+    cache: Dict[Type[DapodikObject], Any] = {}
+    rests: Dict[Type[DapodikObject], Any] = {}
     id_map: Dict[str, Type[DapodikObject]] = {}
 
     def __init__(
@@ -68,19 +66,12 @@ class Dapodik(
             self.register_rombongan_belajar()
             self.register_jadwal()
 
-    def __getitem__(self, obj: Type[DO]) -> Optional[Results[DO]]:
+    def __getitem__(self, obj: Type[DO]) -> Optional[Union[DO, List[DO]]]:
         return self.get(obj)
 
-    def get(self, obj: Type[DO]) -> Optional[Results[DO]]:
-        res = self.cache.get(obj)
-        if self.cache and res:
-            if res:
-                return res
-        if obj in self.rests:
-            rest: Optional[Rest] = self.rests.get(obj)
-            if rest:
-                res = rest.get()
-                if res:
-                    self.cache[obj] = res
-                    return res
+    def get(self, obj: Type[DO]) -> Optional[Union[DO, List[DO]]]:
+        if self.cache and obj in self.cache:
+            return self.cache[obj]
+        elif self.rests and obj in self.rests:
+            return self.rests[obj]()
         return None
