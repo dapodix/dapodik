@@ -2,8 +2,8 @@ from setuptools import setup
 
 setup(
     name="dapodik",
-    version="0.5.1",
-    description="Client & alat bantu aplikasi Dapodik",
+    version="0.6.0",
+    description="SDK python untuk aplikasi dapodik.",
     author="Habib Rohman",
     author_email="habibrohman@protonmail.com",
     url="https://github.com/hexatester/dapodik",

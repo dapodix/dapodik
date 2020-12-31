@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/dapodix/dapodik/branch/master/graph/badge.svg)](https://codecov.io/gh/dapodix/dapodik)
 [![Code Style - Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Python client / API aplikasi dapodik.
+SDK python untuk aplikasi dapodik.
 
 ## Install
 
