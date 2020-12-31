@@ -5,23 +5,23 @@ from dapodik.config import BASE_URL
 from dapodik.utils.helpers import get_dataclass_fields
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
-from typing import (Any, Dict, Generic, Optional, Tuple, Type, TypeVar,
-                    TYPE_CHECKING)
+from typing import Any, Dict, Generic, Optional, Tuple, Type, TypeVar, TYPE_CHECKING
+
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
-DO = TypeVar('DO', bound='DapodikObject')
+DO = TypeVar("DO", bound="DapodikObject")
 
 
 class DapodikObject(Generic[DO]):
     dapodik: Dapodik = None  # type: ignore
     _editable: bool = False
-    _id: str = ''
-    _url: str = ''
+    _id: str = ""
+    _url: str = ""
     _id_attrs: Tuple[Any, ...] = ()
     _base_url: str = BASE_URL
     _params: Dict[str, str] = {}
-    _name: str = ''
+    _name: str = ""
 
     def __post_init__(self):
         super(DapodikObject, self).__init__()
@@ -35,19 +35,21 @@ class DapodikObject(Generic[DO]):
         self._id = value
 
     @classmethod
-    def from_data(cls: Type[DO],
-                  data: dict,
-                  id: Optional[str] = None,
-                  url: Optional[str] = None,
-                  dapodik: Optional[Dapodik] = None,
-                  **kwargs) -> DO:
+    def from_data(
+        cls: Type[DO],
+        data: dict,
+        id: Optional[str] = None,
+        url: Optional[str] = None,
+        dapodik: Optional[Dapodik] = None,
+        **kwargs
+    ) -> DO:
         fields = get_dataclass_fields(cls)
         safe_data = dict()
         id = id or cls._id
 
         for field in fields:
             key = field.name
-            if key.startswith('_'):
+            if key.startswith("_"):
                 continue
             value = data.pop(key)
 
@@ -83,11 +85,11 @@ class DapodikObject(Generic[DO]):
     def to_dict(self) -> dict:
         data = dict()
         for key in self.__dict__:
-            if key == 'dapodik' or key.startswith('_'):
+            if key == "dapodik" or key.startswith("_"):
                 continue
             value = self.__dict__[key]
             if value is not None:
-                if hasattr(value, 'to_dict'):
+                if hasattr(value, "to_dict"):
                     data[key] = value.to_dict()
                 else:
                     data[key] = value
@@ -112,13 +114,13 @@ class DapodikObject(Generic[DO]):
 
     def delete(self) -> bool:
         if not self._editable:
-            raise Exception('Data {} tidak dapat dihapus'.format(repr(self)))
-        filename = self.dapodik.domain + self._url + '/' + self.id
+            raise Exception("Data {} tidak dapat dihapus".format(repr(self)))
+        filename = self.dapodik.domain + self._url + "/" + self.id
         res = self.dapodik.session.delete(filename, params=self.delete_params)
         return res.ok
 
     def __str__(self) -> str:
-        return getattr(self, 'name', self._id)
+        return getattr(self, "name", self._id)
 
     def __hash__(self) -> int:
         if self._id_attrs:
@@ -142,13 +144,13 @@ class DapodikObject(Generic[DO]):
         return params
 
     @classmethod
-    def getter(cls: Type[DO], obj: Type[DO], key: str = '') -> Any:
+    def getter(cls: Type[DO], obj: Type[DO], key: str = "") -> Any:
         id_ = getattr(obj, key or cls._id)
         res = obj.dapodik[cls]
         return res[id_] if res else None
 
     @classmethod
-    def setter(cls: Type[DO], obj: Type[DO], value: Any, key: str = '') -> Any:
+    def setter(cls: Type[DO], obj: Type[DO], value: Any, key: str = "") -> Any:
         key = key or cls._id
         if isinstance(value, cls):
             setattr(obj, key, value)

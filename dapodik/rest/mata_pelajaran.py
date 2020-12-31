@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Jurusan
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('mata_pelajaran_id', jurusan=Jurusan)
+@set_meta("mata_pelajaran_id", jurusan=Jurusan)
 @dataclass(eq=False, frozen=True)
 class MataPelajaran(DapodikObject):
     mata_pelajaran_id: int

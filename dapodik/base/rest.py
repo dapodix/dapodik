@@ -4,10 +4,11 @@ from requests import Session
 from .dapodik_object import DapodikObject
 from .results import Results
 from typing import Any, Generic, Optional, Type, TypeVar, TYPE_CHECKING
+
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
-DO = TypeVar('DO', bound=DapodikObject)
+DO = TypeVar("DO", bound=DapodikObject)
 
 
 class Rest(Generic[DO]):
@@ -21,8 +22,9 @@ class Rest(Generic[DO]):
         self.url = dapodik.domain + url
         self.dapodik.rests[klass] = self
         self.dapodik.id_map[self.klass._id] = self.klass
-        self.logger.debug('Berhasil membuat Rest untuk {}'.format(
-            klass.__class__.__module__))
+        self.logger.debug(
+            "Berhasil membuat Rest untuk {}".format(klass.__class__.__module__)
+        )
 
     def get(self, params: dict = None) -> Optional[Results[DO]]:
         params = params or self.klass.get_params()

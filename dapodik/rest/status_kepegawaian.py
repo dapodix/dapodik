@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('status_kepegawaian_id')
+@set_meta("status_kepegawaian_id")
 @dataclass(eq=False, frozen=True)
 class StatusKepegawaian(DapodikObject):
     status_kepegawaian_id: int

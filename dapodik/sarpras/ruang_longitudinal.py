@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Semester, Ruang
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('ruang_longitudinal_id', semester=Semester, ruang=Ruang)
+@set_meta("ruang_longitudinal_id", semester=Semester, ruang=Ruang)
 @dataclass(eq=False)
 class RuangLongitudinal(DapodikObject):
     id_ruang: str

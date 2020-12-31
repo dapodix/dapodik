@@ -1,15 +1,23 @@
 from dataclasses import dataclass
-from dapodik import (DapodikObject, Semester, Ruang, TingkatPendidikan,
-                     Pembelajaran, Sekolah)
+from dapodik import (
+    DapodikObject,
+    Semester,
+    Ruang,
+    TingkatPendidikan,
+    Pembelajaran,
+    Sekolah,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('jadwal_id',
-          sekolah=Sekolah,
-          semester=Semester,
-          pembelajaran=Pembelajaran,
-          tingkat_pendidikan=TingkatPendidikan,
-          ruang=Ruang)
+@set_meta(
+    "jadwal_id",
+    sekolah=Sekolah,
+    semester=Semester,
+    pembelajaran=Pembelajaran,
+    tingkat_pendidikan=TingkatPendidikan,
+    ruang=Ruang,
+)
 @dataclass(eq=False)
 class Jadwal(DapodikObject):
     jadwal_id: str

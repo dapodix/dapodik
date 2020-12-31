@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('pengguna_id')
+@set_meta("pengguna_id")
 @dataclass(eq=False)
 class Pengguna(DapodikObject):
     pengguna_id: str

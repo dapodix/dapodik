@@ -1,17 +1,26 @@
 from dataclasses import dataclass, field
 from typing import Any, List, Optional
-from dapodik import (DapodikObject, PesertaDidikBaru, Sekolah, Agama,
-                     KebutuhanKhusus, JenisTinggal, AlatTransportasi)
+from dapodik import (
+    DapodikObject,
+    PesertaDidikBaru,
+    Sekolah,
+    Agama,
+    KebutuhanKhusus,
+    JenisTinggal,
+    AlatTransportasi,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('peserta_didik_id',
-          sekolah=Sekolah,
-          pdb=PesertaDidikBaru,
-          agama=Agama,
-          kebutuhan_khusus=KebutuhanKhusus,
-          jenis_tinggal=JenisTinggal,
-          alat_transportasi=AlatTransportasi)
+@set_meta(
+    "peserta_didik_id",
+    sekolah=Sekolah,
+    pdb=PesertaDidikBaru,
+    agama=Agama,
+    kebutuhan_khusus=KebutuhanKhusus,
+    jenis_tinggal=JenisTinggal,
+    alat_transportasi=AlatTransportasi,
+)
 @dataclass(eq=False)
 class PesertaDidik(DapodikObject):
     nama: str
@@ -103,5 +112,5 @@ class PesertaDidik(DapodikObject):
     @property
     def params(self):
         return {
-            'sekolah_id': self.dapodik.sekolah_id,
+            "sekolah_id": self.dapodik.sekolah_id,
         }

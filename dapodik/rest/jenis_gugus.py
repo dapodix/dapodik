@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('jenis_gugus_id')
+@set_meta("jenis_gugus_id")
 @dataclass(eq=False, frozen=True)
 class JenisGugus(DapodikObject):
     jenis_gugus_id: str

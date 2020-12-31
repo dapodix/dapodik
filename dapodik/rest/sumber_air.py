@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('sumber_air_id')
+@set_meta("sumber_air_id")
 @dataclass(eq=False, frozen=True)
 class SumberAir(DapodikObject):
     sumber_air_id: str

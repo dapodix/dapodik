@@ -1,16 +1,24 @@
 from dataclasses import dataclass
 from typing import Optional
-from dapodik import (DapodikObject, PesertaDidik, Sekolah, JenisPendaftaran,
-                     JenisKeluar, JurusanSp)
+from dapodik import (
+    DapodikObject,
+    PesertaDidik,
+    Sekolah,
+    JenisPendaftaran,
+    JenisKeluar,
+    JurusanSp,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('registrasi_id',
-          peserta_didik=PesertaDidik,
-          sekolah=Sekolah,
-          jurusan_sp=JurusanSp,
-          jenis_pendaftaran=JenisPendaftaran,
-          jenis_keluar=JenisKeluar)
+@set_meta(
+    "registrasi_id",
+    peserta_didik=PesertaDidik,
+    sekolah=Sekolah,
+    jurusan_sp=JurusanSp,
+    jenis_pendaftaran=JenisPendaftaran,
+    jenis_keluar=JenisKeluar,
+)
 @dataclass(eq=False)
 class RegistrasiPesertaDidik(DapodikObject):
     peserta_didik_id: str

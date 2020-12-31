@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('jenis_rombel')
+@set_meta("jenis_rombel")
 @dataclass(eq=False, frozen=True)
 class JenisRombel(DapodikObject):
     jenis_rombel: str

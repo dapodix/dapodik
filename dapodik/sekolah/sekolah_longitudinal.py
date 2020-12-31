@@ -1,18 +1,26 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import (DapodikObject, WaktuPenyelenggaraan, AksesInternet,
-                     Sekolah, Semester, SumberListrik)
+from dapodik import (
+    DapodikObject,
+    WaktuPenyelenggaraan,
+    AksesInternet,
+    Sekolah,
+    Semester,
+    SumberListrik,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('sekolah_longitudinal_id',
-          sekolah=Sekolah,
-          semester=Semester,
-          waktu_penyelenggaraan=WaktuPenyelenggaraan,
-          sumber_listrik=SumberListrik,
-          akses_internet=AksesInternet,
-          akses_internet_2=AksesInternet.with_id('akses_internet_2_id'))
+@set_meta(
+    "sekolah_longitudinal_id",
+    sekolah=Sekolah,
+    semester=Semester,
+    waktu_penyelenggaraan=WaktuPenyelenggaraan,
+    sumber_listrik=SumberListrik,
+    akses_internet=AksesInternet,
+    akses_internet_2=AksesInternet.with_id("akses_internet_2_id"),
+)
 @dataclass(eq=False)
 class SekolahLongitudinal(DapodikObject):
     sekolah_id: str

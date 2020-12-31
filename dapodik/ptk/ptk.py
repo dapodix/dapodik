@@ -20,20 +20,22 @@ from dapodik import (
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('ptk_id',
-          sekolah=Sekolah,
-          jenis_keluar=JenisKeluar,
-          tahun_ajaran=TahunAjaran,
-          status_kepegawaian=StatusKepegawaian,
-          jenis_ptk=JenisPtk,
-          agama=Agama,
-          status_keaktifan_pegawai=StatusKeaktifanPegawai,
-          lembaga_pengangkat=LembagaPengangkat,
-          pangkat_golongan=PangkatGolongan,
-          keahlian_laboratorium=KeahlianLaboratorium,
-          sumber_gaji=SumberGaji,
-          pengguna=Pengguna,
-          bank=Bank)
+@set_meta(
+    "ptk_id",
+    sekolah=Sekolah,
+    jenis_keluar=JenisKeluar,
+    tahun_ajaran=TahunAjaran,
+    status_kepegawaian=StatusKepegawaian,
+    jenis_ptk=JenisPtk,
+    agama=Agama,
+    status_keaktifan_pegawai=StatusKeaktifanPegawai,
+    lembaga_pengangkat=LembagaPengangkat,
+    pangkat_golongan=PangkatGolongan,
+    keahlian_laboratorium=KeahlianLaboratorium,
+    sumber_gaji=SumberGaji,
+    pengguna=Pengguna,
+    bank=Bank,
+)
 @dataclass(eq=False)
 class Ptk(DapodikObject):
     ptk_terdaftar_id: str

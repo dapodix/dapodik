@@ -18,21 +18,20 @@ from dapodik import (
 class BaseSekolah(BaseDapodik):
     def register_sekolah(self) -> bool:
         try:
-            self.AkreditasiSp = Rest(self, AkreditasiSp, 'rest/AkreditasiSp')
-            self.BlockGrant = Rest(self, BlockGrant, 'rest/BlockGrant')
-            self.Kepanitiaan = Rest(self, Kepanitiaan, 'rest/Kepanitiaan')
-            self.JurusanSp = Rest(self, JurusanSp, 'rest/JurusanSp')
-            self.ProgramInklusi = Rest(self, ProgramInklusi,
-                                       'rest/ProgramInklusi')
-            self.Sanitasi: Rest[Sanitasi] = Rest(self, Sanitasi,
-                                                 'rest/Sanitasi')
-            self.Sekolah = Rest(self, Sekolah, 'rest/Sekolah')
-            self.SekolahLongitudinal = Rest(self, SekolahLongitudinal,
-                                            'rest/SekolahLongitudinal')
-            self.SekolahPaud = Rest(self, SekolahPaud, 'rest/SekolahPaud')
-            self.Semester = Rest(self, Semester, 'rest/Semester')
-            self.Yayasan = Rest(self, Yayasan, 'rest/Yayasan')
-            self.logger.debug('Berhasil memulai sekolah')
+            self.AkreditasiSp = Rest(self, AkreditasiSp, "rest/AkreditasiSp")
+            self.BlockGrant = Rest(self, BlockGrant, "rest/BlockGrant")
+            self.Kepanitiaan = Rest(self, Kepanitiaan, "rest/Kepanitiaan")
+            self.JurusanSp = Rest(self, JurusanSp, "rest/JurusanSp")
+            self.ProgramInklusi = Rest(self, ProgramInklusi, "rest/ProgramInklusi")
+            self.Sanitasi: Rest[Sanitasi] = Rest(self, Sanitasi, "rest/Sanitasi")
+            self.Sekolah = Rest(self, Sekolah, "rest/Sekolah")
+            self.SekolahLongitudinal = Rest(
+                self, SekolahLongitudinal, "rest/SekolahLongitudinal"
+            )
+            self.SekolahPaud = Rest(self, SekolahPaud, "rest/SekolahPaud")
+            self.Semester = Rest(self, Semester, "rest/Semester")
+            self.Yayasan = Rest(self, Yayasan, "rest/Yayasan")
+            self.logger.debug("Berhasil memulai sekolah")
             return True
         except Exception as E:
             self.logger.exception(E)

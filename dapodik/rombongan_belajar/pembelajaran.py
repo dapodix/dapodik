@@ -1,14 +1,21 @@
 from dataclasses import dataclass
-from dapodik import (DapodikObject, Semester, PtkTerdaftar, MataPelajaran,
-                     RombonganBelajar)
+from dapodik import (
+    DapodikObject,
+    Semester,
+    PtkTerdaftar,
+    MataPelajaran,
+    RombonganBelajar,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('pembelajaran_id',
-          rombongan_belajar=RombonganBelajar,
-          mata_pelajaran=MataPelajaran,
-          ptk_terdaftar=PtkTerdaftar,
-          semester=Semester)
+@set_meta(
+    "pembelajaran_id",
+    rombongan_belajar=RombonganBelajar,
+    mata_pelajaran=MataPelajaran,
+    ptk_terdaftar=PtkTerdaftar,
+    semester=Semester,
+)
 @dataclass(eq=False)
 class Pembelajaran(DapodikObject):
     rombongan_belajar_id: str

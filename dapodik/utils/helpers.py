@@ -13,6 +13,7 @@ def get_dataclass_fields(data_class: Type[AnyT]) -> List[Field]:
     """
     fields = getattr(data_class, _FIELDS)
     return [
-        f for f in fields.values()
+        f
+        for f in fields.values()
         if f._field_type is _FIELD or f._field_type is _FIELD_INITVAR
     ]

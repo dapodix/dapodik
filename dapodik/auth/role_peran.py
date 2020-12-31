@@ -14,16 +14,16 @@ class Roleperan:
 
     @classmethod
     def from_tag(cls, tag: Tag) -> Roleperan:
-        a: Tag = tag.find('a')
-        spans: List[Tag] = a.find_all('span')
-        url = DOMAIN + str(a['href'])
+        a: Tag = tag.find("a")
+        spans: List[Tag] = a.find_all("span")
+        url = DOMAIN + str(a["href"])
         return cls(
-            nama=str(spans[1].text).split(':')[-1],
-            peran=str(spans[2].text).split(':')[-1],
-            lembaga=str(spans[0].text).split(':')[-1],
-            url=url
+            nama=str(spans[1].text).split(":")[-1],
+            peran=str(spans[2].text).split(":")[-1],
+            lembaga=str(spans[0].text).split(":")[-1],
+            url=url,
         )
 
     def __str__(self):
         strs = [self.nama, self.peran, self.lembaga]
-        return ' - '.join(strs)
+        return " - ".join(strs)

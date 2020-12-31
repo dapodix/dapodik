@@ -16,33 +16,31 @@ class BaseAuth(object):
 
     def register_auth(self) -> bool:
         try:
-            self.Pengguna = Rest(self, Pengguna, 'rest/Pengguna')
-            self.logger.debug('Berhasil memulai auth')
+            self.Pengguna = Rest(self, Pengguna, "rest/Pengguna")
+            self.logger.debug("Berhasil memulai auth")
             return True
         except Exception as E:
             self.logger.exception(E)
             return False
 
-    def login(self,
-              username: str,
-              password: str,
-              rememberme: bool = True,
-              semester_id: str = SEMESTER_ID,
-              auto: bool = True):
-        data = {
-            'username': username,
-            'password': password,
-            'semester_id': semester_id
-        }
-        if rememberme is True or rememberme == 'on':
-            data['rememberme'] = 'on'
+    def login(
+        self,
+        username: str,
+        password: str,
+        rememberme: bool = True,
+        semester_id: str = SEMESTER_ID,
+        auto: bool = True,
+    ):
+        data = {"username": username, "password": password, "semester_id": semester_id}
+        if rememberme is True or rememberme == "on":
+            data["rememberme"] = "on"
         res0 = self.session.get(self._url)
         if not res0.ok:
             return False
-        res1 = self.session.post(self._url + 'roleperan', data=data)
+        res1 = self.session.post(self._url + "roleperan", data=data)
         # handle redirect
-        soup = BeautifulSoup(res1.text, 'lxml')
-        lis: List[Tag] = soup.find_all('li', class_='w3-bar')
+        soup = BeautifulSoup(res1.text, "lxml")
+        lis: List[Tag] = soup.find_all("li", class_="w3-bar")
         lis.pop(0)
         lis.pop(-1)
         roles: List[Roleperan] = [Roleperan.from_tag(tag) for tag in lis]
@@ -51,6 +49,6 @@ class BaseAuth(object):
         return res3.ok
 
     def logout(self):
-        url = self._url + 'destauth'
+        url = self._url + "destauth"
         res = self.session.get(url)
         return res.ok

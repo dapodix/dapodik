@@ -4,7 +4,7 @@ from dapodik import DapodikObject, BlockGrant
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('bangunan_dari_blockgrant_id', blockgrant=BlockGrant)
+@set_meta("bangunan_dari_blockgrant_id", blockgrant=BlockGrant)
 @dataclass(eq=False)
 class BangunanDariBlockgrant(DapodikObject):
     blockgrant_id: str

@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('akses_internet_id')
+@set_meta("akses_internet_id")
 @dataclass(eq=False, frozen=True)
 class AksesInternet(DapodikObject):
     akses_internet_id: int

@@ -4,10 +4,9 @@ from dapodik import DapodikObject, Sekolah, KebutuhanKhusus, Jurusan
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('jurusan_sp_id',
-          sekolah=Sekolah,
-          kebutuhan_khusus=KebutuhanKhusus,
-          jurusan=Jurusan)
+@set_meta(
+    "jurusan_sp_id", sekolah=Sekolah, kebutuhan_khusus=KebutuhanKhusus, jurusan=Jurusan
+)
 @dataclass(eq=False, frozen=True)
 class JurusanSp(DapodikObject):
     jurusan_sp_id: str

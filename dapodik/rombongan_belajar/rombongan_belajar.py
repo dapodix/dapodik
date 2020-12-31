@@ -1,21 +1,31 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import (DapodikObject, Sekolah, TingkatPendidikan,
-                     KebutuhanKhusus, Semester, Ptk, Kurikulum, Jurusan,
-                     JurusanSp)
+from dapodik import (
+    DapodikObject,
+    Sekolah,
+    TingkatPendidikan,
+    KebutuhanKhusus,
+    Semester,
+    Ptk,
+    Kurikulum,
+    Jurusan,
+    JurusanSp,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('rombongan_belajar_id',
-          semester=Semester,
-          sekolah=Sekolah,
-          tingkat_pendidikan=TingkatPendidikan,
-          jurusan_sp=JurusanSp,
-          kurikulum=Kurikulum,
-          ptk=Ptk,
-          kebutuhan_khusus=KebutuhanKhusus,
-          jurusan=Jurusan)
+@set_meta(
+    "rombongan_belajar_id",
+    semester=Semester,
+    sekolah=Sekolah,
+    tingkat_pendidikan=TingkatPendidikan,
+    jurusan_sp=JurusanSp,
+    kurikulum=Kurikulum,
+    ptk=Ptk,
+    kebutuhan_khusus=KebutuhanKhusus,
+    jurusan=Jurusan,
+)
 @dataclass(eq=False)
 class RombonganBelajar(DapodikObject):
     rombongan_belajar_id: str

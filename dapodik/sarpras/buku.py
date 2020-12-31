@@ -1,17 +1,25 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from dapodik import (DapodikObject, Sekolah, MataPelajaran, TingkatPendidikan,
-                     Ruang, Biblio)
+from dapodik import (
+    DapodikObject,
+    Sekolah,
+    MataPelajaran,
+    TingkatPendidikan,
+    Ruang,
+    Biblio,
+)
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_buku',
-          mata_pelajaran=MataPelajaran,
-          sekolah=Sekolah,
-          tingkat_pendidikan=TingkatPendidikan,
-          ruang=Ruang,
-          biblio=Biblio)
+@set_meta(
+    "id_buku",
+    mata_pelajaran=MataPelajaran,
+    sekolah=Sekolah,
+    tingkat_pendidikan=TingkatPendidikan,
+    ruang=Ruang,
+    biblio=Biblio,
+)
 @dataclass(eq=False)
 class Buku(DapodikObject):
     id_buku: str

@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_pi', sekolah=Sekolah)
+@set_meta("id_pi", sekolah=Sekolah)
 @dataclass(eq=False)
 class ProgramInklusi(DapodikObject):
     id_pi: str

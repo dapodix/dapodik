@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('status_keaktifan_id')
+@set_meta("status_keaktifan_id")
 @dataclass(eq=False, frozen=True)
 class StatusKeaktifanPegawai(DapodikObject):
     status_keaktifan_id: str

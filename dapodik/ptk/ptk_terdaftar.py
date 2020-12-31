@@ -5,11 +5,13 @@ from dapodik import DapodikObject, Sekolah, JenisKeluar, Ptk, TahunAjaran
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('ptk_terdaftar_id',
-          ptk=Ptk,
-          sekolah=Sekolah,
-          tahun_ajaran=TahunAjaran,
-          jenis_keluar=JenisKeluar)
+@set_meta(
+    "ptk_terdaftar_id",
+    ptk=Ptk,
+    sekolah=Sekolah,
+    tahun_ajaran=TahunAjaran,
+    jenis_keluar=JenisKeluar,
+)
 @dataclass(eq=False)
 class PtkTerdaftar(DapodikObject):
     ptk_terdaftar_id: str

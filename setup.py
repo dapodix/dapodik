@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='dapodik',
-    version='0.5.1',
-    description='Client & alat bantu aplikasi Dapodik',
-    author='Habib Rohman',
+    name="dapodik",
+    version="0.5.1",
+    description="Client & alat bantu aplikasi Dapodik",
+    author="Habib Rohman",
     author_email="habibrohman@protonmail.com",
-    url='https://github.com/hexatester/dapodik',
+    url="https://github.com/hexatester/dapodik",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
@@ -17,15 +17,6 @@ setup(
         "Topic :: Education",
     ],
     packages=["dapodik"],
-    install_requires=[
-        'python'
-        'requests'
-        'beautifulsoup4'
-        'lxml'
-    ],
-    entry_points={
-        'console_scripts': [
-            'dapodik=dapodik.__main__:main'
-        ]
-    }
+    install_requires=["python" "requests" "beautifulsoup4" "lxml"],
+    entry_points={"console_scripts": ["dapodik=dapodik.__main__:main"]},
 )

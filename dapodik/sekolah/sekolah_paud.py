@@ -12,13 +12,15 @@ from dapodik import (
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('sekolah_id',
-          sekolah=Sekolah,
-          kategori_tk=KategoriTk,
-          klasifikasi_lembaga=KlasifikasiLembaga,
-          sumber_dana_sekolah=SumberDanaSekolah,
-          fasilitas_layanan=FasilitasLayanan,
-          lembaga_pengangkat=LembagaPengangkat)
+@set_meta(
+    "sekolah_id",
+    sekolah=Sekolah,
+    kategori_tk=KategoriTk,
+    klasifikasi_lembaga=KlasifikasiLembaga,
+    sumber_dana_sekolah=SumberDanaSekolah,
+    fasilitas_layanan=FasilitasLayanan,
+    lembaga_pengangkat=LembagaPengangkat,
+)
 @dataclass(eq=False)
 class SekolahPaud(DapodikObject):
     sekolah_id: str

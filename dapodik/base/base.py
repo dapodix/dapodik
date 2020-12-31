@@ -9,6 +9,6 @@ from .dapodik_object import DapodikObject
 class BaseDapodik:
     session: Session = Session()
     domain: str = BASE_URL
-    sekolah_id: str = ''
+    sekolah_id: str = ""
     logger: Logger = Logger(__name__)
     id_map: Dict[str, Type[DapodikObject]] = {}

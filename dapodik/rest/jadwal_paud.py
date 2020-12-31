@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('jadwal_id')
+@set_meta("jadwal_id")
 @dataclass(eq=False, frozen=True)
 class JadwalPaud(DapodikObject):
     jadwal_id: str

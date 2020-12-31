@@ -4,10 +4,12 @@ from dapodik import DapodikObject, TingkatPendidikan, MataPelajaran, Kurikulum
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('mata_pelajaran_kurikulum_id',
-          kurikulum=Kurikulum,
-          mata_pelajaran=MataPelajaran,
-          tingkat_pendidikan=TingkatPendidikan)
+@set_meta(
+    "mata_pelajaran_kurikulum_id",
+    kurikulum=Kurikulum,
+    mata_pelajaran=MataPelajaran,
+    tingkat_pendidikan=TingkatPendidikan,
+)
 @dataclass(eq=False)
 class MataPelajaranKurikulum(DapodikObject):
     mata_pelajaran_kurikulum_id: str

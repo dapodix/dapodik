@@ -4,7 +4,7 @@ from dapodik import DapodikObject, Sekolah
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_panitia', sekolah=Sekolah)
+@set_meta("id_panitia", sekolah=Sekolah)
 @dataclass(eq=False)
 class Kepanitiaan(DapodikObject):
     id_panitia: str

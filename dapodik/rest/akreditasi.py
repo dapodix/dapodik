@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('akreditasi_id')
+@set_meta("akreditasi_id")
 @dataclass(eq=False, frozen=True)
 class Akreditasi(DapodikObject):
     akreditasi_id: str

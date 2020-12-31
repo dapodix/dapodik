@@ -5,7 +5,7 @@ from dapodik import DapodikObject, Sekolah, Ptk, JenisSarana
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_angkutan', sekolah=Sekolah, ptk=Ptk, jenis_sarana=JenisSarana)
+@set_meta("id_angkutan", sekolah=Sekolah, ptk=Ptk, jenis_sarana=JenisSarana)
 @dataclass(eq=False)
 class Angkutan(DapodikObject):
     id_angkutan: str

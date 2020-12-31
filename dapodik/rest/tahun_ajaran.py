@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('tahun_ajaran_id')
+@set_meta("tahun_ajaran_id")
 @dataclass(eq=False, frozen=True)
 class TahunAjaran(DapodikObject):
     tahun_ajaran_id: str

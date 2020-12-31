@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('yayasan_id')
+@set_meta("yayasan_id")
 @dataclass(eq=False)
 class Yayasan(DapodikObject):
     yayasan_id: str

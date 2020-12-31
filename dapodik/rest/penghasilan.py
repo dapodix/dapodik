@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('penghasilan_id')
+@set_meta("penghasilan_id")
 @dataclass(eq=False, frozen=True)
 class Penghasilan(DapodikObject):
     penghasilan_id: int

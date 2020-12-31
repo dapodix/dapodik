@@ -4,10 +4,7 @@ from dapodik import DapodikObject, Sekolah, Akreditasi, LembagaPengangkat
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('akred_sp_id',
-          akred_sp=Akreditasi,
-          sekolah=Sekolah,
-          la=LembagaPengangkat)
+@set_meta("akred_sp_id", akred_sp=Akreditasi, sekolah=Sekolah, la=LembagaPengangkat)
 @dataclass(eq=False)
 class AkreditasiSp(DapodikObject):
     akred_sp_id: str

@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('keahlian_laboratorium_id')
+@set_meta("keahlian_laboratorium_id")
 @dataclass(eq=False, frozen=True)
 class KeahlianLaboratorium(DapodikObject):
     keahlian_laboratorium_id: int

@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('id_biblio')
+@set_meta("id_biblio")
 @dataclass(eq=False, frozen=True)
 class Biblio(DapodikObject):
     id_biblio: str

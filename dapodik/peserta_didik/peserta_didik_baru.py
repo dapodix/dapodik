@@ -3,10 +3,12 @@ from dapodik import DapodikObject, Sekolah, JenisPendaftaran, TahunAjaran
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('pdb_id',
-          sekolah=Sekolah,
-          tahun_ajaran=TahunAjaran,
-          jenis_pendaftaran=JenisPendaftaran)
+@set_meta(
+    "pdb_id",
+    sekolah=Sekolah,
+    tahun_ajaran=TahunAjaran,
+    jenis_pendaftaran=JenisPendaftaran,
+)
 @dataclass(eq=False)
 class PesertaDidikBaru(DapodikObject):
     sekolah_id: str

@@ -5,7 +5,7 @@ from dapodik import DapodikObject
 from dapodik.utils.decorator import set_meta
 
 
-@set_meta('kode_wilayah')
+@set_meta("kode_wilayah")
 @dataclass(eq=False, frozen=True)
 class MstWilayah(DapodikObject):
     kode_wilayah: str
