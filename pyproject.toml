@@ -25,6 +25,11 @@ classifiers=[
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
+project_urls={
+    "Documentation": "https://dapodix.github.io/dapodik/",
+    "Bug Tracker": "https://github.com/dapodix/dapodik/issues",
+    "Source Code": "https://github.com/dapodix/dapodik",
+}
 
 [tool.poetry.dependencies]
 python = "^3.7"

@@ -7,6 +7,11 @@ setup(
     author="Habib Rohman",
     author_email="habibrohman@protonmail.com",
     url="https://github.com/dapodix/dapodik",
+    project_urls={
+        "Documentation": "https://dapodix.github.io/dapodik/",
+        "Bug Tracker": "https://github.com/dapodix/dapodik/issues",
+        "Source Code": "https://github.com/dapodix/dapodik",
+    },
     license="MIT",
     classifiers=[
         "Development Status :: 4 - Beta",
