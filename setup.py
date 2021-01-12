@@ -17,6 +17,6 @@ setup(
         "Topic :: Education",
     ],
     packages=["dapodik"],
-    install_requires=["python" "requests" "beautifulsoup4" "lxml"],
+    install_requires=["python", "requests", "beautifulsoup4"],
     entry_points={"console_scripts": ["dapodik=dapodik.__main__:main"]},
 )

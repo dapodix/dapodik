@@ -39,7 +39,7 @@ class BaseAuth(object):
             return False
         res1 = self.session.post(self._url + "roleperan", data=data)
         # handle redirect
-        soup = BeautifulSoup(res1.text, "lxml")
+        soup = BeautifulSoup(res1.text, "html.parser")
         lis: List[Tag] = soup.find_all("li", class_="w3-bar")
         lis.pop(0)
         lis.pop(-1)
