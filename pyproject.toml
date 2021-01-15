@@ -5,13 +5,21 @@ description = "SDK python untuk aplikasi dapodik."
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/hexatester/dapodik"
+homepage = "https://dapodix.github.io/dapodik"
 repository = "https://github.com/hexatester/dapodik"
+documentation = "https://github.com/dapodix/dapodik/wiki"
 include = [
     "LICENSE",
     "LISENSI",
     "README.md",
     "README-EN.md",
+]
+keywords = [
+    "dapodik",
+    "kemdikbud",
+    "python-module",
+    "python-sdk",
+    "python-wrapper"
 ]
 classifiers=[
     "Development Status :: 4 - Beta",
@@ -25,11 +33,6 @@ classifiers=[
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
-project_urls={
-    "Documentation": "https://dapodix.github.io/dapodik/",
-    "Bug Tracker": "https://github.com/dapodix/dapodik/issues",
-    "Source Code": "https://github.com/dapodix/dapodik",
-}
 
 [tool.poetry.dependencies]
 python = "^3.7"
