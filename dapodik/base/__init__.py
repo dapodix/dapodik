@@ -1,5 +1,6 @@
 from .attr import asdict, dataclass, sdataclass, field, fields
 from .dapodik import BaseDapodik, DapodikChild
+from .results import Results
 
 __all__ = [
     "asdict",
@@ -9,4 +10,5 @@ __all__ = [
     "fields",
     "BaseDapodik",
     "DapodikChild",
+    "Results",
 ]
