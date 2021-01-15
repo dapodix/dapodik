@@ -4,7 +4,6 @@ from datetime import datetime
 from functools import partial
 from typing import Any, Callable, List, Optional
 
-from moodle.base.moodle_object import MoodleObject  # NOQA
 
 COMMON: List = [str, int, datetime]
 

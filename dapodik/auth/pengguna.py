@@ -9,7 +9,7 @@ class Pengguna:
     nama: str
     peran: str
     sekolah: str
-    url: str
+    login_url: str
     photo: str
 
     @classmethod
@@ -17,10 +17,10 @@ class Pengguna:
         a: Tag = li.find("a")
         spans: List[Tag] = li.findAll("span")
         data = {
-            "nama": spans[1].getText().strip("Nama:"),
-            "peran": spans[2].getText().strip("Peran:"),
+            "nama": spans[1].getText().split(":")[-1],
+            "peran": spans[2].getText().split(":")[-1],
             "sekolah": spans[0].getText(),
-            "url": server + a.attrs.get("href", ""),
+            "login_url": server + a.attrs.get("href", "")[1:],
             "photo": server + a.find("img").attrs.get("src", ""),
         }
         return cls(**data)  # type: ignore

@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
 from typing import List
 
-from dapodik.base import DapodikChild
+from dapodik.base import BaseDapodik
 from . import Pengguna
 from .exception import PasswordSalah, PenggunaTidakTerdaftar
 
 
-class BaseAuth(DapodikChild):
+class BaseAuth(BaseDapodik):
     def login(
         self,
         username: str,
@@ -29,15 +29,15 @@ class BaseAuth(DapodikChild):
         """
         data = {"username": username, "password": password, "semester_id": semester_id}
         res = self._post("roleperan", data, allow_redirects=False)
-        if res.url.endswith("#PenggunaTidakTerdaftar"):
+        redirect = res.headers.get("Location", res.url)
+        if redirect.endswith("#PenggunaTidakTerdaftar"):
             raise PenggunaTidakTerdaftar(
                 "Username yang Anda masukkan tidak terdaftar! Mohon gunakan username lain."
             )
-        elif res.url.endswith("#PasswordSalah"):
+        elif redirect.endswith("#PasswordSalah"):
             raise PasswordSalah("Password yang Anda masukkan salah!")
-        res = self._get(res.headers["Location"])
         soup = BeautifulSoup(res.text, "html.parser")
-        return Pengguna.from_soup(soup, self.__server)
+        return Pengguna.from_soup(soup, self.server)
 
     def login_pengguna(self, pengguna: Pengguna) -> bool:
         """Login dengan Pengguna
@@ -48,7 +48,7 @@ class BaseAuth(DapodikChild):
         Returns:
             bool: Berhasil / tidaknya login
         """
-        return self._get(pengguna.url).ok
+        return self._get(pengguna.login_url).ok
 
     def logout(self) -> bool:
         """Logout dari dapodik
