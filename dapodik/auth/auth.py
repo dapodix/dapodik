@@ -1,15 +1,12 @@
 from bs4 import BeautifulSoup
 from typing import List
 
-from dapodik.base import BaseDapodik
+from dapodik.base import DapodikChild
 from . import Pengguna
 from .exception import PasswordSalah, PenggunaTidakTerdaftar
 
 
-class BaseAuth(BaseDapodik):
-    def __init__(self, *args, **kwargs):
-        super(BaseAuth, self).__init__(*args, **kwargs)
-
+class BaseAuth(DapodikChild):
     def login(
         self,
         username: str,
