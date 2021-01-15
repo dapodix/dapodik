@@ -1,14 +1,17 @@
 from requests import Session, Response
 from logging import getLogger, Logger
-from typing import Any, Type, TypeVar
+from typing import Any, Type, TypeVar, TYPE_CHECKING
 
 from .config import HEADERS
+
+if TYPE_CHECKING:
+    from dapodik.dapodik import Dapodik
 
 T = TypeVar("T", bound="BaseDapodik")
 
 
 class BaseDapodik(object):
-    __logger: Logger = getLogger("Dapodik")
+    __logger: Logger = getLogger("dapodik")
     __semester_id: str = "20202"
 
     def __init__(
@@ -52,6 +55,6 @@ class BaseDapodik(object):
 
 
 class DapodikChild(BaseDapodik):
-    def __init__(self, dapodik: Type[BaseDapodik]):
+    def __init__(self, dapodik: "Dapodik"):
         self.__server = dapodik.__server
         self.__session = dapodik.__session
