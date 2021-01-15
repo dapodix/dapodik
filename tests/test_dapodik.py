@@ -1,6 +1,7 @@
-from dapodik import __version__, __dapodik_version__
+from dapodik import __version__, __dapodik_version__, __semester__
 
 
 def test_version():
     assert __version__ == "0.6.1"
-    assert __dapodik_version__ == "2021.b"
+    assert __dapodik_version__ == "2021.c"
+    assert __semester__ == "20202"
