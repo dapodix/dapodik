@@ -1,6 +1,7 @@
 from requests import Session
 
 from dapodik.base import BaseDapodik
+from dapodik.auth import BaseAuth
 
 
 class Dapodik(BaseDapodik):
@@ -12,3 +13,4 @@ class Dapodik(BaseDapodik):
         pengguna: int = 1,
     ):
         super().__init__(server=server, session=session)
+        self.auth = BaseAuth(self)
