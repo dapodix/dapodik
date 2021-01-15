@@ -1,5 +1,5 @@
 from .attr import asdict, dataclass, sdataclass, field, fields
-from .dapodik import BaseDapodik
+from .dapodik import BaseDapodik, DapodikObject
 
 __all__ = [
     "asdict",
@@ -8,4 +8,5 @@ __all__ = [
     "field",
     "fields",
     "BaseDapodik",
+    "DapodikObject",
 ]

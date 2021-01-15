@@ -49,3 +49,9 @@ class BaseDapodik(object):
             "session": getattr(parent, "__session"),
         }
         return cls(**kwargs)
+
+
+class DapodikObject(BaseDapodik):
+    def __init__(self, dapodik: Type[BaseDapodik]):
+        self.__server = dapodik.__server
+        self.__session = dapodik.__session
