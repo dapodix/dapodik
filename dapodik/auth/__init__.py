@@ -1,5 +1,5 @@
 from .pengguna import Pengguna
-from .auth import BaseAuth
+from .base import BaseAuth
 
 __all__ = [
     "Pengguna",
