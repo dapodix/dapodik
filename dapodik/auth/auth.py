@@ -49,3 +49,11 @@ class BaseAuth(DapodikChild):
             bool: Berhasil / tidaknya login
         """
         return self._get(pengguna.url).ok
+
+    def logout(self) -> bool:
+        """Logout dari dapodik
+
+        Returns:
+            bool: logout berhasil / tidak
+        """
+        return self._get("destauth").ok
