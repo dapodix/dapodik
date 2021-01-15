@@ -51,7 +51,7 @@ class BaseDapodik(object):
         return cls(**kwargs)
 
 
-class DapodikObject(BaseDapodik):
+class DapodikChild(BaseDapodik):
     def __init__(self, dapodik: Type[BaseDapodik]):
         self.__server = dapodik.__server
         self.__session = dapodik.__session
