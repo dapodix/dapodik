@@ -16,11 +16,14 @@ class Pengguna:
     def from_li(cls, li: Tag, server: str = "") -> "Pengguna":
         a: Tag = li.find("a")
         spans: List[Tag] = li.findAll("span")
+        login_url = str(server + a.attrs.get("href", "")[1:])
+        # ERROR : bs4 parsing fault
+        login_url = login_url.replace("¶ms", "&params")
         data = {
             "nama": spans[1].getText().split(":")[-1],
             "peran": spans[2].getText().split(":")[-1],
             "sekolah": spans[0].getText(),
-            "login_url": server + a.attrs.get("href", "")[1:],
+            "login_url": login_url,
             "photo": server + a.find("img").attrs.get("src", ""),
         }
         return cls(**data)  # type: ignore

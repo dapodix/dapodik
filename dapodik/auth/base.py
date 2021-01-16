@@ -2,8 +2,8 @@ from bs4 import BeautifulSoup
 from typing import List
 
 from dapodik.base import BaseDapodik
+from dapodik.exception import PasswordSalah, PenggunaTidakTerdaftar, ServerTidakMerespon
 from . import Pengguna
-from .exception import PasswordSalah, PenggunaTidakTerdaftar
 
 
 class BaseAuth(BaseDapodik):
@@ -11,7 +11,9 @@ class BaseAuth(BaseDapodik):
         self,
         username: str,
         password: str,
+        rememberme: bool = True,
         semester_id: str = "20202",
+        pengguna: int = None,
     ) -> List[Pengguna]:
         """Login ke dapodik dan mendapatkan daftar Pengguna
 
@@ -21,15 +23,22 @@ class BaseAuth(BaseDapodik):
             semester_id (str, optional): Id semester. Defaults to "20202".
 
         Raises:
+            ServerTidakMerespon: Server dapodik tidak merespon
             PenggunaTidakTerdaftar: Username yang Anda masukkan tidak terdaftar!
             PasswordSalah: Password yang Anda masukkan salah!
 
         Returns:
             List[Pengguna]: list dari Pengguna
         """
+        res = self._get("")
+        if not res.ok:
+            raise ServerTidakMerespon(f"Server dapodik ({self.server}) tidak merespon")
         data = {"username": username, "password": password, "semester_id": semester_id}
-        res = self._post("roleperan", data, allow_redirects=False)
-        redirect = res.headers.get("Location", res.url)
+        if rememberme:
+            data["rememberme"] = "on"
+        res = self._post("roleperan", data)
+        redirect = res.request.url or res.url
+        # Check error
         if redirect.endswith("#PenggunaTidakTerdaftar"):
             raise PenggunaTidakTerdaftar(
                 "Username yang Anda masukkan tidak terdaftar! Mohon gunakan username lain."
@@ -37,7 +46,11 @@ class BaseAuth(BaseDapodik):
         elif redirect.endswith("#PasswordSalah"):
             raise PasswordSalah("Password yang Anda masukkan salah!")
         soup = BeautifulSoup(res.text, "html.parser")
-        return Pengguna.from_soup(soup, self.server)
+        daftar_pengguna = Pengguna.from_soup(soup, self.server)
+        if pengguna is None:
+            return daftar_pengguna
+        self.login_pengguna(daftar_pengguna[pengguna])
+        return daftar_pengguna
 
     def login_pengguna(self, pengguna: Pengguna) -> bool:
         """Login dengan Pengguna

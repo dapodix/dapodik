@@ -8,3 +8,7 @@ class PasswordSalah(AuthException):
 
 class PenggunaTidakTerdaftar(AuthException):
     pass
+
+
+class ServerTidakMerespon(BaseException):
+    pass

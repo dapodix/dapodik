@@ -4,8 +4,9 @@ from typing import Optional
 from dapodik import __semester__
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0",
     "DNT": "1",
+    "Referer": "http://localhost:5774/",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0",
 }
 
 
@@ -34,11 +35,11 @@ class Config:
         self._server = server.rstrip("/") + "/"
         self._semester_id = semester_id
         self._sekolah_id = sekolah_id
-        if session:
+        if isinstance(session, Session):
             self._session = session
         else:
             self._session = Session()
-            self.session.headers.update(HEADERS)
+        self.session.headers.update(HEADERS)
 
     @property
     def username(self) -> str:

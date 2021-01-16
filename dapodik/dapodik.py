@@ -16,17 +16,15 @@ class Dapodik(BaseDapodik):
         semester_id: str = __semester__,
         server: str = "http://localhost:5774/",
         session: Session = Session(),
-        login: bool = True,
         pengguna: int = 0,
+        rememberme: bool = True,
     ):
         config = Config(username, password, server, semester_id)
         super(Dapodik, self).__init__(config)
-        self.__username = username
-        self.__password = password
         self.session.headers.update(HEADERS)
-        if login:
-            daftar_pengguna = self.auth.login(username, password, semester_id)
-            self.auth.login_pengguna(daftar_pengguna[pengguna])
+        self.daftar_pengguna = self.auth.login(
+            username, password, rememberme, semester_id, pengguna
+        )
 
     @property  # type: ignore
     @lazy

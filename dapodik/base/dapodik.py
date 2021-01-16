@@ -1,6 +1,6 @@
 from requests import Session, Response
 from logging import getLogger, Logger
-from typing import Any, Dict, TypeVar
+from typing import Any, TypeVar
 
 from . import Config, from_dict, from_list
 
@@ -11,42 +11,33 @@ T = TypeVar("T", bound="BaseDapodik")
 class BaseDapodik:
     _fd = staticmethod(from_dict)
     _fl = staticmethod(from_list)
-    __config__: Dict[str, Config] = dict()
 
     def __init__(self, config: Config):
+        self._config = None
         self.config = config
-        self._username = ""
         self.__logger: Logger = getLogger("dapodik")
 
     @property
-    def username(self) -> str:
-        return self._username
-
-    @username.setter
-    def username(self, value: str):
-        if not isinstance(value, str):
-            raise ValueError("username harus berupa str")
-        self._username = value
-
-    @property
     def config(self) -> Config:
-        return self.__config__[self.username]
+        return self._config  # type: ignore
 
     @config.setter
     def config(self, value: Config):
         if not isinstance(value, Config):
             raise ValueError("config harus berupa dapodik.base.Config")
-        if not self.username:
-            self.username = value.username
-        self.__config__[self.username] = value
+        self._config = value
+
+    @property
+    def username(self) -> str:
+        return self.config.username
 
     @property
     def server(self) -> str:
-        return self.__config__[self.username].server
+        return self.config.server
 
     @property
     def session(self) -> Session:
-        return self.__config__[self.username].session
+        return self.config.session
 
     @property
     def logger(self) -> Logger:
@@ -54,7 +45,7 @@ class BaseDapodik:
 
     @property
     def semester_id(self) -> str:
-        return self.__config__[self.username].semester_id
+        return self.config.semester_id
 
     def _get(
         self,
@@ -62,16 +53,27 @@ class BaseDapodik:
         params: dict = None,
         **kwargs: Any,
     ) -> Response:
-        return self.session.get(self._url(url), params=params, **kwargs)
+        return self.session.get(
+            self._url(url),
+            params=params,
+            **kwargs,
+        )
 
     def _post(
         self,
         url: str,
-        data: dict,
+        data: dict = None,
+        json: dict = None,
         params: dict = None,
         **kwargs: Any,
     ) -> Response:
-        return self.session.post(self._url(url), data=data, params=params, **kwargs)
+        return self.session.post(
+            self._url(url),
+            data=data,
+            json=json,
+            params=params,
+            **kwargs,
+        )
 
     def _url(self, url: str) -> str:
         if not url.startswith(self.server):

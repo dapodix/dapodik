@@ -10,6 +10,13 @@ class BaseValidasi(BaseDapodik):
         data: dict = res.json()
         return self._fl(Validasi, data.get("rows"))
 
+    def peserta_didik(
+        self, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[Validasi]:
+        res = self._validasi("peserta_didik", page, start, limit)
+        data: dict = res.json()
+        return self._fl(Validasi, data.get("rows"))
+
     def _validasi(
         self, jenis_validasi: str, page: int = 1, start: int = 0, limit: int = 50
     ):
