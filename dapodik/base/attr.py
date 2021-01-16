@@ -1,19 +1,12 @@
 from attr import attrs, attrib, has, Attribute
 from attr import asdict as asdict_attr
-from datetime import datetime
+from datetime import datetime, date
 from functools import partial
 from typing import Any, Callable, List, Optional
 
+from dapodik.utils.parser import str_to_datetime, str_to_date
 
 COMMON: List = [str, int, datetime]
-
-
-def fromtimestamp(d: str):
-    if not isinstance(d, str):
-        return d
-    elif not d.isdigit():
-        return d
-    return datetime.fromtimestamp(float(d))
 
 
 def hooq(cls: type, fields: List[Attribute]) -> List[Attribute]:
@@ -54,7 +47,9 @@ def serialize(
     elif has(value):
         return asdict_attr(value, value_serializer=serialize)  # type: ignore
     elif isinstance(value, datetime):
-        return datetime.timestamp(value)
+        return datetime.strftime(value, "%Y-%m-%d %H:%M:%S")
+    elif isinstance(value, date):
+        return date.strftime(value, "%Y-%m-%d")
     return value
 
 
@@ -65,7 +60,9 @@ def auto_convert(cls, fields):
             results.append(field)
             continue
         if field.type in {datetime, "datetime"}:
-            converter = fromtimestamp
+            converter = str_to_datetime
+        elif field.type in {date, "date"}:
+            converter = str_to_date
         elif field.type == Optional[field.type]:
 
             def converter(d=None):
