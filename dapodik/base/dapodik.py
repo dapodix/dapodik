@@ -2,9 +2,7 @@ from requests import Session, Response
 from logging import getLogger, Logger
 from typing import Any, TypeVar
 
-from dapodik.base import dataclass
 from . import from_dict, from_list
-from .config import HEADERS
 
 
 T = TypeVar("T", bound="BaseDapodik")
@@ -16,14 +14,13 @@ class BaseDapodik:
 
     def __init__(
         self,
-        server: str = "http://localhost:5774/",
-        session: Session = Session(),
+        server: str,
+        session: Session,
         semester_id: str = "20202",
     ):
         self.__logger: Logger = getLogger("dapodik")
         self.__server = server
         self.__session = session
-        self.__session.headers.update(HEADERS)
         self.__semester_id = semester_id
 
     @property
@@ -63,9 +60,3 @@ class BaseDapodik:
         if not url.startswith(self.server):
             return self.server + url.lstrip("/")
         return url
-
-
-@dataclass
-class DapodikChild(BaseDapodik):
-    __server: str
-    __session: Session

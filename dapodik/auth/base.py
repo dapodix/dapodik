@@ -48,7 +48,8 @@ class BaseAuth(BaseDapodik):
         Returns:
             bool: Berhasil / tidaknya login
         """
-        return self._get(pengguna.login_url).ok
+        res = self._get(pengguna.login_url)
+        return res.ok
 
     def logout(self) -> bool:
         """Logout dari dapodik
