@@ -1,8 +1,8 @@
 from requests import Session, Response
 from logging import getLogger, Logger
-from typing import Any, TypeVar
+from typing import Any, Dict, TypeVar
 
-from . import from_dict, from_list
+from . import Config, from_dict, from_list
 
 
 T = TypeVar("T", bound="BaseDapodik")
@@ -11,25 +11,42 @@ T = TypeVar("T", bound="BaseDapodik")
 class BaseDapodik:
     _fd = staticmethod(from_dict)
     _fl = staticmethod(from_list)
+    __config__: Dict[str, Config] = dict()
 
-    def __init__(
-        self,
-        server: str,
-        session: Session,
-        semester_id: str = "20202",
-    ):
+    def __init__(self, config: Config):
+        self.config = config
+        self._username = ""
         self.__logger: Logger = getLogger("dapodik")
-        self.__server = server
-        self.__session = session
-        self.__semester_id = semester_id
+
+    @property
+    def username(self) -> str:
+        return self._username
+
+    @username.setter
+    def username(self, value: str):
+        if not isinstance(value, str):
+            raise ValueError("username harus berupa str")
+        self._username = value
+
+    @property
+    def config(self) -> Config:
+        return self.__config__[self.username]
+
+    @config.setter
+    def config(self, value: Config):
+        if not isinstance(value, Config):
+            raise ValueError("config harus berupa dapodik.base.Config")
+        if not self.username:
+            self.username = value.username
+        self.__config__[self.username] = value
 
     @property
     def server(self) -> str:
-        return self.__server
+        return self.__config__[self.username].server
 
     @property
     def session(self) -> Session:
-        return self.__session
+        return self.__config__[self.username].session
 
     @property
     def logger(self) -> Logger:
@@ -37,7 +54,7 @@ class BaseDapodik:
 
     @property
     def semester_id(self) -> str:
-        return self.__semester_id
+        return self.__config__[self.username].semester_id
 
     def _get(
         self,

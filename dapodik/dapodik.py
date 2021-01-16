@@ -1,7 +1,7 @@
 from requests import Session
 
 from dapodik import __semester__
-from dapodik.base import BaseDapodik, HEADERS
+from dapodik.base import BaseDapodik, HEADERS, Config
 from dapodik.utils.decorator import lazy
 
 from . import BaseAuth
@@ -19,7 +19,8 @@ class Dapodik(BaseDapodik):
         login: bool = True,
         pengguna: int = 0,
     ):
-        super(Dapodik, self).__init__(server, session, semester_id)
+        config = Config(username, password, server, semester_id)
+        super(Dapodik, self).__init__(config)
         self.__username = username
         self.__password = password
         self.session.headers.update(HEADERS)
@@ -30,12 +31,12 @@ class Dapodik(BaseDapodik):
     @property  # type: ignore
     @lazy
     def auth(self) -> BaseAuth:
-        return BaseAuth(self.server, self.session, self.semester_id)
+        return BaseAuth(self.config)
 
     @property  # type: ignore
     @lazy
     def validasi(self) -> BaseValidasi:
-        return BaseValidasi(self.server, self.session, self.semester_id)
+        return BaseValidasi(self.config)
 
     def __del__(self):
         self.auth.logout()
