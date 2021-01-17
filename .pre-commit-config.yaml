@@ -7,7 +7,7 @@ repos:
         args:
           - --diff
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.1
+    rev: 3.8.4
     hooks:
       - id: flake8
         args:
@@ -21,7 +21,7 @@ repos:
           - --errors-only
           - --disable=import-error
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v0.770"
+    rev: "v0.782"
     hooks:
       - id: mypy
         files: ^dapodik/.*\.py$
