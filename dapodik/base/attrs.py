@@ -2,6 +2,7 @@ import attr
 from datetime import datetime, date
 from functools import partial, wraps
 from typing import Any, Callable, List, Optional
+from uuid import UUID
 
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
@@ -54,6 +55,8 @@ def serialize(
         return out
     elif attr.has(value):
         return attr.asdict(value, value_serializer=serialize)  # type: ignore
+    elif isinstance(value, UUID):
+        return str(value)
     elif isinstance(value, datetime):
         return datetime.strftime(value, "%Y-%m-%d %H:%M:%S")
     elif isinstance(value, date):
@@ -67,15 +70,15 @@ def auto_convert(cls, fields):
         if field.converter is not None:
             results.append(field)
             continue
-        if field.type in {datetime, "datetime"}:
+        if field.type in {UUID, "UUID"}:
+            converter = UUID
+        elif field.type in {datetime, "datetime"}:
             converter = str_to_datetime
         elif field.type in {date, "date"}:
             converter = str_to_date
         elif field.type == Optional[field.type]:
-
             def converter(d=None):
                 return d
-
         else:
             converter = None
         results.append(field.evolve(converter=converter))
