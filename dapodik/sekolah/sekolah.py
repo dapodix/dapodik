@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional
 
 from dapodik.base import dataclass, freeze
@@ -28,11 +28,11 @@ class Sekolah:
     kebutuhan_khusus_id: int
     status_sekolah: str = freeze()
     sk_pendirian_sekolah: str = freeze()
-    tanggal_sk_pendirian: str = freeze()
+    tanggal_sk_pendirian: date = freeze()
     status_kepemilikan_id: str = freeze()
     yayasan_id: str
     sk_izin_operasional: str = freeze()
-    tanggal_sk_izin_operasional: str = freeze()
+    tanggal_sk_izin_operasional: date = freeze()
     no_rekening: Optional[str] = freeze()
     nama_bank: Optional[str] = freeze()
     cabang_kcp_unit: Optional[str] = freeze()
