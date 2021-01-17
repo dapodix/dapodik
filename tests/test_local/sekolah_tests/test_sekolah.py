@@ -6,9 +6,9 @@ from dapodik.sekolah import Sekolah
 
 
 class TestSekolah(TestCase):
-    def get_sekolah_test(self, dapodik: Dapodik):
+    def test_get_sekolah(self, dapodik: Dapodik):
         s = dapodik.sekolah.sekolah()
-        assert isinstance(s, Sekolah)
+        self.assertIsInstance(s, Sekolah)
         self.assertIsInstance(s.sekolah_id, str)
         self.assertIsInstance(s.nama, str)
         if s.nama_nomenklatur:
