@@ -1,17 +1,15 @@
 from requests import Session, Response
 from logging import getLogger, Logger
-from typing import Any, TypeVar
+from typing import Any, List, Type, TypeVar
 
 from . import Config, from_dict, from_list
 
 
 T = TypeVar("T", bound="BaseDapodik")
+U = TypeVar("U")
 
 
 class BaseDapodik:
-    _fd = staticmethod(from_dict)
-    _fl = staticmethod(from_list)
-
     def __init__(self, config: Config):
         self._config = None
         self.config = config
@@ -72,7 +70,7 @@ class BaseDapodik:
         limit: int = 50,
         prefix: str = "rest/",
         **kwargs: Any,
-    ):
+    ) -> Response:
         params_ = {
             "page": page,
             "start": start,
@@ -102,3 +100,9 @@ class BaseDapodik:
         if not url.startswith(self.server):
             return self.server + url.lstrip("/")
         return url
+
+    def _fd(self, t: Type[U], data: dict) -> U:
+        return from_dict(t, data)
+
+    def _fl(self, t: Type[U], datas: List[dict] = None) -> List[U]:
+        return from_list(t, datas) if datas else list()
