@@ -1,9 +1,12 @@
 import os
 from dapodik import Dapodik, __semester__
 from dotenv import load_dotenv
+from pathlib import Path
 from pytest import fixture
 
-load_dotenv()
+ROOT_PATH = Path("../../")
+ENV_FILE_PATH = os.path.join(ROOT_PATH, ".env")
+load_dotenv(ENV_FILE_PATH)
 
 USERNAME = os.environ.get("USERNAME", "")
 PASSWORD = os.environ.get("PASSWORD", "")
