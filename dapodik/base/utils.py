@@ -1,6 +1,6 @@
 from cachetools import cachedmethod as cachem
 from cachetools.keys import hashkey
-from functools import partial
+from functools import partial, wraps
 from operator import attrgetter
 from typing import List, Type, TypeVar
 
@@ -21,4 +21,4 @@ def from_list(t: Type[T], datas: List[dict]) -> List[T]:
 
 def cachedmethod(func):
     key = func.__name__
-    return cachem(attrgetter("cache"), key=partial(hashkey, key))
+    return wraps(func)(cachem(attrgetter("cache"), key=partial(hashkey, key)))

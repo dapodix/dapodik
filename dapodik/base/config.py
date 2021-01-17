@@ -20,7 +20,7 @@ class Config:
         semester_id: str = __semester__,
         sekolah_id: Optional[str] = None,
         session: Optional[Session] = None,
-        cache: Type[Cache] = LRUCache(),
+        cache: Type[Cache] = LRUCache(10),
     ):
         f"""Config
 
