@@ -16,6 +16,8 @@ def str_to_datetime(
     if isinstance(data, datetime):
         return data
     elif type(data) == str:
+        if "." in data:
+            return datetime.strptime(data, format + ".%f")
         return datetime.strptime(data, format)
     else:
         return datetime.now()

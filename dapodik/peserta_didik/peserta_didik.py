@@ -76,7 +76,7 @@ class PesertaDidik:
     sekolah_id: UUID = freeze()
     jenis_pendaftaran_id: int
     nipd: int
-    tanggal_masuk_sekolah: datetime
+    tanggal_masuk_sekolah: date
     jenis_keluar_id: Optional[int]
     tanggal_keluar: Optional[datetime]
     keterangan: str
