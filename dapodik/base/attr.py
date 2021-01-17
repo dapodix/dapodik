@@ -1,5 +1,6 @@
 from attr import attrs, attrib, has, Attribute
 from attr import asdict as asdict_attr
+from attr.setters import frozen
 from datetime import datetime, date
 from functools import partial
 from typing import Any, Callable, List, Optional
@@ -90,7 +91,7 @@ sdataclass: Callable = partial(
     slots=True,
 )
 field = attrib
-freeze = partial(attrib, metadata={"frozen": True})
+freeze = partial(attrib, on_setattr=frozen)
 
 
 def fields(converter: Callable):
