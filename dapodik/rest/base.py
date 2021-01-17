@@ -13,6 +13,7 @@ from . import (
     FasilitasLayanan,
     Gmd,
     JadwalPaud,
+    JenisCita,
     JenisGugus,
     JenisHapusBuku,
     JenisHobby,
@@ -63,6 +64,7 @@ __fetch__ = (
     FasilitasLayanan,
     Gmd,
     JadwalPaud,
+    JenisCita,
     JenisGugus,
     JenisHapusBuku,
     JenisHobby,
@@ -159,6 +161,11 @@ class BaseRest(BaseDapodik):
         res = self._get_rest("JadwalPaud")
         data: dict = res.json()
         return self._fl(JadwalPaud, data.get("rows"))
+
+    def jenis_cita(self) -> List[JenisCita]:
+        res = self._get_rest("JenisCita")
+        data: dict = res.json()
+        return self._fl(JenisCita, data.get("rows"))
 
     def jenis_gugus(self) -> List[JenisGugus]:
         res = self._get_rest("JenisGugus")

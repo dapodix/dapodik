@@ -9,6 +9,7 @@ from .child_delete import ChildDelete
 from .fasilitas_layanan import FasilitasLayanan
 from .gmd import Gmd
 from .jadwal_paud import JadwalPaud
+from .jenis_cita import JenisCita
 from .jenis_gugus import JenisGugus
 from .jenis_hapus_buku import JenisHapusBuku
 from .jenis_hobby import JenisHobby
@@ -59,6 +60,7 @@ __all__ = [
     "FasilitasLayanan",
     "Gmd",
     "JadwalPaud",
+    "JenisCita",
     "JenisGugus",
     "JenisHapusBuku",
     "JenisHobby",
