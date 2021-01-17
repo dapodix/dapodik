@@ -30,7 +30,7 @@ password = 'password dapodik'
 
 d = Dapodik(email, password)
 
-sekolah = d.Sekolah()
+sekolah = d.sekolah()
 print(sekolah)
 ```
 
