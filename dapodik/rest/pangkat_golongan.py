@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class PangkatGolongan:
     pangkat_golongan_id: str
     kode: str

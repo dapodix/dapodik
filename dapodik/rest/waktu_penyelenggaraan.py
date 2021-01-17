@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class WaktuPenyelenggaraan:
     waktu_penyelenggaraan_id: str
     nama: str

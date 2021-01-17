@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class AksesInternet:
     akses_internet_id: int
     nama: str

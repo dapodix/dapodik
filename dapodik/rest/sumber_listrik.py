@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class SumberListrik:
     sumber_listrik_id: str
     nama: str

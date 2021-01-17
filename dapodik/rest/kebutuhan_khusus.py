@@ -4,7 +4,7 @@ from typing import Optional
 from dapodik.base import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class KebutuhanKhusus:
     kebutuhan_khusus_id: int
     kebutuhan_khusus: str
