@@ -3,6 +3,7 @@ from requests import Session
 from typing import Optional, Type
 
 from dapodik import __semester__
+from . import Defaults
 
 HEADERS = {
     "DNT": "1",
@@ -20,6 +21,7 @@ class Config:
         semester_id: str = __semester__,
         sekolah_id: Optional[str] = None,
         session: Optional[Session] = None,
+        defaults: Defaults = None,
         cache: Type[Cache] = LRUCache(10),
     ):
         f"""Config
@@ -34,6 +36,10 @@ class Config:
         """
         self._username = username
         self._password = password
+        if isinstance(defaults, Defaults):
+            self._defaults = defaults
+        else:
+            self._defaults = Defaults()
         self._server = server.rstrip("/") + "/"
         self._semester_id = semester_id
         self._sekolah_id = sekolah_id
@@ -45,7 +51,11 @@ class Config:
         self._cache = cache
 
     @property
-    def cache(self) -> Type[Cache]:
+    def cache(self) -> Defaults:
+        return self._defaults
+
+    @property
+    def defaults(self) -> Type[Cache]:
         return self._cache
 
     @property
