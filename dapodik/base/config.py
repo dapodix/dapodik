@@ -1,5 +1,6 @@
+from cachetools import Cache, LRUCache
 from requests import Session
-from typing import Optional
+from typing import Optional, Type
 
 from dapodik import __semester__
 
@@ -19,6 +20,7 @@ class Config:
         semester_id: str = __semester__,
         sekolah_id: Optional[str] = None,
         session: Optional[Session] = None,
+        cache: Type[Cache] = LRUCache(),
     ):
         f"""Config
 
@@ -40,6 +42,11 @@ class Config:
         else:
             self._session = Session()
         self.session.headers.update(HEADERS)
+        self._cache = cache
+
+    @property
+    def cache(self) -> Type[Cache]:
+        return self._cache
 
     @property
     def username(self) -> str:

@@ -1,6 +1,6 @@
 import re
-from requests import Session, Response
 from logging import getLogger, Logger
+from requests import Session, Response
 from typing import Any, List, Type, TypeVar, Tuple
 
 from . import Config, from_dict, from_list
@@ -29,6 +29,10 @@ class BaseDapodik:
             raise ValueError(f"{name} tidak ada di {self.__class__.__name__}")
         name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
         return getattr(self, name)()
+
+    @property
+    def cache(self):
+        return self.config.cache
 
     @property
     def config(self) -> Config:
