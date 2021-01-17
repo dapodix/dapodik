@@ -63,6 +63,25 @@ class BaseDapodik:
             **kwargs,
         )
 
+    def _get_rest(
+        self,
+        url: str,
+        params: dict = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+        prefix: str = "rest/",
+        **kwargs: Any,
+    ):
+        params_ = {
+            "page": page,
+            "start": start,
+            "limit": limit,
+        }
+        if params:
+            params_.update(params)
+        return self.session.get(self._url(prefix + url), params=params_, **kwargs)
+
     def _post(
         self,
         url: str,
