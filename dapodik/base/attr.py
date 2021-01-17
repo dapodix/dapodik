@@ -2,7 +2,7 @@ from attr import attrs, attrib, has, Attribute
 from attr import asdict as asdict_attr
 from attr.setters import frozen
 from datetime import datetime, date
-from functools import partial
+from functools import partial, wraps
 from typing import Any, Callable, List, Optional
 
 from dapodik.utils.parser import str_to_datetime, str_to_date
@@ -75,26 +75,34 @@ def auto_convert(cls, fields):
     return results
 
 
-asdict: Callable = partial(
-    asdict_attr,
-    value_serializer=serialize,
+asdict: Callable = wraps(asdict_attr)(
+    partial(
+        asdict_attr,
+        value_serializer=serialize,
+    )
 )
-dataclass: Callable = partial(
-    attrs,
-    auto_attribs=True,
-    field_transformer=auto_convert,
+dataclass: Callable = wraps(attrs)(
+    partial(
+        attrs,
+        auto_attribs=True,
+        field_transformer=auto_convert,
+        kw_only=True,
+    )
 )
-sdataclass: Callable = partial(
-    attrs,
-    auto_attribs=True,
-    field_transformer=auto_convert,
-    slots=True,
+sdataclass: Callable = wraps(attrs)(
+    partial(
+        attrs,
+        auto_attribs=True,
+        field_transformer=auto_convert,
+        slots=True,
+        kw_only=True,
+    )
 )
 field = attrib
-freeze = partial(attrib, on_setattr=frozen)
+freeze = wraps(attrib)(partial(attrib, on_setattr=frozen))
 
 
-def fields(converter: Callable):
+def fields(converter: Callable, **kwargs):
     def conv(d: List[dict]):
         results: List = list()
         if not isinstance(d, list):
@@ -103,4 +111,4 @@ def fields(converter: Callable):
             results.append(converter(**result))
         return results
 
-    return attrib(converter=conv, factory=list)
+    return attrib(converter=conv, factory=list, **kwargs)
