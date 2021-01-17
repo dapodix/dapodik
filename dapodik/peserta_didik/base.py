@@ -19,6 +19,9 @@ __fetch__ = (
 class BasePesertaDidik(BaseDapodik):
     __all__ = __fetch__
 
+    def __call__(self, sekolah_id: str) -> List[PesertaDidik]:
+        return self.peserta_didik(sekolah_id)
+
     def peserta_didik_baru(self) -> List[PesertaDidikBaru]:
         res = self._get_rest("PesertaDidikBaru")
         data: dict = res.json()
