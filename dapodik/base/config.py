@@ -13,6 +13,17 @@ HEADERS = {
 
 
 class Config:
+    """Config
+
+    Args:
+        username (str): Email dapodik
+        password (str): Password dapodik
+        server (str, optional): Url server dapodik. Default "http://localhost:5774/".
+        semester_id (str, optional): ID semester. Default 20202.
+        sekolah_id (Optional[str], optional): ID sekolah. Default None.
+        session (Optional[Session], optional): Sesi. Default None.
+    """
+
     def __init__(
         self,
         username: str,
@@ -24,16 +35,6 @@ class Config:
         defaults: Defaults = None,
         cache: Type[Cache] = LRUCache(10),
     ):
-        f"""Config
-
-        Args:
-            username (str): Email dapodik
-            password (str): Password dapodik
-            server (str, optional): Url server dapodik. Default "http://localhost:5774/".
-            semester_id (str, optional): ID semester. Default {__semester__}.
-            sekolah_id (Optional[str], optional): ID sekolah. Default None.
-            session (Optional[Session], optional): Sesi. Default None.
-        """
         self._username = username
         self._password = password
         if isinstance(defaults, Defaults):
