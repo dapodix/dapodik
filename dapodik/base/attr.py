@@ -90,6 +90,7 @@ sdataclass: Callable = partial(
     slots=True,
 )
 field = attrib
+freeze = partial(attrib, metadata={"frozen": True})
 
 
 def fields(converter: Callable):

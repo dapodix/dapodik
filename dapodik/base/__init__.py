@@ -1,5 +1,5 @@
 from .config import HEADERS
-from .attr import asdict, dataclass, sdataclass, field, fields
+from .attr import asdict, dataclass, sdataclass, field, fields, freeze
 from .utils import from_dict, from_list
 from .config import Config
 from .dapodik import BaseDapodik
@@ -11,6 +11,7 @@ __all__ = [
     "sdataclass",
     "field",
     "fields",
+    "freeze",
     "from_dict",
     "from_list",
     "Config",
