@@ -1,6 +1,6 @@
 from requests import Session, Response
 from logging import getLogger, Logger
-from typing import Any, List, Type, TypeVar
+from typing import Any, List, Type, TypeVar, Tuple
 
 from . import Config, from_dict, from_list
 
@@ -10,6 +10,8 @@ U = TypeVar("U")
 
 
 class BaseDapodik:
+    __all__: Tuple[Any, ...] = ()
+
     def __init__(self, config: Config):
         self._config = None
         self.config = config
