@@ -1,6 +1,7 @@
 # dapodik
 
 [![dapodik - PyPi](https://img.shields.io/pypi/v/dapodik)](https://pypi.org/project/dapodik/)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/dapodik)](https://pypi.org/project/dapodik/)
 [![LISENSI](https://img.shields.io/github/license/dapodix/dapodik)](https://github.com/dapodix/dapodik/blob/master/LISENSI)
 [![Tutorial](https://img.shields.io/badge/Tutorial-Penggunaan-informational)](https://github.com/dapodix/dapodik/wiki)
 [![Tests](https://github.com/dapodix/dapodik/workflows/Tests/badge.svg)](https://github.com/dapodix/dapodik/actions?query=workflow%3ATests)
@@ -11,7 +12,7 @@ SDK python untuk aplikasi dapodik.
 
 ## Install
 
-Pastikan [python 3.7](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) terinstall,
+Pastikan [python 3.6+](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) terinstall,
 kemudian jalankan perintah di bawah dalam Command Prompt atau Powershell (di Windows + X):
 
 ```bash
