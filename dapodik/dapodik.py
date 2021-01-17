@@ -28,6 +28,8 @@ class Dapodik(BaseDapodik):
         self.daftar_pengguna = self.auth.login(
             username, password, rememberme, semester_id, pengguna
         )
+        if self.daftar_pengguna:
+            self.logger.info(f"Berhasil login {username}")
 
     @property  # type: ignore
     @lazy
