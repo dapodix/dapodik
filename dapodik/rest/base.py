@@ -50,8 +50,59 @@ from . import (
     WaktuPenyelenggaraan,
 )
 
+__fetch__ = (
+    Agama,
+    Akreditasi,
+    AksesInternet,
+    AlatTransportasi,
+    Bank,
+    BentukLembaga,
+    Biblio,
+    ChildDelete,
+    FasilitasLayanan,
+    Gmd,
+    JadwalPaud,
+    JenisGugus,
+    JenisHapusBuku,
+    JenisKeluar,
+    JenisLk,
+    JenisPendaftaran,
+    JenisPrasarana,
+    JenisPtk,
+    JenisRombel,
+    JenisSarana,
+    JenisTinggal,
+    JenjangPendidikan,
+    Jurusan,
+    KategoriTk,
+    KeahlianLaboratorium,
+    KebutuhanKhusus,
+    KlasifikasiLembaga,
+    Kurikulum,
+    LembagaPengangkat,
+    MataPelajaran,
+    MstWilayah,
+    PangkatGolongan,
+    Pekerjaan,
+    Penghasilan,
+    RolePengguna,
+    StatusKeaktifanPegawai,
+    StatusKepegawaian,
+    StatusKepemilikanSarpras,
+    SumberAir,
+    SumberDanaSekolah,
+    SumberGaji,
+    SumberListrik,
+    SyncLog,
+    TahunAjaran,
+    TingkatPendidikan,
+    WaktuPenyelenggaraan,
+)
+
 
 class BaseRest(BaseDapodik):
+    __all__ = __fetch__
+
     def agama(self) -> List[Agama]:
         res = self._get_rest("Agama")
         data: dict = res.json()

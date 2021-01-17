@@ -1,3 +1,4 @@
+import re
 from requests import Session, Response
 from logging import getLogger, Logger
 from typing import Any, List, Type, TypeVar, Tuple
@@ -7,6 +8,7 @@ from . import Config, from_dict, from_list
 
 T = TypeVar("T", bound="BaseDapodik")
 U = TypeVar("U")
+R = TypeVar("R")
 
 
 class BaseDapodik:
@@ -20,6 +22,13 @@ class BaseDapodik:
 
     def __post_init__(self):
         pass
+
+    def __getitem__(self, klass: Type[R]) -> List[R]:
+        name = str(klass.__name__)
+        if klass not in self.__all__:
+            raise ValueError(f"{name} tidak ada di {self.__class__.__name__}")
+        name = re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+        return getattr(self, name)()
 
     @property
     def config(self) -> Config:
