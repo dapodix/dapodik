@@ -15,6 +15,7 @@ from . import (
     JadwalPaud,
     JenisGugus,
     JenisHapusBuku,
+    JenisHobby,
     JenisKeluar,
     JenisLk,
     JenisPendaftaran,
@@ -64,6 +65,7 @@ __fetch__ = (
     JadwalPaud,
     JenisGugus,
     JenisHapusBuku,
+    JenisHobby,
     JenisKeluar,
     JenisLk,
     JenisPendaftaran,
@@ -167,6 +169,11 @@ class BaseRest(BaseDapodik):
         res = self._get_rest("JenisHapusBuku")
         data: dict = res.json()
         return self._fl(JenisHapusBuku, data.get("rows"))
+
+    def jenis_hobby(self) -> List[JenisHobby]:
+        res = self._get_rest("JenisHobby")
+        data: dict = res.json()
+        return self._fl(JenisHobby, data.get("rows"))
 
     def jenis_keluar(self) -> List[JenisKeluar]:
         res = self._get_rest("JenisKeluar")

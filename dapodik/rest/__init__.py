@@ -11,6 +11,7 @@ from .gmd import Gmd
 from .jadwal_paud import JadwalPaud
 from .jenis_gugus import JenisGugus
 from .jenis_hapus_buku import JenisHapusBuku
+from .jenis_hobby import JenisHobby
 from .jenis_keluar import JenisKeluar
 from .jenis_lk import JenisLk
 from .jenis_pendaftaran import JenisPendaftaran
@@ -60,6 +61,7 @@ __all__ = [
     "JadwalPaud",
     "JenisGugus",
     "JenisHapusBuku",
+    "JenisHobby",
     "JenisKeluar",
     "JenisLk",
     "JenisPendaftaran",
