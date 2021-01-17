@@ -27,5 +27,5 @@ setup(
     ],
     packages=["dapodik"],
     install_requires=["python", "requests", "beautifulsoup4", "attrs"],
-    entry_points={"console_scripts": ["dapodik=dapodik.__main__:main"]},
+    entry_points={"console_scripts": ["dapodik=dapodik.main:main"]},
 )
