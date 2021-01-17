@@ -26,6 +26,6 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     packages=["dapodik"],
-    install_requires=["python", "requests", "beautifulsoup4", "attrs"],
+    install_requires=["python", "requests", "beautifulsoup4", "attrs", "cachetools"],
     entry_points={"console_scripts": ["dapodik=dapodik.main:main"]},
 )
