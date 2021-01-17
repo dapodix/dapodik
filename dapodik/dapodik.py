@@ -5,6 +5,7 @@ from dapodik.base import BaseDapodik, HEADERS, Config
 from dapodik.utils.decorator import lazy
 
 from . import BaseAuth
+from . import BaseSekolah
 from . import BaseValidasi
 
 
@@ -30,6 +31,11 @@ class Dapodik(BaseDapodik):
     @lazy
     def auth(self) -> BaseAuth:
         return BaseAuth(self.config)
+
+    @property  # type: ignore
+    @lazy
+    def sekolah(self) -> BaseSekolah:
+        return BaseSekolah(self.config)
 
     @property  # type: ignore
     @lazy
