@@ -16,6 +16,10 @@ class BaseDapodik:
         self._config = None
         self.config = config
         self.__logger: Logger = getLogger("dapodik")
+        self.__post_init__()
+
+    def __post_init__(self):
+        pass
 
     @property
     def config(self) -> Config:
