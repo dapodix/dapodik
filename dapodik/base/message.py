@@ -3,7 +3,7 @@ from . import dataclass
 
 @dataclass
 class Message:
-    success: str
+    success: bool = True
     message: str
 
     def __str__(self):
