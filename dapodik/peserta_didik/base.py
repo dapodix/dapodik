@@ -2,7 +2,7 @@ from functools import partialmethod
 from typing import List
 from typing_extensions import Literal
 
-from dapodik.base import BaseDapodik
+from dapodik.base import BaseDapodik, UID
 from . import (
     PesertaDidikBaru,
     PesertaDidikLongitudinal,
@@ -29,10 +29,22 @@ class BasePesertaDidik(BaseDapodik):
         data: dict = res.json()
         return self._fl(PesertaDidikBaru, data.get("rows"))
 
-    def peserta_didik_longitudinal(self) -> List[PesertaDidikLongitudinal]:
-        res = self._get_rest("PesertaDidikLongitudinal")
-        data: dict = res.json()
-        return self._fl(PesertaDidikLongitudinal, data.get("rows"))
+    def peserta_didik_longitudinal(
+        self,
+        peserta_didik_id: UID,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+    ) -> List[PesertaDidikLongitudinal]:
+        params = {"peserta_didik_id": peserta_didik_id}
+        res = self._get_rest(
+            "PesertaDidikLongitudinal",
+            params=params,
+            page=page,
+            start=start,
+            limit=limit,
+        )
+        return self._fr(PesertaDidikLongitudinal, res.json())
 
     def peserta_didik(
         self,
