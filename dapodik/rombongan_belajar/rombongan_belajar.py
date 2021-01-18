@@ -11,7 +11,7 @@ class RombonganBelajar:
     rombongan_belajar_id: UUID = freeze(default=None)
     semester_id: str = __semester__
     id_ruang: UUID
-    sekolah_id: UUID
+    sekolah_id: UUID = freeze(default=None)
     tingkat_pendidikan_id: str
     jurusan_sp_id: Optional[str] = freeze(default=None)
     kurikulum_id: int = 301
@@ -29,7 +29,7 @@ class RombonganBelajar:
     last_sync: datetime = freeze(default=None)
     updater_id: UUID = freeze(default=None)
     semester_id_str: str = freeze(default=None)
-    sekolah_id_str: str
+    sekolah_id_str: str = freeze(default=None)
     kurikulum_id_str: str = freeze(default=None)
     ptk_id_str: str = freeze(default=None)
     id_ruang_str: str = freeze(default=None)
