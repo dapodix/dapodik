@@ -2,6 +2,7 @@ from .types import UID
 from .utils import from_dict, from_list, cachedmethod
 from .attrs import asdict, dataclass, sdataclass, field, fields, freeze
 from .message import Message
+from .message_data import MessageData
 from .results import Results
 from .defaults import Defaults
 from .config import HEADERS
@@ -18,6 +19,7 @@ __all__ = [
     "fields",
     "freeze",
     "Message",
+    "MessageData",
     "Results",
     "from_dict",
     "from_list",
