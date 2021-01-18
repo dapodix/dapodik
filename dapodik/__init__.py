@@ -6,6 +6,7 @@ from .auth import BaseAuth
 from .rest import BaseRest
 from .sekolah import BaseSekolah
 from .peserta_didik import BasePesertaDidik
+from .rombongan_belajar import BaseRombonganBelajar
 from .validasi import BaseValidasi
 
 from .dapodik import Dapodik
@@ -16,5 +17,6 @@ __all__ = [
     "BaseSekolah",
     "BaseValidasi",
     "BasePesertaDidik",
+    "BaseRombonganBelajar",
     "Dapodik",
 ]

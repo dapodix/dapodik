@@ -8,6 +8,7 @@ from . import BaseAuth
 from . import BaseRest
 from . import BaseSekolah
 from . import BasePesertaDidik
+from . import BaseRombonganBelajar
 from . import BaseValidasi
 
 
@@ -57,6 +58,11 @@ class Dapodik(BaseDapodik):
     @lazy
     def rest(self) -> BaseRest:
         return BaseRest(self.config)
+
+    @property  # type: ignore
+    @lazy
+    def rombongan_belajar(self) -> BaseRombonganBelajar:
+        return BaseRombonganBelajar(self.config)
 
     @property  # type: ignore
     @lazy
