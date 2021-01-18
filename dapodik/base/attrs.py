@@ -85,13 +85,13 @@ def auto_convert(cls, fields):
     return results
 
 
-asdict: Callable = wraps(attr.asdict)(
+asdict = wraps(attr.asdict)(
     partial(
         attr.asdict,
         value_serializer=serialize,
     )
 )
-dataclass: Callable = wraps(attr.attrs)(
+dataclass = wraps(attr.attrs)(
     partial(
         attr.attrs,
         auto_attribs=True,
@@ -99,7 +99,7 @@ dataclass: Callable = wraps(attr.attrs)(
         kw_only=True,
     )
 )
-sdataclass: Callable = wraps(attr.attrs)(
+sdataclass = wraps(attr.attrs)(
     partial(
         attr.attrs,
         auto_attribs=True,
