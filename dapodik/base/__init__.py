@@ -1,4 +1,5 @@
 from .attrs import asdict, dataclass, sdataclass, field, fields, freeze
+from .results import Results
 from .utils import from_dict, from_list, cachedmethod
 from .defaults import Defaults
 from .config import HEADERS
@@ -13,6 +14,7 @@ __all__ = [
     "field",
     "fields",
     "freeze",
+    "Results",
     "from_dict",
     "from_list",
     "cachedmethod",
