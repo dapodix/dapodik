@@ -1,3 +1,4 @@
+from functools import partialmethod
 from typing import List
 from typing_extensions import Literal
 
@@ -68,22 +69,7 @@ class BasePesertaDidik(BaseDapodik):
         data: dict = res.json()
         return self._fl(PesertaDidik, data.get("rows"))
 
-    def peserta_didik_keluar(
-        self,
-        sekolah_id: str,
-        nama: str = None,
-        page: int = 1,
-        start: int = 0,
-        limit: int = 25,
-    ) -> List[PesertaDidik]:
-        return self.peserta_didik(
-            sekolah_id=sekolah_id,
-            pd_module="pdkeluar",
-            nama=nama,
-            page=page,
-            start=start,
-            limit=limit,
-        )
+    peserta_didik_keluar = partialmethod(peserta_didik, pd_module="pdkeluar")
 
     def registrasi_peserta_didik(self) -> List[RegistrasiPesertaDidik]:
         res = self._get_rest("RegistrasiPesertaDidik")
