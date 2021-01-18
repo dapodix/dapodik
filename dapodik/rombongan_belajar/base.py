@@ -30,6 +30,17 @@ class BaseRombonganBelajar(BaseDapodik):
         start: int = 0,
         limit: Union[int, Literal["unlimited"]] = 25,
     ) -> List[AnggotaRombel]:
+        """Mengammbil data-data anggota rombel
+
+        Args:
+            rombongan_belajar_id (Union[UUID, str]): ID rombongan belajar
+            page (int, optional): Halaman data ke. Defaults to 1.
+            start (int, optional): Mulai dari. Defaults to 0.
+            limit (Union[int, Literal[, optional): Batas data yang dikembalikan. Defaults to 25.
+
+        Returns:
+            List[AnggotaRombel]: list dari AnggotaRombel
+        """
         url = "allanggotarombel/" + str(rombongan_belajar_id)
         res = self._get_rest(
             url,
@@ -48,6 +59,17 @@ class BaseRombonganBelajar(BaseDapodik):
         start: int = 0,
         limit: int = 25,
     ) -> List[RombelPortal]:
+        """rombel_portal dashboard
+
+        Args:
+            sekolah_id (UID): ID sekolah
+            page (int, optional): Halaman ke. Defaults to 1.
+            start (int, optional): Mulai dari. Defaults to 0.
+            limit (int, optional): Batas data yang dikembalikan. Defaults to 25.
+
+        Returns:
+            List[RombelPortal]: list dari RombelPortal
+        """
         params = dict(sekolah_id=sekolah_id)
         res = self._get_rest(
             "RombelPortal",
@@ -72,6 +94,22 @@ class BaseRombonganBelajar(BaseDapodik):
         page: int = 1,
         start: int = 0,
     ) -> List[RombonganBelajar]:
+        """Mengammbil data-data rombongan belajar
+
+        Args:
+            sekolah_id (str): ID sekolah
+            semester_id (str, optional): ID semester. Defaults to __semester__.
+            ascending (str, optional): Sortir. Defaults to "#INjenis_rombel,tingkat_pendidikan_id,nama".
+            callback (str, optional): Callback. Defaults to "rombonganbelajar".
+            jenis_rombel (str, optional): Filter jenis rombel. Defaults to "#IN1,5,6,7,8,9,10".
+            sks (int, optional): Jumlah sks. Defaults to 0.
+            limit (Union[int, Literal[, optional): Batas data yang dikembalikan. Defaults to "unlimited".
+            page (int, optional): Halaman data-data yang diambil. Defaults to 1.
+            start (int, optional): Mulai. Defaults to 0.
+
+        Returns:
+            List[RombonganBelajar]: list dari RombonganBelajar
+        """
         params = {
             "sekolah_id": sekolah_id,
             "semester_id": semester_id,
