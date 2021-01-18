@@ -1,7 +1,7 @@
 from requests import Session
 
 from dapodik import __semester__
-from dapodik.base import BaseDapodik, HEADERS, Config
+from dapodik.base import BaseDapodik, HEADERS, Config, Defaults
 from dapodik.utils.decorator import lazy
 
 from . import BaseAuth
@@ -21,8 +21,16 @@ class Dapodik(BaseDapodik):
         session: Session = Session(),
         pengguna: int = 0,
         rememberme: bool = True,
+        defaults: Defaults = None,
     ):
-        config = Config(username, password, server, semester_id)
+        config = Config(
+            username=username,
+            password=password,
+            server=server,
+            semester_id=semester_id,
+            session=session,
+            defaults=defaults,
+        )
         super(Dapodik, self).__init__(config)
         self.session.headers.update(HEADERS)
         self.daftar_pengguna = self.auth.login(
