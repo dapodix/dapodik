@@ -1,10 +1,10 @@
 import re
 from logging import getLogger, Logger
 from requests import Session, Response
-from typing import Any, List, Type, TypeVar, Tuple, Union
+from typing import Any, cast, List, Type, TypeVar, Tuple, Union
 from typing_extensions import Literal
 
-from . import Config, from_dict, from_list
+from . import Config, from_dict, from_list, Results
 
 
 T = TypeVar("T", bound="BaseDapodik")
@@ -122,3 +122,8 @@ class BaseDapodik:
 
     def _fl(self, t: Type[U], datas: List[dict] = None) -> List[U]:
         return from_list(t, datas) if datas else list()
+
+    def _fr(self, t: Type[U], data: dict) -> List[U]:
+        if "rows" in data:
+            data["rows"] = self._fl(t, data["rows"])
+        return cast(List[U], Results[U](**data))
