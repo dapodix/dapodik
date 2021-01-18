@@ -21,6 +21,7 @@ class Dapodik(BaseDapodik):
         session: Session = Session(),
         pengguna: int = 0,
         rememberme: bool = True,
+        get_sekolah_id: bool = True,
         defaults: Defaults = None,
     ):
         config = Config(
@@ -38,6 +39,9 @@ class Dapodik(BaseDapodik):
         )
         if self.daftar_pengguna:
             self.logger.info(f"Berhasil login {username}")
+        if get_sekolah_id:
+            sekolah = self.sekolah.sekolah()
+            self.config.sekolah_id = sekolah.sekolah_id
 
     @property  # type: ignore
     @lazy
