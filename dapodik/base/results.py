@@ -1,29 +1,31 @@
-from collections.abc import MutableSequence
-from typing import List, TypeVar, Union
+from typing import Any, List, Optional, Union
 from typing_extensions import Literal
 
+from collections import UserList
 
-T = TypeVar("T")
 
-
-class Results(List[T], MutableSequence):
+class Results(UserList):
     def __init__(
         self,
         results: int = 0,
         id: str = "",
         start: int = None,
         limit: Union[int, Literal["unlimited"]] = None,
-        rows: List[T] = None,
+        rows: Optional[List[Any]] = None,
     ):
         super(Results, self).__init__()
         self.results = results
         self.id = id
         self.start = start
         self.limit = limit
-        self.list: List[T] = list()
         if isinstance(rows, list):
-            self.list.extend(rows)
+            self.data = rows
+        else:
+            self.data = list()
 
     @property
-    def rows(self) -> List[T]:
-        return self.rows
+    def rows(self) -> List[Any]:
+        return list(self)
+
+
+Results: List = Results  # NOQA
