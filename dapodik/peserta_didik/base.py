@@ -1,4 +1,5 @@
 from typing import List
+from typing_extensions import Literal
 
 from dapodik.base import BaseDapodik
 from . import (
@@ -35,11 +36,25 @@ class BasePesertaDidik(BaseDapodik):
     def peserta_didik(
         self,
         sekolah_id: str,
-        pd_module: str = "pdterdaftar",
         page: int = 1,
         start: int = 0,
         limit: int = 25,
+        nama: str = None,
+        pd_module: Literal["pdterdaftar", "pdkeluar"] = "pdterdaftar",
     ) -> List[PesertaDidik]:
+        """Dapatkan data peserta didik
+
+        Args:
+            sekolah_id (str): ID sekolah
+            pd_module (str, optional): Modul. Defaults to "pdterdaftar".
+            nama (str, optional): Filter berdasarkan nama. Defaults to None.
+            page (int, optional): Halaman data. Defaults to 1.
+            start (int, optional): Mulai dari. Defaults to 0.
+            limit (int, optional): Batas data. Defaults to 25.
+
+        Returns:
+            List[PesertaDidik]: list dari peserta didik
+        """
         params = {
             "sekolah_id": sekolah_id,
             "pd_module": pd_module,
@@ -47,6 +62,8 @@ class BasePesertaDidik(BaseDapodik):
             "start": start,
             "limit": limit,
         }
+        if isinstance(nama, str):
+            params["nama"] = nama
         res = self._get_rest("PesertaDidik", params)
         data: dict = res.json()
         return self._fl(PesertaDidik, data.get("rows"))
@@ -54,12 +71,19 @@ class BasePesertaDidik(BaseDapodik):
     def peserta_didik_keluar(
         self,
         sekolah_id: str,
-        pd_module: str = "pdkeluar",
+        nama: str = None,
         page: int = 1,
         start: int = 0,
         limit: int = 25,
     ) -> List[PesertaDidik]:
-        return self.peserta_didik(sekolah_id, pd_module, page, start, limit)
+        return self.peserta_didik(
+            sekolah_id=sekolah_id,
+            pd_module="pdkeluar",
+            nama=nama,
+            page=page,
+            start=start,
+            limit=limit,
+        )
 
     def registrasi_peserta_didik(self) -> List[RegistrasiPesertaDidik]:
         res = self._get_rest("RegistrasiPesertaDidik")
