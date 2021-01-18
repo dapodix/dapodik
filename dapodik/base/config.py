@@ -32,7 +32,7 @@ class Config:
         semester_id: str = __semester__,
         sekolah_id: Optional[str] = None,
         session: Optional[Session] = None,
-        defaults: Defaults = None,
+        defaults: Optional[Defaults] = None,
         cache: Type[Cache] = LRUCache(10),
     ):
         self._username = username
@@ -84,6 +84,7 @@ class Config:
         if not isinstance(value, str):
             raise ValueError("sekolah_id harus berupa string")
         self._sekolah_id = value
+        self.defaults.sekolah_id = value
 
     @property
     def session(self) -> Session:
