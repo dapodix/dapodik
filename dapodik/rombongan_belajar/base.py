@@ -3,17 +3,19 @@ from typing_extensions import Literal
 from uuid import UUID
 
 from dapodik import __semester__
-from dapodik.base import BaseDapodik, Message
+from dapodik.base import BaseDapodik, Message, UID
 from dapodik.rest import TingkatPendidikan
 from . import (
     AnggotaRombel,
     Pembelajaran,
+    RombelPortal,
     RombonganBelajar,
 )
 
 __fetch__ = (
     AnggotaRombel,
     Pembelajaran,
+    RombelPortal,
     RombonganBelajar,
 )
 
@@ -30,15 +32,33 @@ class BaseRombonganBelajar(BaseDapodik):
     ) -> List[AnggotaRombel]:
         url = "allanggotarombel/" + str(rombongan_belajar_id)
         res = self._get_rest(
-            url, page=page, start=start, limit=limit, prefix="customrest/"
+            url,
+            page=page,
+            start=start,
+            limit=limit,
+            prefix="customrest/",
         )
         data: dict = res.json()
         return self._fl(AnggotaRombel, data.get("rows"))
 
-    def pembelajaran(self) -> List[Pembelajaran]:
-        res = self._get_rest("Pembelajaran")
+    def rombel_portal(
+        self,
+        sekolah_id: UID,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 25,
+    ) -> List[RombelPortal]:
+        params = dict(sekolah_id=sekolah_id)
+        res = self._get_rest(
+            "RombelPortal",
+            params,
+            page,
+            start,
+            limit,
+            prefix="customrest/",
+        )
         data: dict = res.json()
-        return self._fl(Pembelajaran, data.get("rows"))
+        return self._fl(RombelPortal, data.get("rows"))
 
     def rombongan_belajar(
         self,
