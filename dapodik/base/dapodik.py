@@ -1,7 +1,8 @@
 import re
 from logging import getLogger, Logger
 from requests import Session, Response
-from typing import Any, List, Type, TypeVar, Tuple
+from typing import Any, List, Type, TypeVar, Tuple, Union
+from typing_extensions import Literal
 
 from . import Config, from_dict, from_list
 
@@ -82,7 +83,7 @@ class BaseDapodik:
         params: dict = None,
         page: int = 1,
         start: int = 0,
-        limit: int = 50,
+        limit: Union[int, Literal["unlimited"]] = 50,
         prefix: str = "rest/",
         **kwargs: Any,
     ) -> Response:
