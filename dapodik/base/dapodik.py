@@ -94,7 +94,8 @@ class BaseDapodik:
         }
         if params:
             params_.update(params)
-        return self.session.get(self._url(prefix + url), params=params_, **kwargs)
+        filename = prefix + url if prefix else url
+        return self.session.get(self._url(filename), params=params_, **kwargs)
 
     def _post(
         self,
@@ -111,6 +112,10 @@ class BaseDapodik:
             params=params,
             **kwargs,
         )
+
+    def _put(self, url: str, data: dict = None, prefix: str = "rest/", **kwargs):
+        filename = prefix + url if prefix else url
+        return self.session.put(self._url(filename), data, **kwargs)
 
     def _url(self, url: str) -> str:
         if not url.startswith(self.server):
