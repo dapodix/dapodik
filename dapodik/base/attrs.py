@@ -70,15 +70,19 @@ def auto_convert(cls, fields):
         if field.converter is not None:
             results.append(field)
             continue
-        if field.type in {UUID, "UUID"}:
+        if field.type in {int, "int"}:
+            converter = int
+        elif field.type in {UUID, "UUID"}:
             converter = UUID
         elif field.type in {datetime, "datetime"}:
             converter = str_to_datetime
         elif field.type in {date, "date"}:
             converter = str_to_date
         elif field.type == Optional[field.type]:
+
             def converter(d=None):
                 return d
+
         else:
             converter = None
         results.append(field.evolve(converter=converter))
@@ -109,7 +113,7 @@ sdataclass = wraps(attr.attrs)(
     )
 )
 field = attr.attrib
-freeze = wraps(attr.attrib)(partial(attr.attrib, on_setattr=frozen))
+freeze = wraps(field)(partial(field, on_setattr=frozen))
 
 
 def fields(converter: Callable, **kwargs):
@@ -121,4 +125,4 @@ def fields(converter: Callable, **kwargs):
             results.append(converter(**result))
         return results
 
-    return attr.attrib(converter=conv, factory=list, **kwargs)
+    return field(converter=conv, factory=list, **kwargs)
