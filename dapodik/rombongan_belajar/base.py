@@ -3,7 +3,7 @@ from typing_extensions import Literal
 from uuid import UUID
 
 from dapodik import __semester__
-from dapodik.base import BaseDapodik
+from dapodik.base import BaseDapodik, Message
 from . import (
     AnggotaRombel,
     Pembelajaran,
@@ -62,3 +62,22 @@ class BaseRombonganBelajar(BaseDapodik):
         res = self._get_rest("RombonganBelajar", params, page, start, limit)
         data: dict = res.json()
         return self._fr(RombonganBelajar, data)
+
+    def kenaikan_kelas(
+        self, rombongan_belajar_id: Union[UUID, str], semester_id: str = __semester__
+    ) -> Message:
+        """kenaikan_kelas rombongan belajar
+
+        Args:
+            rombongan_belajar_id (Union[UUID, str]): ID dari rombongan belajar
+            semester_id (str, optional): Naikkan ke semester. Defaults dapodik.__semester__.
+
+        Returns:
+            Message: Pesan sukses / tidak
+        """
+        data = dict(
+            rombongan_belajar_id=rombongan_belajar_id,
+            semester_id=semester_id,
+        )
+        res = self._post("kenaikankelas", data)
+        return self._msg(res.json())
