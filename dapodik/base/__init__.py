@@ -1,3 +1,4 @@
+from .types import UID
 from .attrs import asdict, dataclass, sdataclass, field, fields, freeze
 from .message import Message
 from .results import Results
@@ -9,6 +10,7 @@ from .prop import Prop
 from .dapodik import BaseDapodik
 
 __all__ = [
+    "UID",
     "asdict",
     "dataclass",
     "sdataclass",
