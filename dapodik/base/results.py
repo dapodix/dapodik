@@ -1,12 +1,11 @@
+from collections import UserList
 from typing import Generic, List, Optional, Union, TypeVar
 from typing_extensions import Literal
-
-from collections import UserList
 
 T = TypeVar("T")
 
 
-class Results(UserList, Generic[T]):
+class Results(Generic[T], UserList):
     def __init__(
         self,
         results: int = 0,

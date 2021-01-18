@@ -1,8 +1,8 @@
 from .types import UID
+from .utils import from_dict, from_list, cachedmethod
 from .attrs import asdict, dataclass, sdataclass, field, fields, freeze
 from .message import Message
 from .results import Results
-from .utils import from_dict, from_list, cachedmethod
 from .defaults import Defaults
 from .config import HEADERS
 from .config import Config
