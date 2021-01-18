@@ -8,3 +8,6 @@ class Message:
 
     def __str__(self):
         return self.message
+
+    def __bool__(self):
+        return self.success
