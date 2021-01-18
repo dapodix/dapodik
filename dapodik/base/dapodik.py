@@ -4,7 +4,7 @@ from requests import Session, Response
 from typing import Any, cast, List, Type, TypeVar, Tuple, Union
 from typing_extensions import Literal
 
-from . import Config, from_dict, from_list, Results
+from . import Config, from_dict, from_list, Message, Results
 
 
 T = TypeVar("T", bound="BaseDapodik")
@@ -127,3 +127,6 @@ class BaseDapodik:
         if "rows" in data:
             data["rows"] = self._fl(t, data["rows"])
         return cast(List[U], Results[U](**data))
+
+    def _msg(self, data: dict) -> Message:
+        return Message(**data)  # type: ignore
