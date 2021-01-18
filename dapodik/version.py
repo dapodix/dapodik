@@ -3,3 +3,4 @@
 __version__ = "0.8.1"
 __dapodik_version__ = "2021.c"
 __semester__ = "20202"
+__tahun_ajaran__ = "2020"

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from .version import __version__, __dapodik_version__, __semester__  # NOQA
+from .version import __version__, __dapodik_version__  # NOQA
+from .version import __semester__, __tahun_ajaran__  # NOQA
 
 from .auth import BaseAuth
 from .rest import BaseRest
