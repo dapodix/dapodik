@@ -4,6 +4,7 @@ from uuid import UUID
 
 from dapodik import __semester__
 from dapodik.base import BaseDapodik, Message
+from dapodik.rest import TingkatPendidikan
 from . import (
     AnggotaRombel,
     Pembelajaran,
@@ -81,3 +82,36 @@ class BaseRombonganBelajar(BaseDapodik):
         )
         res = self._post("kenaikankelas", data)
         return self._msg(res.json())
+
+    def filter_tingkat_pendidikan(
+        self,
+        fromui: str = None,
+        callback: str = "rombonganbelajar",
+        jurusan_id: str = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+    ) -> List[TingkatPendidikan]:
+        """filter_tingkat_pendidikan [summary]
+
+        Args:
+            fromui (str, optional): Misal tingkatpendidikanpaud. Defaults "".
+            callback (str, optional): callback. Defaults "rombonganbelajar".
+            jurusan_id (str, optional): id jurusan. Defaults "".
+            page (int, optional): halaman. Defaults 1.
+            start (int, optional): mulai. Defaults 0.
+            limit (int, optional): batas. Defaults 50.
+
+        Returns:
+            List[TingkatPendidikan]: list dari TingkatPendidikan
+        """
+        params = {
+            "callback": callback,
+            "jurusan_id": jurusan_id or "",
+            "fromui": fromui or "",
+            "page": page,
+            "start": start,
+            "limit": limit,
+        }
+        res = self._get("filtertingkatpendidikan", params)
+        return self._fr(TingkatPendidikan, res.json())
