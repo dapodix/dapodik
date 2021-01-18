@@ -1,4 +1,5 @@
 from .attrs import asdict, dataclass, sdataclass, field, fields, freeze
+from .message import Message
 from .results import Results
 from .utils import from_dict, from_list, cachedmethod
 from .defaults import Defaults
@@ -14,6 +15,7 @@ __all__ = [
     "field",
     "fields",
     "freeze",
+    "Message",
     "Results",
     "from_dict",
     "from_list",
