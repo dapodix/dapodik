@@ -25,3 +25,6 @@ class Jurusan:
     def level_bidang(self):
         # TODO API
         return self.level_bidang_id
+
+    def __str__(self):
+        return self.nama_jurusan

@@ -18,3 +18,6 @@ class Kurikulum:
     expired_date: Optional[datetime]
     last_sync: datetime
     sek: str
+
+    def __str__(self):
+        return self.nama_kurikulum

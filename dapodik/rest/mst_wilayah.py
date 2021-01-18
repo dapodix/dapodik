@@ -27,3 +27,6 @@ class MstWilayah:
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+
+    def __str__(self):
+        return self.nama

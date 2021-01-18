@@ -12,3 +12,6 @@ class JenisGugus:
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+
+    def __str__(self):
+        return self.jenis_gugus

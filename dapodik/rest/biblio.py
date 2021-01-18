@@ -38,3 +38,6 @@ class Biblio:
     id_gmd_str: str
     tingkat_pendidikan_id: str
     tingkat_pendidikan_id_str: str
+
+    def __str__(self):
+        return self.title
