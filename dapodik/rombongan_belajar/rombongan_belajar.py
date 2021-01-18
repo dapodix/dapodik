@@ -9,7 +9,7 @@ from dapodik.base import dataclass, freeze
 @dataclass
 class RombonganBelajar:
     rombongan_belajar_id: UUID = freeze(default=None)
-    semester_id: str = __semester__
+    semester_id: str = freeze(default=__semester__)
     id_ruang: UUID
     sekolah_id: UUID = freeze(default=None)
     tingkat_pendidikan_id: str
