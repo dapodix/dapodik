@@ -2,7 +2,7 @@ from functools import partialmethod
 from typing import List
 from typing_extensions import Literal
 
-from dapodik.base import BaseDapodik, UID
+from dapodik.base import BaseDapodik, UID, Message
 from . import (
     PesertaDidikBaru,
     PesertaDidikLongitudinal,
@@ -87,3 +87,30 @@ class BasePesertaDidik(BaseDapodik):
         res = self._get_rest("RegistrasiPesertaDidik")
         data: dict = res.json()
         return self._fl(RegistrasiPesertaDidik, data.get("rows"))
+
+    def salin_periodik_longitudinal(
+        self,
+        sekolah_id: str,
+        semester_yl: str,
+        semester_now: str,
+        table: str = "peserta_didik_longitudinal",
+    ) -> Message:
+        """Menyalin semua Data Periodik Peserta Didik aktif dari semester_yl ke semester_now
+
+        Args:
+            sekolah_id (str): ID sekolah
+            semester_yl (str): ID semester sumber
+            semester_now (str): ID semester sekarang
+            table (str, optional): Table dari data. Defaults to "peserta_didik_longitudinal".
+
+        Returns:
+            Message: Pesan
+        """
+        data = {
+            "table": table,
+            "sekolah_id": sekolah_id,
+            "semester_yl": semester_yl,
+            "semester_now": semester_now,
+        }
+        res = self._post("salinPeriodik", data)
+        return self._fd(Message, res.json())
