@@ -129,5 +129,4 @@ class BaseValidasi(BaseDapodik):
             "limit": limit,
         }
         res = self._get("validation", params=params)
-        data: dict = res.json()
-        return self._fl(Validasi, data.get("rows"))
+        return self._fl(Validasi, res.json())

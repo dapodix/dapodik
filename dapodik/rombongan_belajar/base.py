@@ -49,8 +49,7 @@ class BaseRombonganBelajar(BaseDapodik):
             limit=limit,
             prefix="customrest/",
         )
-        data: dict = res.json()
-        return self._fl(AnggotaRombel, data.get("rows"))
+        return self._fl(AnggotaRombel, res.json())
 
     def rombel_portal(
         self,
@@ -79,8 +78,7 @@ class BaseRombonganBelajar(BaseDapodik):
             limit,
             prefix="customrest/",
         )
-        data: dict = res.json()
-        return self._fl(RombelPortal, data.get("rows"))
+        return self._fl(RombelPortal, res.json())
 
     def rombongan_belajar(
         self,

@@ -26,8 +26,7 @@ class BasePesertaDidik(BaseDapodik):
 
     def peserta_didik_baru(self) -> List[PesertaDidikBaru]:
         res = self._get_rest("PesertaDidikBaru")
-        data: dict = res.json()
-        return self._fl(PesertaDidikBaru, data.get("rows"))
+        return self._fr(PesertaDidikBaru, res.json())
 
     def peserta_didik_longitudinal(
         self,
@@ -78,15 +77,13 @@ class BasePesertaDidik(BaseDapodik):
         if isinstance(nama, str):
             params["nama"] = nama
         res = self._get_rest("PesertaDidik", params)
-        data: dict = res.json()
-        return self._fl(PesertaDidik, data.get("rows"))
+        return self._fr(PesertaDidik, res.json())
 
     peserta_didik_keluar = partialmethod(peserta_didik, pd_module="pdkeluar")
 
     def registrasi_peserta_didik(self) -> List[RegistrasiPesertaDidik]:
         res = self._get_rest("RegistrasiPesertaDidik")
-        data: dict = res.json()
-        return self._fl(RegistrasiPesertaDidik, data.get("rows"))
+        return self._fr(RegistrasiPesertaDidik, res.json())
 
     def salin_periodik_longitudinal(
         self,
