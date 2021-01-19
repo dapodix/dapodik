@@ -1,10 +1,35 @@
 from dapodik.base import BaseDapodik
-from . import Sekolah
+from . import (
+    AkreditasiSp,
+    BlockGrant,
+    JurusanSp,
+    Kepanitiaan,
+    ProgramInklusi,
+    Sanitasi,
+    SekolahLongitudinal,
+    SekolahPaud,
+    Sekolah,
+    Semester,
+    Yayasan,
+)
+
+__fetch__ = (
+    AkreditasiSp,
+    BlockGrant,
+    JurusanSp,
+    Kepanitiaan,
+    ProgramInklusi,
+    Sanitasi,
+    SekolahLongitudinal,
+    SekolahPaud,
+    Sekolah,
+    Semester,
+    Yayasan,
+)
 
 
 class BaseSekolah(BaseDapodik):
-    def __call__(self) -> Sekolah:
-        return self.sekolah()
+    __all__ = __fetch__
 
     def sekolah(self) -> Sekolah:
         res = self._get_rest("Sekolah")
