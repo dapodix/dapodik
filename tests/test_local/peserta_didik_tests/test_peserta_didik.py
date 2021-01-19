@@ -1,4 +1,5 @@
 from datetime import datetime, date
+from random import randint
 from uuid import UUID
 
 from dapodik import Dapodik
@@ -7,7 +8,15 @@ from dapodik.peserta_didik import PesertaDidik
 
 class TestPesertaDidik:
     def test_get_peserta_didik(self, dapodik: Dapodik, sekolah_id):
-        peserta_didiks = dapodik.peserta_didik.peserta_didik(sekolah_id=sekolah_id)
+        limit = randint(5, 10)
+        peserta_didiks = dapodik.peserta_didik.peserta_didik(
+            sekolah_id=sekolah_id, limit=limit
+        )
+        assert peserta_didiks.id == "peserta_didik_id"
+        if peserta_didiks.results > limit:
+            assert len(peserta_didiks) == limit
+        else:
+            assert len(peserta_didiks) <= limit
         for peserta_didik in peserta_didiks:
             self.peserta_didik_test(peserta_didik)
 
