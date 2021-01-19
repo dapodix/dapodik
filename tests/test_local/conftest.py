@@ -1,7 +1,8 @@
 import os
+import pytest
 from dapodik import Dapodik, __semester__
+from dapodik.sekolah import Sekolah
 from dotenv import load_dotenv
-from pytest import fixture
 
 load_dotenv()
 
@@ -11,7 +12,7 @@ SEMESTER_ID = os.environ.get("SEMESTER_ID", __semester__)
 SERVER = os.environ.get("SERVER", "http://localhost:5774/")
 
 
-@fixture
+@pytest.fixture
 def dapodik() -> Dapodik:
     return Dapodik(
         username=USERNAME,
@@ -19,3 +20,18 @@ def dapodik() -> Dapodik:
         semester_id=SEMESTER_ID,
         server=SERVER,
     )
+
+
+@pytest.fixture
+def sekolah(dapodik: Dapodik) -> Sekolah:
+    return dapodik.sekolah.sekolah()
+
+
+@pytest.fixture
+def sekolah_id(sekolah: Sekolah) -> str:
+    return sekolah.sekolah_id
+
+
+@pytest.fixture
+def semester() -> str:
+    return SEMESTER_ID
