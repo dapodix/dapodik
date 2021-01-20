@@ -6,6 +6,7 @@ from dapodik.base import dataclass
 
 @dataclass(frozen=True, slots=True)
 class JenisSarana:
+    jenis_sarana_id: str
     id_hapus_buku: str
     ket_hapus_buku: str
     u_prasarana: str
