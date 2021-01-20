@@ -9,7 +9,6 @@ from . import (
     Bank,
     BentukLembaga,
     Biblio,
-    ChildDelete,
     FasilitasLayanan,
     Gmd,
     JadwalPaud,
@@ -60,7 +59,6 @@ __fetch__ = (
     Bank,
     BentukLembaga,
     Biblio,
-    ChildDelete,
     FasilitasLayanan,
     Gmd,
     JadwalPaud,
@@ -190,18 +188,6 @@ class BaseRest(BaseDapodik):
             limit=limit,
         )
         return self._fr(Biblio, res.json())
-
-    def child_delete(
-        self,
-        page: int = 1,
-        limit: int = 50,
-    ) -> List[ChildDelete]:
-        res = self._get_rest(
-            "ChildDelete",
-            page=page,
-            limit=limit,
-        )
-        return self._fr(ChildDelete, res.json())
 
     def fasilitas_layanan(
         self,
