@@ -2,6 +2,7 @@ import attr
 from functools import partial, wraps
 from typing import Callable, List
 
+from .metadata import READ, CREATE, UPDATE, CREATE_UPDATE
 from .fields_converter import fields_converter
 from .serializer import serializer
 
@@ -39,10 +40,13 @@ sdataclass = wraps(attr.attrs)(
     )
 )
 field = attr.attrib
-freeze = wraps(field)(partial(field, on_setattr=_frozen))
+freeze = wraps(field)(partial(field, on_setattr=_frozen, metadata=READ))
+create = wraps(field)(partial(field, on_setattr=_frozen, metadata=CREATE))
+update = wraps(field)(partial(field, metadata=UPDATE))
+write = wraps(field)(partial(field, metadata=CREATE_UPDATE))
 
 
-def fields(converter: Callable, **kwargs):
+def fields(converter: Callable, metadata: dict = READ, **kwargs):
     def conv(d: List[dict]):
         results: List = list()
         if not isinstance(d, list):
@@ -51,4 +55,4 @@ def fields(converter: Callable, **kwargs):
             results.append(converter(**result))
         return results
 
-    return field(converter=conv, factory=list, **kwargs)
+    return field(converter=conv, factory=list, metadata=metadata, **kwargs)
