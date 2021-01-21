@@ -1,4 +1,5 @@
 from functools import partialmethod
+from json import loads
 from typing import List
 from typing_extensions import Literal
 
@@ -110,4 +111,5 @@ class BasePesertaDidik(BaseDapodik):
             "semester_now": semester_now,
         }
         res = self._post("salinPeriodik", data)
-        return self._fd(Message, res.json())
+        text = res.text.replace("'", '"')
+        return self._fd(Message, loads(text))
