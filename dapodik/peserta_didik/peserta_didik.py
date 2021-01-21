@@ -102,3 +102,6 @@ class PesertaDidik:
     soft_delete: Optional[int] = freeze(default=None)
     last_sync: Optional[datetime] = freeze(default=None)
     updater_id: Optional[UUID] = freeze(default=None)
+
+    def __str__(self):
+        return self.nama
