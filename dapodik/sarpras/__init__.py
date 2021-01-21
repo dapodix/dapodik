@@ -11,6 +11,7 @@ from .buku import Buku
 from .ruang_longitudinal import RuangLongitudinal
 from .ruang import Ruang
 from .tanah_dari_blockgrant import TanahDariBlockgrant
+from .tanah_longitudinal import TanahLongitudinal
 
 __all__ = [
     "AlatDariBlockgrant",
@@ -26,4 +27,5 @@ __all__ = [
     "RuangLongitudinal",
     "Ruang",
     "TanahDariBlockgrant",
+    "TanahLongitudinal",
 ]
