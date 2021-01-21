@@ -1,4 +1,5 @@
 import re
+import json
 from logging import getLogger, Logger
 from requests import Session, Response
 from typing import Any, cast, List, Type, TypeVar, Tuple, Union
@@ -113,9 +114,13 @@ class BaseDapodik:
             **kwargs,
         )
 
-    def _put(self, url: str, data: dict = None, prefix: str = "rest/", **kwargs):
+    def _put(
+        self, url: str, id: str = "", data: dict = None, prefix: str = "rest/", **kwargs
+    ):
+        url = url + id if url.endswith("/") else url + "/" + id
         filename = prefix + url if prefix else url
-        return self.session.put(self._url(filename), data, **kwargs)
+        headers = {"Referer": self.server, "Content-Type": "application/json"}
+        return self.session.put(self._url(filename), data=json.dumps(data), headers=headers, **kwargs)
 
     def _url(self, url: str) -> str:
         if not url.startswith(self.server):
