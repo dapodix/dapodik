@@ -7,6 +7,7 @@ from dapodik.utils.decorator import lazy
 from . import BaseAuth
 from . import BaseRest
 from . import BaseSekolah
+from . import BaseSarpras
 from . import BasePesertaDidik
 from . import BaseRombonganBelajar
 from . import BaseValidasi
@@ -63,6 +64,11 @@ class Dapodik(BaseDapodik):
     @lazy
     def rombongan_belajar(self) -> BaseRombonganBelajar:
         return BaseRombonganBelajar(self.config)
+
+    @property  # type: ignore
+    @lazy
+    def sarpras(self) -> BaseSarpras:
+        return BaseSarpras(self.config)
 
     @property  # type: ignore
     @lazy
