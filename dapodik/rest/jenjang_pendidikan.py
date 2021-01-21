@@ -6,10 +6,10 @@ from dapodik.base import dataclass
 
 @dataclass(frozen=True, slots=True)
 class JenjangPendidikan:
-    jenjang_pendidikan_id: str
+    jenjang_pendidikan_id: int
     nama: str
-    jenjang_lembaga: str
-    jenjang_orang: str
+    jenjang_lembaga: int
+    jenjang_orang: int
     create_date: datetime
     last_update: datetime
     expired_date: Optional[datetime]
