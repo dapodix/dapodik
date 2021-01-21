@@ -8,6 +8,7 @@ from .bangunan_longitudinal import BangunanLongitudinal
 from .bangunan import Bangunan
 from .buku_longitudinal import BukuLongitudinal
 from .buku import Buku
+from .ruang_longitudinal import RuangLongitudinal
 
 __all__ = [
     "AlatDariBlockgrant",
@@ -20,4 +21,5 @@ __all__ = [
     "Bangunan",
     "BukuLongitudinal",
     "Buku",
+    "RuangLongitudinal",
 ]
