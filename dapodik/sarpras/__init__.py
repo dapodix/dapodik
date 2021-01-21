@@ -6,6 +6,7 @@ from .angkutan import Angkutan
 from .bangunan_dari_blockgrant import BangunanDariBlockgrant
 from .bangunan_longitudinal import BangunanLongitudinal
 from .bangunan import Bangunan
+from .buku_longitudinal import BukuLongitudinal
 
 __all__ = [
     "AlatDariBlockgrant",
@@ -16,4 +17,5 @@ __all__ = [
     "BangunanDariBlockgrant",
     "BangunanLongitudinal",
     "Bangunan",
+    "BukuLongitudinal"
 ]
