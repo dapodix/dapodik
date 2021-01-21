@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="dapodik",
-    version="0.8.1",
+    version="0.9.0",
     description="SDK python untuk aplikasi dapodik.",
     author="Habib Rohman",
     author_email="habibrohman@protonmail.com",
