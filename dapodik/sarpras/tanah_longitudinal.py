@@ -6,7 +6,7 @@ from dapodik.base import dataclass, freeze
 @dataclass
 class TanahLongitudinal:
     id_tanah: str
-    njop: int
+    njop: float
     tahun_ajaran_id: int
     tahun_ajaran_id_str: str = ""
     id_tanah_str: str = ""
