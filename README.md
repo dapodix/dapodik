@@ -30,14 +30,11 @@ email = 'email@saya.com'
 password = 'password dapodik'
 
 d = Dapodik(email, password)
-
-sekolah = d.sekolah()
-print(sekolah)
+sekolah = d.sekolah.sekolah()
+daftar_peserta_didik = d.peserta_didik.peserta_didik(sekolah_id=sekolah.sekolah_id)
+for peserta_didik in daftar_peserta_didik:
+    print(peserta_didik.nama)
 ```
-
-## Release
-
-Perkiraan release versi 1 akhir bulan September 2020,
 
 ## Legal / Hukum
 
