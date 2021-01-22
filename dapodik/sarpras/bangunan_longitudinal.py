@@ -25,6 +25,7 @@ class BangunanLongitudinal:
     id_bangunan_str: str
     semester_id_str: str
     bangunan_longitudinal_id: str
+    bangunan_longitudinal_id_str: str = ""
     create_date: datetime = freeze(default=None)
     last_update: datetime = freeze(default=None)
     soft_delete: str = freeze(default=None)
