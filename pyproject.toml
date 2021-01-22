@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dapodik"
-version = "0.9.0"
+version = "0.10.0"
 description = "SDK python untuk aplikasi dapodik."
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
