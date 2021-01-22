@@ -72,6 +72,8 @@ def fields_converter(cls, fields: List[Attribute]):
             converter = make_transformer(str_to_datetime, field)
         elif field.type in {date, Optional[date], "date", "Optional[date]"}:
             converter = make_transformer(str_to_date, field)
+        elif field.type in {float, "float"}:
+            converter = make_transformer(float, field)
         elif field.type == Optional[field.type]:
 
             def converter(d=None):
