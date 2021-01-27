@@ -5,7 +5,8 @@ from requests import Session, Response
 from typing import Any, cast, List, Type, TypeVar, Tuple, Union
 from typing_extensions import Literal
 
-from . import Config, from_dict, from_list, Message, Results
+from dapodik.utils.helpers import from_dict, from_list
+from . import Config, Message, Results
 
 
 T = TypeVar("T", bound="BaseDapodik")

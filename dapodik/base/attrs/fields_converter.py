@@ -1,21 +1,16 @@
 from attr import Attribute, NOTHING
 from datetime import datetime, date
 from logging import getLogger
-from typing import Any, Callable, List, Optional, Union
+from typing import Any, Callable, List, Optional
 from uuid import UUID
 
+from dapodik.utils.helpers import get_field_type
 from dapodik.utils.parser import str_to_datetime, str_to_date
 
 
 AnyCallable = Callable[[Any], Any]
 
 loggger = getLogger(__name__)
-
-
-def get_field_type(field: Attribute) -> Any:
-    if getattr(field.type, "__origin__", None) is Union:
-        return getattr(field.type, "__args__")
-    return field.type
 
 
 def make_transformer(converter: AnyCallable, field: Attribute) -> AnyCallable:
