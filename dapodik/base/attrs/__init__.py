@@ -4,7 +4,9 @@ from typing import Callable, List
 
 from .metadata import READ, CREATE, UPDATE, CREATE_UPDATE
 from .fields_converter import fields_converter
+
 from .serializer import serializer
+from .filter import filter_asdict
 
 
 def _frozen(_, __, ___):
@@ -19,6 +21,8 @@ def _frozen(_, __, ___):
 asdict = wraps(attr.asdict)(
     partial(
         attr.asdict,
+        recurse=True,
+        filter=filter_asdict,
         value_serializer=serializer,
     )
 )
