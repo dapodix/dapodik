@@ -30,3 +30,24 @@ class PesertaDidikBaru:
     soft_delete: Optional[int] = freeze(default=None)
     last_sync: Optional[datetime] = freeze(default=None)
     updater_id: Optional[UUID] = freeze(default=None)
+
+    @dataclass
+    class Create:
+        sekolah_id: UUID
+        tahun_ajaran_id: int = int(__tahun_ajaran__)
+        nama_pd: str
+        jenis_kelamin: str
+        nisn: str
+        nik: str
+        tempat_lahir: str
+        tanggal_lahir: datetime
+        nama_ibu_kandung: str
+        jenis_pendaftaran_id: int
+        sudah_diproses: int = 0
+        berhasil_diproses: int = 0
+        peserta_didik_id: str = ""
+        pdb_id: str = "Admin.model.PesertaDidikBaru-1"
+        sekolah_id_str: str = ""
+        tahun_ajaran_id_str: str = ""
+        jenis_pendaftaran_id_str: str = ""
+        peserta_didik_id_str: str = ""
