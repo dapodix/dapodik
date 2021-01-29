@@ -113,3 +113,17 @@ class BasePesertaDidik(BaseDapodik):
         res = self._post("salinPeriodik", data)
         text = res.text.replace("'", '"')
         return self._fd(Message, loads(text))
+
+    def save_pdb(self, pdb: PesertaDidikBaru) -> Message:
+        """Save Pdb to Pd
+
+        Args:
+            pdb (PesertaDidikBaru): Instance dari PesertaDidikBaru
+
+        Returns:
+            Message: Pesan
+        """
+        data = {"pdb_id": pdb.pdb_id}
+        res = self._post("customrest/savePdb", data)
+        text = res.text.replace("'", '"')
+        return self._fd(Message, loads(text))
