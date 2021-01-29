@@ -29,3 +29,21 @@ class PesertaDidikLongitudinal:
     semester_id_str: int = freeze(default=None)
     peserta_didik_longitudinal_id: str = freeze(default=DEF)
     vld_count: int = freeze(default=None)
+
+    @dataclass
+    class Create:
+        peserta_didik_longitudinal_id: str = freeze(default=DEF)
+        semester_id: str = freeze(default=__semester__)
+        peserta_didik_id: UUID
+        tinggi_badan: int
+        berat_badan: int
+        jarak_rumah_ke_sekolah_km: int
+        jarak_rumah_ke_sekolah: int
+        waktu_tempuh_ke_sekolah: int
+        menit_tempuh_ke_sekolah: int
+        jumlah_saudara_kandung: int
+        vld_count: int = 0
+        peserta_didik_longitudinal_id_str: str = ""
+        peserta_didik_id_str: str = ""
+        semester_id_str: str = ""
+        lingkar_kepala: int
