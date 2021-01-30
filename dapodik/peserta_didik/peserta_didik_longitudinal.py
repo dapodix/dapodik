@@ -30,6 +30,16 @@ class PesertaDidikLongitudinal:
     peserta_didik_longitudinal_id: str = freeze(default=DEF)
     vld_count: int = freeze(default=None)
 
+    @property
+    def waktu_tempuh(self) -> int:
+        return self.waktu_tempuh_ke_sekolah * 60 + self.menit_tempuh_ke_sekolah
+
+    def __str__(self):
+        return (
+            f"TB: {self.tinggi_badan}; BB: {self.berat_badan}; LK: {self.lingkar_kepala}; "
+            f""
+        )
+
     @dataclass
     class Create:
         peserta_didik_longitudinal_id: str = freeze(default=DEF)
