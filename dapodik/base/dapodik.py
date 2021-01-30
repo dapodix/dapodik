@@ -105,6 +105,7 @@ class BaseDapodik:
         data: dict = None,
         json: dict = None,
         params: dict = None,
+        headers: dict = None,
         **kwargs: Any,
     ) -> Response:
         return self.session.post(
@@ -112,6 +113,7 @@ class BaseDapodik:
             data=data,
             json=json,
             params=params,
+            headers=headers,
             **kwargs,
         )
 
@@ -121,7 +123,9 @@ class BaseDapodik:
         url = url + id if url.endswith("/") else url + "/" + id
         filename = prefix + url if prefix else url
         headers = {"Referer": self.server, "Content-Type": "application/json"}
-        return self.session.put(self._url(filename), data=json.dumps(data), headers=headers, **kwargs)
+        return self.session.put(
+            self._url(filename), data=json.dumps(data), headers=headers, **kwargs
+        )
 
     def _url(self, url: str) -> str:
         if not url.startswith(self.server):
