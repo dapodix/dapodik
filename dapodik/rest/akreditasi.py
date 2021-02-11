@@ -6,7 +6,7 @@ from dapodik.base import dataclass
 
 @dataclass(frozen=True, slots=True)
 class Akreditasi:
-    akreditasi_id: str
+    akreditasi_id: int
     nama: str
     create_date: datetime
     last_update: datetime

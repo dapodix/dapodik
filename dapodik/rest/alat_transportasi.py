@@ -6,7 +6,7 @@ from dapodik.base import dataclass
 
 @dataclass(frozen=True, slots=True)
 class AlatTransportasi:
-    alat_transportasi_id: str
+    alat_transportasi_id: int
     nama: str
     create_date: datetime
     last_update: datetime
