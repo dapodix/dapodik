@@ -1,5 +1,15 @@
 from dapodik import Dapodik
-from dapodik.validasi import Validasi
+from dapodik.validasi import (
+    Validasi,
+    ValidasiSekolah,
+    ValidasiPrasarana,
+    ValidasiPesertaDidik,
+    ValidasiPtk,
+    ValidasiRombonganBelajar,
+    ValidasiPembelajaran,
+    ValidasiNilai,
+    ValidasiReferensi,
+)
 
 
 class TestValidasi:
@@ -9,6 +19,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiSekolah)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -20,6 +31,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiPrasarana)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -31,6 +43,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiPesertaDidik)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -42,6 +55,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiPtk)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -53,6 +67,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiRombonganBelajar)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -64,6 +79,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiPembelajaran)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -75,6 +91,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiNilai)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
@@ -86,6 +103,7 @@ class TestValidasi:
         assert validasi.id == "validasi_id"
         for valid in validasi:
             assert isinstance(valid, Validasi)
+            assert isinstance(valid, ValidasiReferensi)
             assert isinstance(valid.validasi_id, int)
             assert isinstance(valid.table, str)
             assert isinstance(valid.tipe, int)
