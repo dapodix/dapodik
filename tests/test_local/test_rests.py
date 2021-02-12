@@ -3,7 +3,7 @@ from random import randint
 
 from dapodik import Dapodik
 from dapodik.base import Results
-from dapodik import (
+from dapodik.rest import (
     Agama,
     Akreditasi,
     AksesInternet,
