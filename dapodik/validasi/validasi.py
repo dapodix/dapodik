@@ -11,54 +11,34 @@ class Validasi:
     def __str__(self) -> str:
         return self.keterangan
 
-    @staticmethod
-    def location() -> str:
-        return ""
-
 
 class ValidasiSekolah(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "sekolah"
+    pass
 
 
 class ValidasiPrasarana(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "prasarana"
+    pass
 
 
 class ValidasiPesertaDidik(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "peserta_didik"
+    pass
 
 
 class ValidasiPtk(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "ptk"
+    pass
 
 
 class ValidasiRombonganBelajar(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "rombongan_belajar"
+    pass
 
 
 class ValidasiPembelajaran(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "pembelajaran"
+    pass
 
 
 class ValidasiNilai(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "nilai"
+    pass
 
 
 class ValidasiReferensi(Validasi):
-    @staticmethod
-    def location() -> str:
-        return "referensi"
+    pass
