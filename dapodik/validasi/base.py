@@ -167,5 +167,5 @@ class BaseValidasi(BaseDapodik):
             "start": start,
             "limit": limit,
         }
-        res = self._get(jenis_validasi, params=params)
+        res = self._get('validation', params=params)
         return self._fr(tipe_validasi, res.json())
