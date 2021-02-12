@@ -1,11 +1,39 @@
-from typing import List
+from typing import List, Type, TypeVar
 
 from dapodik.base import BaseDapodik
-from . import Validasi
+from . import (
+    ValidasiSekolah,
+    ValidasiPrasarana,
+    ValidasiPesertaDidik,
+    ValidasiPtk,
+    ValidasiRombonganBelajar,
+    ValidasiPembelajaran,
+    ValidasiNilai,
+    ValidasiReferensi,
+)
+from .validasi import Validasi
+
+V = TypeVar("V", bound=Validasi)
+
+__fetch__ = (
+    ValidasiSekolah,
+    ValidasiPrasarana,
+    ValidasiPesertaDidik,
+    ValidasiPtk,
+    ValidasiRombonganBelajar,
+    ValidasiPembelajaran,
+    ValidasiNilai,
+    ValidasiReferensi,
+)
 
 
 class BaseValidasi(BaseDapodik):
-    def sekolah(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Validasi]:
+    def __add_validasi__(self) -> None:
+        self.__all__ += __fetch__
+
+    def validasi_sekolah(
+        self, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[ValidasiSekolah]:
         """Data validasi Sekolah
 
         Args:
@@ -16,11 +44,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("sekolah", page, start, limit)
+        return self._validasi(ValidasiSekolah, page, start, limit)
 
-    def prasarana(
+    def validasi_prasarana(
         self, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+    ) -> List[ValidasiPrasarana]:
         """Data validasi Sarpras
 
         Args:
@@ -31,11 +59,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("prasarana", page, start, limit)
+        return self._validasi(ValidasiPrasarana, page, start, limit)
 
-    def peserta_didik(
+    def validasi_peserta_didik(
         self, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+    ) -> List[ValidasiPesertaDidik]:
         """Data validasi Peserta Didik
 
         Args:
@@ -46,9 +74,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("peserta_didik", page, start, limit)
+        return self._validasi(ValidasiPesertaDidik, page, start, limit)
 
-    def ptk(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Validasi]:
+    def validasi_ptk(
+        self, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[ValidasiPtk]:
         """Data validasi GTK
 
         Args:
@@ -59,11 +89,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("ptk", page, start, limit)
+        return self._validasi(ValidasiPtk, page, start, limit)
 
-    def rombongan_belajar(
+    def validasi_rombongan_belajar(
         self, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+    ) -> List[ValidasiRombonganBelajar]:
         """Data validasi Rombongan Belajar & Jadwal
 
         Args:
@@ -74,11 +104,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("rombongan_belajar", page, start, limit)
+        return self._validasi(ValidasiRombonganBelajar, page, start, limit)
 
-    def pembelajaran(
+    def validasi_pembelajaran(
         self, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+    ) -> List[ValidasiPembelajaran]:
         """Data validasi Pembelajaran
 
         Args:
@@ -89,9 +119,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("pembelajaran", page, start, limit)
+        return self._validasi(ValidasiPembelajaran, page, start, limit)
 
-    def nilai(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Validasi]:
+    def validasi_nilai(
+        self, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[ValidasiNilai]:
         """Data validasi Nilai
 
         Args:
@@ -102,11 +134,11 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("nilai", page, start, limit)
+        return self._validasi(ValidasiNilai, page, start, limit)
 
-    def referensi(
+    def validasi_referensi(
         self, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+    ) -> List[ValidasiReferensi]:
         """Data validasi Referensi
 
         Args:
@@ -117,16 +149,16 @@ class BaseValidasi(BaseDapodik):
         Returns:
             List[Validasi]: list dari validasi
         """
-        return self._validasi("referensi", page, start, limit)
+        return self._validasi(ValidasiReferensi, page, start, limit)
 
     def _validasi(
-        self, jenis_validasi: str, page: int = 1, start: int = 0, limit: int = 50
-    ) -> List[Validasi]:
+        self, jenis_validasi: Type[V], page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[V]:
         params = {
             "jenis_validasi": jenis_validasi,
             "page": page,
             "start": start,
             "limit": limit,
         }
-        res = self._get("validation", params=params)
-        return self._fr(Validasi, res.json())
+        res = self._get(jenis_validasi.location(), params=params)
+        return self._fr(jenis_validasi, res.json())
