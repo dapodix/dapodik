@@ -24,7 +24,7 @@ def dapodik() -> Dapodik:
 
 @pytest.fixture
 def sekolah(dapodik: Dapodik) -> Sekolah:
-    return dapodik.sekolah.sekolah()
+    return dapodik.sekolah()
 
 
 @pytest.fixture
