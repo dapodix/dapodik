@@ -1,4 +1,5 @@
 from .validasi import (
+    Validasi,
     ValidasiSekolah,
     ValidasiPrasarana,
     ValidasiPesertaDidik,
@@ -11,6 +12,7 @@ from .validasi import (
 from .base import BaseValidasi
 
 __all__ = [
+    "Validasi",
     "ValidasiSekolah",
     "ValidasiPrasarana",
     "ValidasiPesertaDidik",

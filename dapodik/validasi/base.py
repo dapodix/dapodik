@@ -2,6 +2,7 @@ from typing import List, Type, TypeVar
 
 from dapodik.base import BaseDapodik
 from . import (
+    Validasi,
     ValidasiSekolah,
     ValidasiPrasarana,
     ValidasiPesertaDidik,
@@ -11,7 +12,6 @@ from . import (
     ValidasiNilai,
     ValidasiReferensi,
 )
-from .validasi import Validasi
 
 V = TypeVar("V", bound=Validasi)
 
