@@ -9,7 +9,7 @@ class TestRombonganBelajar:
     def test_get_rombongan_belajar(
         self, dapodik: Dapodik, sekolah_id: str, semester: str
     ):
-        rombongan_belajar = dapodik.rombongan_belajar.rombongan_belajar(
+        rombongan_belajar = dapodik.rombongan_belajar(
             sekolah_id=sekolah_id, semester_id=semester
         )
         for ro in rombongan_belajar:

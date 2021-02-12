@@ -6,7 +6,7 @@ from dapodik.sekolah import Sekolah
 
 class TestSekolah:
     def test_get_sekolah(self, dapodik: Dapodik):
-        s = dapodik.sekolah.sekolah()
+        s = dapodik.sekolah()
         assert isinstance(s, Sekolah)
         assert isinstance(s.sekolah_id, str)
         assert isinstance(s.nama, str)

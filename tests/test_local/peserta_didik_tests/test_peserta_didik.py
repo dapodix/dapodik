@@ -9,7 +9,7 @@ from dapodik.peserta_didik import PesertaDidik
 class TestPesertaDidik:
     def test_get_peserta_didik(self, dapodik: Dapodik, sekolah_id):
         limit = randint(5, 10)
-        peserta_didiks = dapodik.peserta_didik.peserta_didik(
+        peserta_didiks = dapodik.peserta_didik(
             sekolah_id=sekolah_id, limit=limit
         )
         assert peserta_didiks.id == "peserta_didik_id"

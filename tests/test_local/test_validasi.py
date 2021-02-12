@@ -4,7 +4,7 @@ from dapodik.validasi import Validasi
 
 class TestValidasi:
     def test_get_validasi_sekolah(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.sekolah()
+        validasi = dapodik.validasi_sekolah()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -15,7 +15,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_prasarana(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.prasarana()
+        validasi = dapodik.validasi_prasarana()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -26,7 +26,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_peserta_didik(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.peserta_didik()
+        validasi = dapodik.validasi_peserta_didik()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -37,7 +37,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_ptk(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.ptk()
+        validasi = dapodik.validasi_ptk()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -48,7 +48,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_rombongan_belajar(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.rombongan_belajar()
+        validasi = dapodik.validasi_rombongan_belajar()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -59,7 +59,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_pembelajaran(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.pembelajaran()
+        validasi = dapodik.validasi_pembelajaran()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -70,7 +70,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_nilai(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.nilai()
+        validasi = dapodik.validasi_nilai()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:
@@ -81,7 +81,7 @@ class TestValidasi:
             assert isinstance(valid.keterangan, str)
 
     def test_get_validasi_referensi(self, dapodik: Dapodik):
-        validasi = dapodik.validasi.referensi()
+        validasi = dapodik.validasi_referensi()
         assert isinstance(len(validasi), int)
         assert validasi.id == "validasi_id"
         for valid in validasi:

@@ -6,7 +6,7 @@ from dapodik.base import Results
 
 def test_results(dapodik: Dapodik):
     limit = randint(1, 8)
-    agama_agama = dapodik.rest.agama(limit=limit)
+    agama_agama = dapodik.agama(limit=limit)
     assert isinstance(agama_agama, Results)
     if agama_agama.results > limit:
         assert len(agama_agama) == limit
