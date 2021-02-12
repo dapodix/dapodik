@@ -21,7 +21,8 @@ __fetch__ = (
 
 
 class BaseRombonganBelajar(BaseDapodik):
-    __all__ = __fetch__
+    def __add_rombongan_belajar__(self) -> None:
+        self.__all__ += __fetch__
 
     def anggota_rombel(
         self,

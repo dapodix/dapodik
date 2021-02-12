@@ -29,7 +29,8 @@ __fetch__ = (
 
 
 class BaseSekolah(BaseDapodik):
-    __all__ = __fetch__
+    def __add_sekolah__(self) -> None:
+        self.__all__ += __fetch__
 
     def sekolah(self) -> Sekolah:
         res = self._get_rest("Sekolah")

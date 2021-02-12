@@ -1,8 +1,7 @@
 from requests import Session
 
 from dapodik import __semester__
-from dapodik.base import BaseDapodik, HEADERS, Config, Defaults
-from dapodik.utils.decorator import lazy
+from dapodik.base import HEADERS, Config, Defaults
 
 from . import BaseAuth
 from . import BaseRest
@@ -13,7 +12,15 @@ from . import BaseRombonganBelajar
 from . import BaseValidasi
 
 
-class Dapodik(BaseDapodik):
+class Dapodik(
+    BaseAuth,
+    BaseRest,
+    BaseSekolah,
+    BaseSarpras,
+    BasePesertaDidik,
+    BaseRombonganBelajar,
+    BaseValidasi,
+):
     def __init__(
         self,
         username: str,
@@ -36,49 +43,20 @@ class Dapodik(BaseDapodik):
         )
         super(Dapodik, self).__init__(config)
         self.session.headers.update(HEADERS)
-        self.daftar_pengguna = self.auth.login(
+        self.daftar_pengguna = self.login(
             username, password, rememberme, semester_id, pengguna
         )
         if self.daftar_pengguna:
             self.logger.info(f"Berhasil login {username}")
         if get_sekolah_id:
-            sekolah = self.sekolah.sekolah()
+            sekolah = self.sekolah()
             self.config.sekolah_id = sekolah.sekolah_id
-
-    @property  # type: ignore
-    @lazy
-    def auth(self) -> BaseAuth:
-        return BaseAuth(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def peserta_didik(self) -> BasePesertaDidik:
-        return BasePesertaDidik(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def rest(self) -> BaseRest:
-        return BaseRest(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def rombongan_belajar(self) -> BaseRombonganBelajar:
-        return BaseRombonganBelajar(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def sarpras(self) -> BaseSarpras:
-        return BaseSarpras(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def sekolah(self) -> BaseSekolah:
-        return BaseSekolah(self.config)
-
-    @property  # type: ignore
-    @lazy
-    def validasi(self) -> BaseValidasi:
-        return BaseValidasi(self.config)
+        self.__add_peserta_didik__()
+        self.__add_rest__()
+        self.__add_rombongan_belajar__()
+        self.__add_sarpras__()
+        self.__add_sekolah__()
+        self.__add_validasi__()
 
     def __del__(self):
-        self.auth.logout()
+        self.logout()

@@ -20,7 +20,8 @@ __fetch__ = (
 
 
 class BasePesertaDidik(BaseDapodik):
-    __all__ = __fetch__
+    def __add_peserta_didik__(self) -> None:
+        self.__all__ += __fetch__
 
     def __call__(self, sekolah_id: str) -> List[PesertaDidik]:
         return self.peserta_didik(sekolah_id)

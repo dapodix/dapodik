@@ -39,7 +39,8 @@ __fetch__ = (
 
 
 class BaseSarpras(BaseDapodik):
-    __all__ = __fetch__
+    def __add_sarpras__(self) -> None:
+        self.__all__ += __fetch__
 
     def alat_dari_blockgrant(self) -> List[AlatDariBlockgrant]:
         res = self._get_rest("AlatDariBlockgrant")

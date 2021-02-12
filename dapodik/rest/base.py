@@ -103,7 +103,8 @@ __fetch__ = (
 
 
 class BaseRest(BaseDapodik):
-    __all__ = __fetch__
+    def __add_rest__(self) -> None:
+        self.__all__ += __fetch__
 
     def agama(
         self,
