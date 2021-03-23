@@ -32,7 +32,6 @@ setup(
         "beautifulsoup4",
         "attrs",
         "cattrs",
-        "cachetools",
     ],
     entry_points={"console_scripts": ["dapodik=dapodik.main:main"]},
 )
