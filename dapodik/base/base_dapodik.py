@@ -89,8 +89,9 @@ class BaseDapodik(object):
         page: int = 1,
         start: int = 9,
         limit: int = 50,
+        query: Optional[dict] = None,
     ) -> T:
-        query = {
+        query = query or {
             "page": page,
             "start": start,
             "limit": limit,
