@@ -40,7 +40,6 @@ beautifulsoup4 = "^4.9.3"
 attrs = "^20.3.0"
 typing-inspect = "^0.6.0"
 cachetools = "^4.2.0"
-typing-extensions = "^3.7.4"
 cattrs = "^1.4.0"
 
 [tool.poetry.dev-dependencies]

@@ -33,7 +33,6 @@ setup(
         "attrs",
         "cattrs",
         "cachetools",
-        "typing-extensions",
     ],
     entry_points={"console_scripts": ["dapodik=dapodik.main:main"]},
 )
