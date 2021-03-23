@@ -3,10 +3,11 @@ from requests import Session
 from dapodik import __semester__
 
 from . import BaseAuth
+from . import BaseValidasi
 from .constants import HEADERS
 
 
-class Dapodik(BaseAuth):
+class Dapodik(BaseAuth, BaseValidasi):
     def __init__(
         self,
         username: str,
@@ -17,6 +18,7 @@ class Dapodik(BaseAuth):
         pengguna: int = 0,
         rememberme: bool = True,
     ):
+        super(Dapodik, self).__init__(server)
         self.session.headers.update(HEADERS)
         self.daftar_pengguna = self.login(
             username, password, rememberme, semester_id, pengguna

@@ -10,6 +10,9 @@ from .validasi import (
     ValidasiReferensi,
 )
 
+from .base import BaseValidasi
+
+
 __all__ = [
     "Validasi",
     "ValidasiSekolah",
@@ -20,4 +23,5 @@ __all__ = [
     "ValidasiPembelajaran",
     "ValidasiNilai",
     "ValidasiReferensi",
+    "BaseValidasi",
 ]
