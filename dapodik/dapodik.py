@@ -6,6 +6,7 @@ from . import BaseAuth
 from . import BaseRest
 from . import BaseValidasi
 from . import BasePesertaDidik
+from . import BaseSarpras
 from . import BaseRombonganBelajar
 from . import BaseSekolah
 from .constants import HEADERS
@@ -16,6 +17,7 @@ class Dapodik(
     BaseRest,
     BaseValidasi,
     BasePesertaDidik,
+    BaseSarpras,
     BaseRombonganBelajar,
     BaseSekolah,
 ):
