@@ -6,6 +6,7 @@ from .version import __semester__, __tahun_ajaran__  # NOQA
 from .auth import BaseAuth
 from .rest import BaseRest
 from .validasi import BaseValidasi
+from .peserta_didik import BasePesertaDidik
 from .sekolah import BaseSekolah
 
 from .dapodik import Dapodik
@@ -14,6 +15,7 @@ __all__ = [
     "BaseAuth",
     "BaseRest",
     "BaseValidasi",
+    "BasePesertaDidik",
     "BaseSekolah",
     "Dapodik",
 ]
