@@ -31,6 +31,7 @@ setup(
         "requests",
         "beautifulsoup4",
         "attrs",
+        "cattrs",
         "cachetools",
         "typing-extensions",
     ],
