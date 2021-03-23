@@ -3,12 +3,13 @@ from requests import Session
 from dapodik import __semester__
 
 from . import BaseAuth
+from . import BaseRest
 from . import BaseValidasi
 from . import BaseSekolah
 from .constants import HEADERS
 
 
-class Dapodik(BaseAuth, BaseValidasi, BaseSekolah):
+class Dapodik(BaseAuth, BaseRest, BaseValidasi, BaseSekolah):
     def __init__(
         self,
         username: str,

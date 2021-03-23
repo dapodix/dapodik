@@ -47,6 +47,9 @@ from .tahun_ajaran import TahunAjaran
 from .tingkat_pendidikan import TingkatPendidikan
 from .waktu_penyelenggaraan import WaktuPenyelenggaraan
 
+from .base import BaseRest
+
+
 __all__ = [
     "Agama",
     "Akreditasi",
@@ -96,4 +99,5 @@ __all__ = [
     "TahunAjaran",
     "TingkatPendidikan",
     "WaktuPenyelenggaraan",
+    "BaseRest",
 ]
