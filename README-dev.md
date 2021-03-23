@@ -43,10 +43,10 @@ Jika data dapat diupdate maka pastikan sesuai dengan aturan berikut
 ```python
 from typing import Optional
 
-from dapodik.base import dataclass, freeze
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Foo:
     bar: str = freeze(default=None) # Tidak akan dimasukan put request
     ban: str = None # Tidak akan dimasukan put request
@@ -58,10 +58,10 @@ class Foo:
 Data yang tidak dapat dirubah / hanya dapat diambil harus dibuat *frozen*, dan jika memungkinkan juga dibuat *slots*.
 
 ```python
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class DataPermanen:
     a: str
     b: int

@@ -1,7 +1,7 @@
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Pembelajaran:
     rombongan_belajar_id: str
     status_di_kurikulum_str: str

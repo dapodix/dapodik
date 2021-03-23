@@ -1,7 +1,7 @@
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class ChildDelete:
     child_delete_id: int
     jumlah: int

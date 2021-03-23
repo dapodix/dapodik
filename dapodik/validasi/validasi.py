@@ -1,7 +1,7 @@
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Validasi:
     validasi_id: int
     table: str

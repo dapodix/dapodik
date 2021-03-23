@@ -1,10 +1,10 @@
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class Bank:
     id_bank: str
     nm_bank: str

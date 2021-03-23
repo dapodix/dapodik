@@ -1,10 +1,10 @@
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class JenisLk:
     id_jenis_lk: str
     nm_jenis_lk: str

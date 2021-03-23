@@ -1,9 +1,9 @@
 from datetime import datetime, date
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True)
+@attr.dataclass(frozen=True, slots=True)
 class JurusanSp:
     jurusan_sp_id: str
     sekolah_id: str

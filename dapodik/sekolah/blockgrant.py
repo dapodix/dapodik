@@ -1,10 +1,10 @@
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class BlockGrant:
     blockgrant_id: str
     sekolah_id: str

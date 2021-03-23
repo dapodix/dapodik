@@ -1,10 +1,10 @@
 from datetime import datetime, date
 from typing import Optional
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class TahunAjaran:
     tahun_ajaran_id: str
     nama: str

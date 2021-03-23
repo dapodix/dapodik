@@ -1,12 +1,12 @@
 from typing import Optional
 
-from dapodik.base import dataclass, freeze
+import attr
 
 
-@dataclass
+@attr.dataclass
 class RegistrasiPesertaDidik:
-    peserta_didik_id: str = freeze()
-    sekolah_id: str = freeze()
+    peserta_didik_id: str
+    sekolah_id: str
     tanggal_masuk_sekolah: str
     nipd: str = ""
     registrasi_id: Optional[str] = "Admin.model.RegistrasiPesertaDidik-1"

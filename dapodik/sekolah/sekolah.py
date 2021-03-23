@@ -1,23 +1,23 @@
 from datetime import datetime, date
 from typing import Optional
 
-from dapodik.base import dataclass, freeze
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Sekolah:
-    sekolah_id: str = freeze()
-    nama: str = freeze()
-    nama_nomenklatur: Optional[str] = freeze()
-    nss: str = freeze()
-    npsn: str = freeze()
-    bentuk_pendidikan_id: int = freeze()
-    alamat_jalan: str = freeze()
+    sekolah_id: str
+    nama: str
+    nama_nomenklatur: Optional[str]
+    nss: str
+    npsn: str
+    bentuk_pendidikan_id: int
+    alamat_jalan: str
     rt: Optional[str]
     rw: Optional[str]
     nama_dusun: Optional[str]
-    desa_kelurahan: str = freeze()
-    kode_wilayah: str = freeze()
+    desa_kelurahan: str
+    kode_wilayah: str
     kode_pos: Optional[str]
     lintang: Optional[str]
     bujur: Optional[str]
@@ -26,32 +26,32 @@ class Sekolah:
     email: Optional[str]
     website: Optional[str]
     kebutuhan_khusus_id: int
-    status_sekolah: str = freeze()
-    sk_pendirian_sekolah: str = freeze()
-    tanggal_sk_pendirian: date = freeze()
-    status_kepemilikan_id: str = freeze()
+    status_sekolah: str
+    sk_pendirian_sekolah: str
+    tanggal_sk_pendirian: date
+    status_kepemilikan_id: str
     yayasan_id: str
-    sk_izin_operasional: str = freeze()
-    tanggal_sk_izin_operasional: date = freeze()
-    no_rekening: Optional[str] = freeze()
-    nama_bank: Optional[str] = freeze()
-    cabang_kcp_unit: Optional[str] = freeze()
-    rekening_atas_nama: Optional[str] = freeze()
+    sk_izin_operasional: str
+    tanggal_sk_izin_operasional: date
+    no_rekening: Optional[str]
+    nama_bank: Optional[str]
+    cabang_kcp_unit: Optional[str]
+    rekening_atas_nama: Optional[str]
     mbs: str
-    luas_tanah_milik: str = freeze()
-    luas_tanah_bukan_milik: str = freeze()
-    kode_registrasi: str = freeze()
-    npwp: Optional[str] = None
-    nm_wp: Optional[str] = None
-    keaktifan: str = freeze()
-    flag: Optional[str] = freeze()
-    create_date: datetime = freeze()
-    last_update: datetime = freeze()
-    soft_delete: str = freeze()
-    last_sync: datetime = freeze()
-    updater_id: str = freeze()
+    luas_tanah_milik: str
+    luas_tanah_bukan_milik: str
+    kode_registrasi: str
+    npwp: Optional[str]
+    nm_wp: Optional[str]
+    keaktifan: str
+    flag: Optional[str]
+    create_date: datetime
+    last_update: datetime
+    soft_delete: str
+    last_sync: datetime
+    updater_id: str
     bentuk_pendidikan_id_str: str
-    kode_wilayah_str: str = freeze()
-    kebutuhan_khusus_id_str: str = freeze()
-    yayasan_id_str: str = freeze()
-    vld_count: int = freeze()
+    kode_wilayah_str: str
+    kebutuhan_khusus_id_str: str
+    yayasan_id_str: str
+    vld_count: int

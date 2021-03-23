@@ -46,7 +46,6 @@ from .sync_log import SyncLog
 from .tahun_ajaran import TahunAjaran
 from .tingkat_pendidikan import TingkatPendidikan
 from .waktu_penyelenggaraan import WaktuPenyelenggaraan
-from .base import BaseRest
 
 __all__ = [
     "Agama",
@@ -97,5 +96,4 @@ __all__ = [
     "TahunAjaran",
     "TingkatPendidikan",
     "WaktuPenyelenggaraan",
-    "BaseRest",
 ]

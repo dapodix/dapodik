@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class SyncLog:
     id_instalasi: str
     begin_sync: datetime

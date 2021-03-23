@@ -13,7 +13,6 @@ from .ruang import Ruang
 from .tanah_dari_blockgrant import TanahDariBlockgrant
 from .tanah_longitudinal import TanahLongitudinal
 from .tanah import Tanah
-from .base import BaseSarpras
 
 __all__ = [
     "AlatDariBlockgrant",
@@ -31,5 +30,4 @@ __all__ = [
     "TanahDariBlockgrant",
     "TanahLongitudinal",
     "Tanah",
-    "BaseSarpras",
 ]

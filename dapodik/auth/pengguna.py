@@ -1,10 +1,10 @@
 from bs4 import Tag
 from typing import List
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Pengguna:
     nama: str
     peran: str

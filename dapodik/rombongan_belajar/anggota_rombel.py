@@ -1,10 +1,10 @@
 from datetime import datetime
 from uuid import UUID
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class AnggotaRombel:
     anggota_rombel_id: UUID
     rombongan_belajar_id: UUID

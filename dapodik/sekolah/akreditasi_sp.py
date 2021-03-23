@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class AkreditasiSp:
     akred_sp_id: str
     sekolah_id: str

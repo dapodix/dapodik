@@ -1,9 +1,10 @@
 from datetime import datetime
+from typing import Optional
 
-from dapodik.base import dataclass, freeze
+import attr
 
 
-@dataclass
+@attr.dataclass
 class AlatLongitudinal:
     id_alat: str
     semester_id: str
@@ -13,8 +14,8 @@ class AlatLongitudinal:
     semester_id_str: str
     alat_longitudinal_id: str
     alat_longitudinal_id_str: str = ""
-    create_date: datetime = freeze(default=None)
-    last_update: datetime = freeze(default=None)
-    soft_delete: str = freeze(default=None)
-    last_sync: datetime = freeze(default=None)
-    updater_id: str = freeze(default=None)
+    create_date: Optional[datetime] = None
+    last_update: Optional[datetime] = None
+    soft_delete: Optional[str] = None
+    last_sync: Optional[datetime] = None
+    updater_id: Optional[str] = None

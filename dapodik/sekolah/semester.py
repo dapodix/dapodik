@@ -1,10 +1,10 @@
 from datetime import datetime, date
 from typing import Optional
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class Semester:
     semester_id: str
     tahun_ajaran_id: str

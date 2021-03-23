@@ -32,7 +32,7 @@ class BaseAuth(BaseDapodik):
         """
         res = self._get("")
         if not res.ok:
-            raise ServerTidakMerespon(f"Server dapodik ({self.server}) tidak merespon")
+            raise ServerTidakMerespon(f"Server dapodik ({self.base_url}) tidak merespon")
         data = {"username": username, "password": password, "semester_id": semester_id}
         if rememberme:
             data["rememberme"] = "on"
@@ -46,7 +46,7 @@ class BaseAuth(BaseDapodik):
         elif redirect.endswith("#PasswordSalah"):
             raise PasswordSalah("Password yang Anda masukkan salah!")
         soup = BeautifulSoup(res.text, "html.parser")
-        daftar_pengguna = Pengguna.from_soup(soup, self.server)
+        daftar_pengguna = Pengguna.from_soup(soup, self.base_url)
         if pengguna is None:
             return daftar_pengguna
         self.login_pengguna(daftar_pengguna[pengguna])

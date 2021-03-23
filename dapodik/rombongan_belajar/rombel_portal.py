@@ -2,10 +2,10 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass(frozen=True, slots=True)
+@attr.dataclass(frozen=True, slots=True)
 class RombelPortal:
     rombongan_belajar_id: UUID
     semester_id: int

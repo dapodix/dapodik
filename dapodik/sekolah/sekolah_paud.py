@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from dapodik.base import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass
 class SekolahPaud:
     sekolah_id: str
     kategori_tk_id: str
