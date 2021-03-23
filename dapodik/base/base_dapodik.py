@@ -1,6 +1,10 @@
+import json
 import logging
+import cattr
 from requests import Response, Session
-from typing import Any
+from typing import Any, Optional, Type, TypeVar
+
+T = TypeVar("T")
 
 
 class BaseDapodik(object):
@@ -58,3 +62,18 @@ class BaseDapodik(object):
             params=params,
             **kwargs,
         )
+
+    def _get_rows(
+        self,
+        path: str,
+        cl: Type[T],
+        query: Optional[dict] = None,
+        **kwargs: Any,
+    ) -> T:
+        res = self._get(
+            url=path,
+            params=query,
+            **kwargs,
+        )
+        data: dict = json.loads(res.text)
+        return cattr.structure(data["rows"], cl)
