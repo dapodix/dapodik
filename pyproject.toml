@@ -28,14 +28,13 @@ classifiers=[
     "Intended Audience :: Developers",
     "Topic :: Education",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
+python = "^3.7"
 requests = "^2.25.1"
 beautifulsoup4 = "^4.9.3"
 attrs = "^20.3.0"
