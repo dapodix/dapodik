@@ -3,7 +3,7 @@ import logging
 import cattr
 from datetime import date, datetime
 from requests import Response, Session
-from typing import Any, Optional, Type, TypeVar
+from typing import Any, Callable, Optional, Type, TypeVar
 
 from dapodik.utils.parser import str_to_date, str_to_datetime
 
@@ -72,6 +72,7 @@ class BaseDapodik(object):
         path: str,
         cl: Type[T],
         query: Optional[dict] = None,
+        key: Callable[[Any], Any] = lambda x: x["rows"],
         **kwargs: Any,
     ) -> T:
         res = self._get(
@@ -80,7 +81,8 @@ class BaseDapodik(object):
             **kwargs,
         )
         data: dict = json.loads(res.text)
-        return cattr.structure(data["rows"], cl)
+        obj: Any = key(data) if callable(key) else data
+        return cattr.structure(obj, cl)
 
     def _get_rest(
         self,
@@ -91,13 +93,14 @@ class BaseDapodik(object):
         limit: int = 50,
         query: Optional[dict] = None,
         prefix: str = "rest/",
+        key: Callable[[Any], Any] = lambda x: x["rows"],
     ) -> T:
         query = query or {
             "page": page,
             "start": start,
             "limit": limit,
         }
-        return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=query)
+        return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=query, key=key)
 
     def _register_hooks(self):
         cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
