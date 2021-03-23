@@ -1,8 +1,11 @@
 import json
 import logging
 import cattr
+from datetime import date, datetime
 from requests import Response, Session
 from typing import Any, Optional, Type, TypeVar
+
+from dapodik.utils.parser import str_to_date, str_to_datetime
 
 T = TypeVar("T")
 
@@ -12,6 +15,7 @@ class BaseDapodik(object):
         self._logger = logging.getLogger("Dapodik")
         self._session = Session()
         self._base_url = base_url
+        self._register_hooks()
 
     @property
     def logger(self) -> logging.Logger:
@@ -77,3 +81,7 @@ class BaseDapodik(object):
         )
         data: dict = json.loads(res.text)
         return cattr.structure(data["rows"], cl)
+
+    def _register_hooks(self):
+        cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
+        cattr.register_structure_hook(datetime, lambda d, t: str_to_datetime(d))
