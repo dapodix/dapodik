@@ -33,13 +33,13 @@ class Alat:
     updater_id: UUID
     id_ruang_str: str
     jenis_sarana_id_str: str
-    id_hapus_buku_str: Optional[str]
     sekolah_id_str: str
-    vld_count: int
     key_match: str
     header: str
-    jumlah: Optional[int]
-    status_kelaikan: Optional[str]
+    vld_count: int = 0
+    id_hapus_buku_str: Optional[str] = None
+    jumlah: Optional[int] = None
+    status_kelaikan: Optional[str] = None
 
     def __str__(self):
         return self.nama
