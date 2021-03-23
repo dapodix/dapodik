@@ -3,7 +3,7 @@ import logging
 import cattr
 from datetime import date, datetime
 from requests import Response, Session
-from typing import Any, Callable, Optional, Type, TypeVar
+from typing import Any, Callable, Optional, Type, TypeVar, Union
 
 from dapodik.utils.parser import str_to_date, str_to_datetime
 
@@ -90,7 +90,7 @@ class BaseDapodik(object):
         cl: Type[T],
         page: int = 1,
         start: int = 9,
-        limit: int = 50,
+        limit: Union[int, str] = 50,
         query: Optional[dict] = None,
         prefix: str = "rest/",
         key: Callable[[Any], Any] = lambda x: x["rows"],
