@@ -12,7 +12,7 @@ SDK python untuk aplikasi dapodik.
 
 ## Install
 
-Pastikan [python 3.6+](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) terinstall,
+Pastikan [python 3.7+](https://www.python.org/ftp/python/3.7.9/python-3.7.9-amd64.exe) terinstall,
 kemudian jalankan perintah di bawah dalam Command Prompt atau Powershell (di Windows + X):
 
 ```bash
