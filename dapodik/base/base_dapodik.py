@@ -90,13 +90,14 @@ class BaseDapodik(object):
         start: int = 9,
         limit: int = 50,
         query: Optional[dict] = None,
+        prefix: str = "rest/",
     ) -> T:
         query = query or {
             "page": page,
             "start": start,
             "limit": limit,
         }
-        return self._get_rows("/rest/" + path.lstrip("/"), cl=cl, query=query)
+        return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=query)
 
     def _register_hooks(self):
         cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
