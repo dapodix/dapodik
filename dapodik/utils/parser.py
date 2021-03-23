@@ -2,14 +2,6 @@ from datetime import datetime, date
 from typing import Union
 
 
-def parse_rows_update(datas: dict, instance):
-    data: dict = datas.get("rows", {})
-    if data.get(instance._id) == instance._data_id:
-        for ke in data:
-            setattr(instance, ke, data[ke])
-    return instance
-
-
 def str_to_datetime(
     data: Union[str, datetime], format: str = "%Y-%m-%d %H:%M:%S"
 ) -> datetime:
