@@ -10,6 +10,8 @@ from .sekolah import Sekolah
 from .semester import Semester
 from .yayasan import Yayasan
 
+from .base import BaseSekolah
+
 
 __all__ = [
     "AkreditasiSp",
@@ -23,4 +25,5 @@ __all__ = [
     "Sekolah",
     "Semester",
     "Yayasan",
+    "BaseSekolah",
 ]

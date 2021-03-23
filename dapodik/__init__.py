@@ -5,11 +5,13 @@ from .version import __semester__, __tahun_ajaran__  # NOQA
 
 from .auth import BaseAuth
 from .validasi import BaseValidasi
+from .sekolah import BaseSekolah
 
 from .dapodik import Dapodik
 
 __all__ = [
     "BaseAuth",
     "BaseValidasi",
+    "BaseSekolah",
     "Dapodik",
 ]

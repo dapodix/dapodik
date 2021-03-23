@@ -4,10 +4,11 @@ from dapodik import __semester__
 
 from . import BaseAuth
 from . import BaseValidasi
+from . import BaseSekolah
 from .constants import HEADERS
 
 
-class Dapodik(BaseAuth, BaseValidasi):
+class Dapodik(BaseAuth, BaseValidasi, BaseSekolah):
     def __init__(
         self,
         username: str,
