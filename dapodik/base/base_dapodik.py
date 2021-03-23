@@ -82,6 +82,21 @@ class BaseDapodik(object):
         data: dict = json.loads(res.text)
         return cattr.structure(data["rows"], cl)
 
+    def _get_rest(
+        self,
+        path: str,
+        cl: Type[T],
+        page: int = 1,
+        start: int = 9,
+        limit: int = 50,
+    ) -> T:
+        query = {
+            "page": page,
+            "start": start,
+            "limit": limit,
+        }
+        return self._get_rows("/rest/" + path.lstrip("/"), cl=cl, query=query)
+
     def _register_hooks(self):
         cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
         cattr.register_structure_hook(datetime, lambda d, t: str_to_datetime(d))
