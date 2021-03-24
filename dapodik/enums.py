@@ -6,8 +6,8 @@ class JenisKelamin(Enum):
     PEREMPUAN = "P"
 
     def __str__(self) -> str:
-        if self.value == self.LAKI_LAKI:
+        if self.value == "L":
             return "Laki-laki"
-        elif self.value == self.PEREMPUAN:
+        elif self.value == "P":
             return "Perempuan"
         return "Tidak terdefinisi"
