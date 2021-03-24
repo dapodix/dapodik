@@ -1,5 +1,3 @@
-from requests import Session
-
 from dapodik import __semester__
 
 from . import BaseAuth
@@ -27,7 +25,6 @@ class Dapodik(
         password: str,
         semester_id: str = __semester__,
         server: str = "http://localhost:5774/",
-        session: Session = Session(),
         pengguna: int = 0,
         rememberme: bool = True,
     ):
