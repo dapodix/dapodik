@@ -44,7 +44,12 @@ class BaseGtk(BaseDapodik):
             page=page,
             start=start,
         )
-        return self._get_rest("Ptk", List[Ptk], query=query)
+        return self._get_rest(
+            "Ptk",
+            List[Ptk],
+            query=query,
+            prefix="customrest/" if ptk_module == "ptkkeluar" else "rest/",
+        )
 
     guru = partialmethod(
         ptk,
