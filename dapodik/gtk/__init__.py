@@ -1,4 +1,6 @@
 from .ptk import Ptk
 
+from .base import BaseGtk
 
-__all__ = ["Ptk"]
+
+__all__ = ["Ptk", "BaseGtk"]

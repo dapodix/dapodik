@@ -4,6 +4,7 @@ from . import BaseAuth
 from . import BaseRest
 from . import BaseValidasi
 from . import BasePesertaDidik
+from . import BaseGtk
 from . import BaseSarpras
 from . import BaseRombonganBelajar
 from . import BaseSekolah
@@ -15,6 +16,7 @@ class Dapodik(
     BaseRest,
     BaseValidasi,
     BasePesertaDidik,
+    BaseGtk,
     BaseSarpras,
     BaseRombonganBelajar,
     BaseSekolah,
