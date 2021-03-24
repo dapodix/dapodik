@@ -49,7 +49,7 @@ class Ptk:
     aktif_bulan_10: PtkAktif
     aktif_bulan_11: PtkAktif
     aktif_bulan_12: PtkAktif
-    tgl_ptk_keluar: Optional[datetime]
+    tgl_ptk_keluar: Optional[date]
     jenis_keluar_id_str: Optional[str]
     nama: str
     nip: Optional[str]
@@ -107,11 +107,11 @@ class Ptk:
     id_bank: Optional[int]
     rekening_bank: Optional[str]
     rekening_atas_nama: Optional[str]
-    pengguna_id: UUID
-    username: Optional[str]
-    password: Optional[str]
-    jabatan_lembaga: Optional[str]
-    verifikasi_email: bool
+    pengguna_id: Optional[UUID] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
+    jabatan_lembaga: Optional[str] = None
+    verifikasi_email: Optional[bool] = None
     jenis_ptk_id_str: Optional[str] = None
     blob_id: Optional[str] = None
     vld_count: int = 0
