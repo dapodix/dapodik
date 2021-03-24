@@ -103,6 +103,13 @@ class BaseDapodik(object):
         }
         return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=query, key=key)
 
+    def _query(self, *args, **kwargs) -> dict:
+        query = dict()
+        for key, val in dict(kwargs).items():
+            if val is not None:
+                query[key] = val
+        return query
+
     def _register_hooks(self):
         cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
         cattr.register_structure_hook(datetime, lambda d, t: str_to_datetime(d))
