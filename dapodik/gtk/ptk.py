@@ -1,29 +1,10 @@
 import attr
 from datetime import date, datetime
-from enum import Enum
 from typing import Any, Optional
 from uuid import UUID
 
-
-class PtkInduk(Enum):
-    INDUK = "1"
-    NON_INDUK = "0"
-
-    def __bool__(self):
-        return self.value == 1
-
-
-class PtkAktif(Enum):
-    AKTIF = "1"
-    NON_AKTIF = "0"
-
-    def __bool__(self):
-        return self.value == 1
-
-
-class JenisKelamin(Enum):
-    LAKI_LAKI = "L"
-    PEREMPUAN = "P"
+from dapodik.enums import JenisKelamin
+from dapodik.gtk.enums import PtkAktif, PtkInduk
 
 
 @attr.dataclass(slots=True)
