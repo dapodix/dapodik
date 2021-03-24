@@ -63,7 +63,7 @@ class Ptk:
     nuks: Optional[str]
     status_kepegawaian_id: int
     jenis_ptk_id: int
-    pengawas_bidang_studi_id: int
+    pengawas_bidang_studi_id: Optional[int]
     agama_id: int
     alamat_jalan: Optional[str]
     rt: str
@@ -93,10 +93,10 @@ class Ptk:
     pekerjaan_suami_istri: int
     tmt_pns: Optional[date]
     sudah_lisensi_kepala_sekolah: int
-    jumlah_sekolah_binaan: int
+    jumlah_sekolah_binaan: Optional[int]
     pernah_diklat_kepengawasan: int
     nm_wp: Optional[str]
-    status_data: int
+    status_data: Optional[int]
     karpeg: Optional[Any]
     karpas: Optional[Any]
     mampu_handle_kk: int
