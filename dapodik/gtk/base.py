@@ -19,6 +19,21 @@ class BaseGtk(BaseDapodik):
         page: int = 1,
         start: int = 0,
     ) -> List[Ptk]:
+        """ptk mengambil data ptk
+
+        Args:
+            sekolah_id (str): Sekolah ID
+            tahun_ajaran_id (str, optional): Id tahun ajaran. Defaults to __tahun_ajaran__.
+            ptk_module (Optional[str], optional): antara `ptkterdaftar` dan `ptkkeluar`. Defaults to None.
+            jenis_gtk (Optional[str], optional): antara `guru` dan `tendik`. Defaults to None.
+            limit (int, optional): batas data yang dikembalikan. Defaults to 25.
+            penugasan_null (Optional[int], optional): Tambpilkan data dengan penugasan kosong. Defaults to None.
+            page (int, optional): Halaman data. Defaults to 1.
+            start (int, optional): Mulai dari. Defaults to 0.
+
+        Returns:
+            List[Ptk]: List dari data Ptk
+        """
         query = self._query(
             entry_sekolah_id=sekolah_id,
             ptk_module=ptk_module,
