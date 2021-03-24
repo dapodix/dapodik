@@ -4,6 +4,7 @@ from typing import List, Optional
 from dapodik.base import BaseDapodik
 from dapodik.version import __tahun_ajaran__
 
+from . import PtkTerdaftar
 from . import Ptk
 
 
@@ -65,12 +66,39 @@ class BaseGtk(BaseDapodik):
         penugasan_null=2,
     )
 
-    ptk_terdaftar = partialmethod(
-        ptk,
-        ptk_module="ptkterdaftar",
-    )
-
     ptk_keluar = partialmethod(
         ptk,
         ptk_module="ptkkeluar",
     )
+
+    def ptk_terdaftar(
+        self,
+        ptk_id: Optional[str] = None,
+        sekolah_id: Optional[str] = None,
+        tahun_ajaran_id: Optional[str] = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+    ) -> List[PtkTerdaftar]:
+        """ptk_terdaftar mengambil data PtkTerdaftar
+
+        Args:
+            ptk_id (Optional[str], optional): ID milik Ptk. Defaults to None.
+            sekolah_id (Optional[str], optional): Sekolah ID. Defaults to None.
+            tahun_ajaran_id (Optional[str], optional): Tahun ajar ID. Defaults to None.
+            page (int, optional): Halaman. Defaults to 1.
+            start (int, optional): Mulai dari. Defaults to 0.
+            limit (int, optional): Batas data. Defaults to 50.
+
+        Returns:
+            List[PtkTerdaftar]: [description]
+        """
+        query = self._query(
+            sekolah_id=sekolah_id,
+            tahun_ajaran_id=tahun_ajaran_id,
+            ptk_id=ptk_id,
+            page=page,
+            start=start,
+            limit=limit,
+        )
+        return self._get_rest("PtkTerdaftar", List[PtkTerdaftar], query=query)
