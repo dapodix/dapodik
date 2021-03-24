@@ -45,8 +45,8 @@ class BaseGtk(BaseDapodik):
             start=start,
         )
         return self._get_rest(
-            "Ptk",
-            List[Ptk],
+            path="ptk" if ptk_module == "ptkkeluar" else "Ptk",
+            cl=List[Ptk],
             query=query,
             prefix="customrest/" if ptk_module == "ptkkeluar" else "rest/",
         )
