@@ -64,3 +64,13 @@ class BaseGtk(BaseDapodik):
         jenis_gtk="tendik",
         penugasan_null=2,
     )
+
+    ptk_terdaftar = partialmethod(
+        ptk,
+        ptk_module="ptkterdaftar",
+    )
+
+    ptk_keluar = partialmethod(
+        ptk,
+        ptk_module="ptkkeluar",
+    )
