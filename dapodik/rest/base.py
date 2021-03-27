@@ -235,9 +235,16 @@ class BaseRest(BaseDapodik):
         )
 
     def kurikulum(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, kurikulum_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Kurikulum]:
-        return self._get_rest("Kurikulum", List[Kurikulum], page, start, limit)
+        return self._get_rest(
+            "Kurikulum",
+            List[Kurikulum],
+            page,
+            start,
+            limit,
+            query=self._query(kurikulum_id=kurikulum_id),
+        )
 
     def lembaga_pengangkat(
         self,
