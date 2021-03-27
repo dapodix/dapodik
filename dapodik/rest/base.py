@@ -334,10 +334,19 @@ class BaseRest(BaseDapodik):
         return self._get_rest("TahunAjaran", List[TahunAjaran], page, start, limit)
 
     def tingkat_pendidikan(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        tingkat_pendidikan_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[TingkatPendidikan]:
         return self._get_rest(
-            "TingkatPendidikan", List[TingkatPendidikan], page, start, limit
+            "TingkatPendidikan",
+            List[TingkatPendidikan],
+            page,
+            start,
+            limit,
+            query=self._query(tingkat_pendidikan_id=tingkat_pendidikan_id),
         )
 
     def waktu_penyelenggaraan(
