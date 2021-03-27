@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisPendaftaran:
-    jenis_pendaftaran_id: str
+    jenis_pendaftaran_id: int
     nama: str
     daftar_sekolah: str
     daftar_rombel: str
