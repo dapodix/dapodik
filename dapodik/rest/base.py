@@ -144,10 +144,19 @@ class BaseRest(BaseDapodik):
         )
 
     def fasilitas_layanan(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        fasilitas_layanan_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[FasilitasLayanan]:
         return self._get_rest(
-            "FasilitasLayanan", List[FasilitasLayanan], page, start, limit
+            "FasilitasLayanan",
+            List[FasilitasLayanan],
+            page,
+            start,
+            limit,
+            query=self._query(fasilitas_layanan_id=fasilitas_layanan_id),
         )
 
     def gmd(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Gmd]:
