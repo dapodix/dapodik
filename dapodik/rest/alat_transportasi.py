@@ -1,7 +1,8 @@
+import attr
 from datetime import datetime
 from typing import Optional
 
-import attr
+from dapodik.base import BaseProp
 
 
 @attr.dataclass(frozen=True, slots=True)
@@ -15,3 +16,22 @@ class AlatTransportasi:
 
     def __str__(self):
         return self.nama
+
+    class Prop(BaseProp):
+        @property
+        def alat_transportasi(self) -> "AlatTransportasi":
+            return self.dapodik._find(
+                self.dapodik.alat_transportasi(),
+                lambda x: x.alat_transportasi_id
+                == getattr(self, "alat_transportasi_id"),
+            )
+
+        @alat_transportasi.setter
+        def alat_transportasi(self, value: "AlatTransportasi"):
+            new_alat_transportasi = self.dapodik._find(
+                self.dapodik.alat_transportasi(),
+                lambda x: x.alat_transportasi_id == value.alat_transportasi_id,
+            )
+            setattr(
+                self, "alat_transportasi_id", new_alat_transportasi.alat_transportasi_id
+            )
