@@ -1,7 +1,7 @@
+import attr
 from datetime import datetime, date
 from typing import List, Optional, TYPE_CHECKING
 from uuid import UUID
-import attr
 
 if TYPE_CHECKING:
     from dapodik import Dapodik
@@ -107,10 +107,6 @@ class PesertaDidik(Agama.Prop):
     last_sync: Optional[datetime] = None
     updater_id: Optional[UUID] = None
     _dapodik: Optional["Dapodik"] = None
-
-    @property
-    def dapodik(self) -> "Dapodik":
-        return self._dapodik  # type: ignore
 
     def __str__(self):
         return self.nama
