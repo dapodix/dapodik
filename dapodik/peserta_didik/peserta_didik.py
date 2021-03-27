@@ -9,7 +9,7 @@ from dapodik.rest import Agama
 
 
 @attr.dataclass
-class PesertaDidik:
+class PesertaDidik(Agama.Prop):
     peserta_didik_id: UUID
     nama: str
     jenis_kelamin: str
@@ -111,12 +111,6 @@ class PesertaDidik:
     @property
     def dapodik(self) -> "Dapodik":
         return self._dapodik  # type: ignore
-
-    @property
-    def agama(self) -> Agama:
-        return self.dapodik._find(
-            self.dapodik.agama(), lambda x: x.agama_id == self.agama_id
-        )
 
     def __str__(self):
         return self.nama
