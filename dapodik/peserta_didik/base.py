@@ -60,7 +60,7 @@ class BasePesertaDidik(BaseDapodik):
         }
         if isinstance(nama, str):
             params["nama"] = nama
-        return self._get_rows("PesertaDidik", List[PesertaDidik], query=params)
+        return self._get_rest("PesertaDidik", List[PesertaDidik], query=params)
 
     peserta_didik_keluar = partialmethod(peserta_didik, pd_module="pdkeluar")
 
