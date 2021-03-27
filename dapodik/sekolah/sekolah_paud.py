@@ -9,7 +9,7 @@ class SekolahPaud:
     kategori_tk_id: int
     klasifikasi_lembaga_id: int
     sumber_dana_sekolah_id: str
-    fasilitas_layanan_id: str
+    fasilitas_layanan_id: int
     jadwal_pmtas: str
     lembaga_pengangkat_id: int
     jadwal_ddtk: str
