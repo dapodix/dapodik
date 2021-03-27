@@ -37,21 +37,21 @@ class Sekolah:
     nama_bank: Optional[str]
     cabang_kcp_unit: Optional[str]
     rekening_atas_nama: Optional[str]
-    mbs: str
+    mbs: int
     luas_tanah_milik: str
     luas_tanah_bukan_milik: str
     kode_registrasi: str
     npwp: Optional[str]
     nm_wp: Optional[str]
-    keaktifan: str
-    flag: Optional[str]
-    create_date: datetime
-    last_update: datetime
-    soft_delete: str
-    last_sync: datetime
-    updater_id: str
-    bentuk_pendidikan_id_str: str
-    kode_wilayah_str: str
-    kebutuhan_khusus_id_str: str
-    yayasan_id_str: str
-    vld_count: int
+    keaktifan: int
+    flag: Optional[str] = None
+    create_date: Optional[datetime] = None
+    last_update: Optional[datetime] = None
+    soft_delete: Optional[str] = None
+    last_sync: Optional[datetime] = None
+    updater_id: Optional[str] = None
+    bentuk_pendidikan_id_str: str = ""
+    kode_wilayah_str: str = ""
+    kebutuhan_khusus_id_str: str = ""
+    yayasan_id_str: str = ""
+    vld_count: int = 0
