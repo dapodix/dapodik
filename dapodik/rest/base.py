@@ -215,7 +215,7 @@ class BaseRest(BaseDapodik):
         )
 
     def jenis_hobby(
-        self, id_hobby: int, page: int = 1, start: int = 0, limit: int = 50
+        self, id_hobby: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisHobby]:
         return self._get_rest(
             "JenisHobby",
