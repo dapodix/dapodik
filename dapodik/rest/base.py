@@ -221,10 +221,19 @@ class BaseRest(BaseDapodik):
         )
 
     def kebutuhan_khusus(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        kebutuhan_khusus_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[KebutuhanKhusus]:
         return self._get_rest(
-            "KebutuhanKhusus", List[KebutuhanKhusus], page, start, limit
+            "KebutuhanKhusus",
+            List[KebutuhanKhusus],
+            page,
+            start,
+            limit,
+            query=self._query(kebutuhan_khusus_id=kebutuhan_khusus_id),
         )
 
     def klasifikasi_lembaga(
