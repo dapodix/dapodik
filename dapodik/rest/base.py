@@ -286,10 +286,19 @@ class BaseRest(BaseDapodik):
         )
 
     def status_kepegawaian(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        status_kepegawaian_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[StatusKepegawaian]:
         return self._get_rest(
-            "StatusKepegawaian", List[StatusKepegawaian], page, start, limit
+            "StatusKepegawaian",
+            List[StatusKepegawaian],
+            page,
+            start,
+            limit,
+            query=self._query(status_kepegawaian_id=status_kepegawaian_id),
         )
 
     def status_kepemilikan_sarpras(
