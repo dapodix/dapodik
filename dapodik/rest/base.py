@@ -167,9 +167,16 @@ class BaseRest(BaseDapodik):
         )
 
     def jadwal_paud(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, jadwal_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JadwalPaud]:
-        return self._get_rest("JadwalPaud", List[JadwalPaud], page, start, limit)
+        return self._get_rest(
+            "JadwalPaud",
+            List[JadwalPaud],
+            page,
+            start,
+            limit,
+            query=self._query(jadwal_id=jadwal_id),
+        )
 
     def jenis_cita(
         self, page: int = 1, start: int = 0, limit: int = 50
