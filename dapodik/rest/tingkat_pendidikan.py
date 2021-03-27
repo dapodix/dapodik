@@ -6,7 +6,7 @@ import attr
 
 @attr.dataclass(frozen=True, slots=True)
 class TingkatPendidikan:
-    tingkat_pendidikan_id: str
+    tingkat_pendidikan_id: int
     kode: str
     nama: str
     jenjang_pendidikan_id: str
