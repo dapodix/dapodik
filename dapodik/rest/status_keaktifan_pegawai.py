@@ -6,7 +6,7 @@ import attr
 
 @attr.dataclass(frozen=True, slots=True)
 class StatusKeaktifanPegawai:
-    status_keaktifan_id: str
+    status_keaktifan_id: int
     nama: str
     create_date: datetime
     last_update: datetime
