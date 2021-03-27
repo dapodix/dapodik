@@ -269,9 +269,16 @@ class BaseRest(BaseDapodik):
         return self._get_rest("Pekerjaan", List[Pekerjaan], page, start, limit)
 
     def penghasilan(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, penghasilan_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Penghasilan]:
-        return self._get_rest("Penghasilan", List[Penghasilan], page, start, limit)
+        return self._get_rest(
+            "Penghasilan",
+            List[Penghasilan],
+            page,
+            start,
+            limit,
+            query=self._query(penghasilan_id=penghasilan_id),
+        )
 
     def role_pengguna(
         self, page: int = 1, start: int = 0, limit: int = 50
