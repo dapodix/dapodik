@@ -6,7 +6,7 @@ import attr
 
 @attr.dataclass(frozen=True, slots=True)
 class JadwalPaud:
-    jadwal_id: str
+    jadwal_id: int
     nama: str
     kesehatan: str
     pamts: str
