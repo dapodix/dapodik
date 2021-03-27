@@ -325,8 +325,17 @@ class BaseRest(BaseDapodik):
     ) -> List[SumberListrik]:
         return self._get_rest("SumberListrik", List[SumberListrik], page, start, limit)
 
-    def sync_log(self, page: int = 1, start: int = 0, limit: int = 50) -> List[SyncLog]:
-        return self._get_rest("SyncLog", List[SyncLog], page, start, limit)
+    def sync_log(
+        self, sync_log_id: str = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[SyncLog]:
+        return self._get_rest(
+            "SyncLog",
+            List[SyncLog],
+            page,
+            start,
+            limit,
+            query=self._query(sync_log_id=sync_log_id),
+        )
 
     def tahun_ajaran(
         self,
