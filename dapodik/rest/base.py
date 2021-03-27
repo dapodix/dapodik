@@ -108,8 +108,12 @@ class BaseRest(BaseDapodik):
             self._query(alat_transportasi_id=alat_transportasi_id),
         )
 
-    def bank(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Bank]:
-        return self._get_rest("Bank", List[Bank], page, start, limit)
+    def bank(
+        self, id_bank: str = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[Bank]:
+        return self._get_rest(
+            "Bank", List[Bank], page, start, limit, query=self._query(id_bank=id_bank)
+        )
 
     def bentuk_lembaga(
         self, page: int = 1, start: int = 0, limit: int = 50
