@@ -203,10 +203,15 @@ class BaseRest(BaseDapodik):
         )
 
     def jenis_hapus_buku(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, id_hapus_buku: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisHapusBuku]:
         return self._get_rest(
-            "JenisHapusBuku", List[JenisHapusBuku], page, start, limit
+            "JenisHapusBuku",
+            List[JenisHapusBuku],
+            page,
+            start,
+            limit,
+            query=self._query(id_hapus_buku=id_hapus_buku),
         )
 
     def jenis_hobby(
