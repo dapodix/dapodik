@@ -11,7 +11,7 @@ class SekolahPaud:
     sumber_dana_sekolah_id: str
     fasilitas_layanan_id: str
     jadwal_pmtas: str
-    lembaga_pengangkat_id: str
+    lembaga_pengangkat_id: int
     jadwal_ddtk: str
     freq_parenting: str
     bentuk_lembaga_id: str
