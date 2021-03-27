@@ -247,9 +247,20 @@ class BaseRest(BaseDapodik):
         )
 
     def mata_pelajaran(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        mata_pelajaran_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[MataPelajaran]:
-        return self._get_rest("MataPelajaran", List[MataPelajaran], page, start, limit)
+        return self._get_rest(
+            "MataPelajaran",
+            List[MataPelajaran],
+            page,
+            start,
+            limit,
+            query=self._query(mata_pelajaran_id=mata_pelajaran_id),
+        )
 
     def mst_wilayah(
         self, kode_wilayah: str = None, page: int = 1, start: int = 0, limit: int = 50
