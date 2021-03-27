@@ -159,8 +159,12 @@ class BaseRest(BaseDapodik):
             query=self._query(fasilitas_layanan_id=fasilitas_layanan_id),
         )
 
-    def gmd(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Gmd]:
-        return self._get_rest("Gmd", List[Gmd], page, start, limit)
+    def gmd(
+        self, id_gmd: str = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[Gmd]:
+        return self._get_rest(
+            "Gmd", List[Gmd], page, start, limit, query=self._query(id_gmd=id_gmd)
+        )
 
     def jadwal_paud(
         self, page: int = 1, start: int = 0, limit: int = 50
