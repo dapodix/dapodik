@@ -52,8 +52,17 @@ from . import WaktuPenyelenggaraan
 
 
 class BaseRest(BaseDapodik):
-    def agama(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Agama]:
-        return self._get_rest("Agama", List[Agama], page, start, limit)
+    def agama(
+        self, agama_id: int = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[Agama]:
+        return self._get_rest(
+            "Agama",
+            List[Agama],
+            page,
+            start,
+            limit,
+            query=self._query(agama_id=agama_id),
+        )
 
     def akreditasi(
         self, page: int = 1, start: int = 0, limit: int = 50
