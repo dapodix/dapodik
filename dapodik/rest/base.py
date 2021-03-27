@@ -242,8 +242,12 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_keluar_id=jenis_keluar_id),
         )
 
-    def jenis_lk(self, page: int = 1, start: int = 0, limit: int = 50) -> List[JenisLk]:
-        return self._get_rest("JenisLk", List[JenisLk], page, start, limit)
+    def jenis_lk(
+        self, id_jenis_lk: str = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[JenisLk]:
+        return self._get_rest(
+            "JenisLk", List[JenisLk], page, start, limit, query=self._query(id_jenis_lk)
+        )
 
     def jenis_pendaftaran(
         self, page: int = 1, start: int = 0, limit: int = 50
