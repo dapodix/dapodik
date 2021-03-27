@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class KategoriTk:
-    kategori_tk_id: str
+    kategori_tk_id: int
     nama: str
     create_date: datetime
     last_update: datetime

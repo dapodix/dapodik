@@ -6,7 +6,7 @@ import attr
 @attr.dataclass
 class SekolahPaud:
     sekolah_id: str
-    kategori_tk_id: str
+    kategori_tk_id: int
     klasifikasi_lembaga_id: int
     sumber_dana_sekolah_id: str
     fasilitas_layanan_id: str
