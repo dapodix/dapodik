@@ -341,8 +341,17 @@ class BaseRest(BaseDapodik):
         )
 
     def waktu_penyelenggaraan(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        waktu_penyelenggaraan_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[WaktuPenyelenggaraan]:
         return self._get_rest(
-            "WaktuPenyelenggaraan", List[WaktuPenyelenggaraan], page, start, limit
+            "WaktuPenyelenggaraan",
+            List[WaktuPenyelenggaraan],
+            page,
+            start,
+            limit,
+            query=self._query(waktu_penyelenggaraan_id=waktu_penyelenggaraan_id),
         )
