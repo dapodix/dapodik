@@ -6,7 +6,7 @@ import attr
 
 @attr.dataclass(frozen=True, slots=True)
 class WaktuPenyelenggaraan:
-    waktu_penyelenggaraan_id: str
+    waktu_penyelenggaraan_id: int
     nama: str
     create_date: datetime
     last_update: datetime
