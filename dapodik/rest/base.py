@@ -93,10 +93,19 @@ class BaseRest(BaseDapodik):
         )
 
     def alat_transportasi(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        alat_transportasi_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[AlatTransportasi]:
         return self._get_rest(
-            "AlatTransportasi", List[AlatTransportasi], page, start, limit
+            "AlatTransportasi",
+            List[AlatTransportasi],
+            page,
+            start,
+            limit,
+            self._query(alat_transportasi_id=alat_transportasi_id),
         )
 
     def bank(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Bank]:
