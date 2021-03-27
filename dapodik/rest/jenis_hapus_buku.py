@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisHapusBuku:
-    id_hapus_buku: str
+    id_hapus_buku: int
     ket_hapus_buku: str
     u_prasarana: str
     u_sarana: str
@@ -15,6 +15,9 @@ class JenisHapusBuku:
     last_update: datetime
     expired_date: Optional[datetime]
     last_sync: datetime
+
+    def __str__(self):
+        return self.ket_hapus_buku
 
     class Prop(BaseProp):
         @property
