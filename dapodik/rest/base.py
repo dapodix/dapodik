@@ -252,9 +252,16 @@ class BaseRest(BaseDapodik):
         return self._get_rest("MataPelajaran", List[MataPelajaran], page, start, limit)
 
     def mst_wilayah(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, kode_wilayah: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[MstWilayah]:
-        return self._get_rest("MstWilayah", List[MstWilayah], page, start, limit)
+        return self._get_rest(
+            "MstWilayah",
+            List[MstWilayah],
+            page,
+            start,
+            limit,
+            query=self._query(kode_wilayah=kode_wilayah),
+        )
 
     def pangkat_golongan(
         self,
