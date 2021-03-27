@@ -65,9 +65,16 @@ class BaseRest(BaseDapodik):
         )
 
     def akreditasi(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, akreditasi_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Akreditasi]:
-        return self._get_rest("Akreditasi", List[Akreditasi], page, start, limit)
+        return self._get_rest(
+            "Akreditasi",
+            List[Akreditasi],
+            page,
+            start,
+            limit,
+            query=self._query(akreditasi_id=akreditasi_id),
+        )
 
     def akses_internet(
         self, page: int = 1, start: int = 0, limit: int = 50
