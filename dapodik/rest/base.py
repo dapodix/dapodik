@@ -205,8 +205,17 @@ class BaseRest(BaseDapodik):
             "JenjangPendidikan", List[JenjangPendidikan], page, start, limit
         )
 
-    def jurusan(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Jurusan]:
-        return self._get_rest("Jurusan", List[Jurusan], page, start, limit)
+    def jurusan(
+        self, jurusan_id: int = None, page: int = 1, start: int = 0, limit: int = 50
+    ) -> List[Jurusan]:
+        return self._get_rest(
+            "Jurusan",
+            List[Jurusan],
+            page,
+            start,
+            limit,
+            query=self._query(jurusan_id=jurusan_id),
+        )
 
     def kategori_tk(
         self, kategori_tk_id: int = None, page: int = 1, start: int = 0, limit: int = 50
