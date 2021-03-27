@@ -279,10 +279,19 @@ class BaseRest(BaseDapodik):
         return self._get_rest("RolePengguna", List[RolePengguna], page, start, limit)
 
     def status_keaktifan_pegawai(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        status_keaktifan_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[StatusKeaktifanPegawai]:
         return self._get_rest(
-            "StatusKeaktifanPegawai", List[StatusKeaktifanPegawai], page, start, limit
+            "StatusKeaktifanPegawai",
+            List[StatusKeaktifanPegawai],
+            page,
+            start,
+            limit,
+            query=self._query(status_keaktifan_id=status_keaktifan_id),
         )
 
     def status_kepegawaian(
