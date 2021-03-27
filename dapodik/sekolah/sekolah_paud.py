@@ -7,7 +7,7 @@ import attr
 class SekolahPaud:
     sekolah_id: str
     kategori_tk_id: str
-    klasifikasi_lembaga_id: str
+    klasifikasi_lembaga_id: int
     sumber_dana_sekolah_id: str
     fasilitas_layanan_id: str
     jadwal_pmtas: str
