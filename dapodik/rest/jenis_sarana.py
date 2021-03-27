@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisSarana:
-    jenis_sarana_id: str
+    jenis_sarana_id: int
     nama: str
     kelompok: Optional[str]
     perlu_penempatan: int
