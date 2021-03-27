@@ -6,7 +6,7 @@ import attr
 
 @attr.dataclass(frozen=True, slots=True)
 class SumberAir:
-    sumber_air_id: str
+    sumber_air_id: int
     nama: str
     sumber_air: str
     sumber_minum: str
