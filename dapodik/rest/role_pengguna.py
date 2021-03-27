@@ -14,6 +14,7 @@ class RolePengguna:
     dudi_id: Optional[str]
     kode_lemb_sert: Optional[str]
     pengguna_id: str
+    peran_id: Optional[int]
     sk_penugasan: Optional[str]
     tgl_sk_penugasan: Optional[str]
     approval_peran: str
@@ -25,4 +26,3 @@ class RolePengguna:
     expired_date: Optional[datetime]
     last_sync: datetime
     pengguna_id_str: str
-    peran_id: Optional[int] = 53
