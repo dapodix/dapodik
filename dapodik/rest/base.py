@@ -294,9 +294,16 @@ class BaseRest(BaseDapodik):
         )
 
     def jenis_rombel(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, jenis_rombel: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisRombel]:
-        return self._get_rest("JenisRombel", List[JenisRombel], page, start, limit)
+        return self._get_rest(
+            "JenisRombel",
+            List[JenisRombel],
+            page,
+            start,
+            limit,
+            query=self._query(jenis_rombel=jenis_rombel),
+        )
 
     def jenis_sarana(
         self, page: int = 1, start: int = 0, limit: int = 50
