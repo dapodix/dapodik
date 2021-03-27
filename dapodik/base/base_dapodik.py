@@ -83,7 +83,13 @@ class BaseDapodik(object):
         )
         data: dict = json.loads(res.text)
         obj: Any = key(data) if callable(key) else data
-        return cattr.structure(obj, cl)
+        result = cattr.structure(obj, cl)
+        if isinstance(result, list):
+            for res in result:
+                if not hasattr(res, "_dapodik"):
+                    break
+                setattr(res, "_dapodik", self)
+        return result
 
     def _get_rest(
         self,
