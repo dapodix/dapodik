@@ -1,7 +1,11 @@
 from datetime import datetime, date
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 from uuid import UUID
 import attr
+
+if TYPE_CHECKING:
+    from dapodik import Dapodik
+from dapodik.rest import Agama
 
 
 @attr.dataclass
@@ -102,6 +106,17 @@ class PesertaDidik:
     soft_delete: Optional[int] = None
     last_sync: Optional[datetime] = None
     updater_id: Optional[UUID] = None
+    _dapodik: Optional["Dapodik"] = None
+
+    @property
+    def dapodik(self) -> "Dapodik":
+        return self._dapodik  # type: ignore
+
+    @property
+    def agama(self) -> Agama:
+        return self.dapodik._find(
+            self.dapodik.agama(), lambda x: x.agama_id == self.agama_id
+        )
 
     def __str__(self):
         return self.nama
