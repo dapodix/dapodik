@@ -102,12 +102,14 @@ class BaseDapodik(object):
         prefix: str = "rest/",
         key: Callable[[Any], Any] = lambda x: x["rows"],
     ) -> T:
-        query = query or {
+        params = {
             "page": page,
             "start": start,
             "limit": limit,
         }
-        return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=query, key=key)
+        if query:
+            params.update(query)
+        return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=params, key=key)
 
     def _query(self, *args, **kwargs) -> dict:
         query = dict()
