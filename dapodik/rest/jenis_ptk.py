@@ -26,6 +26,9 @@ class JenisPtk:
     expired_date: Optional[datetime]
     last_sync: datetime
 
+    def __str__(self):
+        return self.jenis_ptk
+
     class Prop(BaseProp):
         @property
         def jenis_ptk(self) -> "JenisPtk":
