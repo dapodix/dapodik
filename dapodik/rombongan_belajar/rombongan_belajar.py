@@ -17,7 +17,7 @@ class RombonganBelajar:
     nama: str
     ptk_id: UUID
     moving_class: str
-    jenis_rombel: str
+    jenis_rombel: int
     sks: str
     tanggal_mulai: date
     tanggal_selesai: date

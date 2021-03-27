@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisRombel:
-    jenis_rombel: str
+    jenis_rombel: int
     nm_jenis_rombel: str
     create_date: datetime
     last_update: datetime
