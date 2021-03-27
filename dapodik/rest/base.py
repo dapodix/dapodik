@@ -116,9 +116,20 @@ class BaseRest(BaseDapodik):
         )
 
     def bentuk_lembaga(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        bentuk_lembaga_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[BentukLembaga]:
-        return self._get_rest("BentukLembaga", List[BentukLembaga], page, start, limit)
+        return self._get_rest(
+            "BentukLembaga",
+            List[BentukLembaga],
+            page,
+            start,
+            limit,
+            query=self._query(bentuk_lembaga_id=bentuk_lembaga_id),
+        )
 
     def biblio(self, page: int = 1, start: int = 0, limit: int = 50) -> List[Biblio]:
         return self._get_rest("Biblio", List[Biblio], page, start, limit)
