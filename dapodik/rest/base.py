@@ -329,9 +329,20 @@ class BaseRest(BaseDapodik):
         return self._get_rest("SyncLog", List[SyncLog], page, start, limit)
 
     def tahun_ajaran(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        tahun_ajaran_id: str = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[TahunAjaran]:
-        return self._get_rest("TahunAjaran", List[TahunAjaran], page, start, limit)
+        return self._get_rest(
+            "TahunAjaran",
+            List[TahunAjaran],
+            page,
+            start,
+            limit,
+            query=self._query(tahun_ajaran_id=tahun_ajaran_id),
+        )
 
     def tingkat_pendidikan(
         self,
