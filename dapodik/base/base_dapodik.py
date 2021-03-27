@@ -3,7 +3,7 @@ import logging
 import cattr
 from datetime import date, datetime
 from requests import Response, Session
-from typing import Any, Callable, Optional, Type, TypeVar, Union
+from typing import Any, Callable, Optional, List, Type, TypeVar, Union
 from uuid import UUID
 
 from dapodik.utils.parser import str_to_date, str_to_datetime
@@ -120,3 +120,9 @@ class BaseDapodik(object):
         cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
         cattr.register_structure_hook(datetime, lambda d, t: str_to_datetime(d))
         cattr.register_structure_hook(UUID, lambda d, t: UUID(d))
+
+    def _find(self, obj: List[T], is_this: Callable[[T], bool]) -> T:
+        for o in obj:
+            if is_this(o):
+                return o
+        raise ValueError("No obj found")
