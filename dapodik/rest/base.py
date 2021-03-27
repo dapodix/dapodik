@@ -194,9 +194,20 @@ class BaseRest(BaseDapodik):
         return self._get_rest("JenisSarana", List[JenisSarana], page, start, limit)
 
     def jenis_tinggal(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        jenis_tinggal_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[JenisTinggal]:
-        return self._get_rest("JenisTinggal", List[JenisTinggal], page, start, limit)
+        return self._get_rest(
+            "JenisTinggal",
+            List[JenisTinggal],
+            page,
+            start,
+            limit,
+            query=self._query(jenis_tinggal_id=jenis_tinggal_id),
+        )
 
     def jenjang_pendidikan(
         self,
