@@ -127,7 +127,7 @@ class BaseRombonganBelajar(BaseDapodik):
         self,
         fromui: str = None,
         callback: str = "rombonganbelajar",
-        jurusan_id: str = None,
+        jurusan_id: int = None,
         page: int = 1,
         start: int = 0,
         limit: int = 50,
@@ -136,7 +136,7 @@ class BaseRombonganBelajar(BaseDapodik):
         Args:
             fromui (str, optional): Misal tingkatpendidikanpaud. Defaults "".
             callback (str, optional): callback. Defaults "rombonganbelajar".
-            jurusan_id (str, optional): id jurusan. Defaults "".
+            jurusan_id (int, optional): id jurusan. Defaults "".
             page (int, optional): halaman. Defaults 1.
             start (int, optional): mulai. Defaults 0.
             limit (int, optional): batas. Defaults 50.

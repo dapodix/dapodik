@@ -37,7 +37,7 @@ class RombonganBelajar:
     pembelajaran_count: int
     anggota_rombel_count: int
     jenis_rombel_str: str
-    jurusan_id: str
+    jurusan_id: int
     jurusan_id_str: str
     tingkat_pendidikan_id_str: str
     semester_id: str = __semester__

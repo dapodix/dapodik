@@ -8,7 +8,7 @@ class JurusanSp:
     jurusan_sp_id: str
     sekolah_id: str
     kebutuhan_khusus_id: int
-    jurusan_id: str
+    jurusan_id: int
     nama_jurusan_sp: str
     sk_izin: str
     tanggal_sk_izin: date

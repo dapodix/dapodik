@@ -12,7 +12,7 @@ class MataPelajaran:
     pilihan_buku: str
     pilihan_kepengawasan: str
     pilihan_evaluasi: str
-    jurusan_id: str
+    jurusan_id: int
     create_date: datetime
     last_update: datetime
     expired_date: Optional[datetime]
