@@ -214,10 +214,19 @@ class BaseRest(BaseDapodik):
         return self._get_rest("KategoriTk", List[KategoriTk], page, start, limit)
 
     def keahlian_laboratorium(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        keahlian_laboratorium_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[KeahlianLaboratorium]:
         return self._get_rest(
-            "KeahlianLaboratorium", List[KeahlianLaboratorium], page, start, limit
+            "KeahlianLaboratorium",
+            List[KeahlianLaboratorium],
+            page,
+            start,
+            limit,
+            query=self._query(keahlian_laboratorium_id=keahlian_laboratorium_id),
         )
 
     def kebutuhan_khusus(
