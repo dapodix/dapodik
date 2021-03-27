@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisGugus:
-    jenis_gugus_id: str
+    jenis_gugus_id: int
     jenis_gugus: str
     create_date: datetime
     last_update: datetime
