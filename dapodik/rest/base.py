@@ -228,10 +228,19 @@ class BaseRest(BaseDapodik):
         )
 
     def klasifikasi_lembaga(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        klasifikasi_lembaga_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[KlasifikasiLembaga]:
         return self._get_rest(
-            "KlasifikasiLembaga", List[KlasifikasiLembaga], page, start, limit
+            "KlasifikasiLembaga",
+            List[KlasifikasiLembaga],
+            page,
+            start,
+            limit,
+            query=self._query(klasifikasi_lembaga_id=klasifikasi_lembaga_id),
         )
 
     def kurikulum(
