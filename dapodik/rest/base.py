@@ -179,9 +179,16 @@ class BaseRest(BaseDapodik):
         )
 
     def jenis_cita(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self, id_cita: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisCita]:
-        return self._get_rest("JenisCita", List[JenisCita], page, start, limit)
+        return self._get_rest(
+            "JenisCita",
+            List[JenisCita],
+            page,
+            start,
+            limit,
+            query=self._query(id_cita=id_cita),
+        )
 
     def jenis_gugus(
         self, page: int = 1, start: int = 0, limit: int = 50
