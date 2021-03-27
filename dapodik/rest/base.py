@@ -77,9 +77,20 @@ class BaseRest(BaseDapodik):
         )
 
     def akses_internet(
-        self, page: int = 1, start: int = 0, limit: int = 50
+        self,
+        akses_internet_id: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
     ) -> List[AksesInternet]:
-        return self._get_rest("AksesInternet", List[AksesInternet], page, start, limit)
+        return self._get_rest(
+            "AksesInternet",
+            List[AksesInternet],
+            page,
+            start,
+            limit,
+            query=self._query(akses_internet_id=akses_internet_id),
+        )
 
     def alat_transportasi(
         self, page: int = 1, start: int = 0, limit: int = 50
