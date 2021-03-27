@@ -7,7 +7,7 @@ from dapodik.base import BaseProp
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisTinggal:
-    jenis_tinggal_id: str
+    jenis_tinggal_id: int
     nama: str
     create_date: datetime
     last_update: datetime
