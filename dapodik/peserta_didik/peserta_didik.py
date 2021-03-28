@@ -5,11 +5,10 @@ from uuid import UUID
 
 if TYPE_CHECKING:
     from dapodik import Dapodik
-from dapodik.rest import Agama
 
 
 @attr.dataclass
-class PesertaDidik(Agama.Prop):
+class PesertaDidik:
     peserta_didik_id: UUID
     nama: str
     jenis_kelamin: str
