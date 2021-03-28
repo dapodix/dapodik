@@ -2,8 +2,6 @@ import attr
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import BaseProp
-
 
 @attr.dataclass(frozen=True, slots=True)
 class KebutuhanKhusus:
@@ -35,19 +33,3 @@ class KebutuhanKhusus:
 
     def __str__(self):
         return self.kebutuhan_khusus
-
-    class Prop(BaseProp):
-        @property
-        def kebutuhan_khusus(self) -> "KebutuhanKhusus":
-            return self.dapodik._find(
-                self.dapodik.kebutuhan_khusus(),
-                lambda x: x.kebutuhan_khusus_id == getattr(self, "kebutuhan_khusus_id"),
-            )
-
-        @kebutuhan_khusus.setter
-        def kebutuhan_khusus(self, value: "KebutuhanKhusus"):
-            new = self.dapodik._find(
-                self.dapodik.kebutuhan_khusus(),
-                lambda x: x.kebutuhan_khusus_id == value.kebutuhan_khusus_id,
-            )
-            setattr(self, "kebutuhan_khusus_id", new.kebutuhan_khusus_id)

@@ -2,8 +2,6 @@ import attr
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import BaseProp
-
 
 @attr.dataclass(frozen=True, slots=True)
 class Biblio:
@@ -42,19 +40,3 @@ class Biblio:
 
     def __str__(self):
         return self.title
-
-    class Prop(BaseProp):
-        @property
-        def biblio(self) -> "Biblio":
-            return self.dapodik._find(
-                self.dapodik.biblio(),
-                lambda x: x.id_biblio == getattr(self, "id_biblio"),
-            )
-
-        @biblio.setter
-        def biblio(self, value: "Biblio"):
-            new_id_biblio = self.dapodik._find(
-                self.dapodik.biblio(),
-                lambda x: x.id_biblio == value.id_biblio,
-            )
-            setattr(self, "id_biblio", new_id_biblio.id_biblio)

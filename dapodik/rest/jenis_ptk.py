@@ -2,8 +2,6 @@ import attr
 from datetime import datetime
 from typing import Optional
 
-from dapodik.base import BaseProp
-
 
 @attr.dataclass(frozen=True, slots=True)
 class JenisPtk:
@@ -28,19 +26,3 @@ class JenisPtk:
 
     def __str__(self):
         return self.jenis_ptk
-
-    class Prop(BaseProp):
-        @property
-        def jenis_ptk(self) -> "JenisPtk":
-            return self.dapodik._find(
-                self.dapodik.jenis_ptk(),
-                lambda x: x.jenis_ptk_id == getattr(self, "jenis_ptk_id"),
-            )
-
-        @jenis_ptk.setter
-        def jenis_ptk(self, value: "JenisPtk"):
-            new = self.dapodik._find(
-                self.dapodik.jenis_ptk(),
-                lambda x: x.jenis_ptk_id == value.jenis_ptk_id,
-            )
-            setattr(self, "jenis_ptk_id", new.jenis_ptk_id)
