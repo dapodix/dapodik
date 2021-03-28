@@ -1,6 +1,7 @@
 from typing import List
 
 from dapodik.base import BaseDapodik
+from dapodik.utils.helper import cached
 
 from . import Agama
 from . import Akreditasi
@@ -52,6 +53,7 @@ from . import WaktuPenyelenggaraan
 
 
 class BaseRest(BaseDapodik):
+    @cached("agama")
     def agama(
         self, agama_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Agama]:
@@ -64,6 +66,7 @@ class BaseRest(BaseDapodik):
             query=self._query(agama_id=agama_id),
         )
 
+    @cached("akreditasi")
     def akreditasi(
         self, akreditasi_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Akreditasi]:
@@ -76,6 +79,7 @@ class BaseRest(BaseDapodik):
             query=self._query(akreditasi_id=akreditasi_id),
         )
 
+    @cached("akses_internet")
     def akses_internet(
         self,
         akses_internet_id: int = None,
@@ -92,6 +96,7 @@ class BaseRest(BaseDapodik):
             query=self._query(akses_internet_id=akses_internet_id),
         )
 
+    @cached("alat_transportasi")
     def alat_transportasi(
         self,
         alat_transportasi_id: int = None,
@@ -108,6 +113,7 @@ class BaseRest(BaseDapodik):
             self._query(alat_transportasi_id=alat_transportasi_id),
         )
 
+    @cached("bank")
     def bank(
         self, id_bank: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Bank]:
@@ -115,6 +121,7 @@ class BaseRest(BaseDapodik):
             "Bank", List[Bank], page, start, limit, query=self._query(id_bank=id_bank)
         )
 
+    @cached("bentuk_lembaga")
     def bentuk_lembaga(
         self,
         bentuk_lembaga_id: int = None,
@@ -131,6 +138,7 @@ class BaseRest(BaseDapodik):
             query=self._query(bentuk_lembaga_id=bentuk_lembaga_id),
         )
 
+    @cached("biblio")
     def biblio(
         self, id_biblio: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Biblio]:
@@ -143,6 +151,7 @@ class BaseRest(BaseDapodik):
             query=self._query(id_biblio=id_biblio),
         )
 
+    @cached("fasilitas_layanan")
     def fasilitas_layanan(
         self,
         fasilitas_layanan_id: int = None,
@@ -159,6 +168,7 @@ class BaseRest(BaseDapodik):
             query=self._query(fasilitas_layanan_id=fasilitas_layanan_id),
         )
 
+    @cached("gmd")
     def gmd(
         self, id_gmd: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Gmd]:
@@ -166,6 +176,7 @@ class BaseRest(BaseDapodik):
             "Gmd", List[Gmd], page, start, limit, query=self._query(id_gmd=id_gmd)
         )
 
+    @cached("jadwal_paud")
     def jadwal_paud(
         self, jadwal_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JadwalPaud]:
@@ -178,6 +189,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jadwal_id=jadwal_id),
         )
 
+    @cached("jenis_cita")
     def jenis_cita(
         self, id_cita: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisCita]:
@@ -190,6 +202,7 @@ class BaseRest(BaseDapodik):
             query=self._query(id_cita=id_cita),
         )
 
+    @cached("jenis_gugus")
     def jenis_gugus(
         self, jenis_gugus_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisGugus]:
@@ -202,6 +215,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_gugus_id=jenis_gugus_id),
         )
 
+    @cached("jenis_hapus_buku")
     def jenis_hapus_buku(
         self, id_hapus_buku: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisHapusBuku]:
@@ -214,6 +228,7 @@ class BaseRest(BaseDapodik):
             query=self._query(id_hapus_buku=id_hapus_buku),
         )
 
+    @cached("jenis_hobby")
     def jenis_hobby(
         self, id_hobby: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisHobby]:
@@ -226,6 +241,7 @@ class BaseRest(BaseDapodik):
             query=self._query(id_hobby=id_hobby),
         )
 
+    @cached("jenis_keluar")
     def jenis_keluar(
         self,
         jenis_keluar_id: int = None,
@@ -242,6 +258,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_keluar_id=jenis_keluar_id),
         )
 
+    @cached("jenis_lk")
     def jenis_lk(
         self, id_jenis_lk: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisLk]:
@@ -249,6 +266,7 @@ class BaseRest(BaseDapodik):
             "JenisLk", List[JenisLk], page, start, limit, query=self._query(id_jenis_lk)
         )
 
+    @cached("jenis_pendaftaran")
     def jenis_pendaftaran(
         self,
         jenis_pendaftaran_id: int = None,
@@ -265,6 +283,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_pendaftaran_id=jenis_pendaftaran_id),
         )
 
+    @cached("jenis_prasarana")
     def jenis_prasarana(
         self,
         jenis_prasarana_id: int = None,
@@ -281,6 +300,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_prasarana_id=jenis_prasarana_id),
         )
 
+    @cached("jenis_ptk")
     def jenis_ptk(
         self, jenis_ptk_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisPtk]:
@@ -293,6 +313,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_ptk_id=jenis_ptk_id),
         )
 
+    @cached("jenis_rombel")
     def jenis_rombel(
         self, jenis_rombel: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[JenisRombel]:
@@ -305,6 +326,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_rombel=jenis_rombel),
         )
 
+    @cached("jenis_sarana")
     def jenis_sarana(
         self,
         jenis_sarana_id: int = None,
@@ -321,6 +343,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_sarana_id=jenis_sarana_id),
         )
 
+    @cached("jenis_tinggal")
     def jenis_tinggal(
         self,
         jenis_tinggal_id: int = None,
@@ -337,6 +360,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenis_tinggal_id=jenis_tinggal_id),
         )
 
+    @cached("jenjang_pendidikan")
     def jenjang_pendidikan(
         self,
         jenjang_pendidikan_id: int = None,
@@ -353,6 +377,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jenjang_pendidikan_id=jenjang_pendidikan_id),
         )
 
+    @cached("jurusan")
     def jurusan(
         self, jurusan_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Jurusan]:
@@ -365,6 +390,7 @@ class BaseRest(BaseDapodik):
             query=self._query(jurusan_id=jurusan_id),
         )
 
+    @cached("kategori_tk")
     def kategori_tk(
         self, kategori_tk_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[KategoriTk]:
@@ -377,6 +403,7 @@ class BaseRest(BaseDapodik):
             query=self._query(kategori_tk_id=kategori_tk_id),
         )
 
+    @cached("keahlian_laboratorium")
     def keahlian_laboratorium(
         self,
         keahlian_laboratorium_id: int = None,
@@ -393,6 +420,7 @@ class BaseRest(BaseDapodik):
             query=self._query(keahlian_laboratorium_id=keahlian_laboratorium_id),
         )
 
+    @cached("kebutuhan_khusus")
     def kebutuhan_khusus(
         self,
         kebutuhan_khusus_id: int = None,
@@ -409,6 +437,7 @@ class BaseRest(BaseDapodik):
             query=self._query(kebutuhan_khusus_id=kebutuhan_khusus_id),
         )
 
+    @cached("klasifikasi_lembaga")
     def klasifikasi_lembaga(
         self,
         klasifikasi_lembaga_id: int = None,
@@ -425,6 +454,7 @@ class BaseRest(BaseDapodik):
             query=self._query(klasifikasi_lembaga_id=klasifikasi_lembaga_id),
         )
 
+    @cached("kurikulum")
     def kurikulum(
         self, kurikulum_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Kurikulum]:
@@ -437,6 +467,7 @@ class BaseRest(BaseDapodik):
             query=self._query(kurikulum_id=kurikulum_id),
         )
 
+    @cached("lembaga_pengangkat")
     def lembaga_pengangkat(
         self,
         lembaga_pengangkat_id: int = None,
@@ -453,6 +484,7 @@ class BaseRest(BaseDapodik):
             query=self._query(lembaga_pengangkat_id=lembaga_pengangkat_id),
         )
 
+    @cached("mata_pelajaran")
     def mata_pelajaran(
         self,
         mata_pelajaran_id: int = None,
@@ -469,6 +501,7 @@ class BaseRest(BaseDapodik):
             query=self._query(mata_pelajaran_id=mata_pelajaran_id),
         )
 
+    @cached("mst_wilayah")
     def mst_wilayah(
         self, kode_wilayah: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[MstWilayah]:
@@ -481,6 +514,7 @@ class BaseRest(BaseDapodik):
             query=self._query(kode_wilayah=kode_wilayah),
         )
 
+    @cached("pangkat_golongan")
     def pangkat_golongan(
         self,
         pangkat_golongan_id: int = None,
@@ -497,6 +531,7 @@ class BaseRest(BaseDapodik):
             query=self._query(pangkat_golongan_id=pangkat_golongan_id),
         )
 
+    @cached("pekerjaan")
     def pekerjaan(
         self, pekerjaan_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Pekerjaan]:
@@ -509,6 +544,7 @@ class BaseRest(BaseDapodik):
             query=self._query(pekerjaan_id=pekerjaan_id),
         )
 
+    @cached("penghasilan")
     def penghasilan(
         self, penghasilan_id: int = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[Penghasilan]:
@@ -521,11 +557,13 @@ class BaseRest(BaseDapodik):
             query=self._query(penghasilan_id=penghasilan_id),
         )
 
+    @cached("role_pengguna")
     def role_pengguna(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[RolePengguna]:
         return self._get_rest("RolePengguna", List[RolePengguna], page, start, limit)
 
+    @cached("status_keaktifan_pegawai")
     def status_keaktifan_pegawai(
         self,
         status_keaktifan_id: int = None,
@@ -542,6 +580,7 @@ class BaseRest(BaseDapodik):
             query=self._query(status_keaktifan_id=status_keaktifan_id),
         )
 
+    @cached("status_kepegawaian")
     def status_kepegawaian(
         self,
         status_kepegawaian_id: int = None,
@@ -558,6 +597,7 @@ class BaseRest(BaseDapodik):
             query=self._query(status_kepegawaian_id=status_kepegawaian_id),
         )
 
+    @cached("status_kepemilikan_sarpras")
     def status_kepemilikan_sarpras(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[StatusKepemilikanSarpras]:
@@ -569,11 +609,13 @@ class BaseRest(BaseDapodik):
             limit,
         )
 
+    @cached("sumber_air")
     def sumber_air(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[SumberAir]:
         return self._get_rest("SumberAir", List[SumberAir], page, start, limit)
 
+    @cached("sumber_dana_sekolah")
     def sumber_dana_sekolah(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[SumberDanaSekolah]:
@@ -581,16 +623,19 @@ class BaseRest(BaseDapodik):
             "SumberDanaSekolah", List[SumberDanaSekolah], page, start, limit
         )
 
+    @cached("sumber_gaji")
     def sumber_gaji(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[SumberGaji]:
         return self._get_rest("SumberGaji", List[SumberGaji], page, start, limit)
 
+    @cached("sumber_listrik")
     def sumber_listrik(
         self, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[SumberListrik]:
         return self._get_rest("SumberListrik", List[SumberListrik], page, start, limit)
 
+    @cached("sync_log")
     def sync_log(
         self, sync_log_id: str = None, page: int = 1, start: int = 0, limit: int = 50
     ) -> List[SyncLog]:
@@ -603,6 +648,7 @@ class BaseRest(BaseDapodik):
             query=self._query(sync_log_id=sync_log_id),
         )
 
+    @cached("tahun_ajaran")
     def tahun_ajaran(
         self,
         tahun_ajaran_id: str = None,
@@ -619,6 +665,7 @@ class BaseRest(BaseDapodik):
             query=self._query(tahun_ajaran_id=tahun_ajaran_id),
         )
 
+    @cached("tingkat_pendidikan")
     def tingkat_pendidikan(
         self,
         tingkat_pendidikan_id: int = None,
@@ -635,6 +682,7 @@ class BaseRest(BaseDapodik):
             query=self._query(tingkat_pendidikan_id=tingkat_pendidikan_id),
         )
 
+    @cached("waktu_penyelenggaraan")
     def waktu_penyelenggaraan(
         self,
         waktu_penyelenggaraan_id: int = None,
