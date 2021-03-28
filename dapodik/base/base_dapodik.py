@@ -1,9 +1,10 @@
 import json
 import logging
 import cattr
+from cachetools import LRUCache
 from datetime import date, datetime
 from requests import Response, Session
-from typing import Any, Callable, Optional, List, Type, TypeVar, Union
+from typing import Any, Callable, MutableMapping, Optional, List, Type, TypeVar, Union
 from uuid import UUID
 
 from dapodik.utils.parser import str_to_date, str_to_datetime
@@ -17,6 +18,11 @@ class BaseDapodik(object):
         self._session = Session()
         self._base_url = base_url
         self._register_hooks()
+        self._cache: MutableMapping = LRUCache(128)
+
+    @property
+    def cache(self) -> MutableMapping:
+        return self._cache
 
     @property
     def logger(self) -> logging.Logger:
