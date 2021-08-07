@@ -12,7 +12,7 @@ class BaseAuth(BaseDapodik):
         username: str,
         password: str,
         rememberme: bool = True,
-        semester_id: str = "20202",
+        semester_id: str = "20211",
         pengguna: int = None,
     ) -> List[Pengguna]:
         """Login ke dapodik dan mendapatkan daftar Pengguna
@@ -20,7 +20,7 @@ class BaseAuth(BaseDapodik):
         Args:
             username (str): Email dapodik
             password (str): Password dapodik
-            semester_id (str, optional): Id semester. Defaults to "20202".
+            semester_id (str, optional): Id semester. Defaults to "20211".
 
         Raises:
             ServerTidakMerespon: Server dapodik tidak merespon
