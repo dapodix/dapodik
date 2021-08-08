@@ -95,6 +95,8 @@ class BaseDapodik(object):
                 if not hasattr(res, "_dapodik"):
                     break
                 setattr(res, "_dapodik", self)
+        elif hasattr(result, "_dapodik"):
+            setattr(res, "_dapodik", self)
         return result
 
     def _get_rest(
