@@ -1,6 +1,6 @@
 import attr
 from datetime import datetime, date
-from typing import List, Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING
 from uuid import UUID
 
 if TYPE_CHECKING:
