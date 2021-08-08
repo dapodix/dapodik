@@ -6,14 +6,14 @@ repos:
         files: ^(dapodik|tests)/.*\.py$
         args:
           - --diff
-  - repo: https://gitlab.com/pycqa/flake8
+  - repo: https://gitlab.com/PyCQA/flake8
     rev: 3.8.4
     hooks:
       - id: flake8
         args:
           - --ignore=E501,W503
-  - repo: git://github.com/pre-commit/mirrors-pylint
-    rev: v2.5.3
+  - repo: https://github.com/PyCQA/pylint
+    rev: v2.9.6
     hooks:
       - id: pylint
         files: ^dapodik/.*\.py$
