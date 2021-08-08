@@ -3,6 +3,8 @@
 from .version import __version__, __dapodik_version__  # NOQA
 from .version import __semester__, __tahun_ajaran__  # NOQA
 
+from .response import DapodikResponse
+
 from .auth import BaseAuth
 from .rest import BaseRest
 from .validasi import BaseValidasi
@@ -16,12 +18,13 @@ from .dapodik import Dapodik
 
 __all__ = [
     "BaseAuth",
-    "BaseRest",
-    "BaseValidasi",
-    "BasePesertaDidik",
     "BaseGtk",
-    "BaseSarpras",
+    "BasePesertaDidik",
+    "BaseRest",
     "BaseRombonganBelajar",
+    "BaseSarpras",
     "BaseSekolah",
+    "BaseValidasi",
     "Dapodik",
+    "DapodikResponse",
 ]
