@@ -5,6 +5,7 @@ from typing import Generic, Optional, Type, TypeVar
 
 T = TypeVar("T")
 
+
 @attr.dataclass
 class DapodikResponse(Generic[T]):
     success: bool
@@ -20,12 +21,8 @@ class DapodikResponse(Generic[T]):
         if "rows" in data_dict and data_dict["rows"]:
             rows = cattr.structure(data_dict["rows"], cl)
             return cls(
-                success=data_dict["success"],
-                message=data_dict["message"],
-                rows=rows
+                success=data_dict["success"], message=data_dict["message"], rows=rows
             )
         return cls(
-            success=data_dict["success"],
-            message=data_dict["message"],
-            rows=None
+            success=data_dict["success"], message=data_dict["message"], rows=None
         )
