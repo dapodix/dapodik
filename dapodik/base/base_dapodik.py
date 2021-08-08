@@ -117,6 +117,44 @@ class BaseDapodik(object):
             params.update(query)
         return self._get_rows(prefix + path.lstrip("/"), cl=cl, query=params, key=key)
 
+    def _post_rows(
+        self,
+        path: str,
+        cl: Type[T],
+        data: Optional[dict] = None,
+        query: Optional[dict] = None,
+        key: Callable[[Any], Any] = lambda x: x["rows"],
+        **kwargs: Any,
+        ) -> T:
+        res = self._post(
+            url=path,
+            data=data,
+            **kwargs
+        )
+        raw_data: str = self._clean_data(res.text)
+        res_data: dict = json.loads(raw_data)
+        obj: Any = key(res_data) if callable(key) else res_data
+        result = cattr.structure(obj, cl)
+        if isinstance(result, list):
+            for res in result:
+                if not hasattr(res, "_dapodik"):
+                    break
+                setattr(res, "_dapodik", self)
+        elif hasattr(result, "_dapodik"):
+            setattr(res, "_dapodik", self)
+        return result
+
+    def _post_rest(
+        self,
+        path: str,
+        cl: Type[T],
+        data: Optional[dict] = None,
+        query: Optional[dict] = None,
+        prefix: str = "rest/",
+        key: Callable[[Any], Any] = lambda x: x["rows"],
+    ):
+        return self._post_rows(prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key)
+
     def _query(self, *args, **kwargs) -> dict:
         query = dict()
         for key, val in dict(kwargs).items():
@@ -134,3 +172,10 @@ class BaseDapodik(object):
             if is_this(o):
                 return o
         raise ValueError("No obj found")
+
+    @staticmethod
+    def _clean_data(data: str) -> str:
+        data = data.replace("'success'", '"success"')
+        data = data.replace("'message' : '", '"message" : "')
+        data = data.replace("', 'rows'", ':", :"rows:"')
+        return data
