@@ -49,6 +49,7 @@ pre-commit = "^2.14.0"
 pytest-cov = "^2.10.1"
 black = "^21.7b0"
 python-dotenv = "^0.15.0"
+types-attrs = "^19.1.0"
 
 [tool.poetry.scripts]
 dapodik = "dapodik.__main__:main"
