@@ -502,6 +502,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "types-cachetools"
+version = "0.1.9"
+description = "Typing stubs for cachetools"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "3.10.0.0"
 description = "Backported and Experimental Type Hints for Python 3.5+"
@@ -565,7 +573,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "220cbdafa21711f7ffb8a0dcd651e2a62dd118cc43a21ae11db6934a2314c524"
+content-hash = "c6b3889a805f4069386702ecc826857a3d5eebe5dd61e985c85703ce8cd37d9c"
 
 [metadata.files]
 appdirs = [
@@ -899,6 +907,10 @@ typed-ast = [
 ]
 types-attrs = [
     {file = "types_attrs-19.1.0-py2.py3-none-any.whl", hash = "sha256:d11acf7a2531a7c52a740c30fa3eb8d01d3066c10d34c01ff5e59502caac5352"},
+]
+types-cachetools = [
+    {file = "types-cachetools-0.1.9.tar.gz", hash = "sha256:cfcb41a71d5dab7b785fa3adeb367fa7584062c4d74e6d91ac72538a349b5f7b"},
+    {file = "types_cachetools-0.1.9-py3-none-any.whl", hash = "sha256:c3fa1afdfdeaf3cdc396ad5518ef3e6984f73092be61b525708f23f527aea51d"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.10.0.0-py2-none-any.whl", hash = "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497"},
