@@ -107,7 +107,7 @@ class CreatePesertaDidik:
 
     def save(
         self,
-        dapodik: Dapodik,
+        dapodik: "Dapodik",
         pd_module: str = "pdterdaftar",
         limit: int = 25,
         ascending: str = "nama",
