@@ -2,6 +2,7 @@ from dapodik import __semester__
 
 from . import BaseAuth
 from . import BaseRest
+from . import BaseCustomrest
 from . import BaseValidasi
 from . import BasePesertaDidik
 from . import BaseGtk
@@ -14,6 +15,7 @@ from .constants import HEADERS
 class Dapodik(
     BaseAuth,
     BaseRest,
+    BaseCustomrest,
     BaseValidasi,
     BasePesertaDidik,
     BaseGtk,
