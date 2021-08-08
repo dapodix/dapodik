@@ -1,6 +1,7 @@
+import attr
+import cattr
 import json
 import logging
-import cattr
 from cachetools import LRUCache
 from datetime import date, datetime
 from requests import Response, Session
@@ -150,11 +151,13 @@ class BaseDapodik(object):
         self,
         path: str,
         cl: Type[T],
-        data: Optional[dict] = None,
-        query: Optional[dict] = None,
+        data: Any = None,
+        query: dict = None,
         prefix: str = "rest/",
         key: Callable[[Any], Any] = lambda x: x["rows"],
     ):
+        if data and attr.has(type(data)):
+            data = cattr.unstructure(data)
         return self._post_rows(prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key)
 
     def _query(self, *args, **kwargs) -> dict:
