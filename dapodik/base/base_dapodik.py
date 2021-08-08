@@ -3,12 +3,11 @@ import cattr
 import json
 import logging
 from cachetools import LRUCache
-from datetime import date, datetime
 from requests import Response, Session
 from typing import Any, Callable, MutableMapping, Optional, List, Type, TypeVar, Union
-from uuid import UUID
 
-from dapodik.utils.parser import str_to_date, str_to_datetime
+from dapodik.utils.helper import clean_response, find_in, make_query
+from dapodik.utils.parser import register_hooks
 
 T = TypeVar("T")
 
@@ -130,7 +129,7 @@ class BaseDapodik(object):
         **kwargs: Any,
     ) -> T:
         res = self._post(url=path, data=data, **kwargs)
-        raw_data: str = self._clean_data(res.text)
+        raw_data: str = self._clean_response(res.text)
         res_data: dict = json.loads(raw_data)
         obj: Any = key(res_data) if callable(key) else res_data
         result = cattr.structure(obj, cl)
@@ -158,27 +157,7 @@ class BaseDapodik(object):
             prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key
         )
 
-    def _query(self, *args, **kwargs) -> dict:
-        query = dict()
-        for key, val in dict(kwargs).items():
-            if val is not None:
-                query[key] = val
-        return query
-
-    def _register_hooks(self):
-        cattr.register_structure_hook(date, lambda d, t: str_to_date(d))
-        cattr.register_structure_hook(datetime, lambda d, t: str_to_datetime(d))
-        cattr.register_structure_hook(UUID, lambda d, t: UUID(d))
-
-    def _find(self, obj: List[T], is_this: Callable[[T], bool]) -> T:
-        for o in obj:
-            if is_this(o):
-                return o
-        raise ValueError("No obj found")
-
-    @staticmethod
-    def _clean_data(data: str) -> str:
-        data = data.replace("'success'", '"success"')
-        data = data.replace("'message' : '", '"message" : "')
-        data = data.replace("', 'rows'", ':", :"rows:"')
-        return data
+    _clean_response = staticmethod(clean_response)
+    _find = staticmethod(find_in)
+    _register_hooks = staticmethod(register_hooks)
+    _query = staticmethod(make_query)
