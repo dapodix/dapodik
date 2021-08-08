@@ -4,6 +4,7 @@ from .version import __version__, __dapodik_version__  # NOQA
 from .version import __semester__, __tahun_ajaran__  # NOQA
 
 from .response import DapodikResponse
+from .result import DapodikResult
 
 from .auth import BaseAuth
 from .rest import BaseRest
@@ -27,4 +28,5 @@ __all__ = [
     "BaseValidasi",
     "Dapodik",
     "DapodikResponse",
+    "DapodikResult",
 ]
