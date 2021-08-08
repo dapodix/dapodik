@@ -128,12 +128,8 @@ class BaseDapodik(object):
         query: Optional[dict] = None,
         key: Callable[[Any], Any] = lambda x: x["rows"],
         **kwargs: Any,
-        ) -> T:
-        res = self._post(
-            url=path,
-            data=data,
-            **kwargs
-        )
+    ) -> T:
+        res = self._post(url=path, data=data, **kwargs)
         raw_data: str = self._clean_data(res.text)
         res_data: dict = json.loads(raw_data)
         obj: Any = key(res_data) if callable(key) else res_data
@@ -158,7 +154,9 @@ class BaseDapodik(object):
     ):
         if data and attr.has(type(data)):
             data = cattr.unstructure(data)
-        return self._post_rows(prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key)
+        return self._post_rows(
+            prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key
+        )
 
     def _query(self, *args, **kwargs) -> dict:
         query = dict()
