@@ -64,41 +64,45 @@ class PesertaDidik:
     pekerjaan_id_ibu: int
     kebutuhan_khusus_id_ibu: int
     nama_wali: Optional[str]
-    tahun_lahir_wali: int
+    tahun_lahir_wali: Optional[str]
     jenjang_pendidikan_wali: int
     pekerjaan_id_wali: int
     penghasilan_id_wali: int
     kewarganegaraan: str
-    registrasi_id: UUID
-    jurusan_sp_id: Optional[str]
-    sekolah_id: UUID
-    jenis_pendaftaran_id: int
-    nipd: int
-    tanggal_masuk_sekolah: date
-    jenis_keluar_id: Optional[int]
-    tanggal_keluar: Optional[datetime]
-    keterangan: str
-    no_skhun: Optional[str]
-    no_peserta_ujian: Optional[str]
-    no_seri_ijazah: Optional[str]
-    a_pernah_paud: int
-    a_pernah_tk: int
-    sekolah_asal: Optional[str]
-    id_hobby: int
-    id_cita: int
-    nama_sorter: str
-    jenis_pendaftaran_id_str: str
-    ket_keluar: Optional[str]
-    anggota_rombel_id: Optional[UUID]
-    tingkat_pendidikan_id: Optional[int]
-    rombel_saat_ini: str
-    rombel: str
-    id_bank_str: Optional[str]
-    kewarganegaraan_str: str
-    nomor_induk_pd: int
-    yatim_piatu: bool
-    konfirmasi_mutasi: int
-    vld_count: Optional[int]
+    yatim_piatu: Optional[bool] = None
+    nama_sorter: Optional[str] = None
+    rombel_saat_ini: Optional[str] = None
+    rombel: Optional[str] = None
+    # Ujian
+    no_skhun: Optional[str] = None
+    no_peserta_ujian: Optional[str] = None
+    no_seri_ijazah: Optional[str] = None
+    # Meta
+    keterangan: Optional[str] = None
+    # Registrasi
+    nipd: Optional[int] = None
+    nomor_induk_pd: Optional[int] = None
+    tanggal_masuk_sekolah: Optional[date] = None
+    sekolah_asal: Optional[str] = None
+    a_pernah_paud: Optional[int] = None
+    a_pernah_tk: Optional[int] = None
+    id_hobby: Optional[int] = None
+    id_cita: Optional[int] = None
+    jenis_keluar_id: Optional[int] = None
+    tanggal_keluar: Optional[datetime] = None
+    konfirmasi_mutasi: Optional[int] = None
+    ket_keluar: Optional[str] = None
+    anggota_rombel_id: Optional[UUID] = None
+    tingkat_pendidikan_id: Optional[int] = None
+    jenis_pendaftaran_id: Optional[int] = None
+    jenis_pendaftaran_id_str: str = ""
+    jurusan_sp_id: Optional[str] = None
+    sekolah_id: Optional[UUID] = None
+    registrasi_id: Optional[UUID] = None
+    vld_count: Optional[int] = None
+    # Str
+    id_bank_str: Optional[str] = None
+    kewarganegaraan_str: Optional[str] = None
     # Metadata
     create_date: Optional[datetime] = None
     last_update: Optional[datetime] = None
