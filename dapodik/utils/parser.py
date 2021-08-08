@@ -27,11 +27,11 @@ def str_to_date(data: Union[str, date], format: str = "%Y-%m-%d") -> date:
 
 
 def datetime_to_str(data: datetime) -> str:
-    return f"{data.year}"
+    return data.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def date_to_str(data: date) -> str:
-    return f"{data.year}-{data.month}-{data.day}"
+    return data.strftime("%Y-%m-%d")
 
 
 def register_hooks():
