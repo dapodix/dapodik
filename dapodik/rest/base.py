@@ -6,6 +6,7 @@ from dapodik.utils.helper import cached
 from . import Agama
 from . import Akreditasi
 from . import AksesInternet
+from . import AlasanLayakPip
 from . import AlatTransportasi
 from . import Bank
 from . import BentukLembaga
@@ -94,6 +95,23 @@ class BaseRest(BaseDapodik):
             start,
             limit,
             query=self._query(akses_internet_id=akses_internet_id),
+        )
+
+    @cached("alasan_layak_pip")
+    def alasan_layak_pip(
+        self,
+        id_layak_pip: int = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+    ) -> List[AlasanLayakPip]:
+        return self._get_rest(
+            "AlasanLayakPip",
+            List[AlasanLayakPip],
+            page,
+            start,
+            limit,
+            query=self._query(id_layak_pip=id_layak_pip),
         )
 
     @cached("alat_transportasi")

@@ -1,6 +1,7 @@
 from .agama import Agama
 from .akreditasi import Akreditasi
 from .akses_internet import AksesInternet
+from .alasan_layak_pip import AlasanLayakPip
 from .alat_transportasi import AlatTransportasi
 from .bank import Bank
 from .bentuk_lembaga import BentukLembaga
@@ -54,6 +55,7 @@ __all__ = [
     "Agama",
     "Akreditasi",
     "AksesInternet",
+    "AlasanLayakPip",
     "AlatTransportasi",
     "Bank",
     "BentukLembaga",
