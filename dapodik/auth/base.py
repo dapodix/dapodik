@@ -32,7 +32,9 @@ class BaseAuth(BaseDapodik):
         """
         res = self._get("")
         if not res.ok:
-            raise ServerTidakMerespon(f"Server dapodik ({self.base_url}) tidak merespon")
+            raise ServerTidakMerespon(
+                f"Server dapodik ({self.base_url}) tidak merespon"
+            )
         data = {"username": username, "password": password, "semester_id": semester_id}
         if rememberme:
             data["rememberme"] = "on"
