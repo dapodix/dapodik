@@ -6,6 +6,8 @@ from uuid import UUID
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
+from . import RegistrasiPesertaDidik
+
 
 @attr.dataclass
 class PesertaDidik:
@@ -80,7 +82,7 @@ class PesertaDidik:
     # Meta
     keterangan: Optional[str] = None
     # Registrasi
-    nipd: Optional[int] = None
+    nipd: Optional[str] = None
     nomor_induk_pd: Optional[int] = None
     tanggal_masuk_sekolah: Optional[date] = None
     sekolah_asal: Optional[str] = None
@@ -89,7 +91,7 @@ class PesertaDidik:
     id_hobby: Optional[int] = None
     id_cita: Optional[int] = None
     jenis_keluar_id: Optional[int] = None
-    tanggal_keluar: Optional[datetime] = None
+    tanggal_keluar: Optional[date] = None
     konfirmasi_mutasi: Optional[int] = None
     ket_keluar: Optional[str] = None
     anggota_rombel_id: Optional[UUID] = None
@@ -98,7 +100,7 @@ class PesertaDidik:
     jenis_pendaftaran_id_str: str = ""
     jurusan_sp_id: Optional[str] = None
     sekolah_id: Optional[UUID] = None
-    registrasi_id: Optional[UUID] = None
+    registrasi_id: Optional[str] = None
     vld_count: Optional[int] = None
     # Str
     id_bank_str: Optional[str] = None
@@ -113,3 +115,29 @@ class PesertaDidik:
 
     def __str__(self):
         return self.nama
+
+    @property
+    def dapodik(self) -> "Dapodik":
+        return self._dapodik  # type: ignore
+
+    def register(self, registrasi: RegistrasiPesertaDidik) -> RegistrasiPesertaDidik:
+        registrasi.peserta_didik_id = self.peserta_didik_id
+        if self.sekolah_id:
+            registrasi.sekolah_id = self.sekolah_id
+        registrasi = self.dapodik._post_rest(
+            path="RegistrasiPesertaDidik",
+            cl=RegistrasiPesertaDidik,
+            data=registrasi,
+        )
+        self.nipd = registrasi.nipd
+        self.registrasi_id = registrasi.registrasi_id
+        self.tanggal_masuk_sekolah = registrasi.tanggal_masuk_sekolah
+        self.sekolah_asal = registrasi.sekolah_asal
+        self.a_pernah_paud = registrasi.a_pernah_paud
+        self.a_pernah_tk = registrasi.a_pernah_tk
+        self.id_hobby = registrasi.id_hobby
+        self.id_cita = registrasi.id_cita
+        if registrasi.jenis_keluar_id:
+            self.jenis_keluar_id = int(registrasi.jenis_keluar_id)
+        self.tanggal_keluar = registrasi.tanggal_keluar
+        return registrasi
