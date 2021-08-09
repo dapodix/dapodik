@@ -1,5 +1,6 @@
 import attr
 from datetime import datetime
+from typing import Optional
 from uuid import UUID
 
 from dapodik import __semester__
@@ -22,11 +23,11 @@ class PesertaDidikLongitudinal:
     soft_delete: int
     last_sync: datetime
     updater_id: UUID
-    peserta_didik_longitudinal_id_str: str
-    peserta_didik_id_str: str
-    semester_id_str: int
-    peserta_didik_longitudinal_id: str
-    vld_count: int
+    peserta_didik_longitudinal_id: str = ""
+    vld_count: int = 0
+    peserta_didik_longitudinal_id_str: Optional[str] = None
+    peserta_didik_id_str: Optional[str] = None
+    semester_id_str: Optional[str] = None
 
     @property
     def waktu_tempuh(self) -> int:
