@@ -85,7 +85,7 @@ class CreatePesertaDidik:
     kewarganegaraan_str: str = ""
     agama_id_str: str = ""
     status_data: int = 0
-    pdb_id: Optional[str] = None
+    pdb_id: str = ""
     kebutuhan_khusus_id_str: str = ""
     jenis_tinggal_id_str: str = ""
     alat_transportasi_id_str: str = ""
