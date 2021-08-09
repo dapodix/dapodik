@@ -23,7 +23,7 @@ def clean_response(data: str) -> str:
     return data
 
 
-def make_query(self, *args, **kwargs) -> dict:
+def make_query(*args, **kwargs) -> dict:
     query = dict()
     for key, val in dict(kwargs).items():
         if val is not None:
