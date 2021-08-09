@@ -27,10 +27,14 @@ def str_to_date(data: Union[str, date], format: str = "%Y-%m-%d") -> date:
 
 
 def datetime_to_str(data: datetime) -> str:
+    if isinstance(data, str):
+        return data
     return data.strftime("%Y-%m-%d %H:%M:%S")
 
 
 def date_to_str(data: date) -> str:
+    if isinstance(data, str):
+        return data
     return data.strftime("%Y-%m-%d")
 
 
