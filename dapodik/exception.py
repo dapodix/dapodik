@@ -12,3 +12,7 @@ class PenggunaTidakTerdaftar(AuthException):
 
 class ServerTidakMerespon(BaseException):
     pass
+
+
+class DapodikResponseError(BaseException):
+    pass
