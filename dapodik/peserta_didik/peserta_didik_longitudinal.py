@@ -1,9 +1,8 @@
+import attr
 from datetime import datetime
 from uuid import UUID
 
-import attr
-
-DEF = "Admin.model.PesertaDidikLongitudinal-1"
+from dapodik import __semester__
 
 
 @attr.dataclass
@@ -41,8 +40,6 @@ class PesertaDidikLongitudinal:
 
     @attr.dataclass
     class Create:
-        peserta_didik_longitudinal_id: str
-        semester_id: str
         peserta_didik_id: UUID
         tinggi_badan: int
         berat_badan: int
@@ -52,7 +49,9 @@ class PesertaDidikLongitudinal:
         menit_tempuh_ke_sekolah: int
         jumlah_saudara_kandung: int
         lingkar_kepala: int
-        vld_count: int = 0
+        semester_id: str = __semester__
+        peserta_didik_longitudinal_id: str = "Admin.model.PesertaDidikLongitudinal-40"
         peserta_didik_longitudinal_id_str: str = ""
         peserta_didik_id_str: str = ""
         semester_id_str: str = ""
+        vld_count: int = 0

@@ -6,6 +6,7 @@ from uuid import UUID
 if TYPE_CHECKING:
     from dapodik import Dapodik
 
+from . import PesertaDidikLongitudinal
 from . import RegistrasiPesertaDidik
 
 
@@ -120,7 +121,7 @@ class PesertaDidik:
     def dapodik(self) -> "Dapodik":
         return self._dapodik  # type: ignore
 
-    def register(self, registrasi: RegistrasiPesertaDidik) -> RegistrasiPesertaDidik:
+    def registrasi(self, registrasi: RegistrasiPesertaDidik) -> RegistrasiPesertaDidik:
         registrasi.peserta_didik_id = self.peserta_didik_id
         if self.sekolah_id:
             registrasi.sekolah_id = self.sekolah_id
@@ -141,3 +142,13 @@ class PesertaDidik:
             self.jenis_keluar_id = int(registrasi.jenis_keluar_id)
         self.tanggal_keluar = registrasi.tanggal_keluar
         return registrasi
+
+    def create_longitudinal(
+        self, longitudinal: PesertaDidikLongitudinal.Create
+    ) -> PesertaDidikLongitudinal:
+        longitudinal.peserta_didik_id = self.peserta_didik_id
+        return self.dapodik._post_rest(
+            path="PesertaDidikLongitudinal",
+            cl=PesertaDidikLongitudinal,
+            data=longitudinal,
+        )
