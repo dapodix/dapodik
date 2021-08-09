@@ -35,7 +35,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-requests = "^2.25.1"
+requests = "^2.26.0"
 beautifulsoup4 = "^4.9.3"
 attrs = "^20.3.0"
 cattrs = "^1.4.0"
