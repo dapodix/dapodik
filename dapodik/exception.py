@@ -1,4 +1,8 @@
-class AuthException(BaseException):
+class DapodikException(BaseException):
+    pass
+
+
+class AuthException(DapodikException):
     pass
 
 
@@ -10,9 +14,9 @@ class PenggunaTidakTerdaftar(AuthException):
     pass
 
 
-class ServerTidakMerespon(BaseException):
+class ServerTidakMerespon(DapodikException):
     pass
 
 
-class DapodikResponseError(BaseException):
+class DapodikResponseError(DapodikException):
     pass
