@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-__version__ = "0.16.3"
+__version__ = "0.16.4"
 __dapodik_version__ = "2022"
 __semester__ = "20211"
 __tahun_ajaran__ = "2021"
