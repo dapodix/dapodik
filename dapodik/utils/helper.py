@@ -31,7 +31,7 @@ def make_query(*args, **kwargs) -> dict:
     return query
 
 
-def find_in(self, obj: List[T], is_this: Callable[[T], bool]) -> T:
+def find_in(obj: List[T], is_this: Callable[[T], bool]) -> T:
     for o in obj:
         if is_this(o):
             return o
