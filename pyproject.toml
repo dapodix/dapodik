@@ -39,7 +39,7 @@ requests = "^2.26.0"
 beautifulsoup4 = "^4.9.3"
 attrs = "^20.3.0"
 cattrs = "^1.4.0"
-cachetools = "^4.2.1"
+cachetools = "^4.2.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
