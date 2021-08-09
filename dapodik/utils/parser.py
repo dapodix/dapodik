@@ -42,4 +42,4 @@ def register_hooks():
     # attr -> dict
     cattr.register_unstructure_hook(date, date_to_str)
     cattr.register_unstructure_hook(datetime, datetime_to_str)
-    cattr.register_unstructure_hook(UUID, lambda d, t: str(d))
+    cattr.register_unstructure_hook(UUID, str)
