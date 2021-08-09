@@ -1,18 +1,20 @@
 import attr
+from datetime import date, datetime
 from typing import Optional
+from uuid import UUID
 
 
 @attr.dataclass
 class RegistrasiPesertaDidik:
-    peserta_didik_id: str
-    sekolah_id: str
-    tanggal_masuk_sekolah: str
+    peserta_didik_id: UUID
+    sekolah_id: UUID
+    tanggal_masuk_sekolah: datetime
     nipd: str = ""
     registrasi_id: Optional[str] = "Admin.model.RegistrasiPesertaDidik-1"
     jurusan_sp_id: str = ""
     jenis_pendaftaran_id: int = 1
     jenis_keluar_id: str = ""
-    tanggal_keluar: Optional[str] = None
+    tanggal_keluar: Optional[date] = None
     keterangan: str = ""
     no_skhun: str = ""
     id_hobby: int = -1
