@@ -8,7 +8,7 @@ from uuid import UUID
 class RegistrasiPesertaDidik:
     peserta_didik_id: UUID
     sekolah_id: UUID
-    tanggal_masuk_sekolah: datetime
+    tanggal_masuk_sekolah: date
     nipd: str = ""
     registrasi_id: Optional[str] = "Admin.model.RegistrasiPesertaDidik-1"
     jurusan_sp_id: str = ""
