@@ -6,6 +6,7 @@ from cachetools import LRUCache
 from requests import Response, Session
 from typing import Any, Callable, MutableMapping, Optional, List, Type, TypeVar, Union
 
+from dapodik.exception import ResponseError, ServerTidakMerespon
 from dapodik.utils.helper import clean_response, find_in, make_query
 from dapodik.utils.parser import register_hooks
 
@@ -87,6 +88,8 @@ class BaseDapodik(object):
             params=query,
             **kwargs,
         )
+        if not res.ok:
+            raise ServerTidakMerespon("Server tidak merespon")
         data: dict = json.loads(res.text)
         obj: Any = key(data) if callable(key) else data
         result = cattr.structure(obj, cl)
@@ -129,8 +132,17 @@ class BaseDapodik(object):
         **kwargs: Any,
     ) -> T:
         res = self._post(url=path, data=data, **kwargs)
+        if not res.ok:
+            raise ServerTidakMerespon("Server tidak merespon")
         raw_data: str = self._clean_response(res.text)
         res_data: dict = json.loads(raw_data)
+        self.logger.debug(f"Response POST : {raw_data}")
+        if "success" not in res_data:
+            raise ResponseError(f"No success message found in data `{raw_data}`")
+        elif not res_data["success"]:
+            if "message" in res_data:
+                raise ResponseError(res_data["message"])
+            raise ResponseError(f"Request failed with response :`{raw_data}`")
         obj: Any = key(res_data) if callable(key) else res_data
         result = cattr.structure(obj, cl)
         if isinstance(result, list):
