@@ -46,6 +46,8 @@ class CreatePesertaDidik:
     no_kps: str = ""
     no_kip: str = ""
     nm_kip: int = 0
+    pekerjaan_id: int = 0
+    pekerjaan_id_str: str = ""
     # Data Ayah Kandung
     nama_ayah: str
     nik_ayah: str
