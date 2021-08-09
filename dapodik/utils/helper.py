@@ -20,7 +20,7 @@ def clean_response(data: str) -> str:
     data = data.replace("'success'", '"success"')
     data = data.replace("'message' : '", '"message" : "')
     if "rows" in data:
-        data = data.replace("', 'rows'", ':", :"rows:"')
+        data = data.replace("', 'rows'", '", "rows"')
     else:
         data = data.replace("' }", '" }')
     return data
