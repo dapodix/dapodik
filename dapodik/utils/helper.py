@@ -19,7 +19,10 @@ def cached(key: str, cache_prop: str = "cache"):
 def clean_response(data: str) -> str:
     data = data.replace("'success'", '"success"')
     data = data.replace("'message' : '", '"message" : "')
-    data = data.replace("', 'rows'", ':", :"rows:"')
+    if "rows" in data:
+        data = data.replace("', 'rows'", ':", :"rows:"')
+    else:
+        data = data.replace("' }", '" }')
     return data
 
 
