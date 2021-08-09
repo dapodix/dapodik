@@ -1,6 +1,5 @@
-from typing import Optional
-
 import attr
+from typing import Optional
 
 
 @attr.dataclass
