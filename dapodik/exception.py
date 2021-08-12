@@ -14,6 +14,10 @@ class PenggunaTidakTerdaftar(AuthException):
     pass
 
 
+class PenggunaTidakDitemukan(AuthException):
+    pass
+
+
 class ServerTidakMerespon(DapodikException):
     pass
 

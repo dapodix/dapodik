@@ -1,8 +1,14 @@
 from bs4 import BeautifulSoup
 from typing import List
 
+from dapodik import __semester__
 from dapodik.base import BaseDapodik
-from dapodik.exception import PasswordSalah, PenggunaTidakTerdaftar, ServerTidakMerespon
+from dapodik.exception import (
+    PasswordSalah,
+    PenggunaTidakTerdaftar,
+    PenggunaTidakDitemukan,
+    ServerTidakMerespon,
+)
 from . import Pengguna
 
 
@@ -12,7 +18,7 @@ class BaseAuth(BaseDapodik):
         username: str,
         password: str,
         rememberme: bool = True,
-        semester_id: str = "20211",
+        semester_id: str = __semester__,
         pengguna: int = None,
     ) -> List[Pengguna]:
         """Login ke dapodik dan mendapatkan daftar Pengguna
@@ -20,7 +26,7 @@ class BaseAuth(BaseDapodik):
         Args:
             username (str): Email dapodik
             password (str): Password dapodik
-            semester_id (str, optional): Id semester. Defaults to "20211".
+            semester_id (str, optional): Id semester. Defaults to current semester.
 
         Raises:
             ServerTidakMerespon: Server dapodik tidak merespon
@@ -51,6 +57,10 @@ class BaseAuth(BaseDapodik):
         daftar_pengguna = Pengguna.from_soup(soup, self.base_url)
         if pengguna is None:
             return daftar_pengguna
+        if not daftar_pengguna:
+            raise PenggunaTidakDitemukan(
+                f"Pengguna tidak ditemukan, mungkin karena semester_id salah"
+            )
         self.login_pengguna(daftar_pengguna[pengguna])
         return daftar_pengguna
 
