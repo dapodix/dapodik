@@ -1,7 +1,8 @@
 from functools import partialmethod
 from typing import List
 
-from dapodik.base import BaseDapodik, DapodikMessage
+from dapodik.base import BaseDapodik
+from dapodik.message import DapodikMessage
 from . import (
     PesertaDidikBaru,
     PesertaDidikLongitudinal,
