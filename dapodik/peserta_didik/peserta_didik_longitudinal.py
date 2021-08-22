@@ -12,7 +12,7 @@ class PesertaDidikLongitudinal:
     semester_id: str
     tinggi_badan: int
     berat_badan: int
-    lingkar_kepala: int
+    lingkar_kepala: Optional[int]
     jarak_rumah_ke_sekolah: int
     jarak_rumah_ke_sekolah_km: int
     waktu_tempuh_ke_sekolah: int
