@@ -503,7 +503,7 @@ python-versions = "*"
 
 [[package]]
 name = "types-cachetools"
-version = "0.1.10"
+version = "4.2.0"
 description = "Typing stubs for cachetools"
 category = "dev"
 optional = false
@@ -581,7 +581,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "ab94a490fae87a61497fd90eaecbde74f68454bac8890b92bed0b36097aa306c"
+content-hash = "f3618777861882cadf8b6ae7b9b23b0beaf8a1853c3ac2b26d2d716611e6d76c"
 
 [metadata.files]
 appdirs = [
@@ -925,8 +925,8 @@ types-attrs = [
     {file = "types_attrs-19.1.0-py2.py3-none-any.whl", hash = "sha256:d11acf7a2531a7c52a740c30fa3eb8d01d3066c10d34c01ff5e59502caac5352"},
 ]
 types-cachetools = [
-    {file = "types-cachetools-0.1.10.tar.gz", hash = "sha256:f2727cf379989ba4d081f9ed11ec28c6730adbd120dc0deb2036c5ef69e515e0"},
-    {file = "types_cachetools-0.1.10-py3-none-any.whl", hash = "sha256:76d312d6e55fe19f7a2ea9a3271945e6f5c56f4fd76cc3cb2366109785f3462b"},
+    {file = "types-cachetools-4.2.0.tar.gz", hash = "sha256:9a44c7e1168990240520d1ff24020359e1cc5d9e2e1d63fa96bd54da2c954d07"},
+    {file = "types_cachetools-4.2.0-py3-none-any.whl", hash = "sha256:8d96c270ceb5e2d90ea2651e67b96197e2997d464f1ccd3a0d0f3dff9e0463fa"},
 ]
 types-requests = [
     {file = "types-requests-2.25.6.tar.gz", hash = "sha256:e21541c0f55c066c491a639309159556dd8c5833e49fcde929c4c47bdb0002ee"},
