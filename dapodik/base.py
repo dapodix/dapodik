@@ -7,6 +7,7 @@ from requests import Response, Session
 from typing import Any, Callable, MutableMapping, Optional, List, Type, TypeVar, Union
 
 from dapodik.exception import DapodikResponseError, ServerTidakMerespon
+from dapodik.message import DapodikMessage
 from dapodik.utils.helper import clean_response, find_in, make_query
 from dapodik.utils.parser import register_hooks
 
@@ -133,6 +134,9 @@ class BaseDapodik(object):
     ) -> T:
         res = self._post(url=path, json=data, **kwargs)
         if not res.ok:
+            if "{ 'success' : false, 'message' : '" in res.text:
+                message = DapodikMessage.from_fail(res.text)
+                raise DapodikResponseError(message)
             raise ServerTidakMerespon("Server tidak merespon")
         raw_data: str = self._clean_response(res.text)
         res_data: dict = json.loads(raw_data)
