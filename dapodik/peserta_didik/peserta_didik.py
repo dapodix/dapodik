@@ -16,8 +16,8 @@ class PesertaDidik:
     nama: str
     jenis_kelamin: str
     nisn: str
-    nik: str
-    no_kk: str
+    nik: Optional[str]
+    no_kk: Optional[str]
     tempat_lahir: str
     tanggal_lahir: date
     agama_id: int
@@ -29,12 +29,12 @@ class PesertaDidik:
     desa_kelurahan: str
     kode_wilayah: str
     kode_pos: Optional[int]
-    lintang: str
-    bujur: str
+    lintang: Optional[str]
+    bujur: Optional[str]
     jenis_tinggal_id: int
     alat_transportasi_id: int
-    nik_ayah: str
-    nik_ibu: str
+    nik_ayah: Optional[str]
+    nik_ibu: Optional[str]
     anak_keberapa: int
     nik_wali: Optional[str]
     nomor_telepon_rumah: Optional[str]
@@ -55,7 +55,7 @@ class PesertaDidik:
     rekening_atas_nama: Optional[str]
     status_data: Optional[int]
     nama_ayah: str
-    tahun_lahir_ayah: int
+    tahun_lahir_ayah: Optional[int]
     jenjang_pendidikan_ayah: int
     pekerjaan_id_ayah: int
     penghasilan_id_ayah: int
