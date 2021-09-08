@@ -1,6 +1,7 @@
 from dapodik.base import BaseDapodik
 from typing import List
 
+from . import JurusanSp
 from . import Kepanitiaan
 from . import ProgramInklusi
 from . import Sanitasi
@@ -12,6 +13,9 @@ from . import Yayasan
 
 
 class BaseSekolah(BaseDapodik):
+    def jurusan_sp(self) -> List[JurusanSp]:
+        return self._get_rows("/rest/JurusanSp", List[JurusanSp])
+
     def kepanitiaan(self) -> List[Kepanitiaan]:
         return self._get_rows("/rest/Kepanitiaan", List[Kepanitiaan])
 
