@@ -76,6 +76,16 @@ class BaseDapodik(object):
             **kwargs,
         )
 
+    def _get_struct(
+        self,
+        filename: str,
+        cl: Type[T],
+        **kwargs,
+    ) -> T:
+        res = self._get(filename, **kwargs)
+        data = json.loads(res.text)
+        return cattr.structure(data, cl)
+
     def _get_rows(
         self,
         path: str,
