@@ -1,6 +1,7 @@
 from dapodik.base import BaseDapodik
 from typing import List
 
+from . import AkreditasiSp
 from . import BlockGrant
 from . import JurusanSp
 from . import Kepanitiaan
@@ -14,6 +15,9 @@ from . import Yayasan
 
 
 class BaseSekolah(BaseDapodik):
+    def akreditasi_sp(self) -> List[AkreditasiSp]:
+        return self._get_rows("/rest/AkreditasiSp", List[AkreditasiSp])
+
     def blockgrant(self) -> List[BlockGrant]:
         return self._get_rows("/rest/BlockGrant", List[BlockGrant])
 
