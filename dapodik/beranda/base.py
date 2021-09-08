@@ -1,21 +1,31 @@
 import cattr
 import json
+from typing import List
 
+from dapodik import DapodikResponse
 from dapodik import DapodikResultData
 from dapodik.base import BaseDapodik
 
 from . import InfoSurveyPtm
+from . import KerusakanBangunan
 from . import PanelDashboard
 
 
 class BaseBeranda(BaseDapodik):
     def getInfoSurveyPtm(self) -> InfoSurveyPtm:
-        res = self._get("/getInfoSurveyPtm")
-        data = json.loads(res.text)
-        return cattr.structure(data, InfoSurveyPtm)
+        return self._get_struct("/getInfoSurveyPtm", InfoSurveyPtm)
+
+    def getKerusakanBangunan(self) -> List[KerusakanBangunan]:
+        result = self._get_struct(
+            "/getKerusakanBangunan",
+            DapodikResponse[List[KerusakanBangunan]],
+        )
+        assert result.rows is not None
+        return result.rows
 
     def updatePanelDashboard(self) -> PanelDashboard:
-        res = self._get("/updatePanelDashboard")
-        data = json.loads(res.text)
-        result = cattr.structure(data, DapodikResultData[PanelDashboard])
+        result = self._get_struct(
+            "/updatePanelDashboard",
+            DapodikResultData[PanelDashboard],
+        )
         return result.data
