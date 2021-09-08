@@ -2,7 +2,7 @@ from dapodik import __version__, __dapodik_version__, __semester__, __tahun_ajar
 
 
 def test_version():
-    assert __version__ == "0.16.8"
+    assert __version__ == "0.17.0"
 
 
 def test_dapodik_version():
