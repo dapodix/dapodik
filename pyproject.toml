@@ -40,6 +40,7 @@ beautifulsoup4 = "^4.9.3"
 attrs = "^21.2.0"
 cattrs = "^1.8.0"
 cachetools = "^4.2.2"
+ujson = {version = "^4.1.0", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -52,6 +53,9 @@ python-dotenv = "^0.19.0"
 types-attrs = "^19.1.0"
 types-cachetools = "^4.2.0"
 types-requests = "^2.25.6"
+
+[tool.poetry.extras]
+ujson = ["ujson"]
 
 [tool.poetry.scripts]
 dapodik = "dapodik.__main__:main"
