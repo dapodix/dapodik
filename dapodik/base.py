@@ -4,7 +4,7 @@ import json
 import logging
 from cachetools import LRUCache
 from requests import Response, Session
-from typing import Any, Callable, MutableMapping, Optional, List, Type, TypeVar, Union
+from typing import Any, Callable, MutableMapping, Optional, Type, TypeVar, Union
 
 from dapodik.exception import DapodikResponseError, ServerTidakMerespon
 from dapodik.message import DapodikMessage

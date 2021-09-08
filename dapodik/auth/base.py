@@ -59,7 +59,7 @@ class BaseAuth(BaseDapodik):
             return daftar_pengguna
         if not daftar_pengguna:
             raise PenggunaTidakDitemukan(
-                f"Pengguna tidak ditemukan, mungkin karena semester_id salah"
+                "Pengguna tidak ditemukan, mungkin karena semester_id salah"
             )
         self.login_pengguna(daftar_pengguna[pengguna])
         return daftar_pengguna
