@@ -1,5 +1,3 @@
-import cattr
-import json
 from typing import List
 
 from dapodik import DapodikResponse
