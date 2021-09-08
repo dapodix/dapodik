@@ -9,6 +9,7 @@ from .result import DapodikResult, DapodikResultData
 from .auth import BaseAuth
 from .rest import BaseRest
 from .customrest import BaseCustomrest
+from .beranda import BaseBeranda
 from .validasi import BaseValidasi
 from .peserta_didik import BasePesertaDidik
 from .gtk import BaseGtk
@@ -20,6 +21,7 @@ from .dapodik import Dapodik
 
 __all__ = [
     "BaseAuth",
+    "BaseBeranda",
     "BaseCustomrest",
     "BaseGtk",
     "BasePesertaDidik",
