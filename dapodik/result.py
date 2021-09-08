@@ -33,3 +33,13 @@ class DapodikResult(Generic[T]):
             limit=0,
             rows=None,
         )
+
+
+@attr.dataclass
+class DapodikResultData(Generic[T]):
+    success: bool
+    results: int
+    data: T
+
+    def __bool__(self):
+        return self.success
