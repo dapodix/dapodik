@@ -1,12 +1,14 @@
 import attr
 import cattr
 import json
+from typing import Any
 
 
 @attr.dataclass(frozen=True, slots=True)
 class DapodikMessage:
     success: bool = True
     message: str = ""
+    rows: Any = None
 
     @classmethod
     def from_str(cls, obj: str) -> "DapodikMessage":
@@ -21,6 +23,8 @@ class DapodikMessage:
             "{ 'success' : false, 'message' : '", '{ "success" : false, "message" : "'
         )
         res = res.replace("' }", '" }')
+        if "', 'rows'" in res:
+            res = res.replace("', 'rows'", '", "rows"')
         data = json.loads(res)
         return cattr.structure(data, cls)
 
