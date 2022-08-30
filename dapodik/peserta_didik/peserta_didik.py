@@ -23,8 +23,8 @@ class PesertaDidik:
     agama_id: int
     kebutuhan_khusus_id: int
     alamat_jalan: str
-    rt: int
-    rw: int
+    rt: Optional[int]
+    rw: Optional[int]
     nama_dusun: str
     desa_kelurahan: str
     kode_wilayah: str
