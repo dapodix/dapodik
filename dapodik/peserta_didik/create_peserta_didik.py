@@ -15,26 +15,26 @@ class CreatePesertaDidik:
     # Data Pribadi
     nama: str
     jenis_kelamin: str
-    nisn: str
+    nisn: Optional[str] = None
     nik: str
     no_kk: str
     tempat_lahir: str
     tanggal_lahir: date
     reg_akta_lahir: str = ""
     kebutuhan_khusus_id: int = 0
-    agama_id: int
+    agama_id: int = 1
     alamat_jalan: str
     rt: int = 0
     rw: int = 0
-    nama_dusun: str
+    nama_dusun: str = ""
     kode_wilayah: str
     kode_wilayah_str: str
     desa_kelurahan: str
-    kode_pos: int
-    lintang: int
-    bujur: int
-    jenis_tinggal_id: int
-    alat_transportasi_id: int
+    kode_pos: Optional[int] = None
+    lintang: int = 0
+    bujur: int = 0
+    jenis_tinggal_id: int = 1
+    alat_transportasi_id: int = 13
     anak_keberapa: int = 1
     penerima_kps: int = 0
     penerima_kip: int = 0
@@ -51,23 +51,23 @@ class CreatePesertaDidik:
     # Data Ayah Kandung
     nama_ayah: str
     nik_ayah: str
-    tahun_lahir_ayah: int
-    jenjang_pendidikan_ayah: int
-    pekerjaan_id_ayah: int
-    penghasilan_id_ayah: int
+    tahun_lahir_ayah: str
+    jenjang_pendidikan_ayah: int = 99
+    pekerjaan_id_ayah: int = 99
+    penghasilan_id_ayah: int = 0
     kebutuhan_khusus_id_ayah: int = 0
     # Data Ibu Kandung
     nama_ibu_kandung: str
     nik_ibu: str
-    tahun_lahir_ibu: int
-    jenjang_pendidikan_ibu: int
-    pekerjaan_id_ibu: int
-    penghasilan_id_ibu: int
+    tahun_lahir_ibu: str
+    jenjang_pendidikan_ibu: int = 99
+    pekerjaan_id_ibu: int = 99
+    penghasilan_id_ibu: int = 0
     kebutuhan_khusus_id_ibu: int = 0
     # Data Wali
     nama_wali: str = ""
     nik_wali: str = ""
-    tahun_lahir_wali: int
+    tahun_lahir_wali: str
     jenjang_pendidikan_wali: int = 0
     pekerjaan_id_wali: int = 0
     penghasilan_id_wali: int = 0
