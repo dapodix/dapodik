@@ -103,7 +103,11 @@ class BaseDapodik(object):
             raise ServerTidakMerespon("Server tidak merespon")
         data: dict = json.loads(res.text)
         obj: Any = key(data) if callable(key) else data
-        result = cattr.structure(obj, cl)
+        try:
+            result = cattr.structure(obj, cl)
+        except Exception as E:
+            # TODO Improve error handling
+            raise E
         if isinstance(result, list):
             for res in result:
                 if not hasattr(res, "_dapodik"):
