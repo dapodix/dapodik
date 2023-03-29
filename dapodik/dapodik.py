@@ -44,3 +44,17 @@ class Dapodik(
 
     def __del__(self):
         self.logout()
+
+
+__all__ = [
+    "BaseAuth",
+    "BaseRest",
+    "BaseCustomrest",
+    "BaseBeranda",
+    "BaseValidasi",
+    "BasePesertaDidik",
+    "BaseGtk",
+    "BaseSarpras",
+    "BaseRombonganBelajar",
+    "BaseSekolah",
+]
