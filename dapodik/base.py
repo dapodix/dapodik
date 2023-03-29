@@ -4,7 +4,16 @@ import json
 import logging
 from cachetools import LRUCache
 from requests import Response, Session
-from typing import Any, Callable, MutableMapping, Optional, Type, TypeVar, Union
+from typing import (
+    Any,
+    Callable,
+    Generic,
+    MutableMapping,
+    Optional,
+    Type,
+    TypeVar,
+    Union,
+)
 
 from dapodik.exception import DapodikResponseError, ServerTidakMerespon
 from dapodik.message import DapodikMessage
@@ -259,3 +268,15 @@ class BaseDapodik(object):
     _find = staticmethod(find_in)
     _register_hooks = staticmethod(register_hooks)
     _query = staticmethod(make_query)
+
+
+BD = TypeVar("BD", bound=BaseDapodik)
+
+
+class BaseProp(Generic[T]):
+    filename: str
+    cl: Type[T]
+    d: BD
+
+    def __call__(self) -> T:
+        return self.d._get_rows(path=self.filename, cl=self.cl)
