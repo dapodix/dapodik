@@ -64,6 +64,24 @@ class BaseDapodik(object):
             **kwargs,
         )
 
+    def _put(
+        self,
+        url: str,
+        data: dict = None,
+        json: dict = None,
+        params: dict = None,
+        headers: dict = None,
+        **kwargs: Any,
+    ) -> Response:
+        return self.session.put(
+            self._url(url),
+            data=data,
+            json=json,
+            params=params,
+            headers=headers,
+            **kwargs,
+        )
+
     def _get(
         self,
         url: str,
@@ -184,6 +202,56 @@ class BaseDapodik(object):
         if data and attr.has(type(data)):
             data = cattr.unstructure(data)
         return self._post_rows(
+            prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key
+        )
+
+    def _put_rows(
+        self,
+        path: str,
+        cl: Type[T],
+        data: Optional[dict] = None,
+        query: Optional[dict] = None,
+        key: Callable[[Any], Any] = lambda x: x["rows"],
+        **kwargs: Any,
+    ) -> T:
+        res = self._put(url=path, json=data, params=query, **kwargs)
+        if not res.ok:
+            if "{ 'success' : false, 'message' : '" in res.text:
+                message = DapodikMessage.from_fail(res.text)
+                raise DapodikResponseError(message)
+            raise ServerTidakMerespon("Server tidak merespon")
+        raw_data: str = self._clean_response(res.text)
+        res_data: dict = json.loads(raw_data)
+        self.logger.debug(f"Response PUT : {raw_data}")
+        if "success" not in res_data:
+            raise DapodikResponseError(f"No success message found in data `{raw_data}`")
+        elif not res_data["success"]:
+            if "message" in res_data:
+                raise DapodikResponseError(res_data["message"])
+            raise DapodikResponseError(f"Request failed with response :`{raw_data}`")
+        obj: Any = key(res_data) if callable(key) else res_data
+        result = cattr.structure(obj, cl)
+        if isinstance(result, list):
+            for res in result:
+                if not hasattr(res, "_dapodik"):
+                    break
+                setattr(res, "_dapodik", self)
+        elif hasattr(result, "_dapodik"):
+            setattr(res, "_dapodik", self)
+        return result
+
+    def _put_rest(
+        self,
+        path: str,
+        cl: Type[T],
+        data: Any = None,
+        query: dict = None,
+        prefix: str = "rest/",
+        key: Callable[[Any], Any] = lambda x: x["rows"],
+    ):
+        if data and attr.has(type(data)):
+            data = cattr.unstructure(data)
+        return self._put_rows(
             prefix + path.lstrip("/"), cl=cl, data=data, query=query, key=key
         )
 
