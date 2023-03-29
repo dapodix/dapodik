@@ -17,6 +17,6 @@ class BaseCustomrest(BaseDapodik):
             page,
             start,
             limit,
-            query=self._query(query=query),
+            query=self._query(query=query, callback="peserta_didik"),
             prefix="customrest/",
         )
