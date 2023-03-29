@@ -438,11 +438,11 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "ujson"
-version = "4.3.0"
+version = "5.7.0"
 description = "Ultra fast JSON encoder and decoder for Python"
 category = "main"
 optional = true
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [[package]]
 name = "urllib3"
@@ -483,7 +483,7 @@ ujson = ["ujson"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "fab0569e06f0397df4ff0ffeaca5202365ae6d3684a99b72ccefb9e6bfb88bf8"
+content-hash = "837575f8f7cfdd41e3f7f5f808d2d6edb1500734991efafba397ca4b49d61e34"
 
 [metadata.files]
 atomicwrites = []
