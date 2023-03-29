@@ -17,7 +17,7 @@ class CreatePesertaDidik:
     jenis_kelamin: str
     nisn: Optional[str] = None
     nik: str
-    no_kk: str
+    no_kk: str = ""
     tempat_lahir: str
     tanggal_lahir: date
     reg_akta_lahir: str = ""
