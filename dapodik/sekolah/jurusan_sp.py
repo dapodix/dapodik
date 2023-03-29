@@ -21,3 +21,6 @@ class JurusanSp:
     kebutuhan_khusus_id_str: str
     jurusan_id_str: str
     vld_count: int
+
+    def __str__(self) -> str:
+        return self.nama_jurusan_sp

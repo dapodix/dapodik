@@ -107,6 +107,9 @@ class CreatePesertaDidik:
     kebutuhan_khusus_id_selector_ibu: List[int] = attr.ib(factory=list)
     vld_count: int = 0
 
+    def __str__(self) -> str:
+        return self.nama
+
     def save(
         self,
         dapodik: "Dapodik",

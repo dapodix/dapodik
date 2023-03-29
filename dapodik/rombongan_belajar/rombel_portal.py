@@ -34,3 +34,6 @@ class RombelPortal:
     mutasi: int
     do: int
     jumlah: int
+
+    def __str__(self) -> str:
+        return self.nama

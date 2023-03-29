@@ -101,3 +101,6 @@ class Ptk:
     soft_delete: Optional[int] = None
     last_sync: Optional[datetime] = None
     updater_id: Optional[UUID] = None
+
+    def __str__(self) -> str:
+        return self.nama

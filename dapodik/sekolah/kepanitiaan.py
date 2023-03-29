@@ -27,3 +27,6 @@ class Kepanitiaan:
     updater_id: str
     sekolah_id_str: str
     id_jns_panitia_str: str
+
+    def __str__(self) -> str:
+        return self.nm_panitia

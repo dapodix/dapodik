@@ -30,6 +30,9 @@ class PesertaDidikBaru:
     last_sync: Optional[datetime] = None
     updater_id: Optional[UUID] = None
 
+    def __str__(self) -> str:
+        return self.nama_pd
+
     @attr.dataclass
     class Create:
         sekolah_id: UUID

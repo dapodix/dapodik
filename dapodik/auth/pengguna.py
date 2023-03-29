@@ -12,6 +12,9 @@ class Pengguna:
     login_url: str
     photo: str
 
+    def __str__(self) -> str:
+        return f"{self.nama} ({self.peran})"
+
     @classmethod
     def from_li(cls, li: Tag, server: str = "") -> "Pengguna":
         a: Tag = li.find("a")

@@ -35,3 +35,6 @@ class Yayasan:
     updater_id: str
     kode_wilayah_str: str
     vld_count: int
+
+    def __str__(self) -> str:
+        return self.nama

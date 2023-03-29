@@ -27,3 +27,6 @@ class Wilayah:
     expired_date: Optional[datetime]
     last_sync: datetime
     nama_kabupaten: str
+
+    def __str__(self) -> str:
+        return self.nama

@@ -41,3 +41,6 @@ class RombonganBelajar:
     jurusan_id_str: str
     tingkat_pendidikan_id_str: str
     semester_id: str = __semester__
+
+    def __str__(self) -> str:
+        return self.nama

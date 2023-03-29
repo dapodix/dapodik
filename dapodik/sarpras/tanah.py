@@ -38,3 +38,6 @@ class Tanah:
     soft_delete: Optional[str] = None
     last_sync: Optional[datetime] = None
     updater_id: Optional[str] = None
+
+    def __str__(self) -> str:
+        return self.nama

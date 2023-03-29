@@ -15,3 +15,6 @@ class Pembelajaran:
     status_di_kurikulum: int = 9
     semester_id: str = "20201"
     pembelajaran_id: str = "Admin.model.PembelajaranNew-1"
+
+    def __str__(self) -> str:
+        return self.nama_mata_pelajaran

@@ -24,3 +24,6 @@ class BlockGrant:
     sekolah_id_str: str
     jenis_bantuan_id_str: str
     sumber_dana_id_str: str
+
+    def __str__(self) -> str:
+        return self.nama

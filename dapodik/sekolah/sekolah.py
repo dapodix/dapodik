@@ -55,3 +55,6 @@ class Sekolah:
     kebutuhan_khusus_id_str: str = ""
     yayasan_id_str: str = ""
     vld_count: int = 0
+
+    def __str__(self) -> str:
+        return self.nama
