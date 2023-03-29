@@ -35,8 +35,8 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-requests = "^2.26.0"
-beautifulsoup4 = "^4.9.3"
+requests = ">=2.0.0"
+beautifulsoup4 = ">=4.0.0"
 cachetools = "^4.2.2"
 attrs = ">=21.0.0,<=23.0.0"
 cattrs = ">=21.0.0,<=23.0.0"
