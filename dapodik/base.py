@@ -2,17 +2,22 @@ import attr
 import cattr
 import json
 import logging
-from cachetools import LRUCache
+from cachetools import LRUCache, cachedmethod
+from cachetools.keys import hashkey
+from functools import partial
 from requests import Response, Session
+from operator import attrgetter
 from typing import (
     Any,
     Callable,
     Generic,
+    List,
     MutableMapping,
     Optional,
     Type,
     TypeVar,
     Union,
+    TYPE_CHECKING,
 )
 
 from dapodik.exception import DapodikResponseError, ServerTidakMerespon
@@ -21,6 +26,9 @@ from dapodik.utils.helper import clean_response, find_in, make_query
 from dapodik.utils.parser import register_hooks
 
 T = TypeVar("T")
+
+if TYPE_CHECKING:
+    from dapodik import Dapodik
 
 
 class BaseDapodik(object):
@@ -280,3 +288,34 @@ class BaseProp(Generic[T]):
 
     def __call__(self) -> T:
         return self.d._get_rows(path=self.filename, cl=self.cl)
+
+
+@attr.dataclass
+class BasePRest(Generic[T]):
+    filename: str
+    cl: Type[T]
+    dapodik: "Dapodik"
+    key: str = ""
+
+    def __attrs_post_init__(self) -> None:
+        if not self.key:
+            self.key = self.filename.lower() + "_id"
+
+    @cachedmethod(
+        attrgetter("dapodik.cache"), key=partial(hashkey, attrgetter("filename"))
+    )
+    def __call__(
+        self,
+        id: str = None,
+        page: int = 1,
+        start: int = 0,
+        limit: int = 50,
+    ) -> List[T]:
+        return self.dapodik._get_rest(
+            self.filename,
+            List[self.cl],
+            page,
+            start,
+            limit,
+            query={self.key: id} if id else {},
+        )
