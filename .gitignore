@@ -134,3 +134,4 @@ dmypy.json
 # Private tests
 *.test.py
 *.test.xlsx
+*.test.json
