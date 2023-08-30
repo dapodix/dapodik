@@ -6,13 +6,13 @@ def test_version():
 
 
 def test_dapodik_version():
-    assert __dapodik_version__ == "2023.d"
+    assert __dapodik_version__ == "2023.a"
 
 
 def test_tahun_ajaran():
-    assert __tahun_ajaran__ == "2022"
+    assert __tahun_ajaran__ == "2023"
 
 
 def test_semester():
-    assert __semester__ == "20222"
+    assert __semester__ == "20231"
     assert __semester__.startswith(__tahun_ajaran__)
